@@ -34,7 +34,7 @@ To configure inter-node TLS for on-demand service instances:
 
 ##<a id="configuration"></a> Configure Inter-node TLS
 
-To configure inter-node TLS in the <%= vars.product_short %> tile:
+To configure inter-node mutual TLS in the <%= vars.product_short %> tile:
 
 1. Click the <strong>Security for On-Demand Plans</strong> tab.
   <%= image_tag("/images/configure-oauth.png",
@@ -63,10 +63,10 @@ secured with mutual TLS.
 
 <p class="note warning">
   <strong>Warning:</strong> This option only affects service instances created
-  after running <strong>Apply Changes</strong>.
+  after clicking <strong>Apply Changes</strong>.
   It has no effect on existing service instances.
   To migrate your app traffic to a cluster using inter-node TLS, see
-  <a href="#migration">Migrating to a Secure Inter-node Cluster</a> below.
+  <a href="#migration">Migrate to a Secure Inter-node Cluster</a> below.
 </p>
 
 ##<a id="migration"></a> Migrate to a Secure Inter-node Cluster
@@ -76,7 +76,7 @@ To use this feature, you must manually migrate apps to a new service instance wh
 **Secure Inter-node communications with TLS** enabled.
 This migration can involve less downtime if you use a blue-green deployment.
 
-The reason you must migrate is because, when you apply changes, the rolling upgrade process that updates the cluster
+You must migrate because, when you click **Apply changes**, the rolling upgrade process that updates the cluster
 cannot update existing instances to use inter-node TLS communication.
 During the rolling upgrade, the cluster would contain a mix of nodes with
 and without inter-node TLS communication.
@@ -113,12 +113,13 @@ with the same plan and configuration as the original service instance by running
     </pre>
 
     <p class="note">
-      <strong>Note:</strong> In this procedure, this new service instance is referred to as green
-      and the original service instance is referred to as blue.
+      <strong>Note:</strong> In this procedure, this new service instance and its
+      corresponding cluster are referred to as green. The original service instance
+      and cluster are referred to as blue.
     </p>
 
-1. After the green service instance is deployed, create admin credentials on both the blue
-and green clusters if they do not already have credentials:
+1. After the green service instance is deployed, create admin credentials for both the blue
+and green service instances if they do not already have credentials:
 
     ```
     cf create-service-key BLUE-INSTANCE-NAME admin-key -c '{"tags": "administrator"}'
@@ -142,8 +143,8 @@ and green clusters if they do not already have credentials:
 
 1. Log in to the Management UI on both the blue and green clusters.
 
-1. Stop your apps so that no new messages are sent to the blue cluster and no
-new topology objects, such as queues or policies, are created.
+1. Stop the apps bound to the blue service instance so that no new messages are
+sent and no new topology objects, such as queues or policies, are created.
 Do so by running:
 
     ```
@@ -151,7 +152,7 @@ Do so by running:
     ```
     Where `APP-NAME` is the name of your messaging app.
 
-1. In the **Overview** pane of the Management UI for the blue (old) cluster,
+1. In the **Overview** pane of the Management UI for the blue (original) cluster,
 navigate to **Export Definitions** and click **Download broker definitions**.
 This saves a JSON file to your local machine that contains the topology metadata you need to re-create
 the cluster on another service instance.
@@ -222,7 +223,7 @@ VMware recommends that you restart the consumers first to avoid building up a ba
     ```
 
 1. Confirm in the Management UI for the blue cluster that the blue cluster has
-no messages in queues, no throughput.
+no messages in queues and no throughput.
 
 1. Confirm in the Management UI for the green cluster that the green cluster has
 the expected throughput.
