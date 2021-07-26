@@ -78,10 +78,8 @@ This migration can involve less downtime if you use a blue-green deployment.
 
 You must migrate because, when you click **Apply changes**, the rolling upgrade process that updates the cluster
 cannot update existing instances to use inter-node TLS communication.
-During the rolling upgrade, the cluster would contain a mix of nodes with
-and without inter-node TLS communication.
-The upgrade would fail because an Erlang distribution cannot contain a mix of
-nodes that communicate over TLS and nodes that do not.
+The rolling upgrade would fail because an Erlang distribution cannot contain a
+mix of nodes that communicate over TLS and nodes that do not.
 
 <p class="note">
   <strong>Note:</strong> This migration procedure assumes that you are familiar with RabbitMQ concepts,
