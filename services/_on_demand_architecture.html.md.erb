@@ -1,0 +1,60 @@
+<p>
+On-demand <%= product_short %> services use BOSH to dynamically deploy VMs and create single-tenant
+service instances in a dedicated network.
+On-demand services use the dynamically-provisioned service network to host single-tenant worker VMs.
+These worker VMs run as service instances within development spaces.
+</p>
+
+<p>
+This on-demand architecture has the following advantages:
+<ul>
+<li>Developers can provision IaaS resources for their services instances when the instances are created.
+This removes the need for operators to pre-provision a fixed amount of IaaS resources
+  when they deploy the service broker.</li>
+<li>Service instances run on a dedicated VM and do not share VMs with unrelated processes.
+This removes the "noisy neighbor" problem, where an app monopolizes resources on a shared cluster.</li>
+<li>Single-tenant services can support regulatory compliances where
+  sensitive data must be separated across different machines.</li>
+</ul>
+</p>
+
+<p>
+An on-demand service separates operations between the default network and the
+service network. Shared service components, such as executive controllers and databases,
+Cloud Controller, UAA, and other on-demand components, run on the default network.
+Worker pools deployed to specific spaces run on the service network.
+</p>
+
+<p>
+The diagram below shows worker VMs in an on-demand service instance
+running on a separate services network, while other components run on the default
+network.
+</p>
+
+<%# There are two diagrams: a Pivotal-branded diagram and a VMware-branded diagram.
+
+Logic is included to append '-vmware' to the filename if rebranded to VMware.
+%>
+<% if vars.product_short.include?("On-Demand Services SDK") or vars.product_short.include?("GemFire") or vars.product_short.include?("Cloud Cache") %>
+
+<img src="<%= vars.path_to_partials %>/images/odb-architecture<%= vars.book_title.include?('VMware') ? '-vmware' : ''  %>.png"
+alt="Diagram shows the Default Network and the Services Network.
+The Default Network shows the Cloud Controller, communicating with the On-Demand Broker,
+which communicates with the BOSH Director when the user runs the cf create-service command.
+The BOSH Director then adds an on-demand instance to the Services network.
+The instances have been created in separate spaces and have several worker VMs.">
+
+<a href="<%= vars.path_to_partials %>/images/odb-architecture<%= vars.book_title.include?('VMware') ? '-vmware' : ''  %>.png" target="_blank">View a larger version of this image</a>
+
+<% else %>
+
+<img src="./images/odb-architecture<%= vars.book_title.include?('VMware') ? '-vmware' : ''  %>.png"
+alt="Diagram shows the Default Network and the Services Network.
+The Default Network shows the Cloud Controller, communicating with the On-Demand Broker,
+which communicates with the BOSH Director when the user runs the cf create-service command.
+The BOSH Director then adds an on-demand instance to the Services network.
+The instances have been created in separate spaces and have several worker VMs.">
+
+<a href="./images/odb-architecture<%= vars.book_title.include?('VMware') ? '-vmware' : ''  %>.png" target="_blank">View a larger version of this image</a>
+
+<% end %>

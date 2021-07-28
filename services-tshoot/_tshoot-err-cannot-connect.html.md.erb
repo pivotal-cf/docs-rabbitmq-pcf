@@ -1,0 +1,47 @@
+<%= partial vars.path_to_partials + "/troubleshoot-template", locals: {
+
+    id: 'cannot-connect',
+
+    description: 'Cannot Connect to a Service Instance',
+
+    symptom:<<~DESC,
+    Developers report that their app cannot use service instances that they have
+    successfully created and bound.
+    DESC
+
+    cause: 'The error might originate from the service or be network related.',
+
+    solution:'
+    To solve this issue, ask the user to send application logs that show the connection error.
+    If the error originates from the service, then follow ' + vars.product_short + '-specific instructions.
+    If the issue appears to be network-related, then:
+    <ol>
+    <li>
+    <p>
+    Check that <a href="https://docs.pivotal.io/application-service/operating/app-sec-groups.html"/>application security groups</a>
+    are configured correctly.
+    Access should be configured for the service network that the tile is deployed to.
+    </p>
+    </li>
+    <li>
+    <p>
+    Ensure that the network the ' +  vars.app_runtime_abbr  + ' tile is deployed
+    to has network access to the service network. You can find the network definition
+    for this service network in the BOSH Director tile.
+    </p>
+    </li>
+    <li>
+    <p>
+    In ' + vars.ops_manager + ' go into the service tile and see the service network that is
+    configured in the networks tab.
+    </p>
+    </li>
+    <li>
+    <p>
+    In ' + vars.ops_manager + ' go into the ' + vars.app_runtime_abbr  + ' tile and see the network it is assigned to.
+    Make sure that these networks can access each other.
+    </p>
+    </li>
+    </ol>'
+}
+%>

@@ -1,0 +1,24 @@
+<p>
+	To validate connectivity, do the following:
+</p>
+
+<ol>
+	<li>
+		<p>
+			View the BOSH deployment name for your service broker by running:
+		</p>
+		<pre><code>bosh deployments</code></pre>
+	</li>
+	<li>
+		<p>
+			SSH into the <%= vars.product_short %> service broker by running:
+		</p>
+		<pre><code>bosh -d DEPLOYMENT-NAME ssh</code></pre>
+	</li>
+	<li>
+		<p>
+			If no BOSH <code>task-id</code> appears in the error message, look in the
+			broker log using the <code>broker-request-id</code> from the task.
+		</p>
+	</li>
+</ol>

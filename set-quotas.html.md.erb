@@ -4,11 +4,11 @@ owner: London Services
 ---
 
 <%# The below partial is in https://github.com/pivotal-cf/docs-partials %>
-<%= partial vars.path_to_partials + '/services/toc-set-quotas'%>
+<%= partial '/services/toc-set-quotas'%>
 
 <strong><%= modified_date %></strong>
 
-<%= partial vars.path_to_partials + '/services/set_quotas',:locals => {
+<%= partial '/services/set_quotas',:locals => {
   :product_full => vars.product_full,
   :product_short => vars.product_short,
   :tile_name => vars.tile_name}%>

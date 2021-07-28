@@ -3,9 +3,9 @@ title: VMware Tanzu RabbitMQ for VMs Release Notes
 owner: London Services
 ---
 
-<%= partial vars.path_to_partials + '/rabbitmq/jumpgrade-2.0' %>
+<%= partial '/rabbitmq/jumpgrade-2.0' %>
 
-<%= partial vars.path_to_partials + '/upgrade-planner' %>
+<%= partial '/upgrade-planner' %>
 
 ## <a id="1-20-5"></a> v1.20.5
 
@@ -33,7 +33,7 @@ This release has the following fixes:
 
 This release has the following issue:
 
-<%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
+<%= partial "/rabbitmq/erlang-ki" %>
 
 ### Compatibility
 
@@ -134,8 +134,8 @@ time. For more information on configuring the supported TLS versions, see
 
 This release has the following issues:
 
-<%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
-<%= partial vars.path_to_partials + "/rabbitmq/ki-direct-reply-to" %>
+<%= partial "/rabbitmq/erlang-ki" %>
+<%= partial "/rabbitmq/ki-direct-reply-to" %>
 
 ### Compatibility
 
@@ -253,8 +253,8 @@ components over mutual TLS.
 
 This release has the following issues:
 
-<%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
-<%= partial vars.path_to_partials + "/rabbitmq/ki-direct-reply-to" %>
+<%= partial "/rabbitmq/erlang-ki" %>
+<%= partial "/rabbitmq/ki-direct-reply-to" %>
 
 ### Compatibility
 
@@ -353,8 +353,8 @@ fixed when you upgrade these service instances to v1.20.2.
 
 This release has the following issues:
 
-<%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
-<%= partial vars.path_to_partials + "/rabbitmq/ki-direct-reply-to" %>
+<%= partial "/rabbitmq/erlang-ki" %>
+<%= partial "/rabbitmq/ki-direct-reply-to" %>
 
 ### Compatibility
 
@@ -461,8 +461,8 @@ You can now access the RabbitMQ Management UI using OAuth2 with a SAML identity 
 
 This release has the following known issues:
 
-<%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
-<%= partial vars.path_to_partials + "/rabbitmq/ki-direct-reply-to" %>
+<%= partial "/rabbitmq/erlang-ki" %>
+<%= partial "/rabbitmq/ki-direct-reply-to" %>
 - **rabbitmq-server-metrics BOSH job does not provide memory and disk metrics:**
 For on-demand service instances created in v1.20.0 and v1.20.1,
 the rabbitmq-server-metrics BOSH job does not provide memory and disk metrics.
@@ -583,7 +583,7 @@ and upgraded to v1.20 or later continue to use the `vm_strategy` `delete-create`
 For more information about how this affects downtime, see
 [BOSH Hot Swap](./upgrade.html#vm-strategy).
 
-<%= partial vars.path_to_partials + '/services/you-can-upgrade-one-si' %>
+<%= partial '/services/you-can-upgrade-one-si' %>
 
 * **OAuth:** Support for the RabbitMQ OAuth plugin has now arrived in <%= vars.product_short %>.
 Users can authenticate with the RabbitMQ Management UI through JWT-encoded OAuth 2.0
@@ -597,7 +597,7 @@ For how to enable OAuth in <%= vars.product_short %>, see [Enabling OAuth for Ra
 
 This release has the following known issues:
 
-<%= partial vars.path_to_partials + "/rabbitmq/ki-drain-script" %>
+<%= partial "/rabbitmq/ki-drain-script" %>
 - **Accessing the RabbitMQ Management UI:**
 If you are using OAuth2 with a SAML identity provider, you cannot access the RabbitMQ Management UI.
 This is fixed in v1.20.1 and later.
@@ -616,8 +616,8 @@ The following error messsage appears in `/var/vcap/data/sys/log/service-metrics/
 	  [error] <pid> CRASH REPORT Process <pid> with 0 neighbours crashed with reason: {function_clause,[]}
 	</pre>
 
-<%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
-<%= partial vars.path_to_partials + "/rabbitmq/ki-direct-reply-to" %>
+<%= partial "/rabbitmq/erlang-ki" %>
+<%= partial "/rabbitmq/ki-direct-reply-to" %>
 
 ### Compatibility
 

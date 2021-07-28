@@ -1,0 +1,21 @@
+<%= partial vars.path_to_partials + "/troubleshoot-template", locals: {
+
+    id: 'upgrade-all-fails',
+
+    description: 'Upgrade All Service Instances Errand Fails',
+
+    symptom: 'The <a href="#upgrade-all"><code>upgrade-all-service-instances</code></a> errand fails.',
+
+    cause: 'There might be a problem with a particular instance.',
+
+    solution: 'To troubleshoot:
+    <ol>
+    <li>Look at the errand output in the ' + vars.ops_manager + ' log.</li>
+
+    <li>If an instance has failed to upgrade, debug and fix it before running the errand again
+    to prevent any failure issues from spreading to other on-demand instances.</li>
+
+    <li>After the ' + vars.ops_manager + ' log no longer lists the deployment as <code>failing</code>,
+    <a href="#upgrade-all">re-run the errand</a> to upgrade the rest of the instances.</li>
+    </ol>
+'}%>

@@ -1,0 +1,34 @@
+<%= partial vars.path_to_partials + "/troubleshoot-template", locals: {
+
+    id: 'instance-not-exist',
+
+    description: 'Instance Does Not Exist',
+
+    symptom: 'If developers report errors such as:
+		<pre class="terminal">Server error, status code: 502, error code: 10001, message: Service broker error: instance does not exist`</pre>',
+
+    cause: 'The instance might have been deleted.',
+
+    solution: 'To troubleshoot:
+		<ol>
+		<li>
+		<p>
+		Confirm that the ' + vars.product_short + ' instance exists in BOSH and
+		obtain the GUID CF by running:
+		</p>
+		<pre><code>cf service MY-INSTANCE --guid</code></pre>
+		</li>
+		<li>
+		<p>
+		Using the GUID obtained above, run:
+		</p>
+		<pre><code>bosh -d service-instance_GUID vms</code></pre>
+		</li>
+		</ol>
+
+		<p>
+		If the BOSH deployment is not found, it has been deleted from BOSH.
+		Contact Support for further assistance.
+		</p>'
+  }
+%>

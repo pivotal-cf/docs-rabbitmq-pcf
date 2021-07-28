@@ -5,11 +5,11 @@ owner: RabbitMQ
 
 <%# The partials in this topic are in https://github.com/pivotal-cf/docs-partials %>
 
-<%= partial vars.path_to_partials + "/services/prepare-tls-toc-v2" %>
+<%= partial "/services/prepare-tls-toc-v2" %>
 
 <strong><%= modified_date %></strong>
 
-<%= partial vars.path_to_partials + "/services/prepare-tls-v2", :locals => {
+<%= partial "/services/prepare-tls-v2", :locals => {
   :product_full => vars.product_full,
   :product_short => vars.product_short
 } %>

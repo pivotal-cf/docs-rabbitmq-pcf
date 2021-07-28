@@ -1,0 +1,37 @@
+<p>
+  To identify which apps are using a specific service instance from the
+  name of the BOSH deployment:
+</p>
+
+<ol>
+  <li>Take the deployment name and strip the <code>service-instance_</code> leaving you with the GUID.</li>
+  <li>Log in to CF as an admin.</li>
+  <li>
+    Obtain a list of all service bindings by running the following:
+    <pre><code>cf curl /v2/service_instances/GUID/service_bindings</code></pre>
+  </li>
+  <li>
+    The output from the above curl gives you a list of <code>resources</code>,
+    with each item referencing a service binding, which contains the <code>APP-URL</code>.
+    To find the name, org, and space for the app, run the following:
+    <ol>
+      <li><code>cf curl APP-URL</code> and record the app name under <code>entity.name</code>.</li>
+      <li><code>cf curl SPACE-URL</code> to obtain the space, using the <code>entity.space_url</code>
+        from the above curl.
+        Record the space name under <code>entity.name</code>.
+      </li>
+      <li>
+        <code>cf curl ORGANIZATION-URL</code> to obtain the org, using the
+        <code>entity.organization_url</code> from the above curl.
+        Record the organization name under <code>entity.name</code>.
+      </li>
+    </ol>
+  </li>
+</ol>
+
+<p class="note">
+  <strong>Note:</strong> When running <code>cf curl</code> ensure that you query
+  all pages, because the responses are limited to a certain number of bindings per page.
+    The default is 50.
+    To find the next page curl the value under <code>next_url</code>.
+</p>

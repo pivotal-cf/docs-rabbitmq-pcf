@@ -1,0 +1,20 @@
+<ul>
+<li>The pre-provisioned broker does not terminate failed TCP connections when the request fails with a
+  4xx status code and when unbinding services.
+  Over time, this can cause the file descriptor limit on the VMs that host HAProxy
+  and the pre-provisioned broker to reach capacity:
+   <ul>
+    <li> When capacity is reached on the HAProxy VM, RabbitMQ is unreachable.</li>
+    <li> When capacity is reached on the pre-provisioned broker, app developers cannot create, bind, unbind, or delete service instances.</li>
+   </ul>
+  To resolve the issue, do one of the following:
+   <ul>
+   <li> Restart the <code>haproxy</code> or the <code>rabbitmq-service-broker</code> monit job on the VM.
+   <li> Increase the file descriptor limit on the VM.
+    For how to increase the limit, see the example in
+    <a href="https://community.pivotal.io/s/article/unable-to-create-rabbitmq-service-instance">Unable to create RabbitMQ service-instance in <%= vars.product_full %> "too many open files"</a>
+      in the Support knowledge base.  </li>
+   <li> If the VM is unresponsive, restart it.</li>
+   </ul>
+</li>
+</ul>

@@ -1,0 +1,46 @@
+<p>
+  This errand uses the Cloud Controller API to delete all instances of your broker’s
+  service offering in every Cloud Foundry org and space. It only deletes instances
+  the Cloud Controller knows about.
+  It does not delete orphan BOSH deployments.
+</p>
+
+<p class="note">
+  <strong>Note</strong>: Orphan BOSH deployments do not correspond to a known service instance.
+  While rare, orphan deployments can occur. Use the <code>orphan-deployments</code>
+  errand to identify them.
+</p>
+
+<p>
+  The <code>delete-all-service-instances</code> errand does the following:
+</p>
+
+<ol>
+  <li>Unbinds all apps from the service instances.</li>
+  <li>
+    Deletes all service instances sequentially. Each service instance deletion includes:
+    <ol>
+      <li>Running any pre-delete errands</li>
+      <li>Deleting the BOSH deployment of the service instance</li>
+      <li>Removing any ODB-managed secrets from BOSH CredHub</li>
+      <li>Checking for instance deletion failure, which results in the errand failing immediately</li>
+    </ol>
+  </li>
+  <li>
+    Determines whether any instances have been created while the errand was running.
+    If new instances are detected, the errand returns an error.
+    In this case, VMware recommends running the errand again.
+  </li>
+</ol>
+
+<p class="note warning">
+  <strong>Warning:</strong> Use extreme caution when running this errand.
+  You should only use it when you want to totally destroy all of the on-demand service
+  instances in an environment.
+</p>
+
+<p>
+  To run the errand, run the following command:
+</p>
+
+<pre><code>bosh -d service-instance_GUID delete-deployment</code></pre>

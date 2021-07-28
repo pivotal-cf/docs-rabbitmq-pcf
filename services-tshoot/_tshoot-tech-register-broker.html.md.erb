@@ -1,0 +1,27 @@
+<p>
+  The <code>register-broker</code> errand does the following:
+</p>
+
+<ul>
+  <li>Registers the service broker with Cloud Controller.</li>
+  <li>
+    Enables service access for any plans that are enabled on the tile.
+  </li>
+  <li>Disables service access for any plans that are disabled on the tile.
+  </li>
+  <li>Does nothing for any plans that are set to manual on the tile.</li>
+</ul>
+
+<p>
+  You should run this errand whenever the broker is re-deployed with new catalog metadata to
+  update the Marketplace.
+</p>
+
+<p>
+  Plans with disabled service access are only visible to admin Cloud Foundry
+  users. Non-admin Cloud Foundry users, including Org Managers and Space Managers, cannot
+  see these plans.
+</p>
+
+
+

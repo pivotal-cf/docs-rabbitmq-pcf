@@ -130,7 +130,7 @@ the server nodes and the service broker.
 The RabbitMQ VMs log at the <code>info</code> level and capture errors, warnings, and informational
 messages.
 
-<%= partial vars.path_to_partials + '/rabbitmq/log-formats' %>
+<%= partial '/rabbitmq/log-formats' %>
 
 
 ## <a id="metrics"></a> Metrics
@@ -395,7 +395,7 @@ checkbox in the Healthwatch tile.
 
 <%# The below partial is in https://github.com/pivotal-cf/docs-partials %>
 
-<%= partial vars.path_to_partials + '/services/bosh_health_metrics_pcf2' %>
+<%= partial '/services/bosh_health_metrics_pcf2' %>
 
 All BOSH-deployed components generate the system health metrics below.
 These component metrics are from <%= vars.product_short %> components, and serve as KPIs for

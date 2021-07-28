@@ -18,13 +18,13 @@ For information about architecture of the older, pre-provisioned service, see [D
 
 <%# The below partial is in https://github.com/pivotal-cf/docs-partials %>
 
-<%= partial vars.path_to_partials + '/services/service-networks-v3' %>
+<%= partial '/services/service-networks-v3' %>
 
 <h2> <a id ="architecture_networks"></a>Default Network and Service Network </h2>
 
 <%# The below partial is in https://github.com/pivotal-cf/docs-partials %>
 
-<%= partial vars.path_to_partials + '/services/on_demand_architecture', :locals => {
+<%= partial '/services/on_demand_architecture', :locals => {
   :product_short => vars.product_short} %>
 
 
@@ -32,7 +32,7 @@ For information about architecture of the older, pre-provisioned service, see [D
 
 <%# The below partial is in https://github.com/pivotal-cf/docs-partials %>
 
-<%= partial vars.path_to_partials + '/services/service_networks_table', :locals => {
+<%= partial '/services/service_networks_table', :locals => {
 	:app_runtime_full => vars.app_runtime_full,
 	:product_short => "RabbitMQ"} %>
 

@@ -1,0 +1,35 @@
+<p>
+  Quota saturation and total number of service instances are available through ODB
+  metrics emitted to Loggregator. The metric names are shown below:
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Metric Name</strong></th>
+      <th><strong>Description</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>on-demand-broker/SERVICE-NAME-MARKETPLACE/quota_remaining</code></td>
+      <td>global quota remaining for all instances across all plans</td>
+    </tr>
+    <tr>
+      <td><code>on-demand-broker/SERVICE-NAME-MARKETPLACE/PLAN-NAME/quota_remaining</code></td>
+      <td>quota remaining for a particular plan</td>
+    </tr>
+    <tr>
+      <td><code>on-demand-broker/SERVICE-NAME-MARKETPLACE/total_instances</code></td>
+      <td>total instances created across all plans</td>
+    </tr>
+    <tr>
+      <td><code>on-demand-broker/SERVICE-NAME-MARKETPLACE/PLAN-NAME/total_instances</code></td>
+      <td>total instances created for a given plan</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="note">
+  <strong>Note</strong>: Quota metrics are not emitted if no quota has been set.
+</p>

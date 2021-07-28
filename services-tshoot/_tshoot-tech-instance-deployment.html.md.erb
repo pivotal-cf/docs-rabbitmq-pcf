@@ -1,0 +1,19 @@
+<p>
+  This is an additional troubleshooting option for <strong>BOSH CLI v1 only</strong>.
+  It does not apply to the BOSH CLI v2.
+</p>
+
+<ol>
+  <li>
+    Retrieve the GUID of your service instance with the command
+    <code>cf service YOUR-SERVICE-INSTANCE --guid</code>.
+  </li>
+  <li>
+    To download your BOSH manifest for the service, run
+    <code>bosh download manifest service-instance_SERVICE-INSTANCE-GUID myservice.yml</code>
+    using the GUID you just obtained and a file name you want to use when saving the manifest.
+  </li>
+  <li>
+    Run <code>bosh deployment MY-SERVICE.yml</code> to select the deployment.
+  </li>
+</ol>

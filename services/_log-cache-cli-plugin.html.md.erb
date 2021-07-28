@@ -1,0 +1,77 @@
+<p>
+To access metrics for <%= service_name %> service instances, you can use Loggregator's Log
+Cache feature with the Log Cache CLI plugin.
+Log Cache is enabled by default.
+</p>
+<p class='note'>
+  <strong>Note:</strong> To use this feature the <strong>V2 Firehose</strong> must be enabled
+  and <strong>Enable Log Cache syslog ingestion</strong> must be disabled in the <%= vars.app_runtime_abbr %> tile.
+  For more information about configuring these checkboxes, see
+  <a href="https://docs.pivotal.io/application-service/operating/logging-config-opsman.html#syslog-forward">Enable Syslog Forwarding</a>.
+</p>
+<p>
+  To access metrics for on-demand service instances:
+</p>
+<ol>
+  <li>
+    Install the cf CLI plugin by running:
+    <pre><code>cf install-plugin -r CF-Community "log-cache"</code></pre>
+  </li>
+  <li>
+    To access metrics for a service instance, run:
+    <% if vars.product_short.include?("SQL") %>
+        <pre><code>cf tail SERVICE-INSTANCE-NAME</code></pre>
+        Two useful flags to append to this command are:
+        <ul>
+          <li>
+            <code>-f</code>, <code>--follow</code>: Append metrics logs to stdout as
+            they are generated, rather than returning a fixed number of metrics or metrics over a fixed interval.
+          </li>
+          <li>
+            <code>--json</code>: Output metrics logs as envelopes in JSON format.
+            For a complete list of <code>cf tail</code> options, see the
+            <a href="https://github.com/cloudfoundry/log-cache-cli#usage">Log Cache CLI repository</a> in GitHub.
+          </li>
+        </ul>
+    <% else %>
+        <pre><code>cf tail SERVICE-INSTANCE-NAME</code></pre>
+    <% end %>
+        Where <code>SERVICE-INSTANCE-NAME</code> is the name of your service instance.
+        <br><br>
+      For example:
+
+      <pre class="terminal">
+      <%# Switch output for different services %>
+    <% if vars.product_short.include?("SQL") %>
+$ cf tail -f my-instance | egrep 'connected|available|persistent_disk_used_percent'
+2019-05-17T11:25:59.48-0700 [my-instance] GAUGE /p.mysql/available:1.000000 boolean
+2019-05-17T11:26:29.49-0700 [my-instance] GAUGE /p.mysql/system/persistent_disk_used_percent:17.000000 percentage
+2019-05-17T11:26:29.49-0700 [my-instance] GAUGE /p.mysql/performance/threads_connected:**6**.000000 connection
+2019-05-17T11:26:59.50-0700 [my-instance] GAUGE /p.mysql/available:1.000000 boolean
+2019-05-17T11:27:29.50-0700 [my-instance] GAUGE /p.mysql/system/persistent_disk_used_percent:17.000000 percentage
+2019-05-17T11:27:29.50-0700 [my-instance] GAUGE /p.mysql/performance/threads_connected:**7**.000000 connection
+    <% elsif vars.product_short.include?("Redis") %>
+$ cf tail my-instance
+Retrieving logs for service my-instance in org system / space pivotal-services as admin...
+2018-07-03T09:54:14.84+0100 [my-instance] GAUGE info.clients.blocked_clients:0.000000 metric info.clients.client_biggest_input_buf:0.000000 metric ...
+    <% elsif vars.product_short.include?("RabbitMQ") %>
+$ cf tail my-instance
+Retrieving logs for service my-instance in org system / space pivotal-services as admin...
+2018-12-06T11:01:06.03+0000 [my-instance] GAUGE /p.rabbitmq/rabbitmq/channels/count:0.000000 count /p.rabbitmq/rabbitmq/connections/count:0.000000...
+    <% end %>
+</pre>
+      For more information about the metrics output, see
+    <%# Switch links for different services %>
+    <% if vars.product_short.include?("SQL") %>
+      the <a href="#kpi">Key Performance Indicators</a> and <a href="#component-metrics">Component Metrics</a> sections below.
+    <% elsif vars.product_short.include?("Redis") %>
+    <a href="./monitoring.html#Redis-KPIs">Redis KPIs</a>.
+    <% elsif vars.product_short.include?("RabbitMQ") %>
+    <a href="./monitor.html">Monitoring and KPIs for On-Demand <%= vars.product_short %></a>
+    <% end %>
+  </li>
+</ol>
+<p>
+  For more information about how to enable Log Cache and about the <code>cf tail</code> command,
+  see <a href="https://docs.pivotal.io/pivotalcf/opsguide/logging-config-opsman.html#log-cache">Enable Log Cache</a>.
+</p>

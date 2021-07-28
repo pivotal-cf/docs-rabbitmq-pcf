@@ -1,0 +1,99 @@
+<a id="tools"></a><h2>Tools for Troubleshooting</h2>
+
+<p>
+  Troubleshooting techniques described above use the following tools.
+</p>
+
+<h3><a id="download-logs"></a>download-logs</h3>
+
+<p>
+  <code>download-logs</code> is a script that you can run from your <%= vars.ops_manager %> VM to aggregate logs
+  from your MySQL cluster nodes, MySQL proxies, and, with highly available clusters, the jumpbox VM.
+</p>
+
+<p>
+  Do the following to run the <code>download-logs</code> script:
+</p>
+
+<ol>
+  <li>
+    <p>
+      Download and unpack the <code>download-logs</code> script from
+      <a href="https://network.pivotal.io/products/pivotal-mysql">MySQL for <%= vars.product_full %></a> on VMware Tanzu Network.
+    </p>
+  </li>
+  <li>
+    <p>
+      From <%= vars.ops_manager %>, open your <strong>BOSH Director</strong> tile > <strong>Credentials</strong> tab.
+    </p>
+  </li>
+  <li>
+    <p>
+      Click <strong>Bosh Commandline Credentials</strong> > <strong>Link to Credential</strong>.
+      A short plaintext file opens.
+    </p>
+  </li>
+  <li>
+    <p>
+      From the plaintext file, record the values listed for the following:
+    </p>
+  </li>
+</ol>
+
+<ul>
+  <li><code>BOSH_CLIENT</code></li>
+  <li><code>BOSH_CLIENT_SECRET</code></li>
+  <li><code>BOSH_CA_CERT</code></li>
+  <li><code>BOSH_ENVIRONMENT</code></li>
+</ul>
+
+<ol>
+  <li>
+    <p>
+      From the BOSH CLI, run <code>bosh deployments</code> and record the name of
+      the BOSH deployment that deployed MySQL for <%= vars.product_short %>.
+    </p>
+  </li>
+  <li>
+    <p>
+      SSH into your <%= vars.ops_manager %> VM. For information on how to do this,
+      see <a href="https://docs.pivotal.io/pivotalcf/customizing/trouble-advanced.html#gather">Gather Credential and IP Address Information</a>
+      and <a href="https://docs.pivotal.io/pivotalcf/customizing/trouble-advanced.html#ssh">SSH into <%= vars.ops_manager %></a>.
+    </p>
+  </li>
+  <li>
+    <p>
+      File transfer or copy-paste the <code>download-logs</code> script to a
+      working directory on the <%= vars.ops_manager %> VM.
+    </p>
+  </li>
+  <li>
+    <p>
+      Set local environment variables to the same BOSH variable values that you recorded earlier,
+      including <code>BOSH_DEPLOYMENT</code> for the deployment name. For example:
+    </p>
+    <pre class="terminal">
+      $ BOSH_CLIENT=ops_manager BOSH_CLIENT_SECRET=a123bc-E_4Ke3fb-gImbl3xw4a7meW0rY BOSH_CA_CERT=/var/tempest/workspaces/default/root_ca_certificate BOSH_ENVIRONMENT=10.0.0.5 BOSH_DEPLOYMENT=pivotal-mysql-14c4
+    </pre>
+  </li>
+  <li>
+    <p>
+      Run the <code>download-logs</code> script, passing the output directory to the <code>-o</code> flag:
+    </p>
+    <pre><code>./download-logs -o .</code></pre>
+  </li>
+  <li>
+    <p>
+      The script saves a compressed file of logs combined from all MySQL VMs.
+      The filename has the form <code>TIMESTAMP-mysql-logs.tar.gz.gpg</code>.
+    </p>
+  </li>
+</ol>
+
+<h3><a id="mysql-diag"></a>mysql-diag</h3>
+
+<p>
+  <code>mysql-diag</code> outputs the current status of a highly available (HA)
+  MySQL cluster in <%= vars.product_short %> and suggests recovery actions if the cluster fails.
+  For more information, see <a href="./mysql-diag.html">Running mysql-diag</a>.
+</p>

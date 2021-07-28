@@ -18,7 +18,7 @@ For general information, see [Managing Service Instances with the cf CLI](http:/
 
 <!-- The below partial is in https://github.com/pivotal-cf/docs-partials -->
 
-<%= partial vars.path_to_partials + "/services/developer-prereqs" %>
+<%= partial "/services/developer-prereqs" %>
 
 
 ## <a id="resilient-apps"></a> Create Resilient Apps
@@ -442,7 +442,7 @@ The Java buildpack automatically disables DNS caching.
 
 ## <a id="single"></a> Upgrade an Individual Service Instance
 
-<%= partial vars.path_to_partials + "/services/upgrade-one-si" %>
+<%= partial "/services/upgrade-one-si" %>
 
 
 ## <a id="restart"></a>Update a Service Instance
@@ -542,7 +542,7 @@ to share your service instances across Cloud Foundry orgs and spaces.
 
 <%# The below partial is in https://github.com/pivotal-cf/docs-partials %>
 
-<%= partial vars.path_to_partials + '/services/log-cache-cli-plugin',
+<%= partial '/services/log-cache-cli-plugin',
 :locals => {:service_name => vars.product_short} %>
 
 ## <a id="federation"></a> Federate Exchanges and Queues

@@ -1,0 +1,12 @@
+The <%= vars.ops_manager %> API invokes CredHub Maestro when rotating certificates. If a
+certificate rotation API command is unsafe, CredHub Maestro stops the command and returns one
+or more safety violations.
+
+For example, CredHub Maestro stops a certificate rotation API command if you try to perform
+certificate rotation steps in the wrong order. Because performing these steps in the wrong
+order can make your deployment unstable or cause downtime, CredHub Maestro stops the command
+and returns an error message.
+
+For information about how to troubleshoot safety violation errors that are returned when rotating
+certificates, see [Troubleshooting CredHub Maestro Safety Violations During Certificate Rotation]
+(troubleshoot-cert-errors.html).

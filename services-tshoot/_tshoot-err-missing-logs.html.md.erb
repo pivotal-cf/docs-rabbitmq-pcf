@@ -1,0 +1,58 @@
+<%= partial vars.path_to_partials + "/troubleshoot-template", locals: {
+
+    id: 'missing-logs',
+
+    description: 'Missing Logs and Metrics',
+
+    symptom: 'No logs are being emitted by the on-demand broker.',
+
+    cause: 'Syslog might not be configured correctly, or you might have network access issues.',
+
+    solution: 'To troubleshoot:
+    <ol>
+    <li>
+    <p>
+    Ensure you have configured syslog for the tile.
+    </p>
+    </li>
+    <li> Check that your syslog forwarding address is correct in ' + vars.ops_manager + '.</li>
+    <li>
+    <p>
+    Ensure that you have network connectivity between the networks that the tile
+    is using and the syslog destination.
+    If the destination is external, you need to use the <a href="https://docs.pivotal.io/svc-sdk/odb/tile.html#public-ip">public ip</a>
+    VM extension feature available in your ' + vars.ops_manager + ' tile configuration settings.
+    </p>
+    </li>
+    <li>
+    <p>
+    Verify that Loggregator is emitting metrics:
+    </p>
+    <ol>
+    <li>
+    <p>
+    Install the <code>cf log-stream</code> plugin.
+    For instructions, see the <a href="https://github.com/cloudfoundry/log-stream-cli">Log Stream CLI Plugin</a>
+    GitHub repository.
+    </p>
+    </li>
+    <li>
+    <p>
+    Find the GUID for your service instance by running:
+    </p>
+    <pre><code>cf service SERVICE-INSTANCE --guid</code></pre>
+    </li>
+    <li>
+    <p>
+    Find logs from your service instance by running:
+    </p>
+    <pre><code>cf log-stream | grep "SERVICE-GUID"</code></pre>
+    </li>
+    <li>If no metrics appear within five minutes, verify that the broker network has access
+    to the Loggregator system on all required ports.</li>
+    </ol>
+    </li>
+    <li>If you are unable to resolve the issue, contact <a href="#support">Support</a>. </li>
+    </ol>
+
+'}%>

@@ -1,0 +1,4 @@
+* **After upgrading, the downstream federated queues that consume messages from an upstream queue are duplicated:**
+Federated queues are duplicated because <%= vars.product_short %> recreates them with a new cluster name.
+This issue occurs the first time you run the `upgrade-all-service-instances` errand after upgrading to <%= vars.product_short %> v1.18.5 or later,
+and does not reoccur if you upgrade to subsequent versions.

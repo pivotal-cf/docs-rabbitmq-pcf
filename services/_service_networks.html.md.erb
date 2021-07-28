@@ -1,0 +1,14 @@
+When you deploy <%= vars.platform_old %>, you must create a statically defined network to host the component virtual
+machines that constitute the <%= vars.platform_old %> infrastructure.
+
+<%= vars.platform_old %> components, like the Cloud Controller and UAA, run on this infrastructure network.
+In <%= vars.platform_old %> v2.0 and earlier, on-demand <%= vars.platform_old %> services require that you host them on a network that runs
+separately from this network.
+
+Cloud operators pre-provision service instances from <%= vars.ops_manager %>. 
+Then, for each service, <%= vars.ops_manager %> allocates and recovers static IP addresses from a
+pre-defined block of addresses.
+
+To enable on-demand services in <%= vars.product_old %> v2.0 and earlier, operators must create a service networks in
+BOSH Director and select the **Service Network** checkbox. Operators then can select the
+service network to host on-demand service instances when they configure the tile for that service.

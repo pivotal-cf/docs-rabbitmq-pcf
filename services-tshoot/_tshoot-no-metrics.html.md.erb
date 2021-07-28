@@ -1,0 +1,11 @@
+<%= partial vars.path_to_partials + "/troubleshoot-template", locals: {
+	id: 'no-metrics',
+    description: 'No Metrics from Log Cache',
+    symptom: 'You receive no metrics when running the <code>cf tail</code> command.',
+    cause: 'This might be because the Firehose is disabled in the ' +  vars.app_runtime_abbr + ' tile.',
+    solution: 'Ask your operator to ensure that the <strong>V2 Firehose</strong> checkbox is enabled,
+  and the <strong>Enable Log Cache syslog ingestion</strong> checkbox is disabled in the ' +
+	vars.app_runtime_abbr + ' tile.
+  For more information about configuring these checkboxes, see
+  <a href="https://docs.pivotal.io/application-service/operating/logging-config-opsman.html#syslog-forward">Enable Syslog Forwarding</a>.'
+} %>

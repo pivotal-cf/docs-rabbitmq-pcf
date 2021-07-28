@@ -1,0 +1,13 @@
+<%= partial vars.path_to_partials + "/troubleshoot-template", locals: {
+    id: 'upgrade-individual-instances',
+    description: 'Cannot Update a Service Instance' ,
+    symptom: 'If developers report errors such as the following when trying to run <code>cf-update-service</code>:
+      <pre class="terminal">Server error, status code: 502, error code: 10001, message: Service broker error: Service cannot be updated at this time, please try again later or contact your operator for more information.</pre>',
+    cause: 'Their service instance might not be running the latest service offering.',
+    solution:'Operators must run the <code>upgrade-all-service-instances</code> errand after upgrading
+      to ensure all existing service instances are upgraded to the latest service offering.
+      See <a href="#upgrade-all">Upgrade All Service Instances</a>.
+      <br><br>
+      App developers cannot upgrade individual service instances to the latest service offering.
+      They cannot set parameters or change plan until you upgrade their service instances.'
+} %>

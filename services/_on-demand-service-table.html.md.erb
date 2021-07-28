@@ -1,0 +1,45 @@
+As well as <%= vars.product_short %>, other services offer *on-demand* service plans.
+These plans let developers provision service instances when they want.
+
+These contrast with the older *pre-provisioned* service plans,
+which require operators to provision the service instances during installation
+and configuration through the service tile UI.
+
+The following table lists which service tiles offer on-demand
+and pre-provisioned service plans:
+
+<table class="nice">
+  <tr>
+    <th width="20%">Service tile</th>
+    <th width="20%">Standalone product related to the service</th>
+    <th width="20%">Supports on-demand</th>
+    <th width="40%">Supports pre-provisioned</th>
+  </tr>
+  <tr>
+    <td><%= rabbit %></td>
+    <td>Pivotal RabbitMQ</td>
+    <td>Yes</td>
+    <td>Yes. Only recommended for test environments.</td>
+  </tr>
+  <tr>
+    <td><%= redis %></td>
+    <td>Redis</td>
+    <td>Yes</td>
+    <td>Yes (shared-VM plan). Only recommended for test environments.</td>
+  </tr>
+  <tr>
+    <td><%= mysql %></td>
+    <td>MySQL </td>
+    <td>Yes<br></td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td><%= cloud_cache %></td>
+    <td><%= gemfire %></td>
+    <td>Yes</td>
+    <td>No</td>
+  </tr>
+</table>
+<br>
+For services that offer both on-demand and pre-provisioned plans, you can choose the
+plan you want to use when configuring the tile.

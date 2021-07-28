@@ -1,0 +1,23 @@
+<p>
+	The <code>upgrade-all-service-instances</code> errand does the following:
+</p>
+
+<ul>
+	<li>Collects all of the service instances that the on-demand broker has registered.</li>
+	<li>Issues an upgrade command and deploys the a new manifest to the on-demand broker for each 
+		service instance.</li>
+	<li>Adds to a retry list any instances that have ongoing BOSH tasks at the time of upgrade.</li>
+	<li>Retries any instances in the retry list until all instances are upgraded.</li>
+</ul>
+
+<p>
+	When you make changes to the plan configuration, the errand
+	upgrades all the <%= vars.product_short %> service instances to the latest version of the plan.
+</p>
+
+<p>
+	If any instance fails to upgrade, the errand fails immediately.
+	This prevents systemic problems from spreading to the rest of your service instances.
+</p>
+
+

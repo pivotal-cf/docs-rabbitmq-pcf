@@ -1,0 +1,39 @@
+<p>
+	To reinstall a tile in the same environment where it was previously uninstalled:
+</p>
+
+<ol>
+	<li>Ensure that the previous tile was correctly uninstalled as follows:
+	<ol>
+		<li>
+			Log in as an admin by running: <pre>cf login</pre>
+		</li>
+		<li>
+			Confirm that the Marketplace does not list
+			<%= vars.product_short %> by running: <pre>cf m</pre>
+		</li>
+		<li>
+			Log in to BOSH as an admin by running: <pre>bosh log-in</pre>
+		</li>
+		<li>
+			Display your BOSH deployments to confirm that the output does not
+			show the <%= vars.product_short %> deployment by running:
+			<pre>bosh deployments</pre>
+		</li>
+		<li>
+			Run the <a href="#delete-all">"delete-all-service-instances"</a> errand
+			to delete every instance of the service.
+		</li>
+		<li>
+			Run the <a href="#deregister-broker">"deregister-broker"</a> errand
+			to delete the service broker.
+		</li>
+		<li>
+			Delete the service broker BOSH deployment by running:
+			<pre>bosh delete-deployment BROKER-DEPLOYMENT-NAME</pre>
+		</li>
+		<li>
+			Reinstall the tile.
+		</li>
+	</ol>
+</ol>

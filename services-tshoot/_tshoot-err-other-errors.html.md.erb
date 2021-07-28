@@ -1,0 +1,39 @@
+<%= partial vars.path_to_partials + "/troubleshoot-template", locals: {
+
+    id: 'cannot-bind',
+
+    description: 'Cannot Bind to or Unbind from Service Instances',
+
+    symptom: 'If developers report errors such as:
+    <pre class="terminal">Server error, status code: 502, error code: 10001, message: Service broker error: There was a problem completing your request. Please contact your operations team providing the following information: service: example-service, service-instance-guid: 8d69de6c-88c6-4283-b8bc-1c46103714e2, broker-request-id: 15f4f87e-200a-4b1a-b76c-1c4b6597c2e1, operation: bind</pre>',
+
+    cause: 'This might be due to authentication or network errors.',
+
+    solution: 'To find out the exact issue with the binding process:
+    <ol>
+    <li>
+    <p>
+      <a href="#access-broker">Access the service broker logs</a>.
+    </p>
+    </li>
+    <li>
+    <p>
+      Search the logs for the <code>broker-request-id</code> string listed in the error message above.
+    </p>
+    </li>
+    <li>
+    <p>
+      Check for:
+    </p>
+    </li>
+    <ul>
+    <li><a href="#auth">Authentication errors</a></li>
+    <li><a href="#network">Network errors</a></li>
+    </ul>
+    <li>
+    <p>
+    Contact Support for further assistance if you are unable to resolve the problem.
+    </p>
+    </li>
+    </ol>'
+}%>

@@ -1,0 +1,392 @@
+On-demand provisioning is intended to accelerate app development by eliminating
+the need for development teams to request
+and wait for operators to create a service instance.
+However, to control costs, operations teams and administrators must ensure
+responsible use of resources.
+
+There are several ways to control the provisioning of on-demand service instances
+by setting various **quotas** at these levels:
+
+* [Global](#global)
+* [Plan](#plan)
+* [Org](#org)
+* [Space](#space)
+
+After you set quotas, you can:
+
+* [View Current Org and Space-level Quotas](#view)
+* [Monitor Quota Use and Service Instance Count](#monitor)
+* [Calculate Resource Costs for On-Demand Plans](#calculate)
+
+
+## <a id="global"></a> Create Global-level Quotas
+
+Each on-demand service has a separate service broker.
+A global quota at the service level sets the maximum number of service instances
+that can be created by a given service broker. If a service has more than one plan,
+then the number of service instances for all plans combined cannot exceed the global
+quota for the service.
+
+The operator sets a global quota for each service tile independently.
+For example, if you have two service tiles,
+you must set a separate global service quota for each of them.
+
+When the global quota is reached for a service, no more instances of that service
+can be created unless the quota is increased, or some instances of that service are deleted.
+
+## <a id="plan"></a> Create Plan-level Quotas
+
+A service may offer one or more plans.
+You can set a separate quota per plan so that instances of that plan cannot exceed the plan quota.
+For a service with multiple plans, the total number of instances created for all
+plans combined cannot exceed the [global quota](#global) for the service.
+<% if product_short.include?("SQL") %>
+If the plan quota field is blank, the plan quota is set to the global quota by default.
+<%end%>
+
+When the plan quota is reached, no more instances of that plan can be created
+unless the plan quota is increased or some instances of that plan are deleted.
+
+## <a id="org"></a> Create and Set Org-level Quotas
+
+An org-level quota applies to all on-demand services and sets the maximum number of
+service instances an organization can create within their foundation.
+For example, if you set your org-level quota to 100, developers can create up to
+100 service instances in that org using any combination of on-demand services.
+
+When this quota is met, no more service instances of any kind can be created in
+the org unless the quota is increased or some service instances are deleted.
+
+To create and set an org-level quota, do the following:
+
+1. Run this command to create a quota for service instances at the org level:
+
+	<pre>
+	cf create-quota QUOTA-NAME -m TOTAL-MEMORY -i INSTANCE-MEMORY -r ROUTES -s SERVICE-INSTANCES --allow-paid-service-plans
+	</pre>
+
+	Where:
+	* `QUOTA-NAME`---A name for this quota
+	* `TOTAL-MEMORY`---Maximum memory used by all service instances combined
+	* `INSTANCE-MEMORY`---Maximum memory used by any single service instance
+	* `ROUTES`---Maximum number of routes allowed for all service instances combined
+	* `SERVICE-INSTANCES`---Maximum number of service instances allowed for the org
+
+	For example:
+	<pre class="terminal">cf create-quota myquota -m 1024mb -i 16gb -r 30 -s 50 --allow-paid-service-plans</pre>
+
+2. Associate the quota you created above with a specific org by running the following command:
+
+	<pre>
+	cf set-quota ORG-NAME QUOTA-NAME
+	</pre>
+
+	For example:
+
+	<pre class="terminal">cf set-quota dev_org myquota</pre>
+
+For more information on managing org-level quotas,
+see [Creating and Modifying Quota Plans](https://docs.pivotal.io/pivotalcf/1-12/adminguide/quota-plans.html).
+
+## <a id="space"></a> Create and Set Space-level Quotas
+
+A space-level service quota applies to all on-demand services and sets the maximum
+number of service instances
+that can be created within a given space in a foundation.
+For example, if you set your space-level quota to 100,
+developers can create up to 100 service instances in that space using any
+combination of on-demand services.
+
+When this quota is met, no more service instances of any kind can be created in
+the space unless the quota is updated
+or some service instances are deleted.
+
+To create and set a space-level quota, do the following:
+
+1. Run the following command to create the quota:
+
+	<pre>
+	cf create-space-quota QUOTA-NAME -m TOTAL-MEMORY -i INSTANCE-MEMORY -r ROUTES -s SERVICE-INSTANCES --allow-paid-service-plans
+	</pre>
+
+	Where:
+	* `QUOTA-NAME`---A name for this quota
+	* `TOTAL-MEMORY`---Maximum memory used by all service instances combined
+	* `INSTANCE-MEMORY`---Maximum memory used by any single service instance
+	* `ROUTES`---Maximum number of routes allowed for all service instances combined
+	* `SERVICE-INSTANCES`---Maximum number of service instances allowed for the org
+
+	For example:
+
+	<pre class="terminal">cf create-space-quota myspacequota -m 1024mb -i 16gb -r 30 -s 50 --allow-paid-service-plans</pre>
+
+
+2. Associate the quota you created above with a specific space by running the following command:
+
+	<pre>
+	cf set-space-quota SPACE-NAME QUOTA-NAME
+	</pre>
+
+	For example:
+
+	<pre class="terminal">cf set-space-quota myspace myspacequota</pre>
+
+For more information on managing space-level quotas,
+see [Creating and Modifying Quota Plans](https://docs.pivotal.io/pivotalcf/1-12/adminguide/quota-plans.html).
+
+## <a id="view"></a> View Current Org and Space-level Quotas
+
+To view **org** quotas, run the following command.
+
+```
+cf org ORG-NAME
+```
+
+To view **space** quotas, run the following command:
+
+```
+cf space SPACE-NAME
+```
+
+For more information on managing org and space-level quotas,
+see the [Creating and Modifying Quota Plans](https://docs.pivotal.io/pivotalcf/adminguide/quota-plans.html).
+
+## <a id="monitor"></a> Monitor Quota Use and Service Instance Count
+
+Service-level and plan-level quota use, and total number of service instances,
+are available through the on-demand broker metrics emitted to Loggregator.
+These metrics are listed below:
+
+<table>
+	<tr>
+		<th width=60%><b>Metric Name</b></th>
+		<th width=40%><b>Description</b></th>
+	</tr>
+	<tr>
+		<td><code>on-demand-broker/SERVICE-NAME/quota_remaining</code></td>
+		<td>Quota remaining for all instances across all plans</td>
+	</tr>
+	<tr>
+		<td><code>on-demand-broker/SERVICE-NAME/PLAN-NAME/<br>quota_remaining</code> </td>
+		<td>Quota remaining for a specific plan</td>
+	</tr>
+	<tr>
+		<td><code>on-demand-broker/SERVICE-NAME/total_instances</code> </td>
+		<td>Total instances created across all plans</td>
+	</tr>
+	<tr>
+		<td><code>on-demand-broker/SERVICE-NAME/PLAN-NAME/<br>total_instances</code> </td>
+		<td>Total instances created for a specific plan</td>
+	</tr>
+</table>
+
+<p class="note"><strong>Note:</strong> Quota metrics are not emitted if no quota
+	has been set.</p>
+
+You can also view service instance usage information in Apps Manager. For more information,
+see [Reporting Instance Usage with Apps Manager](https://docs.pivotal.io/pivotalcf/opsguide/accounting-report-apps-man.html).
+
+## <a id="calculate"></a> Calculate Resource Costs for On-Demand Plans
+
+On-demand plans use dedicated VMs, disks, and various other resources from an
+IaaS, such as AWS.
+To calculate maximum resource cost for plans individually or combined,
+you multiply the quota by the cost of the resources selected in the plan
+configuration(s).
+The specific costs depend on your IaaS.
+
+
+To view configurations for your <%= product_short %> on-demand plan, do the following:
+
+1. Navigate to **<%= vars.ops_manager %> Installation Dashboard** > **<%= tile_name %>** > **Settings**.
+
+<%# Case statement to change the instructions to satisfy each service %>
+<% if product_short.include?("RabbitMQ") %>
+
+1. Click the section for the plan you want to view. For example, **On Demand Instance: Plan 1**.
+
+<% elsif product_short.include?("SQL")%>
+
+1. Click the section for the plan you want to view. For example, **Plan 1**.
+
+<% elsif product_short.include?("Cloud Cache") || product_short.include?("Gemfire") %>
+1. Click the section for the plan you want to view. For example, **Plan 1**.
+
+<% elsif product_short.include?("Redis")%>
+<%# Redis has different instructions in v2.3 and later %>
+<% if product_info['local_product_version'] == '2.1' || product_info['local_product_version'] == '2.2' %>
+1. Click the section for the plan you want to view. For example, **On-Demand Plan 1**.
+<% else %>
+1. Click **On-Demand Plans**.
+1. Click the dropdown for the plan you want to view. For example, **on-demand-cache**.
+<% end %>
+
+<% end %>
+
+The image below shows an example that includes the VM type and persistent disk
+selected for the server VMs, as well as the quota for this plan.
+<% if product_short.include?("Cloud Cache") || product_short.include?("Gemfire") %>
+The quota is shown in the **Maximum service instances** field.
+<% end %>
+
+<%# Tabbed table to display image for MySQL, otherwise display image plainly with different alt text for each service. %>
+<% if current_page.data.galera %>
+Click the tabs below to show an example of each plan:
+
+<style>
+    .tab {
+        overflow: hidden;
+        border: 1px solid #ccc;
+        background-color: #f1f1f1;
+    }
+
+    /* Style the buttons that are used to open the tab content */
+    .tab button {
+        background-color: inherit;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: ;
+        transition: 0.3s;
+    }
+
+    /* Change background color of buttons on hover */
+    .tab button:hover {
+        background-color: #ddd;
+    }
+
+    /* Create an active/current tablink class */
+    .tab button.active {
+        background-color: #ccc;
+    }
+
+    /* Style the tab content */
+    .tabcontent {
+        display: none;
+        padding: 6px 12px;
+        border: 1px solid #ccc;
+        border-top: none;
+    }
+    </style>
+
+<script>
+function openDocs(evt, docsName) {
+    // Declare all variables
+    var i, tabcontent, tablinks;
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tabcontent");
+
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(docsName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+</script>
+
+
+<div class="tab">
+  <!- Tab headers and links ->
+  <button class="tablinks active" onclick="openDocs(event, 'tab1')">Single Node and Leader Follower</button>
+  <button class="tablinks" onclick="openDocs(event, 'tab2')">Galera</button>
+</div>
+
+
+<div id="tab1" class="tabcontent" style="display:block">
+  <img src="./images/sn-lf-plan.png"
+	alt="Screenshot of an example plan quota configuration showing the plan quota
+	field set to 15, VM type set to micro, and persistent disk type set to 20 GB">
+</div>
+<div id="tab2" class="tabcontent">
+  <img src="./images/galera-plan.png"
+	alt="Screenshot of an example plan quota configuration showing the plan quota
+	field set to 15, MySQL VM type set to micro, Jumpbox VM type set to micro,
+	MySQL persistent disk set to 20 GB, and Jumpbox persistent disk set to 20 GB">
+</div>
+
+
+<% elsif product_short.include?("Cloud Cache") || product_short.include?("Gemfire") %>
+
+<%= image_tag("../images/plan-resources.png",
+:alt => "Screenshot of an example plan quota configuration showing the maximum service instances
+field set to 15, VM type for the locator VMs set to micro.cpu, persistent disk type for the locator VMs set to 10 GB,
+VM type for the server VMs set to micro, and persistent disk type for server VMs set to 20 GB",
+:width => "400") %>
+
+<% elsif product_short.include?("RabbitMQ")%>
+
+<%= image_tag("../images/plan-resources.png",
+:alt => "Screenshot of an example plan quota configuration showing the plan quota
+field set to 15, RabbitMQ VM type set to micro, and Persistent disk type set to 20 GB",
+:width => "400") %>
+
+<% elsif product_short.include?("Redis")%>
+
+<%= image_tag("../images/plan-resources.png",
+:alt => "Screenshot of an example plan quota configuration showing the plan quota
+field set to 15, server VM type set to micro, and server disk type set to 20 GB",
+:width => "400") %>
+
+<% end %>
+
+<p class="note"><strong>Note:</strong>
+	Although operators can limit on-demand instances with plan quotas and a global
+	quota, as described in the above topics,
+        IaaS resource usage still varies based on the number of on-demand instances
+				provisioned.</p>
+
+
+### <a id="calculate-per-plan"></a> Calculate Maximum Resource Cost Per On-Demand Plan
+
+To calculate the maximum cost of VMs and persistent disk for each plan, do the
+following calculation:
+
+**plan quota x cost of selected resources**
+
+For example, if you selected the options in the above image,
+you have selected a VM type **micro** and a persistent disk type **20&nbsp;GB**,
+and the plan quota is **15**.
+The VM and persistent disk types have an associated cost for the IaaS you are using.
+Therefore, to calculate the maximum cost of resources for this plan, multiply the
+cost of the resources selected by the plan quota:
+
+**(15 x cost of micro VM type) + (15 x cost of 20&nbsp;GB persistent disk) = max cost per plan**
+
+
+### <a id="calculate-all-plans"></a> Calculate Maximum Resource Cost for All On-Demand Plans
+
+To calculate the maximum cost for all plans combined, add together the maximum
+costs for each plan.
+This assumes that the sum of your individual plan quotas is less than the global
+quota.
+
+Here is an example:
+
+**(plan1 quota x plan1 resource cost) + ( plan2 quota x plan2 resource cost) = max cost for all plans**
+
+
+### <a id="calculate-actual"></a> Calculate Actual Resource Cost of all On-Demand Plans
+
+To calculate the current actual resource cost across all your on-demand plans:
+
+1. Find the number of instances currently provisioned for each active plan by
+looking at the `total_instance` [metric](#monitor) for that plan.
+
+2. Multiply the `total_instance` count for each plan by that plan's resource costs.
+   Record the costs for each plan.
+
+3. Add up the costs noted in Step 2 to get your total current resource costs.
+
+For example:
+
+**(plan1 total\_instances x plan1 resource cost) + (plan2 total\_instances x plan2 resource cost) = current cost for all plans**

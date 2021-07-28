@@ -1,0 +1,25 @@
+<p class=note>
+  <strong>Note:</strong> For developers to be able to upgrade individual service
+  instances, you must use <%= vars.app_runtime_full %> v2.7 or later.
+</p>
+
+After you upgrade the <%= vars.product_short %> tile, existing service instances must be upgraded to
+use the latest version of the tile.
+Developers cannot create new bindings to service instances that have not been upgraded.
+
+To decrease runtime for service instance upgrades, developers can individually upgrade
+on-demand service instances using the Cloud Foundry Command Line Interface (cf CLI).
+Developers can upgrade individual service instances by following the procedure in
+[Upgrade an Individual Service Instance](./use.html#single).
+
+Developers can only upgrade individual service instances if you disable the `upgrade-all-service-instances`
+errand when upgrading the tile.
+By default, <%= vars.product_short %> runs this errand when you upgrade the tile.
+However, this operation can take a long time.
+<% if vars.product_short.include?("SQL") %>
+You must also ensure that the `register-broker` errand is run during upgrades.
+For more information about the `register broker` errand, see [register-broker](./errands.html#register-broker).
+<% else %>
+You must also ensure that the **Register On Demand Service Broker** errand is run during upgrades.
+For how to enable and disable errands, see [Errands](./install-config.html#errands).
+<% end %>

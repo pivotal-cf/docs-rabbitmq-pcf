@@ -1,0 +1,15 @@
+<p>
+	If you have rotated any UAA user credentials then you may see authentication
+	issues in the service broker logs.
+</p>
+
+<p>
+	To resolve this, redeploy the <%= vars.product_short %> tile in <%= vars.ops_manager %>.
+	This provides the broker with the latest configuration.
+</p>
+
+<p class="note">
+    <strong>Note</strong>: You must ensure that any changes to UAA
+    credentials are reflected in the <%= vars.ops_manager %> <code>credentials</code>
+    tab of the <%= vars.app_runtime_full %> tile.
+</p>

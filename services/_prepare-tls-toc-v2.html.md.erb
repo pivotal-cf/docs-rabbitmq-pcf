@@ -1,0 +1,19 @@
+<div class="quick-links">
+  <ul>
+    <li><a href='#overview'>Overview</a> </li>
+<% if vars.product_full.include?("SQL") && product_info['local_product_version'] != "2.8" %>
+    <li><a href='#required-or-optional'>TLS Required or Optional?</a> </li>
+<% end %>
+    <li><a href='#two-sources-of-ca'>Generated or Provided CA Certificate</a></li>
+    <li><a href='#workflow'>Workflow</a></li>
+      <ul>
+        <li><a href='#workflow-generated'>If Using the Generated CA Certificate</a></li>
+        <li><a href='#workflow-bring-your-own'>If Providing Your Own CA Certificate</a></li>
+      </ul>
+    <li><a href='#credhub-creds'>Find the CredHub Credentials in <%= vars.ops_manager %></a></li>
+    <li><a href='#set-custom-cert'>Set a Custom CA Certificate</a></li>
+    <li><a href='#add-ca-cert'>Add the CA Certificate</a></li>
+    <li><a href='#enable'>Enable TLS in <%= vars.product_short %></a></li>
+
+  </ul>
+</div>

@@ -1,0 +1,49 @@
+<p>
+  From the BOSH CLI, you can run service broker errands that manage the service
+  brokers and perform mass operations on the service instances that the brokers created.
+  These service broker errands include:
+</p>
+
+<ul>
+  <li>
+    <p>
+      <a href="#register-broker"><code>register-broker</code></a> registers a broker with the Cloud Controller
+      and lists it in the Marketplace.
+    </p>
+  </li>
+  <li>
+    <p>
+      <a href="#deregister-broker"><code>deregister-broker</code></a> deregisters a broker with the Cloud
+      Controller and removes it from the Marketplace.
+    </p>
+  </li>
+  <li>
+    <p>
+      <a href="#upgrade-all"><code>upgrade-all-service-instances</code></a> upgrades existing instances of
+      a service to its latest installed version.
+    </p>
+  </li>
+  <li>
+    <p>
+      <a href="#delete-all"><code>delete-all-service-instances</code></a> deletes all instances of service.
+    </p>
+  </li>
+  <li>
+    <p>
+      <a href="#detect-orphans"><code>orphan-deployments</code></a> detects "orphan" instances that are
+      running on BOSH but not registered with the Cloud Controller.
+    </p>
+  </li>
+</ul>
+
+<p>
+  To run an errand, run the following command:
+</p>
+
+<pre><code>bosh -d DEPLOYMENT-NAME run-errand ERRAND-NAME</code></pre>
+
+<p>
+  For example:
+</p>
+
+<pre class="terminal">bosh -d my-deployment run-errand deregister-broker</pre>

@@ -1,0 +1,22 @@
+After activating a new root CA in Ops Manager, some BOSH VMs report an unresponsive agent. This error occurs if you do not recreate all service instances for a service tile when rotating the root CA.
+
+You can recreate all service instances by enabling the **Recreate all service instance** errand in the service tile before applying changes.
+
+For service tiles that do not have this errand, first apply changes in Ops Manager and then run the following BOSH command manually for each service instance deployment:
+
+<pre>
+bosh -d SERVICE-INSTANCE-DEPLOYMENT recreate
+</pre>
+
+Where `SERVICE-INSTANCE-DEPLOYMENT` is the BOSH deployment name of the service instance.
+
+For more information, see [Rotating CAs and Leaf Certificates](https://docs.pivotal.io/ops-manager/<%= product_info['local_product_version'].to_s.sub('.','-') %>/security/pcf-infrastructure/rotate-cas-and-leaf-certs.html).
+
+The services tiles that do not have the **Recreate all service instance** errand include:
+
+* VMware Tanzu GemFire
+* MySQL for Pivotal Platform v2.7.5 and earlier
+* MySQL for PCF v2.6.6 and earlier
+* MySQL for PCF v2.5.10 and earlier
+* RabbitMQ for PCF v1.15.4 and earlier
+* Redis for PCF v2.0.22 and earlier

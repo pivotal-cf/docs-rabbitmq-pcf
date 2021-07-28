@@ -1,0 +1,47 @@
+<p>
+  Failed operations (create, update, bind, unbind, delete) result in an error message.
+  You can retrieve the error message later by running the cf CLI command <code>cf service INSTANCE-NAME</code>.
+</p>
+
+<pre class="terminal">
+$ cf service myservice
+
+Service instance: myservice
+Service: super-db
+Bound apps:
+Tags:
+Plan: dedicated-vm
+Description: Dedicated Instance
+Documentation url:
+Dashboard:
+
+Last Operation
+Status: create failed
+Message: Instance provisioning failed: There was a problem completing your request.
+     Please contact your operations team providing the following information:
+     service: redis-acceptance,
+     service-instance-guid: ae9e232c-0bd5-4684-af27-1b08b0c70089,
+     broker-request-id: 63da3a35-24aa-4183-aec6-db8294506bac,
+     task-id: 442,
+     operation: create
+Started: 2017-03-13T10:16:55Z
+Updated: 2017-03-13T10:17:58Z
+</pre>
+
+<p>
+  Use the information in the <code>Message</code> field to debug further.
+  Provide this information to Support when filing a ticket.
+</p>
+
+<p>
+  The <code>task-id</code> field maps to the BOSH task ID.
+  For more information on a failed BOSH task, use the <code>bosh task TASK-ID</code>.
+</p>
+
+<p>
+  The <code>broker-request-guid</code> maps to the portion of the On-Demand Broker log
+  containing the failed step.
+  Access the broker log through your syslog aggregator, or access BOSH logs for
+  the broker by typing <code>bosh logs broker 0</code>.
+  If you have more than one broker instance, repeat this process for each instance.
+</p>

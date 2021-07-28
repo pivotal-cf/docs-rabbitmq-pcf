@@ -1,0 +1,11 @@
+- **The on-demand adapter does not cleanly exit the drain script when the credentials are not present in UAA.**
+The drain script is expected to output an integer to determine success (0) or failure (non-zero).
+In some cases, the drain script outputs errors even though the operation has succeeded.
+This causes a failure in the drain operation.
+<% if product_info['local_product_version'] == "1.20" %>
+This is fixed in v1.20.1.
+<% elsif product_info['local_product_version'] == "1.19" %>
+This is fixed in v1.19.4.
+<% elsif product_info['local_product_version'] == "1.18" %>
+This is fixed in v1.18.9.
+<% end %>

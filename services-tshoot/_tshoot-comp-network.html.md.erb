@@ -1,0 +1,30 @@
+<p>
+	Common issues with networking include:
+</p>
+
+<table class="nice">
+	<col width="50%">
+	<col width="50%">
+	<th>Issue</th>
+	<th>Solution</th>
+	<tr>
+		<td>Latency when connecting to the <%= vars.product_short %> service instance to create or delete a binding.</td>
+		<td>Try again or improve network performance.</td>
+	</tr>
+	<tr>
+		<td>Firewall rules are blocking connections from the <%= vars.product_short %> service broker to the service instance.</td>
+		<td>Open the <%= vars.product_short %> tile in <%= vars.ops_manager %> and check the two networks configured in the <strong>Networks</strong> pane. Ensure that these networks allow access to each other.</td>
+	</tr>
+	<tr>
+		<td>Firewall rules are blocking connections from the service network to the BOSH director network.</td>
+		<td>Ensure that service instances can access the Director so that the BOSH agents can report in.</td>
+	</tr>
+	<tr>
+		<td>Apps cannot access the service network.</td>
+		<td>Configure Cloud Foundry application security groups to allow runtime access to the service network.</td>
+	</tr>
+	<tr>
+		<td>Problems accessing BOSH’s UAA or the BOSH director.</td>
+		<td>Follow network troubleshooting and check that the BOSH director is online</td>
+	</tr>
+</table>

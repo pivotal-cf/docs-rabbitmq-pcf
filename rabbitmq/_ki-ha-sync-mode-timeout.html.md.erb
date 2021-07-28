@@ -1,0 +1,8 @@
+* **The default setting for mirrored queues can cause the pre-stop script to timeout:**
+In production, if you use mirrored queues with
+the default policy setting `ha-sync-mode: manual` and if you have not manually synced
+your queues, the pre-stop script can fail with
+the following error: `"Timed out waiting for mirror queue critical node to sync after
+3600 seconds"`. To manually sync your queues, run `rabbitmqctl sync_queue`.
+To set `ha-sync-mode` to `automatic` instead, see
+[Setting or Changing the Policy](./policies-pp.html#viewing).

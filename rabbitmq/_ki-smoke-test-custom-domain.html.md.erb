@@ -1,0 +1,2 @@
+* **Smoke tests fail if the RabbitMQ service instance domain cannot access the test domain:**
+Smoke tests pick up the default Cloud Foundry domain, which can cause them to fail if the RabbitMQ service instance domain for on-demand services cannot access the smoke tests domain.

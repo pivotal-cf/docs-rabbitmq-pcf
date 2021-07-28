@@ -1,0 +1,23 @@
+<p>
+  To determine whether there is an issue with the <%= vars.product_short %>
+  deployment: 
+</p>
+<ol>
+  <li>
+    <p>
+      Inspect the VMs by running:
+    </p>
+    <pre><code>bosh -d service-instance_GUID vms --vitals</code></pre>
+  </li>
+  <li>
+    <p>
+      For additional information, run:
+    </p>
+    <pre><code>bosh -d service-instance_GUID instances --ps --vitals</code></pre>
+  </li>
+</ol>
+<p>
+  If the VM is failing, follow the service-specific information.
+  Any unadvised corrective actions (such as running BOSH <code>restart</code> on
+  a VM) can cause issues in the service instance.
+</p>

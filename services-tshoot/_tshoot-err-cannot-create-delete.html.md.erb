@@ -1,0 +1,54 @@
+<%= partial vars.path_to_partials + "/troubleshoot-template", locals: {
+
+    id: 'cannot-create-delete',
+
+    description: 'Cannot Create or Delete Service Instances',
+
+    symptom: 'If developers report errors such as:
+		<pre class="terminal">Instance provisioning failed: There was a problem completing your request. Please contact your operations team providing the following information: service: redis-acceptance, service-instance-guid: ae9e232c-0bd5-4684-af27-1b08b0c70089, broker-request-id: 63da3a35-24aa-4183-aec6-db8294506bac, task-id: 442, operation: create</pre>',
+
+    cause: 'Reasons include:
+    <ul>
+      <li>Problems with the deployment manifest</li>
+      <li>Authentication errors</li>
+      <li>Network errors</li>
+      <li>Quota errors</li>
+    </ul>',
+
+    solution: 'To troubleshoot:
+		<ol>
+		<li>
+		<p>
+		If the BOSH error shows a problem with the deployment manifest, open the
+		manifest in a text editor to inspect it.
+		</p>
+		</li>
+		<li>
+		<p>
+		To continue troubleshooting,
+		<a href="https://docs.pivotal.io/pivotalcf/customizing/trouble-advanced.html#log-in">Log in to BOSH</a>
+		and target the ' + vars.product_short + ' instance using the instructions
+		on <a href="#parse-error">parsing a Cloud Foundry error message</a>.
+		</p>
+		</li>
+		<li>
+		<p>
+		Retrieve the BOSH task ID from the error message and run the following command:
+		</p>
+		<pre><code>bosh task TASK-ID</code></pre>
+		</li>
+		<li>
+		<p>
+		If you need more information, <a href="#access-broker">access the broker logs</a> and
+		use the <code>broker-request-id</code> from the error message above to search the logs for
+		more information. Check for:
+		</p>
+		</li>
+		<ul>
+		<li><a href="#auth">Authentication errors</a></li>
+		<li><a href="#network">Network errors</a></li>
+		<li><a href="#quotas">Quota errors</a></li>
+		</ul>
+		</ol>'
+  }
+%>

@@ -1,0 +1,106 @@
+<p>To retrieve the admin credentials for a service instance from BOSH CredHub:</p>
+<ol>
+  <li>
+    Use the cf CLI to determine the GUID associated with the service instance
+    for which you want to retrieve credentials by running:
+
+    <pre><code>cf service SERVICE-INSTANCE-NAME --guid</code></pre>
+
+    For example: <br>
+    <pre class="terminal">$ cf service my-service-instance --guid
+
+12345678-90ab-cdef-1234-567890abcdef</pre>
+    If you do not know the name of the service instance, you can list service instances in the space with
+    <code>cf services</code>.
+  </li>
+  <li>Follow the steps in
+    <a href="https://docs.pivotal.io/pivotalcf/customizing/trouble-advanced.html#gather">Gather Credential and IP Address Information</a>
+    and
+    <a href="https://docs.pivotal.io/pivotalcf/customizing/trouble-advanced.html#ssh">Log In to the <%= vars.ops_manager %> VM with SSH</a>
+    of
+    <em>Advanced Troubleshooting with the BOSH CLI</em> to SSH into the <%= vars.ops_manager %> VM.
+  </li>
+  <li>From the <%= vars.ops_manager %> VM, log in to your BOSH Director with the BOSH CLI. See
+    <a href="https://docs.pivotal.io/pivotalcf/customizing/trouble-advanced.html#log-in">Authenticate with the BOSH Director VM</a>
+    in
+    <em>Advanced Troubleshooting with the BOSH CLI</em>.
+  </li>
+  <li>
+    <p>Find the values for <code>BOSH_CLIENT</code> and <code>BOSH_CLIENT_SECRET</code>:</p>
+    <ol>
+      <li>In the <%= vars.ops_manager %> Installation Dashboard, click the <strong>BOSH Director</strong> tile.</li>
+      <li>Click the <strong>Credentials</strong> tab.</li>
+      <li>In the <strong>BOSH Director</strong> section, click the link to the <strong>BOSH Commandline Credentials</strong> .</li>
+      <li>Record the values for <code>BOSH_CLIENT</code> and <code>BOSH_CLIENT_SECRET</code>.</li>
+    </ol>
+  </li>
+  <li>
+    Set the API target of the CredHub CLI to your BOSH CredHub server by running:
+    <pre><code>credhub api https<span>:</span>//BOSH-DIRECTOR-IP:8844 \
+      --ca-cert=/var/tempest/workspaces/default/root_ca_certificate</code></pre>
+    Where
+    <code>BOSH-DIRECTOR-IP</code>
+    is the IP address of the BOSH Director VM.
+    <br><br>
+    For example:
+    <pre class="terminal">$ credhub api http<span>s:</span>//10.0.0.5:8844 \
+      --ca-cert=/var/tempest/workspaces/default/root_ca_certificate</pre>
+  </li>
+  <li>
+    Log in to CredHub by running:
+    <pre><code>credhub login \
+    --client-name=BOSH-CLIENT \
+    --client-secret=BOSH-CLIENT-SECRET</code></pre>
+    <p>For example:</p>
+    <pre class="terminal">$ credhub login \
+      --client-name=credhub \
+      --client-secret=abcdefghijklm123456789</pre>
+  </li>
+  <li>
+    <p>Use the CredHub CLI to retrieve the credentials
+      <% if vars.product_short.include?("SQL") %>
+      by doing one of following
+      <% end %>
+      :</p>
+    <ul>
+      <li>
+        Retrieve the password for the admin user by running:
+        <pre><code>credhub get -n /p-bosh/service-instance_GUID/admin_password</code></pre>
+        In the output, the password appears under
+        <code>value</code>. Record the password.<br>
+        For example:
+        <pre class="terminal">$ credhub get \
+  -n /p-bosh/service-instance_70d30bb6-7f30-441a-a87c-05a5e4afff26/admin_password <br>
+  id: d6e5bd10-3b60-4a1a-9e01-c76da688b847
+  name: /p-bosh/service-instance_70d30bb6-7f30-441a-a87c-05a5e4afff26/admin_password
+  type: password
+  value: UMF2DXsqNPPlCNWMdVMcNv7RC3Wi10
+  version_created_at: 2018-04-02T23:16:09Z</pre>
+      </li>
+      <% if vars.product_short.include?("SQL") %>
+      <li>
+        Retrieve the password for the read-only admin user by running:
+        <pre><code>credhub get -n /p-bosh/service-instance_GUID/read_only_admin_password</code></pre>
+        In the output, the password appears under
+        <code>value</code>. Record the password. <br>
+      </li>
+      <% end %>
+    </ul>
+
+  </li>
+  <% if vars.product_short.include?("SQL") %>
+  <li>
+    Record the IP of your service instance. See <a href="./establish.html#ip-address" target="_blank">Connect Using an IP Address</a>.
+  </li>
+  <li>
+    Connect to your database by doing one of following:
+    <ul>
+      <li>Connect using a management tool. See <a href="./tools.html">Using Management Tools for <%= vars.product_short %></a>.</li>
+      <li>Connect directly from your workstation using the MySQL client by
+        running:
+        <pre>mysql -h IP-ADDRESS -u admin -P 3306 -p</pre>
+        When prompted for a password, enter the password you recorded.</li>
+    </ul>
+  </li>
+  <% end %>
+</ol>

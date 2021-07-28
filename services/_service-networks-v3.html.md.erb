@@ -1,0 +1,25 @@
+<p>
+When you deploy <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>), you must create a statically defined network to host
+the component VMs that make up the  infrastructure.
+Components, such as Cloud Controller and UAA, run on this infrastructure network.
+</p>
+
+<p>
+On-demand services might require you to host them on a separate network
+from the  default network.
+You can also deploy on-demand services on a separate service networks to meet your own security requirements.
+</p>
+
+<p>
+<%= vars.app_runtime_abbr %> supports dynamic networking.
+Operators can use dynamic networking with asynchronous service provisioning to define
+dynamically-provisioned service networks.
+  For more information, see <a href="#on-demand">Default Network and Service Network</a> below.
+</p>
+
+<p>
+On-demand services are enabled by default on all networks.
+Operators can optionally create separate networks to host services in BOSH Director.
+Operators can select which network hosts on-demand service instances when they configure the tile for
+that service.
+</p>

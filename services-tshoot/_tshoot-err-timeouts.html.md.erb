@@ -1,0 +1,32 @@
+<%= partial vars.path_to_partials + "/troubleshoot-template", locals: {
+
+    id: 'timeouts',
+
+    description: 'Broker Request Timeouts',
+
+    symptom: 'If developers report errors such as:
+		<pre class="terminal">Server error, status code: 504, error code: 10001, message: The request to the service broker timed out: https://BROKER-URL/v2/service_instances/e34046d3-2379-40d0-a318-d54fc7a5b13f/service_bindings/aa635a3b-ef6d-41c3-a23f-55752f3f651b</pre>',
+
+    cause: 'Cloud Foundry might not be connected to the service broker, or there might be a large number of queued tasks.',
+
+    solution: 'To troubleshoot:
+		<ol>
+		<li>
+		Confirm that Cloud Foundry (CF) is <a href="#network">connected to the service broker</a>.
+		</li>
+		<li>
+		Check the BOSH queue size:
+		<ol>
+		<li>Log in to BOSH as an admin.</li>
+		<li>Run <pre><code>bosh tasks</code></pre></li>
+		</ol>
+    If there are a large number of queued tasks, the system may be under too much load.
+		BOSH is configured with two workers and one status worker, which might not be
+		sufficient resources for the level of load.
+		</li>
+		<li>
+		If the task queue is long, advise app developers to try again once the system is under less load.
+		</li>
+		</ol>'
+  }
+%>

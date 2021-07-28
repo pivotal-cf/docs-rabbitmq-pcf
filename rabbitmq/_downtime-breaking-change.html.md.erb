@@ -1,0 +1,10 @@
+<p class="note breaking"><strong>Breaking Change: </strong>
+Upgrading to this <%= vars.product_old %> release causes cluster <strong>downtime</strong>.
+This is because the RabbitMQ cluster is taken offline when nodes are upgraded to Erlang v21.
+<br><br>
+Instead of upgrading to this release, Pivotal recommends upgrading to <%= vars.product_old %> v1.17.3 or later.
+Upgrading to <%= vars.product_old %> v1.17.3 or later uses rolling upgrades.
+This does not take the cluster offline when nodes are upgraded to Erlang v21.
+<br><br>
+For more information about downtime during upgrades, see <a href="./upgrade.html#about">About the Upgrade</a>.
+</p>

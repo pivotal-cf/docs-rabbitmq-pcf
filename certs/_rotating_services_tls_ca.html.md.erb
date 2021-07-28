@@ -1,0 +1,270 @@
+
+This topic provides an overview of the Services TLS Certificate Authority (CA) 
+and a procedure for rotating the Services TLS CA certificate
+and its leaf certificates.
+
+##<a id='services-tls-ca-overview'></a> Services TLS CA Overview
+
+In an <%= vars.ops_manager %> and <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) deployment, the Services TLS CA signs the certificate that service brokers use to sign leaf certificates for TLS-enabled service instances.
+
+Service instances include instances created by on-demand services such as <%= vars.on_demand_service_tiles %>. You may have one or more of these service tiles installed in your deployment. All deployed service tiles in a foundation use the same Services TLS CA certificate, which is stored in BOSH CredHub with the name `/services/tls_ca`. 
+
+When an operator creates an on-demand TLS enabled service instance or updates an existing non-TLS on-demand service instance to use TLS, the following takes place:
+
+1. BOSH generates a leaf certificate signed by the Services TLS CA. 
+
+1. BOSH then stores this new leaf certificate in BOSH CredHub with the format `/p-bosh/service-instance_SERVICE-GUID/unique-name-per-service-type`. 
+1. BOSH supplies the private key and certificates to the VMs of that service instance.
+
+In the following procedure, BOSH rotates leaf certificates 
+when you select the upgrade all service instances errand for an on-demand service tile and apply changes in Ops Manager.
+
+##<a id='prerequisites'></a> Prerequisites for Rotating the Services TLS CA Certificate
+
+Before you begin this rotation procedure, ensure that you have the following:
+
+* Access to the <%= vars.ops_manager %> VM, BOSH CredHub and CredHub CLI. For more information, see [Accessing BOSH CredHub with the CredHub CLI](bosh_credhub_cli_access.html).
+* Only one <%= vars.ops_manager %> foundation and not a multi-site or Wide Area Network (WAN) setup.
+For a multi-site or WAN setup, you must perform the <bold>Apply Changes</bold> steps across all your sites or WAN.
+To rotate the certificates for Tanzu GemFire for VMs WAN-connected clusters,
+where the Tanzu GemFire clusters reside on distinct foundations,
+follow the procedure at [Rotating Certificates](https://docs.pivotal.io/p-cloud-cache/rotating-ca.html).
+* All certificates include Subject Alternate Name (SAN) and Common Name (CN) entries.
+* Your services are set for high availability to minimize potential app impact during certificate rotation. Rotating the Services TLS CA certificate requires an upgrade all on-demand service instances, which can cause service downtime.
+
+<div class="note warning">
+<strong>Warning:</strong>
+There is a potential for app downtime in the following specific cases:<br><br>
+	<ul>
+		<li>If you have non-Java apps that use <%= vars.mysql_product_name %> and rely on <code>VCAP_SERVICES</code> for TLS, you will experience app downtime if you perform 
+      the certificate rotation described in this procedure. <%= vars.mysql_services_tls_ca_kb %>
+      Only follow the procedure in this topic if all of your MySQL 
+      apps use <code>jdbcURL</code> 
+      or consume CA certificates from <code>/etc/ssl/certs/ca-certificate.crt</code>.
+    </li>
+    <li>If you are using Redis for Pivotal Platform v2.2 or v2.3 and use this procedure to rotate the Services TLS CA certificate, you may experience downtime for apps that bind to Redis service instances. To workaround the issue in v2.2 or 2.3, see this <a href="https://community.pivotal.io/s/article/Redis-On-Demand-Services-do-not-rotated-services-tls-ca-leaf-certs">Knowledgebase Article</a>. This issue is fixed in Redis for VMware Tanzu Application Service v2.4.1.</li>
+    </ul></div>
+
+##<a id='tls'></a> Procedure for Rotating the Services TLS CA Certificate
+
+This section provides the procedure to rotate the Services TLS CA certificate
+and update all its leaf certificates.
+
+### <a id="checkexpdate"></a> Verify the Expiration Status of Services TLS CA Certificate
+
+Before starting the rotation, check that the Services TLS CA certificate has not already expired.
+
+To check the expiration date:
+
+1. Log in to CredHub by following the procedure in [Accessing BOSH CredHub with the CredHub CLI](bosh_credhub_cli_access.html).
+
+1. Run:
+
+    ```
+    credhub get -n /services/tls_ca -j | jq -r .value.ca \
+     | openssl x509 -text -noout | grep -A 2 "Validity"
+    ```
+    For example:
+    <pre class="terminal">
+    Validity
+              Not Before: Jan 23 19:04:58 2019 GMT
+              Not After : Jan 23 19:04:58 2020 GMT
+    </pre>
+
+    The above command retrieves the certificate from CredHub, decrypts it, parses its JSON structure,
+    and finds its `Validity` properties.
+    The expiration date for the certificate is the value of `Not After`.
+1. If your Services TLS CA certificate has already expired, follow the procedure in the [Knowledgebase Article](https://community.pivotal.io/s/article/How-to-rotate-and-already-expired-services-tls-ca-certificate) to rotate the certificate instead of the procedure in this topic.
+
+### <a id="obtainorgenerate"></a> Obtain or Generate a New Services TLS CA Certificate
+
+To obtain or generate a new Services TLS CA certificate:
+
+1. Check if CredHub has a new temporary certificate from a previous rotation attempt. Run:
+    <pre><code>credhub get -n /services/new_ca</code></pre>
+    <p class="note"><strong>Note:</strong> This procedure assumes that <code>/services/new_ca</code> is the CredHub location used when generating the temporary certificate. 
+      If you used a different location, specify that location instead.
+    </p> 
+
+1. If an older temporary certificate already exists, delete that certificate by running:
+    <pre><code>credhub delete -n /services/new_ca</code></pre>
+
+1. Do one of the following:
+  * **If you have a TLS cluster:** If you generate certificates from your own private or public CA, obtain a new certificate from that CA. You will add this certificate to <%= vars.ops_manager %>.
+  * **If you use self-signed certificates:** Generate a new self-signed certificate with a new name or path in CredHub:
+
+        ```
+        credhub generate \
+        --name="/services/new_ca" \
+        --type="certificate" \
+        --no-overwrite \
+        --is-ca \
+        --duration=1825 \
+        --common-name="opsmgr-services-tls-ca"
+        ```
+        Where:
+        - `name` is the CredHub path or name of the new certificate. You can use `/services/new_ca` or substitute a different name as long as you use the value consistently in the rest of the procedure.
+        - `common-name` is the common name of the generated certificate. You can use `opsmgr-services-tls-ca` or substitute a different common name as long as you use the value consistently in the rest of the procedure.
+        - `duration` is set to `1825`, which is a recommended value of five years. If you do not specify a duration, the default value is `365` or one year. 
+  * **If you use an intermediate certificate signed by a root CA in CredHub:** Generate a new certificate signed by the CredHub root CA by running:
+
+        ```
+        credhub generate \
+        --name="/services/new_ca" \
+        --type="certificate" \
+        --no-overwrite \
+        --is-ca \
+        --duration=1825 \
+        --common-name="opsmgr-services-tls-ca" \
+        --ca=/PATH-TO-ROOT-CA
+        ```
+        
+        Where:
+        - `name` is the CredHub path or name of the new certificate. You can use `/services/new_ca` or substitute a different name as long as you use the value consistently in the rest of the procedure.
+        - `common-name` is the common name of the generated certificate. You can use `opsmgr-services-tls-ca` or substitute a different common name as long as you use the value consistently in the rest of the procedure.
+        - `duration` is set to `1825`, which is a recommended value of five years. If you do not specify a duration, the default value is `365` or one year. 
+        - `ca` is the path to the root CA for the new certificate. Replace `PATH-TO-ROOT-CA` with the appropriate path for the root CA.
+
+### <a id="addnewandold"></a> Add Certificates to <%= vars.ops_manager %> and <%= vars.app_runtime_abbr %>
+
+To add your new and current Services TLS CA certificate to <%= vars.ops_manager %>:
+
+1. Log in to CredHub.
+
+1. Get the current Services TLS CA certificate by running:
+
+    ```
+    credhub get --name=/services/tls_ca -k ca
+    ```
+
+1. Get the new certificate, either from a pre-existing file, or from your new CredHub location by running:
+
+    ```
+    credhub get --name=/services/new_ca -k ca
+    ```
+1. In <%= vars.ops_manager %>, paste both certificates into the **BOSH Director > Security > Trusted Certificates** field.
+1. Click **Save**.
+1. In the <%= vars.app_runtime_abbr %> and Pivotal Isolation Segment tiles, paste both certificates into the **Networking** > <%= vars.ca_trust_gorouter_haproxy_fields %>.
+1. Click **Save**.
+
+### <a id="applychanges1"></a> Apply Changes for the First Time
+
+<p class="note warning"><strong>Warning</strong>: This procedure involves redeploying
+all of the VMs in your <%= vars.ops_manager %> deployment to apply a CA certificate. The
+operation can take a long time to complete.</p>
+
+To apply these changes:
+
+1. Navigate back to the **Installation Dashboard**.
+1. Click **Review Pending Changes**.
+1. Ensure that all product tiles, including <%= vars.app_runtime_abbr %>, <%= vars.windows_runtime_abbr %>, Isolation Segment, and partner tiles, are selected.
+1. Verify which on-demand service tiles are using the Services TLS CA certificate. Run:
+
+    ```
+    credhub curl -p /api/v1/certificates?name=%2Fservices%2Ftls_ca
+    ```
+1. From the returned list, identify which on-demand service tiles use TLS in your deployment, such as <%= vars.on_demand_service_tiles %>.
+1. For each on-demand service tile that uses TLS:
+    1. Expand the errands. 
+    1. Enable the errand to upgrade all service instances.
+        <p class="note"><strong>Note:</strong> The name of the upgrade all service instances errand may differ slightly between services.</p>
+1. Click **Apply Changes**.
+
+### <a id="setnew"></a> Set New Services TLS CA Certificate
+
+To set the new Services TLS CA certificate:
+
+1. Do one of the following:
+  * **If you have an existing certificate:** Obtain the CA certificate and private key file corresponding
+  to the CA that you applied in the previous step. Then, run:
+
+        ```
+        credhub set \
+        --name="/services/tls_ca" \
+        --type="certificate" \
+        --certificate=PEM-PATH/root.pem \
+        --private=CERT-KEY
+        ```
+        Where:
+        - `certificate` is the location of the `root.pem` file for the certificate. Replace `PEM-PATH` with the path of your certificate's `root.pem` file.
+        - `private` is the private key for the new certificate. Replace `CERT-KEY` with the value of the private key for your certificate.
+  * **If you have created a new self-signed or intermediary certificate:** Set the `/services/new_ca` that you generated in the previous step as the Services TLS CA certificate:
+
+        ```
+        credhub get -n /services/new_ca -k ca > new_ca.ca
+        credhub get -n /services/new_ca -k certificate > new_ca.certificate
+        credhub get -n /services/new_ca -k private_key > new_ca.private_key
+        credhub set -n /services/tls_ca \
+        --type=certificate \
+        --root=new_ca.ca \
+        --certificate=new_ca.certificate \
+        --private=new_ca.private_key
+        ```
+
+### <a id="applychanges2"></a> Apply Changes for the Second Time
+
+<p class="note warning"><strong>Warning: </strong> This procedure involves redeploying
+  all of the VMs in your <%= vars.ops_manager %> deployment to apply a CA certificate. The
+  operation can take a long time to complete.</p>
+
+In this step, you apply changes to ensure that all on-demand service instances generate new leaf certificates from the new Services TLS CA certificate.
+
+To apply these changes:
+
+1. Navigate back to the **Installation Dashboard**.
+1. Click **Review Pending Changes**.
+1. Ensure that all product tiles, including <%= vars.app_runtime_abbr %>, <%= vars.windows_runtime_abbr %>, Isolation Segment, and partner tiles, are deselected in order to reduce deployment time. 
+1. Select only the on-demand services tiles that use TLS, such as <%= vars.on_demand_service_tiles %>.
+1. For each on-demand service tile that uses TLS:
+    1. Expand the errands. 
+    1. Enable the errand to upgrade all service instances.
+        <p class="note"><strong>Note:</strong> The name of the upgrade all service instances errand may differ slightly between services.</p>
+1. Click **Apply Changes**.
+
+### <a id="remove"></a> Remove the Old Services TLS CA Certificate
+
+After your apps have reconnected to service instances with new certificates,
+remove the old CA certificate:
+
+1. Navigate to the **Installation Dashboard** in <%= vars.ops_manager %> and click the **BOSH
+Director** tile.
+
+1. Click **Security**.
+
+1. Delete the old CA certificate from the **Trusted Certificates** field.
+
+1. Click **Save**.
+
+1. Navigate to the **Installation Dashboard** in <%= vars.ops_manager %> and click the **<%= vars.app_runtime_abbr %>** tile.
+
+1. Click **Networking**.
+
+1. Delete the old CA certificate in the <%= vars.ca_trust_gorouter_haproxy_fields %>.
+
+1. Click **Save**.
+
+### <a id="applychanges3"></a> Apply Changes for the Third Time
+
+As a security best practice, you should remove outdated certificates as soon as possible from your deployment. 
+You can schedule this step at a convenient time. Most deployments
+will not lose any functionality if you do not perform this step immediately. 
+
+For some deployments, you may encounter an error if you create a
+service instance in a deployment that contains an expired Services TLS CA certificate. 
+For more information, see this [Knowledgebase Article]
+(https://community.pivotal.io/s/article/Cloud-Controller-fails-to-create-service-instance-when-there-is-an-old-expired-cert-installed-on-the-system).
+
+<p class="note warning"><strong>Warning:</strong> This procedure involves redeploying
+  all of the VMs in your <%= vars.ops_manager %> deployment to apply a CA certificate. The
+  operation can take a long time to complete.</p>
+
+To apply these changes:
+
+1. Navigate back to the **Installation Dashboard**.
+1. Click **Review Pending Changes**.
+1. Ensure that all product tiles, including <%= vars.app_runtime_abbr %>, <%= vars.windows_runtime_abbr %>, Isolation Segment, and partner tiles, are selected.
+1. For each on-demand service tile that uses TLS:
+    1. Expand the errands.
+    1. Enable the errand to upgrade all service instances.
+        <p class="note"><strong>Note:</strong> The names of upgrade all service instances errand may differ slightly between services.</p>
+1. Click **Apply Changes**.

@@ -1,0 +1,27 @@
+<ol>
+	<li>
+		<p>
+			To target an individual service instance deployment, retrieve the GUID of your
+			service instance with the following cf CLI command:
+		</p>
+		<pre><code>cf service MY-SERVICE --guid</code></pre>
+	</li>
+	<li>
+		<p>
+			To view VMs in the deployment, run the following command:
+		</p>
+		<pre><code>bosh -d service-instance_GUID instances</code></pre>
+	</li>
+	<li>
+		<p>
+			To SSH into a VM, run the following command:
+		</p>
+		<pre><code>bosh -d service-instance_GUID ssh</code></pre>
+	</li>
+	<li>
+		<p>
+			To download the instance logs, run the following command:
+		</p>
+		<pre><code>bosh -d service-instance_GUID logs</code></pre>
+	</li>
+</ol>

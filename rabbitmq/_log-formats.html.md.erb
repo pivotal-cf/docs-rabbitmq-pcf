@@ -1,0 +1,301 @@
+For users familiar with documentation for previous versions of the tile, the tag formerly called the `app_name` is now called the `program_name`.
+
+The generic log format is as follows:
+
+`<PRI>TIMESTAMP IP_ADDRESS PROGRAM_NAME [job=NAME index=JOB_INDEX id=JOB_ID] MESSAGE`
+
+The raw logs look similar to the following:
+
+```
+<7>2017-06-28T16:06:10.733560+00:00 10.244.16.133 vcap.agent [job=rmq index=0 id=e37ecdca-5b10-4141-abd8-e1d777dfd8b5]  2017/06/28 16:06:10  CEF:0|CloudFoundry|BOSH|1|agent_api|ssh|1|duser=director.be5a66bb-a9b4-459f-a0d3-1fc5c9c3ed79.be148cc6-91ef-4eed-a788-237b0b8c63b7 src=10.254.50.4 spt=4222 shost=5ae233e0-ecc5-4868-9ae0-f9767571251b
+<86>2017-06-28T16:06:16.704572+00:00 10.244.16.133 useradd [job=rmq index=0 id=e37ecdca-5b10-4141-abd8-e1d777dfd8b5]  new group: name=bosh_ly0d2rbjr, GID=1003
+<86>2017-06-28T16:06:16.704663+00:00 10.244.16.133 useradd [job=rmq index=0 id=e37ecdca-5b10-4141-abd8-e1d777dfd8b5]  new user: name=bosh_ly0d2rbjr, UID=1001, GID=1003, home=/var/vcap/bosh_ssh/bosh_ly0d2rbjr, shell=/bin/bash
+<86>2017-06-28T16:06:16.736932+00:00 10.244.16.133 usermod [job=rmq index=0 id=e37ecdca-5b10-4141-abd8-e1d777dfd8b5]  add 'bosh_ly0d2rbjr' to group 'admin'
+<86>2017-06-28T16:06:16.736964+00:00 10.244.16.133 usermod [job=rmq index=0 id=e37ecdca-5b10-4141-abd8-e1d777dfd8b5]  add 'bosh_ly0d2rbjr' to group 'vcap'
+```
+
+Logs sent to external logging tools such as Papertrail might be presented in a different format.
+
+The following table describes the logging tags used in this template:
+
+<table class="nice">
+  <th>Tag</th>
+  <th>Description</th>
+  <tr>
+    <td><strong>PRI</strong></td>
+    <td>This is a value which in future will be used to describe the severity of the log entry and which facility it came from.</td>
+  </tr>
+  <tr>
+    <td><strong>TIMESTAMP</strong></td>
+    <td>This is the timestamp of when the log is forwarded, for example, <code>2016-08-24T05:14:15.000003Z</code>.
+        The timestamp value is typically slightly after when the log entry was generated.</td>
+  </tr>
+  <tr>
+    <td><strong>IP_ADDRESS</strong></td>
+    <td>The internal IP address of server on which the log entry originated</td>
+  </tr>
+  <tr>
+    <td><strong>PROGRAM_NAME</strong></td>
+    <td>Process name of the program the generated the message.
+        Same as <code>app_name</code> before v1.9.0.
+        For more information about program name, see <a href="#program-names">RabbitMQ Program Names</a> below.</td>
+  </tr>
+  <tr>
+    <td><strong>NAME</strong></td>
+    <td>The BOSH instance group name (for example, <code>rabbitmq_server</code>)</td>
+  </tr>
+  <tr>
+    <td><strong>JOB_INDEX</strong></td>
+    <td>BOSH job index. Used to distinguish between multiple instances of the same job.</td>
+  </tr>
+  <tr>
+    <td><strong>JOB_ID</strong></td>
+    <td>BOSH VM GUID. This is distinct from the CID displayed in the <%= vars.ops_manager %> Status tab, which corresponds to the VM ID assigned by the infrastructure provider.</td>
+  </tr>
+  <tr>
+    <td><strong>MESSAGE</strong></td>
+    <td>The log entry that appears</td>
+  </tr>
+</table>
+
+### <a id='program-names'></a> RabbitMQ Program Names
+
+<% if product_info['local_product_version'] == '1.20' %>
+
+For new service instances created using <%= vars.product_short %> v1.20 and later,
+the default program name is `rabbitmq-server`.
+Existing service instances, including instances upgraded from <%= vars.product_short %> v1.19 and earlier,
+have the program names listed in the table below.
+
+If you want new service instances to keep the program names that are in <%= vars.product_short %> v1.19 and earlier,
+you must manually add custom rules.
+For the custom rules to add, see [Add RabbitMQ Syslog Custom Rules](#rabbitmq-syslog-custom-rules) below.
+
+The following table lists the program names you can make available for use in the logs:
+
+<% else %>
+
+The following table lists the program names used in the logs:
+
+<% end %>
+
+<table>
+  <thead>
+    <th>Program Name</th>
+    <th>Description</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>rabbitmq_server_cluster_check</strong></td>
+      <td>Checks that the RabbitMQ cluster is healthy. Runs after every deploy.</td>
+    </tr>
+    <tr>
+      <td><strong>rabbitmq_server_node_check</strong></td>
+      <td>Checks that the RabbitMQ node is healthy. Runs after every deploy.</td>
+    </tr>
+    <tr>
+      <td><strong>rabbitmq_route_registrar_stderr</strong></td>
+      <td>Registers the route for the management API with the Gorouter in your <%= vars.app_runtime_full %> deployment.</td>
+    </tr>
+    <tr>
+      <td><strong>rabbitmq_route_registrar_stdout</strong></td>
+      <td>Registers the route for the management API with the Gorouter in your <%= vars.app_runtime_full %> deployment.</td>
+    </tr>
+    <tr>
+      <td><strong>rabbitmq_server</strong></td>
+      <td>The Erlang VM and RabbitMQ apps. <em>Logs can span multiple lines</em>.</td>
+    </tr>
+    <tr>
+      <td><strong>rabbitmq_server_drain</strong></td>
+      <td>Shuts down the Erlang VM and RabbitMQ apps. Runs as part of the BOSH lifecycle.</td>
+    </tr>
+    <tr>
+      <td><strong>rabbitmq_server_http_api_access</strong></td>
+      <td>Access to the RabbitMQ Management UI.</td>
+    </tr>
+    <tr>
+      <td><strong>rabbitmq_server_init</strong></td>
+      <td>Starts the Erlang VM and RabbitMQ.</td>
+    </tr>
+    <tr>
+      <td><strong>rabbitmq_server_post_deploy_stderr</strong></td>
+      <td>Runs the node check and cluster check. Runs after every deploy.</td>
+    </tr>
+    <tr>
+      <td><strong>rabbitmq_server_post_deploy_stdout</strong></td>
+      <td>Runs the node check and cluster check. Runs after every deploy.</td>
+    </tr>
+    <tr>
+      <td><strong>rabbitmq_server_pre_start</strong></td>
+      <td>Runs before the rabbitmq-server job is started.</td>
+    </tr>
+    <tr>
+      <td><strong>rabbitmq_server_sasl</strong></td>
+      <td>Supervisor, progress, and crash reporting for the Erlang VM and RabbitMQ apps.</td>
+    </tr>
+    <tr>
+      <td><strong>rabbitmq_server_shutdown_stderr</strong></td>
+      <td>Stops the RabbitMQ app and Erlang VM.</td>
+    </tr>
+    <tr>
+      <td><strong>rabbitmq_server_shutdown_stdout</strong></td>
+      <td>Stops the RabbitMQ app and Erlang VM.</td>
+    </tr>
+    <tr>
+      <td><strong>rabbitmq_server_startup_stderr</strong></td>
+      <td>Starts the RabbitMQ app and Erlang VM, then configures users and permissions.</td>
+    </tr>
+    <tr>
+      <td><strong>rabbitmq_server_startup_stdout</strong></td>
+      <td>Starts the RabbitMQ app and Erlang VM, then configures users and permissions.</td>
+    </tr>
+    <tr>
+      <td><strong>rabbitmq_server_upgrade</strong></td>
+      <td>Shuts down Erlang VM and RabbitMQ app if required during an upgrade.</td>
+    </tr>
+  </tbody>
+</table>
+
+<% if product_info['local_product_version'] == '1.20' %>
+
+### <a id='rabbitmq-syslog-custom-rules'></a> Add RabbitMQ Syslog Custom Rules
+
+<%= vars.product_short %> syslog configuration is now managed by <%= vars.ops_manager %>.
+For new services instances, to continue to filter logs in the same way as <%= vars.product_short %>
+v1.19 and earlier, you must manually add custom rules.
+This retains the program names.
+
+The custom rsyslog rules are written in RainerScript.
+For more information, see the [RainerScript](https://www.rsyslog.com/doc/v8-stable/rainerscript/index.html) documentation.
+
+To add custom rules that keep the same program names as in <%= vars.product_short %> v1.19 and earlier:
+
+<p class="note">
+  <strong>Note:</strong> You can add a subset of the rules below depending on how you want to filter the logs.
+</p>
+
+1. Add the following rules to the **Custom Syslog Configuration** field in the Syslog pane:
+
+    ```
+    module(load="imfile")
+    input(type="imfile"
+    File="/var/vcap/sys/log/broker/post-start.stdout.log"
+    Tag="rabbitmq_on_demand_broker_post_start_stdout")
+
+    input(type="imfile"
+    File="/var/vcap/sys/log/broker/post-start.stderr.log"
+    Tag="rabbitmq_on_demand_broker_post_start_stderr")
+
+    input(type="imfile"
+    File="/var/vcap/sys/log/broker/broker.log"
+    Tag="rabbitmq_on_demand_broker")
+
+    input(type="imfile"
+    File="/var/vcap/sys/log/broker/broker-ctl.log"
+    Tag="rabbitmq_on_demand_broker_ctl")
+
+    input(type="imfile"
+    File="/var/vcap/sys/log/rabbitmq-service-broker/broker_stdout.log"
+    Tag="rabbitmq_broker_startup_stdout")
+
+    input(type="imfile"
+    File="/var/vcap/sys/log/rabbitmq-service-broker/broker_stderr.log"
+    Tag="rabbitmq_broker_startup_stderr")
+
+    input(type="imfile"
+    File="/var/vcap/sys/log/route_registrar/route_registrar.log"
+    Tag="rabbitmq_broker_route_registrar_stdout")
+
+    input(type="imfile"
+    File="/var/vcap/sys/log/route_registrar/route_registrar.err.log"
+    Tag="rabbitmq_broker_route_registrar_stderr")
+
+    input(type="imfile"
+    File="/var/vcap/sys/log/rabbitmq-haproxy/haproxy.log"
+    Tag="rabbitmq_haproxy")
+
+    input(type="imfile"
+    File="/var/vcap/sys/log/rabbitmq-haproxy/pre-start.stderr.log"
+    Tag="rabbitmq_haproxy_pre_start_stderr")
+
+    input(type="imfile"
+    File="/var/vcap/sys/log/rabbitmq-haproxy/pre-start.stdout.log"
+    Tag="rabbitmq_haproxy_pre_start_stdout")
+
+    input(type="imfile"
+    File="/var/vcap/sys/log/rabbitmq-haproxy/startup_stderr.log"
+    Tag="rabbitmq_haproxy_pre_startup_stderr")
+
+    input(type="imfile"
+    File="/var/vcap/sys/log/rabbitmq-haproxy/startup_stdout.log"
+    Tag="rabbitmq_haproxy_pre_startup_stdout")
+
+    input(type="imfile"
+    File="/var/vcap/sys/log/rabbitmq-server/rabbit@*-sasl.log"
+    Tag="rabbitmq_server_sasl")
+
+    input(type="imfile"
+    File="/var/vcap/sys/log/rabbitmq-server/rabbit@*.log"
+    Tag="rabbitmq_server")
+
+    input(type="imfile"
+    File="/var/vcap/sys/log/rabbitmq-server/startup_stderr.log"
+    Tag="rabbitmq_server_startup_stderr")
+
+    input(type="imfile"
+    File="/var/vcap/sys/log/rabbitmq-server/startup_stdout.log"
+    Tag="rabbitmq_server_startup_stdout")
+
+    input(type="imfile"
+    File="/var/vcap/sys/log/rabbitmq-server/shutdown_stdout.log"
+    Tag="rabbitmq_server_shutdown_stdout")
+
+    input(type="imfile"
+    File="/var/vcap/sys/log/rabbitmq-server/shutdown_stderr.log"
+    Tag="rabbitmq_server_shutdown_stderr")
+
+    input(type="imfile"
+    File="/var/vcap/sys/log/rabbitmq-server/management-ui/access.log*"
+    Tag="rabbitmq_server_http_api_access")
+
+    input(type="imfile"
+    File="/var/vcap/sys/log/rabbitmq-server/upgrade.log"
+    Tag="rabbitmq_server_upgrade")
+
+    input(type="imfile"
+    File="/var/vcap/sys/log/rabbitmq-server/init.log"
+    Tag="rabbitmq_server_init")
+
+    input(type="imfile"
+    File="/var/vcap/sys/log/rabbitmq-server/node-check.log"
+    Tag="rabbitmq_server_node_check")
+
+    input(type="imfile"
+    File="/var/vcap/sys/log/rabbitmq-server/cluster-check.log"
+    Tag="rabbitmq_server_cluster_check")
+
+    input(type="imfile"
+    File="/var/vcap/sys/log/rabbitmq-server/post-deploy.stderr.log"
+    Tag="rabbitmq_server_post_deploy_stderr")
+
+    input(type="imfile"
+    File="/var/vcap/sys/log/rabbitmq-server/post-deploy.stdout.log"
+    Tag="rabbitmq_server_post_deploy_stdout")
+
+    input(type="imfile"
+    File="/var/vcap/sys/log/rabbitmq-server/drain.log"
+    Tag="rabbitmq_server_drain")
+
+    input(type="imfile"
+    File="/var/vcap/sys/log/rabbitmq-server/pre-start.log"
+    Tag="rabbitmq_server_pre_start")
+
+    input(type="imfile"
+    File="/var/vcap/sys/log/route_registrar/route_registrar.log"
+    Tag="rabbitmq_route_registrar_stdout")
+
+    input(type="imfile"
+    File="/var/vcap/sys/log/route_registrar/route_registrar.err.log"
+    Tag="rabbitmq_route_registrar_stderr")
+    ```
+<% end %>
