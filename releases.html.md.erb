@@ -16,14 +16,17 @@ owner: London Services
 
 ### Resolved Issues
 
-This release fixes the following issue:
+This release fixes the following issues:
 
-**Queues with per-message TTL failing to recover indexes after a restart:**<br>
-Sets `origin` field to `p-rabbitmq` for metrics in the Loggregator subsystem, and upgrades RabbitMQ
-to v3.8.21.<br>
-These changes enable queues with per-message TTL to recover indexes after a restart.
-For more information, see [issue 3272](https://github.com/rabbitmq/rabbitmq-server/discussions/3272)
-in GitHub.
+* **Queues with per-message TTL failing to recover indexes after a restart:**<br>
+  This release sets the `origin` field to `p-rabbitmq` for metrics in the Loggregator subsystem, and upgrades
+  RabbitMQ to v3.8.21.<br>
+  These changes enable queues with per-message TTL to recover indexes after a restart. 
+  For more information, see [issue 3272](https://github.com/rabbitmq/rabbitmq-server/discussions/3272) in GitHub.
+* **Metrics in the Loggregator subsystem lack an origin tag:**<br>
+  This release enables configuration of arbitrary labels, which means labels can be specified when
+  deploying `cf-rabbitmq-release`. For more information, see
+  [issue 75](https://github.com/pivotal-cf/p-rabbitmq/issues/75) in GitHub.
 
 ### Compatibility
 
