@@ -13,13 +13,13 @@ owner: London Services
 
 ### Resolved Issues
 
-This release fixes the following issue:
+This release has the following fix:
 
-**Queues with per-message TTL failing to recover indexes after a restart:**
-
-Upgrades RabbitMQ version to v3.8.21, which addresses an issue that could cause queues with
-per-message TTL failing to recover indexes after a restart.
-For more information, see [issue 3272](https://github.com/rabbitmq/rabbitmq-server/discussions/3272) in GitHub.
+* **Queues with per-message TTL failing to recover indexes after a restart:**<br>
+  This release sets the `origin` field to `p-rabbitmq` for metrics in the Loggregator subsystem and
+  upgrades RabbitMQ to v3.8.21.<br>
+  These changes enable queues with per-message TTL to recover indexes after a restart.
+  For more information, see [issue 3272](https://github.com/rabbitmq/rabbitmq-server/discussions/3272) in GitHub.
 
 ### Compatibility
 
