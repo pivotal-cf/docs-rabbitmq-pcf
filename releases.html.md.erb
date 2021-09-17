@@ -532,7 +532,9 @@ Breaking changes in this release:
 now served using the `rabbitmq_prometheus` plugin. This changes the metrics emitted by the RabbitMQ
 Server component.
 In <%= vars.product_short %> v1.x, queue depth and queue consumer metrics were emitted for every queue.
-In <%= vars.product_short %> v2.0, queue metrics are [aggregated](https://www.rabbitmq.com/prometheus.html#metric-aggregation) by default.
+In <%= vars.product_short %> v2.0, queue metrics are aggregated by default.
+For more information about the aggregation, see the 
+[RabbitMQ documentation](https://www.rabbitmq.com/prometheus.html#metric-aggregation).
 For more information about the plugin, see [Prometheus Plugin](monitor.html#prometheus).
 For the full list of metrics now emitted, see the
 [rabbitmq-server](https://github.com/rabbitmq/rabbitmq-server/blob/master/deps/rabbitmq_prometheus/metrics.md)
