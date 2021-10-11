@@ -23,6 +23,15 @@ rotates logs from the Management UI. This prevents old logs piling up and using 
 * **Prometheus endpoint with TLS no longer breaks the `prom_scraper` job:** Configuring the
 Prometheus endpoint to use TLS no longer breaks the `prom_scraper` job.
 
+### Known Issues
+
+This release has the following issue:
+
+<%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
+
+* Smoke tests for the pre-provisioned offering will fail on this version if mTLS is enabled.
+This is fixed in v2.0.7, but requires additional configuration. See [the TLS documentation](install-config-pp.html#ssl) for details.
+
 ### Compatibility
 
 The following components are compatible with this release:
@@ -117,6 +126,17 @@ This release has the following fixes:
   This release enables configuration of arbitrary labels, which means labels can be specified when
   deploying `cf-rabbitmq-release`. For more information, see
   [issue 75](https://github.com/pivotal-cf/p-rabbitmq/issues/75) in GitHub.
+
+### Known Issues
+
+This release has the following issue:
+
+<%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
+
+* HTTP access logs can build up on disk and are not rotated as expected. This is fixed in v2.0.6.
+
+* Smoke tests for the pre-provisioned offering will fail on this version if mTLS is enabled.
+This is fixed in v2.0.7, but requires additional configuration. See [the TLS documentation](install-config-pp.html#ssl) for details.
 
 ### Compatibility
 
@@ -231,6 +251,11 @@ For v2 of the Healthwatch tile, installing the Healthwatch Exporter for TAS alon
 in duplicated metrics. This is because Heathwatch scrapes the metrics from both the Prometheus port of the RabbitMQ
 service instance and from the Loggregator system of TAS.
 
+* HTTP access logs can build up on disk and are not rotated as expected. This is fixed in v2.0.6.
+
+* Smoke tests for the pre-provisioned offering will fail on this version if mTLS is enabled.
+This is fixed in v2.0.7, but requires additional configuration. See [the TLS documentation](install-config-pp.html#ssl) for details.
+
 ### Compatibility
 
 The following components are compatible with this release:
@@ -334,6 +359,11 @@ directory traversal.
 This release has the following issue:
 
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
+
+* HTTP access logs can build up on disk and are not rotated as expected. This is fixed in v2.0.6.
+
+* Smoke tests for the pre-provisioned offering will fail on this version if mTLS is enabled.
+This is fixed in v2.0.7, but requires additional configuration. See [the TLS documentation](install-config-pp.html#ssl) for details.
 
 ### Compatibility
 
@@ -443,6 +473,11 @@ This release has the following issue:
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
 * **This release does not contain the fix to [CVE-2021-30465](https://nvd.nist.gov/vuln/detail/CVE-2021-30465):**
 VMware recommends upgrading to v2.0.2 or later.
+
+* HTTP access logs can build up on disk and are not rotated as expected. This is fixed in v2.0.6.
+
+* Smoke tests for the pre-provisioned offering will fail on this version if mTLS is enabled.
+This is fixed in v2.0.7, but requires additional configuration. See [the TLS documentation](install-config-pp.html#ssl) for details.
 
 ### Compatibility
 
@@ -583,6 +618,11 @@ This release has the following issues:
 
 * **This release does not contain the fix to [CVE-2021-30465](https://nvd.nist.gov/vuln/detail/CVE-2021-30465):**
 VMware recommends upgrading to v2.0.2 or later.
+
+* HTTP access logs can build up on disk and are not rotated as expected. This is fixed in v2.0.6.
+
+* Smoke tests for the pre-provisioned offering will fail on this version if mTLS is enabled.
+This is fixed in v2.0.7, but requires additional configuration. See [the TLS documentation](install-config-pp.html#ssl) for details.
 
 ### Compatibility
 
