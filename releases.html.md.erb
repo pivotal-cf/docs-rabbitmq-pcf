@@ -25,12 +25,13 @@ Prometheus endpoint to use TLS no longer breaks the `prom_scraper` job.
 
 ### Known Issues
 
-This release has the following issue:
+This release has the following issues:
 
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
 
-* Smoke tests for the pre-provisioned offering will fail on this version if mTLS is enabled.
-This is fixed in v2.0.7, but requires additional configuration. See [the TLS documentation](install-config-pp.html#ssl) for details.
+* Smoke tests for the pre-provisioned offering fail on this version if mTLS is enabled.
+This is fixed in v2.0.7, but requires additional configuration.
+See [Provide SSL Certificates](install-config-pp.html#ssl) for details.
 
 ### Compatibility
 
@@ -129,14 +130,15 @@ This release has the following fixes:
 
 ### Known Issues
 
-This release has the following issue:
+This release has the following issues:
 
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
 
 * HTTP access logs can build up on disk and are not rotated as expected. This is fixed in v2.0.6.
 
-* Smoke tests for the pre-provisioned offering will fail on this version if mTLS is enabled.
-This is fixed in v2.0.7, but requires additional configuration. See [the TLS documentation](install-config-pp.html#ssl) for details.
+* Smoke tests for the pre-provisioned offering fail on this version if mTLS is enabled.
+This is fixed in v2.0.7, but requires additional configuration.
+See [Provide SSL Certificates](install-config-pp.html#ssl) for details.
 
 ### Compatibility
 
@@ -242,19 +244,20 @@ New features and changes in this release:
 
 ### Known Issues
 
-This release has the following issue:
+This release has the following issues:
 
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
 
 * **Duplicated RabbitMQ server metrics when both the Healthwatch Exporter for TAS and the Healthwatch tile are installed:**
-For v2 of the Healthwatch tile, installing the Healthwatch Exporter for TAS along with the Healthwatch tile results
-in duplicated metrics. This is because Heathwatch scrapes the metrics from both the Prometheus port of the RabbitMQ
-service instance and from the Loggregator system of TAS.
+For v2 of the Healthwatch tile, installing the Healthwatch Exporter for TAS along with the
+Healthwatch tile results in duplicated metrics. This is because Heathwatch scrapes the metrics from
+both the Prometheus port of the RabbitMQ service instance and from the Loggregator system of TAS.
 
 * HTTP access logs can build up on disk and are not rotated as expected. This is fixed in v2.0.6.
 
-* Smoke tests for the pre-provisioned offering will fail on this version if mTLS is enabled.
-This is fixed in v2.0.7, but requires additional configuration. See [the TLS documentation](install-config-pp.html#ssl) for details.
+* Smoke tests for the pre-provisioned offering fail on this version if mTLS is enabled.
+This is fixed in v2.0.7, but requires additional configuration.
+See [Provide SSL Certificates](install-config-pp.html#ssl) for details.
 
 ### Compatibility
 
@@ -356,14 +359,15 @@ directory traversal.
 
 ### Known Issues
 
-This release has the following issue:
+This release has the following issues:
 
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
 
 * HTTP access logs can build up on disk and are not rotated as expected. This is fixed in v2.0.6.
 
-* Smoke tests for the pre-provisioned offering will fail on this version if mTLS is enabled.
-This is fixed in v2.0.7, but requires additional configuration. See [the TLS documentation](install-config-pp.html#ssl) for details.
+* Smoke tests for the pre-provisioned offering fail on this version if mTLS is enabled.
+This is fixed in v2.0.7, but requires additional configuration.
+See [Provide SSL Certificates](install-config-pp.html#ssl) for details.
 
 ### Compatibility
 
@@ -621,8 +625,9 @@ VMware recommends upgrading to v2.0.2 or later.
 
 * HTTP access logs can build up on disk and are not rotated as expected. This is fixed in v2.0.6.
 
-* Smoke tests for the pre-provisioned offering will fail on this version if mTLS is enabled.
-This is fixed in v2.0.7, but requires additional configuration. See [the TLS documentation](install-config-pp.html#ssl) for details.
+* Smoke tests for the pre-provisioned offering fail on this version if mTLS is enabled.
+This is fixed in v2.0.7, but requires additional configuration.
+See [Provide SSL Certificates](install-config-pp.html#ssl) for details.
 
 ### Compatibility
 

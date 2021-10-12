@@ -247,16 +247,10 @@ certificates and keys for the RabbitMQ cluster to use.<br>
 
 1. To enable support for mTLS, select **Enable 'verify_peer' SSL certificate verification**.
 1. To enforce mTLS, additionally select **Require peer certificate validation**.
-
-<p class='note warning'>
-  <strong>Warning:</strong>
-  If enforcing mTLS, the smoke test errand will fail by default. This is because the certificate presented by the smoke test app
-  will not be trusted by your RabbitMQ instance. It is <strong>necessary</strong> to configure your RabbitMQ instace to trust the certificates
-  of the CAs which signed the smoke test app certificate.
-
-  These CAs' certificates can be located in Credhub. You will need to add both the `diego-instance-identity-root-ca-*` `diego-instance-identity-intermediate-ca-*`
-  to the trust store in the 'RabbitMQ server CA certificate(s)' section.
-</p>
+1. To enforce mTLS:
+    1. Add `diego-instance-identity-root-ca-*` and `diego-instance-identity-intermediate-ca-*` to
+    the **RabbitMQ server CA certificate(s)** field.
+    1. Select **Require peer certificate validation**.
 
 ### <a id="tls"></a>Configure TLS Support
 
