@@ -511,6 +511,8 @@ plan.
         </ul></td></tr>
       <tr><td><strong>Plan Name</strong></td>
           <td>Accept the default or enter a name. This is the name that appears in the Marketplace.</td></tr>
+      <tr><td><strong>RabbitMQ Version</strong></td>
+          <td>(Present from 2.0.7 onward) Select the RabbitMQ version <code>3.8</code> or <code>3.9</code>. RabbitMQ 3.9 is required to enable the <code>rabbitmq_stream</code> plugin.</td></tr>
       <tr><td><strong>Plan Description</strong></td>
           <td>Accept the default or enter a description. This description appears in the Marketplace.</td></tr>
       <tr>
@@ -960,6 +962,10 @@ The following plugins are disabled by default:
 	<tr>
                 <td><code>rabbitmq_stomp</code></td>
                 <td> <a href="https://www.rabbitmq.com/stomp.html"> STOMP Plugin</a> in the RabbitMQ documentation.</td>
+	</tr>
+  <tr>
+                <td><code>rabbitmq_stream</code></td>
+                <td> <a href="https://www.rabbitmq.com/stream.html"> Stream Plugin</a> in the RabbitMQ documentation.</td>
 	</tr>
 	<tr>
                 <td><code>rabbitmq_tracing</code></td>
