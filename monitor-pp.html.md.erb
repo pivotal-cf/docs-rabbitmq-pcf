@@ -223,6 +223,85 @@ The following KPIs from the RabbitMQ server component:
    </tr>
 </table>
 
+### <a id="prometheus"></a> Prometheus Plugin
+
+<%= vars.product_short %> by default enables the `rabbitmq_prometheus` plugin for pre-provisioned instances.
+For more information about the plugin and monitoring RabbitMQ using Prometheus and Grafana, see the
+[RabbitMQ documentation](https://www.rabbitmq.com/prometheus.html).
+
+Prometheus-style metrics are available at `SERVICE-INSTANCE-ID:15692/metrics`.
+To pull these metrics from the service instances, you must deploy and configure a Prometheus instance.
+The following Prometheus scrape config discovers pre-provisioned RabbitMQ instances:
+
+```
+job_name: rabbitmq
+metrics_path: "/metrics"
+scheme: http
+dns_sd_configs:
+- names:
+    - q-s4.rabbitmq-server.*.*.bosh.
+  type: A
+  port: 15692
+```
+
+If Prometheus is deployed with the Healthwatch v2 tile, add the configuration above
+as an additional scrape job.
+For more information, see [Configuring Healthwatch](https://docs.pivotal.io/healthwatch/configuring/configuring-healthwatch.html)
+in the Healthwatch documentation.
+
+Note that, by default, metrics are aggregated; this results in a lower performance overhead at the cost of lower data
+fidelity. See the [RabbitMQ documentation](https://www.rabbitmq.com/prometheus.html#metric-aggregation) for more information.
+
+In order to collect metrics on a per-object scope (such as per-queue), you must either enable per-object metrics
+by setting <code>{rabbitmq_prometheus,[{return_per_object_metrics,true}]}</code> following [Expert mode: Overriding RabbitMQ Server configuration](./expert-override-config.html),
+or by scraping the dedicated per-object metrics endpoint:
+
+```
+job_name: rabbitmq
+metrics_path: "/per-object"
+scheme: http
+dns_sd_configs:
+- names:
+    - q-s4.rabbitmq-server.*.*.bosh.
+  type: A
+  port: 15692
+```
+
+Note that collecting per-object metrics on a system with many objects (such as queues, connections, etc.) will be very slow. Make
+sure to understand the impact on your system and its load before enabling this on a production cluster.
+
+Alternatively as of v2.0.7, it is possible to only collect per-object metrics for certain scopes of metrics, decreasing the performance overhead while still retaining
+data fidelity for metrics that are of import to you. For more information, see [Selective querying of per-object metrics](https://github.com/rabbitmq/rabbitmq-server/tree/master/deps/rabbitmq_prometheus#selective-querying-of-per-object-metrics).to
+For example, to collect only the per-object metrics which allow you to see how many messages sit in every queue and how many consumers each of these queues have,
+you can use the following scrape config:
+
+```
+job_name: rabbitmq
+metrics_path: "/metrics/detailed?family=queue_coarse_metrics&family=queue_consumer_count"
+scheme: http
+dns_sd_configs:
+- names:
+    - q-s4.rabbitmq-server.*.*.bosh.
+  type: A
+  port: 15692
+```
+
+### <a id="Grafana"></a> Grafana Dashboards
+
+The RabbitMQ team has written dashboards that you can import into Grafana.
+These dashboards include documentation for each metric.
+
+* **[RabbitMQ-Overview](https://grafana.com/grafana/dashboards/10991):**
+Dashboard for an overview of the RabbitMQ system
+
+* **[Erlang-Distribution](https://grafana.com/grafana/dashboards/11352):**
+Dashboard for the underlying Erlang distribution
+
+For more information about these dashboards, see the
+[RabbitMQ documentation](https://www.rabbitmq.com/prometheus.html).
+If Grafana is deployed using the Healthwatch v2 tile, you can load these dashboards by selecting the
+**Enable RabbitMQ dashboards** checkbox in the Healthwatch tile.
+
 ### <a id="bosh"></a> BOSH System Health Metrics
 
 <%# The below partial is in https://github.com/pivotal-cf/docs-partials %>
