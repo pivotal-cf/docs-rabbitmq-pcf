@@ -231,6 +231,7 @@ For more information about the plugin and monitoring RabbitMQ using Prometheus a
 
 Prometheus-style metrics are available at `SERVICE-INSTANCE-ID:15692/metrics`.
 To pull these metrics from the service instances, you must deploy and configure a Prometheus instance.
+
 The following Prometheus scrape config discovers pre-provisioned RabbitMQ instances:
 
 ```
@@ -249,31 +250,50 @@ as an additional scrape job.
 For more information, see [Configuring Healthwatch](https://docs.pivotal.io/healthwatch/configuring/configuring-healthwatch.html)
 in the Healthwatch documentation.
 
-Note that, by default, metrics are aggregated; this results in a lower performance overhead at the cost of lower data
-fidelity. See the [RabbitMQ documentation](https://www.rabbitmq.com/prometheus.html#metric-aggregation) for more information.
+<p class="note">
+  <strong>Note:</strong> By default, metrics are aggregated.
+  This results in a lower performance overhead at the cost of lower data fidelity.
+  For more information, see the
+  <a href="https://www.rabbitmq.com/prometheus.html#metric-aggregation">RabbitMQ documentation</a>.
+</p>
 
-In order to collect metrics on a per-object scope (such as per-queue), you must either enable per-object metrics
-by setting <code>{rabbitmq_prometheus,[{return_per_object_metrics,true}]}</code> following [Expert mode: Overriding RabbitMQ Server configuration](./expert-override-config.html),
-or by scraping the dedicated per-object metrics endpoint:
 
-```
-job_name: rabbitmq
-metrics_path: "/per-object"
-scheme: http
-dns_sd_configs:
-- names:
-    - q-s4.rabbitmq-server.*.*.bosh.
-  type: A
-  port: 15692
-```
+#### <a id="per-object"></a> Scrape Per-Object Metrics
 
-Note that collecting per-object metrics on a system with many objects (such as queues, connections, etc.) will be very slow. Make
-sure to understand the impact on your system and its load before enabling this on a production cluster.
+To collect metrics on a per-object scope, such as per-queue, do one of the following:
 
-Alternatively as of v2.0.7, it is possible to only collect per-object metrics for certain scopes of metrics, decreasing the performance overhead while still retaining
-data fidelity for metrics that are of import to you. For more information, see [Selective querying of per-object metrics](https://github.com/rabbitmq/rabbitmq-server/tree/master/deps/rabbitmq_prometheus#selective-querying-of-per-object-metrics).to
-For example, to collect only the per-object metrics which allow you to see how many messages sit in every queue and how many consumers each of these queues have,
-you can use the following scrape config:
+- Enable per-object metrics by setting `{rabbitmq_prometheus,[{return_per_object_metrics,true}]}`.
+For instructions, see [Expert mode: Overriding RabbitMQ Server configuration](./expert-override-config.html).
+
+- Scrape the dedicated per-object metrics endpoint, for example:
+
+    ```
+    job_name: rabbitmq
+    metrics_path: "/per-object"
+    scheme: http
+    dns_sd_configs:
+    - names:
+        - q-s4.rabbitmq-server.*.*.bosh.
+      type: A
+      port: 15692
+    ```
+
+<p class="note">
+  <strong>Note:</strong> Collecting per-object metrics on a system with many objects,
+  such as queues or connections, is very slow.
+  Ensure you understand the impact on your system and its load before enabling
+  this on a production cluster.
+</p>
+
+#### <a id="per-object"></a> Filter the Per-Object Metrics
+
+As of <%= vars.product_short %> v2.0.7, you can collect only the per-object metrics for
+certain scopes of metrics.
+This decreases the performance overhead, while retaining data fidelity for metrics that you are interested in.
+For more information, see [Selective querying of per-object metrics](https://github.com/rabbitmq/rabbitmq-server/tree/master/deps/rabbitmq_prometheus#selective-querying-of-per-object-metrics).
+
+For example, the following scrape config collects only the per-object metrics that allow you to see how
+many messages sit in every queue and how many consumers each of these queues have:
 
 ```
 job_name: rabbitmq
