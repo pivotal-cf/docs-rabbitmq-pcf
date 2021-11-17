@@ -1,28 +1,46 @@
-# Contributing
+# Contributing to Tile Developer documentation
 
-Thanks for your interest in contributing to Pivotal's Open Source projects!
+The Tile Developer documentation project team welcomes contributions from the community. Before you start working with
+the Tile Developer documentation, please
+read our [Developer Certificate of Origin](https://cla.vmware.com/dco). All contributions to this repository must be
+signed as described on that page. Your signature certifies that you wrote the patch or have the right to pass it on
+as an open-source patch.
 
-This project is maintained by the RabbitMQ for Pivotal Platform team.
+## Contribution Flow
 
-**At the moment, the team is not actively reviewing contributions to this project.**
+This is a rough outline of what a contributor's workflow looks like:
 
-We will aim to review or close existing pull requests and issues as of August 2017 as soon as we are able.
-We do not have an expected turnaround timeframe for new PRs or issues.
+- Create a topic branch from where you want to base your work
+- Make commits of logical units
+- Make sure your commit messages are in the proper format (see below)
+- Push your changes to a topic branch in your fork of the repository
+- Submit a pull request
 
-If you are a Pivotal customer, please do not use this repository to flag issues. Please use normal customer support channels.
+Example:
 
-## Legal
+``` shell
+git remote add upstream https://github.com/vmware/@(project).git
+git checkout -b my-new-feature main
+git commit -a
+git push origin my-new-feature
+```
 
-The following guidelines apply to all contributions:
+### Updating pull requests
 
-- Contributors must sign the [Pivotal Contributor License Agreement](https://cla.pivotal.io/sign/pivotal)
-- Agree to terms of the [Cloud Foundry Code of Conduct](https://www.cloudfoundry.org/code-of-conduct/)
+If your PR fails to pass CI or needs changes based on code review, you'll most likely want to squash these changes into
+existing commits.
 
-## General Code Contribution Guidelines
+If your pull request contains a single commit or your changes are related to the most recent commit, you can simply
+amend the commit.
 
-Open-Source projects prefer that contributions contain:
+Be sure to add a comment to the PR indicating your new changes are ready to review, as GitHub does not generate a
+notification when you git push.
 
-- Descriptive and understandable tests
-- Helpful [commit messages](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
-- Small improvements that leave the code base better than it was before, aka the [Boy Scout
-  Rule](http://programmer.97things.oreilly.com/wiki/index.php/The_Boy_Scout_Rule)
+### Formatting Commit Messages
+
+We follow the conventions on [Conventional Commits](https://www.conventionalcommits.org/) and
+[How to Write a Git Commit Message](http://chris.beams.io/posts/git-commit/).
+
+Be sure to include any related GitHub issue references in the commit message.  See
+[GFM syntax](https://guides.github.com/features/mastering-markdown/#GitHub-flavored-markdown) for referencing issues
+and commits.
