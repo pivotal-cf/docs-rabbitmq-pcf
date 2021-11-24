@@ -10,26 +10,29 @@ owner: London Services
 <%= partial vars.path_to_partials + '/services/services-lts-notice', :locals => {
   :eogs_date => "April 2024"} %>
 
-# <a id="2-0-8"></a> v2.0.8
+## <a id="2-0-8"></a> v2.0.8
 
 **Release Date**: December 3, 2021
 
 ### Resolved Issues
 
-This release fixes the following issues:
+This release has the following fix:
 
-* Improved network partition detection
+* Improved network partition detection.
 
-* Disk and Memory alarm metrics are now emitted to the loggregator subsystem by instances running RabbitMQ 3.8
+* **Disk and memory alarm metrics:** Instances running RabbitMQ v3.8 now emit disk
+and memory alarm metrics to the Loggregator subsystem.
 
 
 ### Known Issues
 
-This release has the following known issues:
+This release has the following issues:
 
-* The on-demand broker does not support TLS
+<%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
 
-* Enabling OAuth2 identification for RabbitMQ results in errors
+* **OAuth2 errors:** Enabling OAuth2 identification for RabbitMQ results in errors.
+
+* **TLS support:** The on-demand broker does not support TLS.
 
 
 ### Compatibility
@@ -106,7 +109,9 @@ The following components are compatible with this release:
 	</tr>
 </table>
 
-<sup>*</sup> For more information, see the <a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v">v</a> GitHub documentation.
+<sup>*</sup> For more information, see the
+<a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.8.25">v3.8.25</a> and
+<a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.9.9">v3.9.9</a> GitHub documentation.
 
 ## <a id="2-0-7"></a> v2.0.7
 
@@ -139,10 +144,12 @@ For more information, see [Provide SSL Certificates](install-config-pp.html#ssl)
 
 This release has the following issue:
 
-* The on-demand broker does not support TLS
-* Enabling OAuth2 identification for RabbitMQ results in errors
-
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
+
+* **OAuth2 errors:** Enabling OAuth2 identification for RabbitMQ results in errors.
+
+* **TLS support:** The on-demand broker does not support TLS.
+
 
 ### Compatibility
 
@@ -218,7 +225,9 @@ The following components are compatible with this release:
   </tr>
 </table>
 
-<sup>*</sup> For more information, see the <a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v">v</a> GitHub documentation.
+<sup>*</sup> For more information, see the
+<a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.8.25">v3.8.23</a> and
+<a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.9.9">v3.9.8</a> GitHub documentation.
 
 ## <a id="2-0-6"></a> v2.0.6
 
@@ -237,15 +246,15 @@ Prometheus endpoint to use TLS no longer breaks the `prom_scraper` job.
 
 This release has the following issues:
 
-* The on-demand broker does not support TLS
-
-* Enabling OAuth2 identification for RabbitMQ results in errors
-
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
 
 * **Smoke tests for the pre-provisioned offering fail if mTLS is enabled:**
 This is fixed in v2.0.7, but requires additional configuration.
 See [Provide SSL Certificates](install-config-pp.html#ssl) for details.
+
+* **OAuth2 errors:** Enabling OAuth2 identification for RabbitMQ results in errors.
+
+* **TLS support:** The on-demand broker does not support TLS.
 
 ### Compatibility
 
@@ -348,13 +357,13 @@ This release has the following issues:
 
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
 
-* The on-demand broker does not support TLS
-
 * **HTTP access logs can build up on disk and are not rotated as expected:** This is fixed in v2.0.6.
 
 * **Smoke tests for the pre-provisioned offering fail if mTLS is enabled:**
 This is fixed in v2.0.7, but requires additional configuration.
 See [Provide SSL Certificates](install-config-pp.html#ssl) for details.
+
+* **TLS support:** The on-demand broker does not support TLS.
 
 ### Compatibility
 
@@ -464,8 +473,6 @@ This release has the following issues:
 
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
 
-* The on-demand broker does not support TLS
-
 * **Duplicated RabbitMQ server metrics when both the Healthwatch Exporter for TAS and the Healthwatch tile are installed:**
 For v2 of the Healthwatch tile, installing the Healthwatch Exporter for TAS along with the
 Healthwatch tile results in duplicated metrics. This is because Heathwatch scrapes the metrics from
@@ -476,6 +483,8 @@ both the Prometheus port of the RabbitMQ service instance and from the Loggregat
 * **Smoke tests for the pre-provisioned offering fail if mTLS is enabled:**
 This is fixed in v2.0.7, but requires additional configuration.
 See [Provide SSL Certificates](install-config-pp.html#ssl) for details.
+
+* **TLS support:** The on-demand broker does not support TLS.
 
 ### Compatibility
 
@@ -581,13 +590,13 @@ This release has the following issues:
 
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
 
-* The on-demand broker does not support TLS
-
 * **HTTP access logs can build up on disk and are not rotated as expected:** This is fixed in v2.0.6.
 
 * **Smoke tests for the pre-provisioned offering fail if mTLS is enabled:**
 This is fixed in v2.0.7, but requires additional configuration.
 See [Provide SSL Certificates](install-config-pp.html#ssl) for details.
+
+* **TLS support:** The on-demand broker does not support TLS.
 
 ### Compatibility
 
@@ -695,15 +704,16 @@ This release has the following fix:
 This release has the following issue:
 
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
+
 * **This release does not contain the fix to [CVE-2021-30465](https://nvd.nist.gov/vuln/detail/CVE-2021-30465):**
 VMware recommends upgrading to v2.0.2 or later.
-
-* The on-demand broker does not support TLS
 
 * **HTTP access logs can build up on disk and are not rotated as expected:** This is fixed in v2.0.6.
 
 * **Smoke tests for the pre-provisioned offering fail if mTLS is enabled:**
 This is fixed in v2.0.7, but requires additional configuration. See [the TLS documentation](install-config-pp.html#ssl) for details.
+
+* **TLS support:** The on-demand broker does not support TLS.
 
 ### Compatibility
 
@@ -838,8 +848,6 @@ This release has the following issues:
 
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
 
-* The on-demand broker does not support TLS
-
 * **This release is incompatible with Ruby buildpack v1.8.33 and later:**
    Upgrades to this version of <%= vars.product_short %> fail the smoke test errand.
    This is fixed in v2.0.1.
@@ -852,6 +860,8 @@ VMware recommends upgrading to v2.0.2 or later.
 * **Smoke tests for the pre-provisioned offering fail if mTLS is enabled:**
 This is fixed in v2.0.7, but requires additional configuration.
 See [Provide SSL Certificates](install-config-pp.html#ssl) for details.
+
+* **TLS support:** The on-demand broker does not support TLS.
 
 ### Compatibility
 
