@@ -18,6 +18,8 @@ owner: London Services
 
 This release has the following fix:
 
+* TLS 1.2 support is restored.
+
 * Improved network partition detection.
 
 * **Disk and memory alarm metrics:** Instances running RabbitMQ v3.8 now emit disk
@@ -142,6 +144,8 @@ For more information, see [Provide SSL Certificates](install-config-pp.html#ssl)
 ### Known Issues
 
 This release has the following issue:
+
+* **TLS 1.2 unsupported:** Due to a bug in Erlang OTP 24.1.2, when TLS is enabled, only TLS 1.3 is supported.
 
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
 
