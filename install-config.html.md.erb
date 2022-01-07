@@ -849,36 +849,53 @@ To create an admin user on a <%= vars.product_short %> service instance:
     <br>This returns a Dashboard URL containing the admin credentials, which can be used to access the RabbitMQ Management UI. For example:
 
     <pre class="terminal">
-   $ cf service-key my-instance my-admin-key<br>
-   Getting key my-admin-key for service instance my-instance as user<span>@</span>example.com...
-   {
-     "dashboard_url": "https://my-instance.bosh-lite.com",
-     "username": "admin-username",
-     "password": "admin-password",
-     ...
-   }
-</pre>
+    $ cf service-key my-instance my-admin-key<br>
+    Getting key my-admin-key for service instance my-instance as user<span>@</span>example.com...
+    {
+      "dashboard_url": "https://my-instance.bosh-lite.com",
+      "username": "admin-username",
+      "password": "admin-password",
+      ...
+    }
+    </pre>
 
 ## <a id="service-key-tags"></a> Creating users with other privilege levels
 
-The example in [Create an Admin User for a Service Instance](#admin-service-key) demonstrates how to create a user
-with the <code>administrator</code> privilege tag. This same process can be followed to create users with any tags
-supported by RabbitMQ. For a full list of supported tags, see the [RabbitMQ documentation](https://www.rabbitmq.com/management.html#permissions).
+The example in [Create an Admin User for a Service Instance](#admin-service-key) demonstrates how
+to create a user with the <code>administrator</code> privilege tag.
+This same process can be followed to create users with any tags supported by RabbitMQ.
+For a full list of supported tags, see the
+[RabbitMQ documentation](https://www.rabbitmq.com/management.html#permissions).
 
-Any supported tag can be enabled for the user by providing it as a comma-seperated list. For example, to create a
-monitoring-only user:
-<pre class="terminal">
-$ cf create-service-key my-instance my-monitoring-key -c '{"tags":"monitoring"}'<br>
-Creating service key my-monitoring-key for service instance my-instance as user<span>@</span>example.com...
-OK
-</pre>
+Any supported tag can be enabled for the user by providing it as a comma-seperated list.
 
-Or to create a user with both policymaker and monitoring permissions:
-<pre class="terminal">
-$ cf create-service-key my-instance my-default-key -c '{"tags":"policymaker,monitoring"}'<br>
-Creating service key my-default-key for service instance my-instance as user<span>@</span>example.com...
-OK
-</pre>
+* To create a monitoring-only user, run:
+
+    ```
+    cf create-service-key INSTANCE-NAME MONITORING-KEY -c '{"tags":"monitoring"}'
+    ```
+
+    For example:
+
+    <pre class="terminal">
+    $ cf create-service-key my-instance my-monitoring-key -c '{"tags":"monitoring"}'<br>
+    Creating service key my-monitoring-key for service instance my-instance as user<span>@</span>example.com...
+    OK
+    </pre>
+
+* To create a user with both policymaker and monitoring permissions, run:
+
+    ```
+    cf create-service-key INSTANCE-NAME DEFAULT-KEY -c '{"tags":"policymaker,monitoring"}'
+    ```
+
+    For example:
+
+    <pre class="terminal">
+    $ cf create-service-key my-instance my-default-key -c '{"tags":"policymaker,monitoring"}'<br>
+    Creating service key my-default-key for service instance my-instance as user<span>@</span>example.com...
+    OK
+    </pre>
 
 If no tags are specified, the default tags applied are <code>management,policymaker</code>.
 
