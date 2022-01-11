@@ -859,6 +859,45 @@ To create an admin user on a <%= vars.product_short %> service instance:
    }
 </pre>
 
+## <a id="service-key-tags"></a> Creating Users with Other Privilege Levels
+
+The example in [Create an Admin User for a Service Instance](#admin-service-key) demonstrates how
+to create a user with the <code>administrator</code> privilege tag.
+This same process can be followed to create users with any tags supported by RabbitMQ.
+For a full list of supported tags, see the
+[RabbitMQ documentation](https://www.rabbitmq.com/management.html#permissions).
+
+Any supported tag can be enabled for the user by providing it as a comma-separated list.
+
+* To create a monitoring-only user, run:
+
+    ```
+    cf create-service-key INSTANCE-NAME MONITORING-KEY -c '{"tags":"monitoring"}'
+    ```
+
+    For example:
+
+    <pre class="terminal">
+    $ cf create-service-key my-instance my-monitoring-key -c '{"tags":"monitoring"}'<br>
+    Creating service key my-monitoring-key for service instance my-instance as user<span>@</span>example.com...
+    OK
+    </pre>
+
+* To create a user with both policymaker and monitoring permissions, run:
+
+    ```
+    cf create-service-key INSTANCE-NAME DEFAULT-KEY -c '{"tags":"policymaker,monitoring"}'
+    ```
+
+    For example:
+
+    <pre class="terminal">
+    $ cf create-service-key my-instance my-default-key -c '{"tags":"policymaker,monitoring"}'<br>
+    Creating service key my-default-key for service instance my-instance as user<span>@</span>example.com...
+    OK
+    </pre>
+
+If no tags are specified, the default tags applied are <code>management,policymaker</code>.
 
 ## <a id="server-plugins"></a> RabbitMQ Server Plugins
 
