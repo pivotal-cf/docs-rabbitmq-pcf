@@ -130,8 +130,7 @@ This grants you full admin access to the RabbitMQ Management UI.
 
 Choose which plugins you want to enable in this section of the **Pre-Provisioned RabbitMQ** tab.
 
-You must leave the **rabbitmq_management** plugin enabled for this product to work. VMware also strongly recommends
-enabling the **rabbitmq_prometheus** plugin in addition.
+You must leave the **rabbitmq_management** plugin enabled for this product to work.
 
 <%= image_tag("images/config-plugins.png", :alt => "Screenshot of multi-select checkbox fields labeled 'RabbitMQ plugins'.
 Next to the label is a red asterisk to indicate that selecting plugins is required.
@@ -277,31 +276,7 @@ They are both enabled.") %>
     ```
     For how to set properties, see [(Optional, Expert only) Override RabbitMQ Server Advanced Configuration](#configfile) below.
 
-### <a id="detailed-metrics"></a> Collect additional RabbitMQ metrics in Loggregator
 
-RabbitMQ collects numerous different metrics automatically and sends these to the Loggregator firehose system for
-collation, provided you have the **rabbitmq_prometheus** plugin enabled.
-This section pertains to this automatic collection for this system; if you are using purely a Prometheus
-server for scraping your observed systems, you may ignore this section.
-For more information on metrics collected in general in <%= vars.product_short %>, see @TODO.
-
-You can also configure your pre-provisioned Service Instances to collect additional, more detailed, metrics for specific vhosts
-or families of metrics. These metrics are more resource-consumptive to collect, but can be focused to only collect
-information for objects of your choosing based on a provided query parameter. For more information on this metrics
-collection, and on building this query parameter, see the [RabbitMQ documentation](https://github.com/rabbitmq/rabbitmq-server/tree/master/deps/rabbitmq_prometheus#selective-querying-of-per-object-metrics).
-
-To configure your service instance to collect additional detailed metrics:
-
-1. Determine the query parameter needed for your use case from the [RabbitMQ documentation](https://github.com/rabbitmq/rabbitmq-server/tree/master/deps/rabbitmq_prometheus#selective-querying-of-per-object-metrics).
-    You will only require the query string going forwards, i.e. everything from the <code>?</code> onwards.
-
-1. In the **Detailed metrics query for Loggregator** field, set the query parameter you just determined,
-    for example <code>?family=queue_coarse_metrics&family=queue_consumer_count</code>.
-
-1. Click **Save**.
-
-If you later wish to remove this additional metric collection, you can remove this string and Apply Changes, and the
-Loggregator system will no longer collect these additional metrics.
 
 ### <a id="configfile"></a> (Optional, Expert only) Override RabbitMQ Server Advanced Configuration
 
@@ -491,9 +466,9 @@ labeled 'Do you want to configure Syslog forwarding?', 'Address',
           <a href="https://www.rsyslog.com/doc/v8-stable/rainerscript/index.html">RainerScript</a>
           and are inserted before the rule that forwards logs.
           For the list of custom rules you can add in this field, see
-          <a href="./monitor.html#rabbitmq-syslog-custom-rules">RabbitMQ Syslog Custom Rules</a>.
+          <a href="./monitor-pp.html#rabbitmq-syslog-custom-rules">RabbitMQ Syslog Custom Rules</a>.
           For more information about the program names you can use in the custom rules, see
-          <a href="./monitor.html#program-names">Program Names</a>.</td>
+          <a href="./monitor-pp.html#program-names">Program Names</a>.</td>
     </tr>
 </table>
 
