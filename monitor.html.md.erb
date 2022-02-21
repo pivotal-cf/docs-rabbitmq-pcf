@@ -117,10 +117,7 @@ dns_sd_configs:
 The regular expression in the scrape config name ensures that Prometheus discovers all future service
 instances too. Note that if you are using TLS in the on-demand service offering, your port will instead be 15691.
 
-If Prometheus is deployed with the Healthwatch v2 tile, add the configuration above
-as an additional scrape job.
-For more information, see [Configuring Healthwatch](https://docs.pivotal.io/healthwatch/configuring/configuring-healthwatch.html)
-in the Healthwatch documentation.
+If Prometheus is deployed with the Healthwatch v2 tile, then the above configuration is automatically applied.
 
 <p class="note">
   <strong>Note:</strong> By default, metrics are aggregated.
@@ -615,9 +612,10 @@ see [Reviewing Pending Product Changes](https://docs.pivotal.io/pivotalcf/custom
 With <%= vars.product_short %> logging configured, several types of components generate logs:
 the RabbitMQ message server nodes, the service brokers, and (if present) HAProxy.
 
-* The logs for RabbitMQ server nodes follow the format <code>[job=rabbitmq-server-partition-GUID index=0]</code>
-* The logs for the RabbitMQ service broker follow the format <code>[job=rabbitmq-broker-partition-GUID index=0]</code>
-* The logs for HAProxy nodes follow the format <code>[job=rabbitmq-haproxy-partition-GUID index=X]</code>
+* The logs for RabbitMQ server nodes follow the format <code>[job:"rabbitmq-server" ip:"192.0.2.0"]</code>
+* The logs for the pre-provisioned RabbitMQ service broker follow the format <code>[job:"rabbitmq-broker" ip:"192.0.2.1"]</code>
+* The logs for the on-demand RabbitMQ service broker follow the format <code>[job:"on-demand-broker" ip:"192.0.2.2"]</code>
+* The logs for HAProxy nodes follow the format <code>[job:"rabbitmq-haproxy" ip:"192.0.2.3"]</code>
 
 RabbitMQ and HAProxy servers log at the <code>info</code> level and capture errors, warnings, and informational messages.
 
