@@ -1,37 +1,37 @@
 ---
-title: Migrating from Metrics v1.x to v2.x
+title: Migrating from v1.x to v2.x Metrics
 owner: London Services
 ---
 
-<%= vars.product_short %> v2.0 shipped with a number of improvements to the suite of metrics
-available in RabbitMQ service instances.
-This version unifies the suite of metrics provided by service instances with the suite
-provided by open-source RabbitMQ, and vastly increases the amount of information available to you
-for observability, as well as leaning on the more performance-optimised observability endpoint in
-RabbitMQ.
+<%= vars.product_full %> v2.0 includes improvements to the metrics available in
+RabbitMQ service instances.
+This version unifies metrics provided by service instances with the metrics
+provided by open-source RabbitMQ, and vastly increases the amount of information
+available to you for observability, and takes advantage of
+the more performance-optimised observability endpoint in RabbitMQ.
 
-A necessary change as a result of this refactor is that the format of the metrics provided in
-<%= vars.product_short %> v1.0 has changed. Any dashboards you used before upgrading might require
-changes to function with the new metric suite.
+As a result of this refactor, the format of the metrics provided in v1.0 of <%= vars.product_short %> has changed.
+You might need to change any dashboards you used before upgrading.
+In many cases, there are simply one-to-one mappings of old metric names to new metric names, however some
+specific metrics might require some additional manipulation to achieve the same result.
+Unless otherwise stated, all metrics are available from both the Loggregator Firehose
+system and directly from the Prometheus endpoint on the RabbitMQ nodes themselves.
 
-In many cases, there are simply one-to-one mappings of old metric names to new metric names.
-However, some metrics might require additional manipulation to achieve the same result.
-Unless otherwise stated, all metrics are available by using both the Loggregator Firehose system
-and directly from the Prometheus endpoint on the RabbitMQ nodes themselves.
-
-For the full list of RabbitMQ and Erlang metrics exposed by the product, consult the [upstream documentation](https://github.com/rabbitmq/rabbitmq-server/blob/master/deps/rabbitmq_prometheus/metrics.md) in GitHub.
+For the full list of exposed RabbitMQ and Erlang metrics, see the
+[rabbitmq-server](https://github.com/rabbitmq/rabbitmq-server/blob/master/deps/rabbitmq_prometheus/metrics.md) in GitHub.
 
 <p class="note">
-  <strong>Note:</strong> The vast majority of these metrics are exposed by the <code>rabbitmq_prometheus</code> plugin, and require you to have activated this plugin on your
-  service instance.
-  The plugin is always enabled for on-demand instances, however you can disable it for
-  pre-provisioned instances. VMware recommends keeping this plugin enabled.
+  <strong>Note:</strong> The majority of these metrics are exposed by the
+  <code>rabbitmq_prometheus</code> plug-in, and require you to have activated
+  this plug-in on your service instance. The plug-in is always enabled for on-demand
+  instances, however you can deactivate it for pre-provisioned instances.
+  VMware recommends that you do not deactivate this plug-in.
 </p>
 
-## <a id="service-broker-prepro"></a> Service Broker Metrics (Pre-provisioned only)
+## <a id="service-broker-prepro"></a> Pre-provisioned Service Broker Metrics
 
 All metrics for the pre-provisioned service broker have one-to-one equivalents in
-<%= vars.product_short %> v2.0, and differ only in names.
+<%= vars.product_short %> v2.0, and differ only in naming.
 
 <table>
 <thead>
@@ -42,16 +42,16 @@ All metrics for the pre-provisioned service broker have one-to-one equivalents i
 </thead>
 <tbody>
   <tr>
-    <td>/p-rabbitmq/service_broker/heartbeat</td>
-    <td>_p_rabbitmq_service_broker_heartbeat</td>
+    <td><code>/p-rabbitmq/service_broker/heartbeat</code></td>
+    <td><code>_p_rabbitmq_service_broker_heartbeat</code></td>
   </tr>
 </tbody>
 </table>
 
-## <a id="service-broker-on-demand"></a> Service Broker Metrics (On-demand only)
+## <a id="service-broker-on-demand"></a> On-Demand Service Broker Metrics
 
-All metrics for the on-demand service broker have one-to-one equivalents in
-<%= vars.product_short %> v2.0, and differ only in names.
+All metrics for the on-demand service broker have one-to-one equivalents in <%= vars.product_short %> v2.0,
+and differ only in naming.
 
 <table>
 <thead>
@@ -62,28 +62,28 @@ All metrics for the on-demand service broker have one-to-one equivalents in
 </thead>
 <tbody>
   <tr>
-    <td>/on-demand-broker/p-rabbitmq/quota_remaining</td>
-    <td>_on_demand_broker_p_rabbitmq_quota_remaining</td>
+    <td><code>/on-demand-broker/p-rabbitmq/quota_remaining</code></td>
+    <td><code>_on_demand_broker_p_rabbitmq_quota_remaining</code></td>
   </tr>
   <tr>
-    <td>/on-demand-broker/p-rabbitmq/total_instances</td>
-    <td>_on_demand_broker_p_rabbitmq_total_instances</td>
+    <td><code>/on-demand-broker/p-rabbitmq/total_instances</code></td>
+    <td><code>_on_demand_broker_p_rabbitmq_total_instances</code></td>
   </tr>
   <tr>
-    <td>/on-demand-broker/p-rabbitmq/&lt;PLAN_NAME&gt;/quota_remaining</td>
-    <td>_on_demand_broker_p_rabbitmq_&lt;PLAN_NAME&gt;_quota_remaining</td>
+    <td><code>/on-demand-broker/p-rabbitmq/&lt;PLAN_NAME&gt;/quota_remaining</code></td>
+    <td><code>_on_demand_broker_p_rabbitmq_&lt;PLAN_NAME&gt;_quota_remaining</code></td>
   </tr>
   <tr>
-    <td>/on-demand-broker/p-rabbitmq/&lt;PLAN_NAME&gt;/quota_remaining</td>
-    <td>_on_demand_broker_p_rabbitmq_&lt;PLAN_NAME&gt;_total_instances</td>
+    <td><code>/on-demand-broker/p-rabbitmq/&lt;PLAN_NAME&gt;/quota_remaining</code></td>
+    <td><code>_on_demand_broker_p_rabbitmq_&lt;PLAN_NAME&gt;_total_instances</code></td>
   </tr>
 </tbody>
 </table>
 
-## <a id="haproxy"></a> HAProxy Metrics (Pre-provisioned only)
+## <a id="haproxy"></a> HAProxy Metrics (Pre-Provisioned Only)
 
-All metrics for HAProxy have one-to-one equivalents in <%= vars.product_short %> v2.0, and differ
-only in names.
+All metrics for HAProxy have one-to-one equivalents in <%= vars.product_short %> v2.0,
+and differ only in naming.
 
 <table>
 <thead>
@@ -94,34 +94,33 @@ only in names.
 </thead>
 <tbody>
   <tr>
-    <td>/p-rabbitmq/haproxy/heartbeat</td>
-    <td>_p_rabbitmq_haproxy_heartbeat</td>
+    <td><code>/p-rabbitmq/haproxy/heartbeat</code></td>
+    <td><code>_p_rabbitmq_haproxy_heartbeat</code></td>
   </tr>
   <tr>
-    <td>/p-rabbitmq/haproxy/backend/qsize/amqp</td>
-    <td>_p_rabbitmq_haproxy_backend_qsize_amqp</td>
+    <td><code>/p-rabbitmq/haproxy/backend/qsize/amqp</code></td>
+    <td><code>_p_rabbitmq_haproxy_backend_qsize_amqp</code></td>
   </tr>
   <tr>
-    <td>/p-rabbitmq/haproxy/backend/retries/amqp</td>
-    <td>_p_rabbitmq_haproxy_backend_retries_amqp</td>
+    <td><code>/p-rabbitmq/haproxy/backend/retries/amqp</code></td>
+    <td><code>_p_rabbitmq_haproxy_backend_retries_amqp</code></td>
   </tr>
   <tr>
-    <td>/p-rabbitmq/haproxy/backend/ctime/amqp</td>
-    <td>_p_rabbitmq_haproxy_backend_ctime_amqp</td>
+    <td><code>/p-rabbitmq/haproxy/backend/ctime/amqp</code></td>
+    <td><code>_p_rabbitmq_haproxy_backend_ctime_amqp</code></td>
   </tr>
   <tr>
-    <td>/p-rabbitmq/haproxy/health/connections</td>
-    <td>_p_rabbitmq_haproxy_health_connections</td>
+    <td><code>/p-rabbitmq/haproxy/health/connections</code></td>
+    <td><code>_p_rabbitmq_haproxy_health_connections</code></td>
   </tr>
 </tbody>
 </table>
 
 ## <a id="rabbitmq"></a> RabbitMQ Metrics
 
-RabbitMQ metrics are now consumed directly from the Prometheus metrics endpoint of the RabbitMQ
-server, rather than from the RabbitMQ Management API.
-In general, far more information is now exposed in <%= vars.product_short %> than before in the
-case where you want to simply retrieve the same information as before.
+RabbitMQ metrics are now consumed directly from the Prometheus metrics endpoint of the RabbitMQ server, rather than
+from the RabbitMQ Management API. In general, far more information is now exposed in <%= vars.product_short %> than
+before.
 
 <table>
 <thead>
@@ -132,142 +131,145 @@ case where you want to simply retrieve the same information as before.
 </thead>
 <tbody>
   <tr>
-    <td>/p-rabbitmq/erlang/heartbeat</td>
-    <td>NO EQUIVALENT</td>
+    <td><code>/p-rabbitmq/erlang/heartbeat</code></td>
+    <td>No equivalent</td>
   </tr>
   <tr>
-    <td>/p-rabbitmq/erlang/erlang_processes</td>
-    <td>erlang_vm_process_count</td>
+    <td><code>/p-rabbitmq/erlang/erlang_processes</code></td>
+    <td><code>erlang_vm_process_count</code></td>
   </tr>
   <tr>
-    <td>/p-rabbitmq/erlang/reachable_nodes</td>
-    <td>count(erlang_vm_dist_node_state, where value==3)</td>
+    <td><code>/p-rabbitmq/erlang/reachable_nodes</code></td>
+    <td><code>count(erlang_vm_dist_node_state, where value==3)</code></td>
   </tr>
   <tr>
-    <td>/p-rabbitmq/rabbitmq/system/memory</td>
-    <td>rabbitmq_process_resident_memory_bytes</td>
+    <td><code>/p-rabbitmq/rabbitmq/system/memory</code></td>
+    <td><code>rabbitmq_process_resident_memory_bytes</code></td>
   </tr>
   <tr>
-    <td>/p-rabbitmq/rabbitmq/system/mem_alarm</td>
-    <td>rabbitmq_alarms_memory_used_watermark</td>
+    <td><code>/p-rabbitmq/rabbitmq/system/mem_alarm</code></td>
+    <td><code>rabbitmq_alarms_memory_used_watermark</code></td>
   </tr>
   <tr>
-    <td>/p-rabbitmq/rabbitmq/system/disk_free_alarm</td>
-    <td>rabbitmq_alarms_free_disk_space_watermark</td>
+    <td><code>/p-rabbitmq/rabbitmq/system/disk_free_alarm</code></td>
+    <td><code>rabbitmq_alarms_free_disk_space_watermark</code></td>
   </tr>
   <tr>
-    <td>/p-rabbitmq/rabbitmq/system/disk_free</td>
-    <td>rabbitmq_disk_space_available_bytes</td>
+    <td><code>/p-rabbitmq/rabbitmq/system/disk_free</code></td>
+    <td><code>rabbitmq_disk_space_available_bytes</code></td>
   </tr>
   <tr>
-    <td>/p-rabbitmq/rabbitmq/system/disk_free_limit</td>
-    <td>rabbitmq_disk_space_available_limit_bytes</td>
+    <td><code>/p-rabbitmq/rabbitmq/system/disk_free_limit</code></td>
+    <td><code>rabbitmq_disk_space_available_limit_bytes</code></td>
   </tr>
   <tr>
-    <td>/p-rabbitmq/rabbitmq/system/file_descriptors</td>
-    <td>rabbitmq_process_open_fds</td>
+    <td><code>/p-rabbitmq/rabbitmq/system/file_descriptors</code></td>
+    <td><code>rabbitmq_process_open_fds</code></td>
   </tr>
   <tr>
-    <td>/p-rabbitmq/rabbitmq/connections/count</td>
-    <td>rabbitmq_connections</td>
+    <td><code>/p-rabbitmq/rabbitmq/connections/count</code></td>
+    <td><code>rabbitmq_connections</code></td>
   </tr>
   <tr>
-    <td>/p-rabbitmq/rabbitmq/consumers/count</td>
-    <td>rabbitmq_global_consumers</td>
+    <td><code>/p-rabbitmq/rabbitmq/consumers/count</code></td>
+    <td><code>rabbitmq_global_consumers</code></td>
   </tr>
   <tr>
-    <td>/p-rabbitmq/rabbitmq/messages/published</td>
-    <td>rabbitmq_global_messages_received_total</td>
+    <td><code>/p-rabbitmq/rabbitmq/messages/published</code></td>
+    <td><code>rabbitmq_global_messages_received_total</code></td>
   </tr>
   <tr>
-    <td>/p-rabbitmq/rabbitmq/messages/published_rate</td>
-    <td>rate(rabbitmq_global_messages_received_total)</td>
+    <td><code>/p-rabbitmq/rabbitmq/messages/published_rate</code></td>
+    <td><code>rate(rabbitmq_global_messages_received_total)</code></td>
   </tr>
   <tr>
-    <td>/p-rabbitmq/rabbitmq/messages/delivered</td>
-    <td>rabbitmq_global_messages_delivered_consume_manual_ack_total</td>
+    <td><code>/p-rabbitmq/rabbitmq/messages/delivered</code></td>
+    <td><code>rabbitmq_global_messages_delivered_consume_manual_ack_total</code></td>
   </tr>
   <tr>
-    <td>/p-rabbitmq/rabbitmq/messages/delivered_rate</td>
-    <td>rate(rabbitmq_global_messages_delivered_consume_manual_ack_total)</td>
+    <td><code>/p-rabbitmq/rabbitmq/messages/delivered_rate</code></td>
+    <td><code>rate(rabbitmq_global_messages_delivered_consume_manual_ack_total)</code></td>
   </tr>
   <tr>
-    <td>/p-rabbitmq/rabbitmq/messages/delivered_noack</td>
-    <td>rabbitmq_global_messages_delivered_consume_auto_ack_total</td>
+    <td><code>/p-rabbitmq/rabbitmq/messages/delivered_noack</code></td>
+    <td><code>rabbitmq_global_messages_delivered_consume_auto_ack_total</code></td>
   </tr>
   <tr>
-    <td>/p-rabbitmq/rabbitmq/messages/redelivered</td>
-    <td>rabbitmq_global_messages_redelivered_total</td>
+    <td><code>/p-rabbitmq/rabbitmq/messages/redelivered</code></td>
+    <td><code>rabbitmq_global_messages_redelivered_total</code></td>
   </tr>
   <tr>
-    <td>/p-rabbitmq/rabbitmq/messages/redelivered_rate</td>
-    <td>rate(rabbitmq_global_messages_redelivered_total)</td>
+    <td><code>/p-rabbitmq/rabbitmq/messages/redelivered_rate</code></td>
+    <td><code>rate(rabbitmq_global_messages_redelivered_total)</code></td>
   </tr>
   <tr>
-    <td>/p-rabbitmq/rabbitmq/messages/get_no_ack</td>
-    <td>rabbitmq_global_messages_delivered_get_auto_ack_total</td>
+    <td><code>/p-rabbitmq/rabbitmq/messages/get_no_ack</code></td>
+    <td><code>rabbitmq_global_messages_delivered_get_auto_ack_total</code></td>
   </tr>
   <tr>
-    <td>/p-rabbitmq/rabbitmq/messages/get_no_ack_rate</td>
-    <td>rate(rabbitmq_global_messages_delivered_get_auto_ack_total)</td>
+    <td><code>/p-rabbitmq/rabbitmq/messages/get_no_ack_rate</code></td>
+    <td><code>rate(rabbitmq_global_messages_delivered_get_auto_ack_total)</code></td>
   </tr>
   <tr>
-    <td>/p-rabbitmq/rabbitmq/messages/return_unroutable</td>
-    <td>rabbitmq_global_messages_unroutable_returned_total</td>
+    <td><code>/p-rabbitmq/rabbitmq/messages/return_unroutable</code></td>
+    <td><code>rabbitmq_global_messages_unroutable_returned_total</code></td>
   </tr>
   <tr>
-    <td>/p-rabbitmq/rabbitmq/messages/return_unroutable_rate</td>
-    <td>rate(rabbitmq_global_messages_unroutable_returned_total)</td>
+    <td><code>/p-rabbitmq/rabbitmq/messages/return_unroutable_rate</code></td>
+    <td><code>rate(rabbitmq_global_messages_unroutable_returned_total)</code></td>
   </tr>
   <tr>
-    <td>/p-rabbitmq/rabbitmq/messages/pending</td>
-    <td>rabbitmq_queue_messages_unacked</td>
+    <td><code>/p-rabbitmq/rabbitmq/messages/pending</code></td>
+    <td><code>rabbitmq_queue_messages_unacked</code></td>
   </tr>
   <tr>
-    <td>/p-rabbitmq/rabbitmq/messages/pending_acknowledgements</td>
-    <td>rabbitmq_queue_messages_unacked</td>
+    <td><code>/p-rabbitmq/rabbitmq/messages/pending_acknowledgements</code></td>
+    <td><code>rabbitmq_queue_messages_unacked</code></td>
   </tr>
   <tr>
-    <td>/p-rabbitmq/rabbitmq/queues/count</td>
-    <td>rabbitmq_queues</td>
+    <td><code>/p-rabbitmq/rabbitmq/queues/count</code></td>
+    <td><code>rabbitmq_queues</code></td>
   </tr>
   <tr>
-    <td>/p-rabbitmq/rabbitmq/messages/available</td>
-    <td>rabbitmq_queue_messages_ready</td>
+    <td><code>/p-rabbitmq/rabbitmq/messages/available</code></td>
+    <td><code>rabbitmq_queue_messages_ready</code></td>
   </tr>
   <tr>
-    <td>/p-rabbitmq/rabbitmq/channels/count</td>
-    <td>rabbitmq_channels</td>
+    <td><code>/p-rabbitmq/rabbitmq/channels/count</code></td>
+    <td><code>rabbitmq_channels</code></td>
   </tr>
   <tr>
-    <td>/p-rabbitmq/rabbitmq/messages/depth</td>
-    <td>rabbitmq_queue_messages</td>
+    <td><code>/p-rabbitmq/rabbitmq/messages/depth</code></td>
+    <td><code>rabbitmq_queue_messages</code></td>
   </tr>
 </tbody>
 </table>
 
-Some of the existing metrics from v1.x are only retrievable by using the `/metrics/detailed`
-endpoint, on RabbitMQ 3.9 servers.
-For more information about this endpoint, see the
-[RabbitMQ documentation](https://github.com/rabbitmq/rabbitmq-server/tree/master/deps/rabbitmq_prometheus#selective-querying-of-per-object-metrics) in GitHub.
+Some of the metrics from <%= vars.product_short %> v1.x are only
+retrievable by using the `/metrics/detailed` endpoint on RabbitMQ v3.9 servers.
+For more information on this endpoint, see the
+[rabbitmq-server](https://github.com/rabbitmq/rabbitmq-server/tree/master/deps/rabbitmq_prometheus#selective-querying-of-per-object-metrics) in GitHub.
 
-If you are using a Prometheus server and want to scrape all of the same metrics as in 1.x,
-scrape the following endpoints on the RabbitMQ servers and then consult the metric mapping table below.
+If you use a Prometheus server and want to scrape same metrics as in <%= vars.product_short %> v1.x,
+make sure you are scraping the following endpoints on the RabbitMQ servers,
+then consult the metric mapping table:
 
-- <code>/metrics</code>
-- <code>/metrics/detailed?family=vhost_status&family=exchange_names&family=queue_consumer_count&family=queue_coarse_metrics</code>
+- `/metrics`
+- `/metrics/detailed?family=vhost_status&family=exchange_names&family=queue_consumer_count&family=queue_coarse_metrics`
 
-If you are using the Loggregator Firehose system for collecting metrics, configure the product to
-gather these additional metrics. How you do this depends on which service offering you are using:
+If you are using the Loggregator Firehose system for collecting metrics, configure
+the product to gather these additional metrics.
+How you do this depends on which service offering you are using:
 
-- For the pre-provisioned offering, ensure the rabbitmq_prometheus plugin is enabled, configure [Detailed metrics query for Loggregator](install-config-pp.html#detailed-metrics) in Ops Manager, and then apply the changes.
-- For the on-demand offering, pass the <code>detailed_metrics_query</code> parameter when creating
-or updating a service instance. For more information, see
-[Collect additional RabbitMQ metrics in Loggregator](use.html#detailed-metrics).
-In each case, the value of the Detailed Metrics Query you must set is
-<code>?family=vhost_status&family=exchange_names&family=queue_consumer_count&family=queue_coarse_metrics</code>.
+- For the pre-provisioned offering, ensure the rabbitmq_prometheus plug-in is enabled,
+configure [Detailed metrics query for Loggregator](./install-config-pp.html#detailed-metrics)
+in Ops Manager, then Apply Changes
+- For the on-demand offering, pass the `detailed_metrics_query` parameter
+when creating or updating a service instance.
+See [Collect additional RabbitMQ metrics in Loggregator](./use.html#detailed-metrics).
+In each case, the value of the `detailed_metrics_query` you must set is `?family=vhost_status&family=exchange_names&family=queue_consumer_count&family=queue_coarse_metrics`.
 
-For the equivalent metrics for this endpoint, see this table:
+For the equivalent metrics for this endpoint:
 
 <table>
 <thead>
@@ -279,29 +281,29 @@ For the equivalent metrics for this endpoint, see this table:
 </thead>
 <tbody>
   <tr>
-    <td>/p-rabbitmq/rabbitmq/vhosts/count</td>
-    <td>count(rabbitmq_cluster_vhost_status)<br></td>
-    <td>/metrics/detailed?family=vhost_status</td>
+    <td><code>/p-rabbitmq/rabbitmq/vhosts/count</code></td>
+    <td><code>count(rabbitmq_cluster_vhost_status)<br></code></td>
+    <td><code>/metrics/detailed?family=vhost_status</code></td>
   </tr>
   <tr>
-    <td>/p-rabbitmq/rabbitmq/exchanges/count</td>
-    <td>count(rabbitmq_cluster_exchange_name)</td>
-    <td>/metrics/detailed?family=exchange_names</td>
+    <td><code>/p-rabbitmq/rabbitmq/exchanges/count</code></td>
+    <td><code>count(rabbitmq_cluster_exchange_name)</code></td>
+    <td><code>/metrics/detailed?family=exchange_names</code></td>
   </tr>
   <tr>
-    <td>/p-rabbitmq/rabbitmq/exchange/&lt;VHOST_NAME&gt;/count</td>
-    <td>count(rabbitmq_cluster_exchange_name, aggregate by vhost)</td>
-    <td>/metrics/detailed?family=exchange_names</td>
+    <td><code>/p-rabbitmq/rabbitmq/exchange/&lt;VHOST_NAME&gt;/count</code></td>
+    <td><code>count(rabbitmq_cluster_exchange_name, aggregate by vhost)</code></td>
+    <td><code>/metrics/detailed?family=exchange_names</code></td>
   </tr>
   <tr>
-    <td>/p-rabbitmq/rabbitmq/queues/&lt;VHOST_NAME&gt;/&lt;QUEUE_NAME&gt;/consumers</td>
-    <td>rabbitmq_detailed_queue_consumers</td>
-    <td>/metrics/detailed?family=queue_consumer_count</td>
+    <td><code>/p-rabbitmq/rabbitmq/queues/&lt;VHOST_NAME&gt;/&lt;QUEUE_NAME&gt;/consumers</code></td>
+    <td><code>rabbitmq_detailed_queue_consumers</code></td>
+    <td><code>/metrics/detailed?family=queue_consumer_count</code></td>
   </tr>
   <tr>
-    <td>/p-rabbitmq/rabbitmq/queues/&lt;VHOST_NAME&gt;/&lt;QUEUE_NAME&gt;/depth</td>
-    <td>rabbitmq_detailed_queue_messages</td>
-    <td>/metrics/detailed?family=queue_coarse_metrics</td>
+    <td><code>/p-rabbitmq/rabbitmq/queues/&lt;VHOST_NAME&gt;/&lt;QUEUE_NAME&gt;/depth</code></td>
+    <td><code>rabbitmq_detailed_queue_messages</code></td>
+    <td><code>/metrics/detailed?family=queue_coarse_metrics</code></td>
   </tr>
 </tbody>
 </table>
