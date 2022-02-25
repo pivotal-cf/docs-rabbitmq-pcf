@@ -277,31 +277,38 @@ They are both enabled.") %>
     ```
     For how to set properties, see [(Optional, Expert only) Override RabbitMQ Server Advanced Configuration](#configfile) below.
 
-### <a id="detailed-metrics"></a> Collect additional RabbitMQ metrics in Loggregator
+### <a id="detailed-metrics"></a> Collect additional RabbitMQ Metrics in Loggregator
 
-RabbitMQ collects numerous different metrics automatically and sends these to the Loggregator firehose system for
-collation, provided you have the **rabbitmq_prometheus** plugin enabled.
-This section pertains to this automatic collection for this system; if you are using purely a Prometheus
-server for scraping your observed systems, you may ignore this section.
-For more information on metrics collected in general in <%= vars.product_short %>, see @TODO.
+<p class="note">
+  <strong>Note:</strong> If you only use a Prometheus server to scrape your observed
+  systems, you can ignore this section.
+</p>
 
-You can also configure your pre-provisioned Service Instances to collect additional, more detailed, metrics for specific vhosts
-or families of metrics. These metrics are more resource-consumptive to collect, but can be focused to only collect
-information for objects of your choosing based on a provided query parameter. For more information on this metrics
-collection, and on building this query parameter, see the [RabbitMQ documentation](https://github.com/rabbitmq/rabbitmq-server/tree/master/deps/rabbitmq_prometheus#selective-querying-of-per-object-metrics).
+If you have the **rabbitmq_prometheus** plug-in enabled, RabbitMQ collects metrics
+and sends these to the Loggregator Firehose system for collation.
+For more information about metrics collected in <%= vars.product_short %>, see @TODO.
+
+You can also configure your pre-provisioned service instances to collect additional,
+more detailed, metrics for specific vhosts or families of metrics.
+You need more resources to collect these metrics, but you can provide a query parameter
+to limit the amount of information that you collect.
+For more information about this query parameter, see
+[rabbitmq-server](https://github.com/rabbitmq/rabbitmq-server/tree/master/deps/rabbitmq_prometheus#selective-querying-of-per-object-metrics) in GitHub.
 
 To configure your service instance to collect additional detailed metrics:
 
-1. Determine the query parameter needed for your use case from the [RabbitMQ documentation](https://github.com/rabbitmq/rabbitmq-server/tree/master/deps/rabbitmq_prometheus#selective-querying-of-per-object-metrics).
-    You will only require the query string going forwards, i.e. everything from the <code>?</code> onwards.
+1. Find the query parameter for your needs in [rabbitmq-server](https://github.com/rabbitmq/rabbitmq-server/tree/master/deps/rabbitmq_prometheus#selective-querying-of-per-object-metrics) in GitHub.
+    You only require the query string, which is everything from the `?` onwards.
 
-1. In the **Detailed metrics query for Loggregator** field, set the query parameter you just determined,
-    for example <code>?family=queue_coarse_metrics&family=queue_consumer_count</code>.
-
+1. In the **Detailed metrics query for Loggregator** text box, set your query parameter,
+    for example, `?family=queue_coarse_metrics&family=queue_consumer_count`.
+<!-- where is this text box?? -->
 1. Click **Save**.
 
-If you later wish to remove this additional metric collection, you can remove this string and Apply Changes, and the
-Loggregator system will no longer collect these additional metrics.
+To stop collecting additional metrics, clear the **Detailed metrics query
+for Loggregator** text box and click **Apply Changes**.
+<!-- is this correct? -->
+
 
 ### <a id="configfile"></a> (Optional, Expert only) Override RabbitMQ Server Advanced Configuration
 
