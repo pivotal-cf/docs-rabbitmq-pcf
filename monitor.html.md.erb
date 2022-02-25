@@ -36,7 +36,7 @@ see the [Component Metric Reference](#reference).
 
 Loggregator-collected metrics are long, single lines of text that follow the format:
 
-```mac
+```
 origin:"p-rabbitmq" eventType:ValueMetric timestamp:1616427704616569016 deployment:"cf-rabbitmq" job:"rabbitmq-broker" index:"0" ip:"10.0.4.101" tags:<key:"instance_id" value:"d4b4fd51-50de-4227-a96f-8ce636960f0b" > tags:<key:"source_id" value:"rabbitmq-broker" > valueMetric:<name:"_p_rabbitmq_service_broker_heartbeat" value:1 unit:"boolean" >
 ```
 Provided the prometheus plugin is enabled, <%= vars.product_short %> will automatically collect these metrics for you
