@@ -18,7 +18,7 @@ the observability features in this topic.
   Consequently, many metric names change after upgrading to <%= vars.product_short %> v2.0.
   Both on-demand and pre-provisioned <%= vars.product_short %> are affected.
   For a list of the changes made in v2.0 to metric names, see
-  [Migrating your Metrics after Upgrading to Tanzu RabbitMQ v2.0](./migrate-2-0-metrics.html).
+  <a href="./migrate-2-0-metrics.html">Migrating your Metrics after Upgrading to Tanzu RabbitMQ v2.0</a>.
 </p>
 
 ## <a id="metrics"></a> Metrics
@@ -37,7 +37,7 @@ later in this topic.
 <p class="note">
   <strong>Note:</strong> As of <%= vars.product_short %> v2.0, the format of the metrics has changed.
   For a list of the changes to metric names in <%= vars.product_short %> v2.0, see
-  [Migrating your Metrics after Upgrading to Tanzu RabbitMQ v2.0](./migrate-2-0-metrics.html).
+  <a href="./migrate-2-0-metrics.html">Migrating your Metrics after Upgrading to Tanzu RabbitMQ v2.0</a>.
 </p>
 
 ### <a id="loggregator"></a> Collecting Metrics with the Loggregator System
@@ -667,12 +667,29 @@ see [Reviewing Pending Product Changes](https://docs.pivotal.io/pivotalcf/custom
 With <%= vars.product_short %> logging configured, several types of components generate logs:
 the RabbitMQ message server nodes, the service brokers, and (if present) HAProxy.
 
-* The logs for RabbitMQ server nodes follow the format <code>[job:"rabbitmq-server" ip:"192.0.2.0"]</code>
-* The logs for the pre-provisioned RabbitMQ service broker follow the format <code>[job:"rabbitmq-broker" ip:"192.0.2.1"]</code>
-* The logs for the on-demand RabbitMQ service broker follow the format <code>[job:"on-demand-broker" ip:"192.0.2.2"]</code>
-* The logs for HAProxy nodes follow the format <code>[job:"rabbitmq-haproxy" ip:"192.0.2.3"]</code>
+* The logs for RabbitMQ server nodes follow the format:
 
-RabbitMQ and HAProxy servers log at the <code>info</code> level and capture errors, warnings, and informational messages.
+    ```
+    [job:"rabbitmq-server" ip:"192.0.2.0"]
+    ```
+* The logs for the pre-provisioned RabbitMQ service broker follow the format:
+
+    ```
+    [job:"rabbitmq-broker" ip:"192.0.2.1"]
+    ```
+* The logs for the on-demand RabbitMQ service broker follow the format:
+
+    ```
+    [job:"on-demand-broker" ip:"192.0.2.2"]
+    ```
+* The logs for HAProxy nodes follow the format:
+
+    ```
+    [job:"rabbitmq-haproxy" ip:"192.0.2.3"]
+    ```
+
+RabbitMQ and HAProxy servers log at the <code>info</code> level and capture errors,
+warnings, and informational messages.
 
 <%= partial vars.path_to_partials + '/rabbitmq/log-formats' %>
 
@@ -683,7 +700,7 @@ RabbitMQ and HAProxy servers log at the <code>info</code> level and capture erro
 <p class="note">
   <strong>Note:</strong> As of <%= vars.product_short %> v2.0, the format of the metrics has changed.
   For a list of the changes to metric names in <%= vars.product_short %> v2.0, see
-  [Migrating your Metrics after Upgrading to Tanzu RabbitMQ v2.0](./migrate-2-0-metrics.html).
+  <a href="./migrate-2-0-metrics.html">Migrating your Metrics after Upgrading to Tanzu RabbitMQ v2.0</a>.
 </p>
 
 ### <a id="rabbitmq-metrics"></a> RabbitMQ Server Metrics
