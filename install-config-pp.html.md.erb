@@ -281,7 +281,7 @@ They are both enabled.") %>
 
 <p class="note">
   <strong>Note:</strong> If you only use a Prometheus server to scrape your observed
-  systems, you can skip these sections for configuring additional metrics.
+  systems, you can skip this section.
 </p>
 
 If you have the `rabbitmq_prometheus` plug-in enabled, RabbitMQ collects metrics
@@ -301,27 +301,23 @@ For more information about this query parameter, see
 
 To configure pre-provisioned service instances to collect additional metrics:
 
-1. Find the query parameter that suits your needs, you only require the query string,
+1. Find the query parameter that suits your needs. You only require the query string,
 which is everything from the `?` onwards:
-    - If you are migrating metrics for <%= vars.product_short %> v2.0, use the string
-    `?family=vhost_status&family=exchange_names&family=queue_consumer_count&family=queue_coarse_metrics`.
-    For more information, see [RabbitMQ Detailed Metrics](./migrate-2-0-metrics.html#rabbitmq-detailed).
-    - Otherwise, see [rabbitmq-server](https://github.com/rabbitmq/rabbitmq-server/tree/master/deps/rabbitmq_prometheus#selective-querying-of-per-object-metrics) in GitHub.
+  - If you are migrating metrics for <%= vars.product_short %> v2.0, use the string
+  `?family=vhost_status&family=exchange_names&family=queue_consumer_count&family=queue_coarse_metrics`
+  For more information, see [RabbitMQ Detailed Metrics](./migrate-2-0-metrics.html#rabbitmq-detailed).
+  - Otherwise, see [rabbitmq-server](https://github.com/rabbitmq/rabbitmq-server/tree/master/deps/rabbitmq_prometheus#selective-querying-of-per-object-metrics) in GitHub.
 
-1. In the **Detailed metrics query for Loggregator** text box, set your query parameter,
-for example, `?family=queue_coarse_metrics&family=queue_consumer_count`.
+1. In the **Detailed metrics query for Loggregator** text box, set your query parameter.
+For example, `?family=queue_coarse_metrics&family=queue_consumer_count`.
 
 1. Click **Save**.
 
-#### <a id="stop-detailed-metrics"></a> Stop Collecting Additional RabbitMQ Metrics
-
-To stop collecting these additional metrics:
-
-1. Clear the **Detailed metrics query for Loggregator** text box.
-1. Click **Save**.
-1. Return to the <%= vars.ops_manager %> Installation Dashboard and click **Review Pending Changes**
-1. Click **Apply Changes**.
-
+<p class="note">
+  <strong>Note:</strong> To stop collecting additional metrics, clear the
+  **Detailed metrics query for Loggregator** text box, then **Apply Changes**
+  in the <%= vars.ops_manager %> installation dashboard.
+</p>
 
 ### <a id="configfile"></a> (Optional, Expert only) Override RabbitMQ Server Advanced Configuration
 
