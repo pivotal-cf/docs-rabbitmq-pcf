@@ -261,19 +261,18 @@ If you want to collect the same metrics as in <%= vars.product_short %> v1.x,
 do the following:
 
 1. Set the detailed metrics endpoint to collect the relevant metrics:
-  - **If you use a Prometheus server:** Ensure you are scraping the following endpoints on the RabbitMQ servers:
-    - `/metrics`
-    - `/metrics/detailed?family=vhost_status&family=exchange_names&family=queue_consumer_count&family=queue_coarse_metrics`
-
-  - **If you are using the Loggregator Firehose system to collect metrics:** Configure
-  additional metrics collection. You must set the value of `detailed_metrics_query` to
-  `?family=vhost_status&family=exchange_names&family=queue_consumer_count&family=queue_coarse_metrics`.
-  The procedure depends on the service offering you are using:
-      - **For the on-demand offering:** You configure additional metrics when creating
-      or updating a service instance.
-      For more information, see [Collect Additional RabbitMQ Metrics in Loggregator (on-demand instances)](use.html#detailed-metrics).
-      - **For the pre-provisioned offering:** You configure additional metrics in <%= vars.ops_manager %>.
-      For more information, see [Collect Additional RabbitMQ Metrics in Loggregator (pre-provisioned instances)](install-config-pp.html#detailed-metrics).
+    - **If you use a Prometheus server:** Ensure you are scraping the following endpoints on the RabbitMQ servers:
+      - `/metrics`
+      - `/metrics/detailed?family=vhost_status&family=exchange_names&family=queue_consumer_count&family=queue_coarse_metrics`
+    - **If you are using the Loggregator Firehose system to collect metrics:** Configure
+    additional metrics collection. You must set the value of `detailed_metrics_query` to
+    `?family=vhost_status&family=exchange_names&family=queue_consumer_count&family=queue_coarse_metrics`.
+    The procedure depends on the service offering you are using:
+        - **For the on-demand offering:** You configure additional metrics when creating
+        or updating a service instance.
+        For more information, see [Collect Additional RabbitMQ Metrics in Loggregator (on-demand instances)](use.html#detailed-metrics).
+        - **For the pre-provisioned offering:** You configure additional metrics in <%= vars.ops_manager %>.
+        For more information, see [Collect Additional RabbitMQ Metrics in Loggregator (pre-provisioned instances)](install-config-pp.html#detailed-metrics).
 
 1. Consult the following table for the equivalent metrics for this endpoint:
     <table>

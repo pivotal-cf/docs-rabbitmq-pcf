@@ -291,34 +291,33 @@ which is everything from the `?` onwards:
   * If you have already created a <%= vars.product_short %> service instance,
   update the service instance to use your query parameter by running:
 
-      ```
-      cf update-service MY-INSTANCE -c '{"detailed_metrics_query": "YOUR-QUERY-PARAMETER"}'
-      ```
-      Where:
+        ```
+        cf update-service MY-INSTANCE -c '{"detailed_metrics_query": "YOUR-QUERY-PARAMETER"}'
+        ```
+        Where:
 
-      * `MY-INSTANCE` is the name you chose when you created your service instance.
-      * `YOUR-QUERY-PARAMETER` is the query parameter you chose in the first step.
+        * `MY-INSTANCE` is the name you chose when you created your service instance.
+        * `YOUR-QUERY-PARAMETER` is the query parameter you chose in the first step.
 
-      For example:
-      <pre class="terminal">
-      $ cf update-service my-service-instance -c '{"detailed_metrics_query": "?family=queue_coarse_metrics&family=queue_consumer_count"}'
-      </pre>
+        For example:
+        <pre class="terminal">
+        $ cf update-service my-service-instance -c '{"detailed_metrics_query": "?family=queue_coarse_metrics&family=queue_consumer_count"}'
+        </pre>
   * If you have not created a <%= vars.product_short %> service instance,
   create one using your query parameter by running:
+    ```
+    cf create-service p.rabbitmq PLAN MY-INSTANCE -c '{"detailed_metrics_query": "YOUR-QUERY-PARAMETER"}'
+    ```
+    Where:
 
-      ```
-      cf create-service p.rabbitmq PLAN MY-INSTANCE -c '{"detailed_metrics_query": "YOUR-QUERY-PARAMETER"}'
-      ```
-      Where:
+    * `PLAN` is the name of the deployment plan to use for this service instance.
+    * `MY-INSTANCE` is the name to give to the new service instance.
+    * `YOUR-QUERY-PARAMETER` is the query parameter you chose in the first step.
 
-      * `PLAN` is the name of the deployment plan to use for this service instance.
-      * `MY-INSTANCE` is the name to give to the new service instance.
-      * `YOUR-QUERY-PARAMETER` is the query parameter you chose in the first step.
-
-      For example:
-      <pre class="terminal">
-      $ cf create-service p.rabbitmq PLAN MY-INSTANCE -c '{"detailed_metrics_query": "?family=queue_coarse_metrics&family=queue_consumer_count"}'
-      </pre>
+    For example:
+    <pre class="terminal">
+    $ cf create-service p.rabbitmq PLAN MY-INSTANCE -c '{"detailed_metrics_query": "?family=queue_coarse_metrics&family=queue_consumer_count"}'
+    </pre>
 
 1. Verify that the process was successful by running:
 
