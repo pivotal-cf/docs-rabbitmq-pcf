@@ -102,14 +102,14 @@ To create an instance of the on-demand <%= vars.product_short %> service:
     If successful, `last operation` for your instance is reported as `create succeeded`.<br><br>
     For example:
     <pre class="terminal">
-      $ cf create-service p.rabbitmq single-node my-instance<br>
-       Creating service my-instance in org my-org / space my-space as user<span>@</span>example.com...
-       OK<br>
-      $ watch cf services<br>
-       Getting services in org my-org / space my-space as user<span>@</span>example.com...
-       OK
-       name          service        plan           bound apps    last operation
-       my-instance   p.rabbitmq     single-node                  create succeeded
+    $ cf create-service p.rabbitmq single-node my-instance<br>
+    Creating service my-instance in org my-org / space my-space as user<span>@</span>example.com...
+    OK<br>
+    $ watch cf services<br>
+    Getting services in org my-org / space my-space as user<span>@</span>example.com...
+    OK
+    name          service        plan           bound apps    last operation
+    my-instance   p.rabbitmq     single-node                  create succeeded
     </pre>
 
    If you encounter an error, see [Troubleshooting Instances](./troubleshoot-instances.html).
@@ -166,11 +166,11 @@ To configure TLS for your service instance:
     For example:
 
     <pre class="terminal">
-      $ watch cf services<br>
-       Getting services in org my-org / space my-space as user<span>@</span>example.com...
-       OK
-       name          service        plan           bound apps    last operation
-       my-instance   p.rabbitmq     single-node                  create succeeded
+    $ watch cf services<br>
+    Getting services in org my-org / space my-space as user<span>@</span>example.com...
+    OK
+    name          service        plan           bound apps    last operation
+    my-instance   p.rabbitmq     single-node                  create succeeded
     </pre>
 
 ### <a id="tls-turn-off"></a> Disable TLS for Your Service Instance
@@ -207,11 +207,11 @@ For more information, see [Configure Security](./install-config.html#security).
     For example:
 
     <pre class="terminal">
-      $ watch cf services<br>
-       Getting services in org my-org / space my-space as user<span>@</span>example.com...
-       OK
-       name          service        plan           bound apps    last operation
-       my-instance   p.rabbitmq     single-node                  update succeeded
+    $ watch cf services<br>
+    Getting services in org my-org / space my-space as user<span>@</span>example.com...
+    OK
+    name          service        plan           bound apps    last operation
+    my-instance   p.rabbitmq     single-node                  update succeeded
     </pre>
 
 ### <a id="tls-java-spring"></a> Activate TLS for Java and Spring Apps
@@ -283,7 +283,7 @@ To configure your service instance to collect additional metrics:
 1. Find the query parameter that suits your needs. You only require the query string,
 which is everything from the `?` onwards:
   - If you are migrating metrics for <%= vars.product_short %> v2.0, use the string
-  `?family=vhost_status&family=exchange_names&family=queue_consumer_count&family=queue_coarse_metrics`.
+  `?family=vhost_status&family=exchange_names&family=queue_consumer_count&family=queue_coarse_metrics`<br>
   For more information, see [RabbitMQ Detailed Metrics](./migrate-2-0-metrics.html#rabbitmq-detailed).
   - Otherwise, see [rabbitmq-server](https://github.com/rabbitmq/rabbitmq-server/tree/master/deps/rabbitmq_prometheus#selective-querying-of-per-object-metrics) in GitHub.
 
@@ -305,6 +305,7 @@ which is everything from the `?` onwards:
         </pre>
   * If you have not created a <%= vars.product_short %> service instance,
   create one using your query parameter by running:
+
     ```
     cf create-service p.rabbitmq PLAN MY-INSTANCE -c '{"detailed_metrics_query": "YOUR-QUERY-PARAMETER"}'
     ```
@@ -330,11 +331,11 @@ which is everything from the `?` onwards:
     For example:
 
     <pre class="terminal">
-      $ watch cf services<br>
-       Getting services in org my-org / space my-space as user<span>@</span>example.com...
-       OK
-       name          service        plan           bound apps    last operation
-       my-instance   p.rabbitmq     single-node                  create succeeded
+    $ watch cf services<br>
+    Getting services in org my-org / space my-space as user<span>@</span>example.com...
+    OK
+    name          service        plan           bound apps    last operation
+    my-instance   p.rabbitmq     single-node                  create succeeded
     </pre>
 
 ### <a id="stop-detailed-metrics"></a> Stop Collecting Additional RabbitMQ Metrics
