@@ -256,14 +256,14 @@ the `cf push` command.
   configure your app to use the same CA certificate and valid certificate and key.
 </p>
 
-### <a id="detailed-metrics"></a> Collect Additional RabbitMQ Metrics in Loggregator
+## <a id="detailed-metrics"></a> Collect Additional RabbitMQ Metrics in Loggregator
 
 <p class="note">
   <strong>Note:</strong> If you only use a Prometheus server to scrape your observed
-  systems, you can ignore this section.
+  systems, you can skip these sections for configuring additional metrics.
 </p>
 
-If you have the **rabbitmq_prometheus** plug-in enabled, RabbitMQ collects metrics
+If you have the `rabbitmq_prometheus` plug-in enabled, RabbitMQ collects metrics
 and sends these to the Loggregator Firehose system for collation.
 For more information about metrics collected in <%= vars.product_short %>, see @TODO.
 
@@ -274,12 +274,19 @@ that limits the information collected to objects of your choosing.
 For more information about this query parameter, see
 [rabbitmq-server](https://github.com/rabbitmq/rabbitmq-server/tree/master/deps/rabbitmq_prometheus#selective-querying-of-per-object-metrics) in GitHub.
 
-#### <a id="collect-detailed-metrics"></a> Configure Service Instances to Collect Additional Metrics
+### <a id="collect-detailed-metrics"></a> Configure Service Instances to Collect Additional Metrics
+
+**Prerequisite:** The `rabbitmq_prometheus` plug-in must be enabled.
 
 To configure your service instance to collect additional metrics:
 
-1. Find the query parameter that suits your needs [rabbitmq-server](https://github.com/rabbitmq/rabbitmq-server/tree/master/deps/rabbitmq_prometheus#selective-querying-of-per-object-metrics) in GitHub.
-You only require the query string, which is everything from the `?` onwards.
+1. Find the query parameter that suits your needs, you only require the query string,
+which is everything from the `?` onwards:
+
+    - If you are migrating metrics from RMQ v1.x to v2.x, use
+    `?family=vhost_status&family=exchange_names&family=queue_consumer_count&family=queue_coarse_metrics`.
+    For more information, see [RabbitMQ Detailed Metrics](./migrate-2-0-metrics.html#rabbitmq-detailed).
+    - Otherwise, see [rabbitmq-server](https://github.com/rabbitmq/rabbitmq-server/tree/master/deps/rabbitmq_prometheus#selective-querying-of-per-object-metrics) in GitHub.
 
 1. Enable additional metric collection by doing one of the following steps:
 
@@ -332,7 +339,7 @@ You only require the query string, which is everything from the `?` onwards.
        my-instance   p.rabbitmq     single-node                  create succeeded
     </pre>
 
-#### <a id="stop-detailed-metrics"></a> Stop Collecting Additional RabbitMQ Metrics
+### <a id="stop-detailed-metrics"></a> Stop Collecting Additional RabbitMQ Metrics
 
 To stop collecting these additional metrics:
 
