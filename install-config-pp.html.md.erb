@@ -280,13 +280,14 @@ They are both enabled.") %>
 
 ### <a id="detailed-metrics"></a> Collect Additional RabbitMQ Metrics in Loggregator
 
-RabbitMQ collects numerous different metrics automatically and sends these to the
-Loggregator Firehose system for collation, provided you have the **rabbitmq_prometheus** plugin.
+<p class="note">
+  <strong>Note:</strong> If you only use a Prometheus server to scrape your observed
+  systems, you can skip these sections for configuring additional metrics.
+</p>
 
-This section pertains to this automatic collection for this system.
-If you are using purely a Prometheus server for scraping your observed systems, you can ignore this
-section.
-<!-- For more information about metrics collected in general in <%= vars.product_short %>, see @TODO. -->
+If you have the `rabbitmq_prometheus` plug-in enabled, RabbitMQ collects metrics
+and sends these to the Loggregator Firehose system for collation.
+For more information about metrics collected in <%= vars.product_short %>, see @TODO.
 
 You can also configure your pre-provisioned service instances to collect additional,
 more detailed metrics for specific vhosts or families of metrics.
@@ -297,10 +298,17 @@ For more information about this query parameter, see
 
 #### <a id="collect-detailed-metrics"></a> Configure Service Instances to Collect Additional Metrics
 
+**Prerequisite:** The `rabbitmq_prometheus` plug-in must be enabled.
+
 To configure pre-provisioned service instances to collect additional metrics:
 
-1. Find the query parameter that suits your needs [rabbitmq-server](https://github.com/rabbitmq/rabbitmq-server/tree/master/deps/rabbitmq_prometheus#selective-querying-of-per-object-metrics) in GitHub.
-You only require the query string, which is everything from the `?` onwards.
+1. Find the query parameter that suits your needs, you only require the query string,
+which is everything from the `?` onwards:
+
+    - If you are migrating metrics from RMQ v1.x to v2.x, use
+    `?family=vhost_status&family=exchange_names&family=queue_consumer_count&family=queue_coarse_metrics`.
+    For more information, see [RabbitMQ Detailed Metrics](./migrate-2-0-metrics.html#rabbitmq-detailed).
+    - Otherwise, see [rabbitmq-server](https://github.com/rabbitmq/rabbitmq-server/tree/master/deps/rabbitmq_prometheus#selective-querying-of-per-object-metrics) in GitHub.
 
 1. In the **Detailed metrics query for Loggregator** text box, set your query parameter,
 for example, `?family=queue_coarse_metrics&family=queue_consumer_count`.
@@ -313,8 +321,8 @@ To stop collecting these additional metrics:
 
 1. Clear the **Detailed metrics query for Loggregator** text box.
 1. Click **Save**.
-1. Return to the <%= vars.ops_manager %> Installation Dashboard and click **Apply Changes**.
-<!-- is this correct? -->
+1. Return to the <%= vars.ops_manager %> Installation Dashboard and click **Review Pending Changes**
+1. Click **Apply Changes**.
 
 If you later want to remove this additional metric collection, you can remove this string and apply
 changes. The Loggregator system then no longer collect these additional metrics.
