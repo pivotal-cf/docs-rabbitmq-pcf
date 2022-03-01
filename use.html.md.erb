@@ -256,6 +256,89 @@ the `cf push` command.
   configure your app to use the same CA certificate and valid certificate and key.
 </p>
 
+
+## <a id="optional-plugins"></a> Enable Optional Plugins
+
+For a list of RabbitMQ plugins that are enabled or disabled by default in
+on-demand <%= vars.product_short %> instances, see
+[RabbitMQ Server Plugins](./install-config.html#server-plugins).
+
+<p class="note">
+  <strong>Note:</strong> If a plugin is disabled by default,
+  the operator must enable the plugin for the platform before you can enable it on your service instances.
+  For more information, see <a href="./install-config.html#optional-plugins">Enable Extra RabbitMQ Server Plugins</a>.
+</p>
+
+You can enable plugins when you create a service instance or by updating an existing
+service instance. When enabling more than one plugin, specify all the plugin names in the same command.
+
+To enable plugins, run one of these commands, specifying the plugins
+as a configuration parameter in JSON:
+
+* When creating a service instance, run:
+
+    ```
+    cf create-service SERVICE PLAN SERVICE-INSTANCE-NAME -c PARAMETER-AS-JSON
+    ```
+
+    Where the `PARAMETER-AS-JSON` key is the plugin and the value is `true`.
+
+    For example:
+
+    <pre class="terminal">
+    $ cf create-service p.rabbitmq single-node myservice -c '{ "plugins": { "rabbitmq_event_exchange": true } }'
+    </pre>
+    For example, when enabling more than one plugin:
+    <pre class="terminal">
+    $ cf create-service p.rabbitmq single-node myservice -c '{ "plugins": { "rabbitmq_event_exchange": true, "rabbitmq_mqtt": true } }'
+    </pre>
+
+* When updating an existing service instance, run:
+
+    ```
+    cf update-service SERVICE-INSTANCE-NAME -c PARAMETER-AS-JSON
+    ```
+
+    Where the `PARAMETER-AS-JSON` key is the plugin and the value is `true`.
+
+    For example:
+
+    <pre class="terminal">
+    $ cf update-service myservice -c '{ "plugins": { "rabbitmq_event_exchange": true } }'
+    </pre>
+    For example, when enabling more than one plugin:
+    <pre class="terminal">
+    $ cf update-service myservice -c '{ "plugins": { "rabbitmq_amqp1_0": true, "rabbitmq_event_exchange": true } }'
+    </pre>
+
+
+## <a id="disable-plugins"></a> Disable Optional Plugins
+
+<p class="note">
+  <strong>Note:</strong> When creating a service instance, optional plugins are disabled by default.
+</p>
+
+To disable plugins for an existing service instance:
+
+1. Run:
+
+    ```
+    cf update-service SERVICE-INSTANCE-NAME -c PARAMETER-AS-JSON
+    ```
+
+    Where the `PARAMETER-AS-JSON` key is the plugin and the value is `false`.<br><br>
+
+    For example:
+
+    <pre class="terminal">
+    $ cf update-service myservice -c '{ "plugins": { "rabbitmq_event_exchange": false}}'
+    </pre>
+    For example, when disabling more than one plugin:
+    <pre class="terminal">
+    $ cf update-service myservice -c '{ "plugins": { "rabbitmq_amqp1_0": false, "rabbitmq_event_exchange": false } }'
+    </pre>
+
+
 ## <a id="detailed-metrics"></a> Collect Additional RabbitMQ Metrics in Loggregator
 
 <p class="note">
