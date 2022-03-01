@@ -286,7 +286,8 @@ They are both enabled.") %>
 
 If you have the `rabbitmq_prometheus` plug-in enabled, RabbitMQ collects metrics
 and sends these to the Loggregator Firehose system for collation.
-For more information about metrics collected in <%= vars.product_short %>, see @TODO.
+For more information about metrics collected in <%= vars.product_short %>, see
+[Monitoring and KPIs for VMware Tanzu RabbitMQ for VMs](./monitor.html).
 
 You can also configure your pre-provisioned service instances to collect additional,
 more detailed metrics for specific vhosts or families of metrics.
@@ -308,7 +309,8 @@ which is everything from the `?` onwards:
   For more information, see [RabbitMQ Detailed Metrics](./migrate-2-0-metrics.html#rabbitmq-detailed).
   - Otherwise, see [rabbitmq-server](https://github.com/rabbitmq/rabbitmq-server/tree/master/deps/rabbitmq_prometheus#selective-querying-of-per-object-metrics) in GitHub.
 
-1. In the **Detailed metrics query for Loggregator** text box, set your query parameter.
+1. In the **Pre-Provisioned RabbitMQ** tab, enter your query parameter
+**Detailed metrics query for Loggregator** text box.
 For example, `?family=queue_coarse_metrics&family=queue_consumer_count`.
 
 1. Click **Save**.
