@@ -366,10 +366,14 @@ For more information about this query parameter, see
 To configure your service instance to collect additional metrics:
 
 1. Find the query parameter that suits your needs. You only require the query string,
-which is everything from the `?` onwards:
-  - If you are migrating metrics for <%= vars.product_short %> v2.0, use the string
-  `?family=vhost_status&family=exchange_names&family=queue_consumer_count&family=queue_coarse_metrics`<br>
-  For more information, see [RabbitMQ Detailed Metrics](./migrate-2-0-metrics.html#rabbitmq-detailed).
+which is everything from the `?` onwards.
+  - If you are migrating metrics from <%= vars.product_short %> v1.x to v2.0, use the string
+
+      ```
+      ?family=vhost_status&family=exchange_names&family=queue_consumer_count&family=queue_coarse_metrics
+      ```
+    For more information, see [RabbitMQ Detailed Metrics](./migrate-2-0-metrics.html#rabbitmq-detailed)
+    in _Migrating your Metrics after Upgrading to Tanzu RabbitMQ v2.0_.
   - Otherwise, see [rabbitmq-server](https://github.com/rabbitmq/rabbitmq-server/tree/master/deps/rabbitmq_prometheus#selective-querying-of-per-object-metrics) in GitHub.
 
 1. Enable additional metric collection by doing one of the following steps:
@@ -380,7 +384,6 @@ which is everything from the `?` onwards:
         cf update-service MY-INSTANCE -c '{"detailed_metrics_query": "YOUR-QUERY-PARAMETER"}'
         ```
         Where:
-
         * `MY-INSTANCE` is the name you chose when you created your service instance.
         * `YOUR-QUERY-PARAMETER` is the query parameter you chose in the first step.
 
@@ -395,7 +398,6 @@ which is everything from the `?` onwards:
     cf create-service p.rabbitmq PLAN MY-INSTANCE -c '{"detailed_metrics_query": "YOUR-QUERY-PARAMETER"}'
     ```
     Where:
-
     * `PLAN` is the name of the deployment plan to use for this service instance.
     * `MY-INSTANCE` is the name to give to the new service instance.
     * `YOUR-QUERY-PARAMETER` is the query parameter you chose in the first step.
