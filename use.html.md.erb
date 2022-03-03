@@ -367,17 +367,17 @@ To configure your service instance to collect additional metrics:
 
 1. Find the query parameter that suits your needs. You only require the query string,
 which is everything from the `?` onwards.
-  - If you are migrating metrics from <%= vars.product_short %> v1.x to v2.0, use the string
+  - If you are migrating metrics from <%= vars.product_short %> v1.x to v2.0, use the string:
 
-      ```
-      ?family=vhost_status&family=exchange_names&family=queue_consumer_count&family=queue_coarse_metrics
-      ```
-    For more information, see [RabbitMQ Detailed Metrics](./migrate-2-0-metrics.html#rabbitmq-detailed)
-    in _Migrating Metrics from Tanzu RabbitMQ v1.x to v2.0_.
+        ```
+        ?family=vhost_status&family=exchange_names&family=queue_consumer_count&family=queue_coarse_metrics
+        ```
+      For more information, see [RabbitMQ Detailed Metrics](./migrate-2-0-metrics.html#rabbitmq-detailed)
+      in _Migrating Metrics from Tanzu RabbitMQ v1.x to v2.0_.
   - Otherwise, see [rabbitmq-server](https://github.com/rabbitmq/rabbitmq-server/tree/master/deps/rabbitmq_prometheus#selective-querying-of-per-object-metrics) in GitHub.
 
 1. Enable additional metric collection by doing one of the following steps:
-  * If you have already created a <%= vars.product_short %> service instance,
+  * **If you have already created a <%= vars.product_short %> service instance,**
   update the service instance to use your query parameter by running:
 
         ```
@@ -391,21 +391,21 @@ which is everything from the `?` onwards.
         <pre class="terminal">
         $ cf update-service my-service-instance -c '{"detailed_metrics_query": "?family=queue_coarse_metrics&family=queue_consumer_count"}'
         </pre>
-  * If you have not created a <%= vars.product_short %> service instance,
+  * **If you have not created a <%= vars.product_short %> service instance,**
   create one using your query parameter by running:
 
-    ```
-    cf create-service p.rabbitmq PLAN MY-INSTANCE -c '{"detailed_metrics_query": "YOUR-QUERY-PARAMETER"}'
-    ```
-    Where:
-    * `PLAN` is the name of the deployment plan to use for this service instance.
-    * `MY-INSTANCE` is the name to give to the new service instance.
-    * `YOUR-QUERY-PARAMETER` is the query parameter you chose in the first step.
+        ```
+        cf create-service p.rabbitmq PLAN MY-INSTANCE -c '{"detailed_metrics_query": "YOUR-QUERY-PARAMETER"}'
+        ```
+        Where:
+        * `PLAN` is the name of the deployment plan to use for this service instance.
+        * `MY-INSTANCE` is the name to give to the new service instance.
+        * `YOUR-QUERY-PARAMETER` is the query parameter you chose in the first step.
 
-    For example:
-    <pre class="terminal">
-    $ cf create-service p.rabbitmq PLAN MY-INSTANCE -c '{"detailed_metrics_query": "?family=queue_coarse_metrics&family=queue_consumer_count"}'
-    </pre>
+        For example:
+        <pre class="terminal">
+        $ cf create-service p.rabbitmq PLAN MY-INSTANCE -c '{"detailed_metrics_query": "?family=queue_coarse_metrics&family=queue_consumer_count"}'
+        </pre>
 
 1. Verify that the process was successful by running:
 
