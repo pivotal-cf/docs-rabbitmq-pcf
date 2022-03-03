@@ -346,8 +346,7 @@ To disable plugins for an existing service instance:
   systems, you can skip these sections about configuring additional metrics.
 </p>
 
-If you have the `rabbitmq_prometheus` plug-in enabled, RabbitMQ collects metrics
-and sends these to the Loggregator Firehose system for collation.
+RabbitMQ collects metrics and sends these to the Loggregator Firehose system for collation.
 For more information about metrics collected in <%= vars.product_short %>, see
 [Monitoring and KPIs for VMware Tanzu RabbitMQ for VMs](./monitor.html).
 
@@ -360,8 +359,6 @@ For more information about this query parameter, see
 [rabbitmq-server](https://github.com/rabbitmq/rabbitmq-server/tree/master/deps/rabbitmq_prometheus#selective-querying-of-per-object-metrics) in GitHub.
 
 ### <a id="collect-detailed-metrics"></a> Configure Service Instances to Collect Additional Metrics
-
-**Prerequisite:** The `rabbitmq_prometheus` plug-in must be enabled.
 
 To configure your service instance to collect additional metrics:
 
