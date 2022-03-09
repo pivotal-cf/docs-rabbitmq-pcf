@@ -1,31 +1,37 @@
 ---
-title: Migrating from Version 1.x to 2.x of Metrics
+title: Migrating from Metrics v1.x to v2.x
 owner: London Services
 ---
 
-Version 2.0 of <%= vars.product_short %> shipped with a number of improvements to the suite of metrics available in
-RabbitMQ Service Instances. This version unifies the suite of metrics provided by Service Instances with the suite
-provided by open-source RabbitMQ, and vastly increases the amount of information available to you for observability, as
-well as leaning on the more performance-optimised observability endpoint in RabbitMQ.
+<%= vars.product_short %> v2.0 shipped with a number of improvements to the suite of metrics
+available in RabbitMQ service instances.
+This version unifies the suite of metrics provided by service instances with the suite
+provided by open-source RabbitMQ, and vastly increases the amount of information available to you
+for observability, as well as leaning on the more performance-optimised observability endpoint in
+RabbitMQ.
 
-A necessary change as a result of this refactor is that the format of the metrics provided in 1.0 of <%= vars.product_short %>
-has changed; any dashboards you used prior to upgrading may require changes in order to function with the new metric
-suite. In many cases, there are simply one-to-one mappings of old metric names to new metric names, however some
-specific metrics may require some additional manipulation to achieve the same result. Unless otherwise stated, all
-metrics are available through both the Loggregator firehose system and directly from the Prometheus endpoint on the
-RabbitMQ nodes themselves.
+A necessary change as a result of this refactor is that the format of the metrics provided in
+<%= vars.product_short %> v1.0 has changed. Any dashboards you used before upgrading might require
+changes to function with the new metric suite.
 
-For the full list of RabbitMQ and Erlang metrics exposed by the product, consult the [upstream documentation](https://github.com/rabbitmq/rabbitmq-server/blob/master/deps/rabbitmq_prometheus/metrics.md).
+In many cases, there are simply one-to-one mappings of old metric names to new metric names.
+However, some metrics might require additional manipulation to achieve the same result.
+Unless otherwise stated, all metrics are available by using both the Loggregator Firehose system
+and directly from the Prometheus endpoint on the RabbitMQ nodes themselves.
+
+For the full list of RabbitMQ and Erlang metrics exposed by the product, consult the [upstream documentation](https://github.com/rabbitmq/rabbitmq-server/blob/master/deps/rabbitmq_prometheus/metrics.md) in GitHub.
 
 <p class="note">
-<strong>Note:</strong> The vast majority of these metrics are exposed by the <code>rabbitmq_prometheus</code> plugin,
-and require you to have activated this plugin on your service instance. The plugin is always enabled for on-demand
-instances, however you can disable it for pre-provisioned instances. VMware recommends that you do not disable this plugin.
+  <strong>Note:</strong> The vast majority of these metrics are exposed by the <code>rabbitmq_prometheus</code> plugin, and require you to have activated this plugin on your
+  service instance.
+  The plugin is always enabled for on-demand instances, however you can disable it for
+  pre-provisioned instances. VMware recommends keeping this plugin enabled.
 </p>
 
 ## <a id="service-broker-prepro"></a> Service Broker Metrics (Pre-provisioned only)
-All metrics for the pre-provisioned service broker have one-to-one equivalents in <%= vars.product_short %> v2.0,
-and differ only in naming.
+
+All metrics for the pre-provisioned service broker have one-to-one equivalents in
+<%= vars.product_short %> v2.0, and differ only in names.
 
 <table>
 <thead>
@@ -43,8 +49,9 @@ and differ only in naming.
 </table>
 
 ## <a id="service-broker-on-demand"></a> Service Broker Metrics (On-demand only)
-All metrics for the on-demand service broker have one-to-one equivalents in <%= vars.product_short %> v2.0,
-and differ only in naming.
+
+All metrics for the on-demand service broker have one-to-one equivalents in
+<%= vars.product_short %> v2.0, and differ only in names.
 
 <table>
 <thead>
@@ -74,8 +81,9 @@ and differ only in naming.
 </table>
 
 ## <a id="haproxy"></a> HAProxy Metrics (Pre-provisioned only)
-All metrics for HAProxy have one-to-one equivalents in <%= vars.product_short %> v2.0,
-and differ only in naming.
+
+All metrics for HAProxy have one-to-one equivalents in <%= vars.product_short %> v2.0, and differ
+only in names.
 
 <table>
 <thead>
@@ -109,9 +117,11 @@ and differ only in naming.
 </table>
 
 ## <a id="rabbitmq"></a> RabbitMQ Metrics
-RabbitMQ metrics are now consumed directly from the Prometheus metrics endpoint of the RabbitMQ server, rather than
-from the RabbitMQ Management API. In general, far more information is now exposed in <%= vars.product_short %> than
-before; in the case where you wish to simply retrieve the same information as before
+
+RabbitMQ metrics are now consumed directly from the Prometheus metrics endpoint of the RabbitMQ
+server, rather than from the RabbitMQ Management API.
+In general, far more information is now exposed in <%= vars.product_short %> than before in the
+case where you want to simply retrieve the same information as before.
 
 <table>
 <thead>
@@ -236,22 +246,28 @@ before; in the case where you wish to simply retrieve the same information as be
 </tbody>
 </table>
 
-Some of the existing metrics from 1.x are only retrievable through the <code>/metrics/detailed</code> endpoint,
-on RabbitMQ 3.9 servers. For more information on this endpoint, see the
-[RabbitMQ documentation](https://github.com/rabbitmq/rabbitmq-server/tree/master/deps/rabbitmq_prometheus#selective-querying-of-per-object-metrics).
+Some of the existing metrics from v1.x are only retrievable by using the `/metrics/detailed`
+endpoint, on RabbitMQ 3.9 servers.
+For more information about this endpoint, see the
+[RabbitMQ documentation](https://github.com/rabbitmq/rabbitmq-server/tree/master/deps/rabbitmq_prometheus#selective-querying-of-per-object-metrics) in GitHub.
 
-If you are using a Prometheus server and would like to scrape all of the same metrics as in 1.x,
-make sure you are scraping the following endpoints on the RabbitMQ servers, then consult the metric mapping table below.
+If you are using a Prometheus server and want to scrape all of the same metrics as in 1.x,
+scrape the following endpoints on the RabbitMQ servers and then consult the metric mapping table below.
+
 - <code>/metrics</code>
 - <code>/metrics/detailed?family=vhost_status&family=exchange_names&family=queue_consumer_count&family=queue_coarse_metrics</code>
 
-If you are using the Loggregator firehose system for collecting metrics, configure the product to gather these additional
-metrics. How you do this depends on which service offering you are using:
-- For the pre-provisioned offering, ensure the rabbitmq_prometheus plugin is enabled, configure [Detailed metrics query for Loggregator](./install-config-pp.html#detailed-metrics) in Ops Manager, then Apply Changes
-- For the on-demand offering, pass the <code>detailed_metrics_query</code> parameter [when creating or updating a service instance](./use.html#detailed-metrics)
-In each case, the value of the Detailed Metrics Query you will need to set is <code>?family=vhost_status&family=exchange_names&family=queue_consumer_count&family=queue_coarse_metrics</code>.
+If you are using the Loggregator Firehose system for collecting metrics, configure the product to
+gather these additional metrics. How you do this depends on which service offering you are using:
 
-For the equivalent metrics for this endpoint:
+- For the pre-provisioned offering, ensure the rabbitmq_prometheus plugin is enabled, configure [Detailed metrics query for Loggregator](install-config-pp.html#detailed-metrics) in Ops Manager, and then apply the changes.
+- For the on-demand offering, pass the <code>detailed_metrics_query</code> parameter when creating
+or updating a service instance. For more information, see
+[Collect additional RabbitMQ metrics in Loggregator](use.html#detailed-metrics).
+In each case, the value of the Detailed Metrics Query you must set is
+<code>?family=vhost_status&family=exchange_names&family=queue_consumer_count&family=queue_coarse_metrics</code>.
+
+For the equivalent metrics for this endpoint, see this table:
 
 <table>
 <thead>

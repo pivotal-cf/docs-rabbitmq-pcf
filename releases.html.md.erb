@@ -6,10 +6,13 @@ owner: London Services
 <%= partial vars.path_to_partials + '/upgrade-planner' %>
 
 <p class="note warning">
-  <strong>Note:</strong> As of <%= vars.product_short %> v2.0, the format of the metrics emitted via the Loggregator
-   system has changed. If you were using the Loggregator firehose or Healthwatch to observe <%= vars.product_short %>
-   metrics in v1.x, you may need to alter any dashboards or queries previously configured to match the new metric names.
-   For a list of the changes made in v2.0 to metric names, see [the migration guide](./migrate-2.0-metrics.html).
+  <strong>Note:</strong> As of <%= vars.product_short %> v2.0, the format of the metrics emitted
+  through the Loggregator system has changed.
+  If you were using the Loggregator Firehose or Healthwatch to observe <%= vars.product_short %>
+  metrics in v1.x, you might need to alter any dashboards or queries previously configured to
+  match the new metric names.
+  For a list of the changes made in v2.0 to metric names, see
+  [Migrating from Metrics v1.x to v2.x](migrate-2-0-metrics.html).
 </p>
 
 ## <a id="lts"></a> Long-Term Support for <%= vars.product_full %> v2.0
@@ -24,8 +27,8 @@ owner: London Services
 ### Enhancements
 
 * This release now enables pre-provisioned users to use RabbitMQ v3.9 for their service instances
-* It is now possible to collect additional metrics about specific vhosts through Loggregator. For more information,
-see [the monitoring guide](./monitor.html#detailed-metrics)
+* It is now possible to collect additional metrics about specific vhosts by using Loggregator.
+For more information, see [Gather additional detailed metrics](monitor.html#detailed-metrics).
 
 ### Known Issues
 
@@ -37,74 +40,74 @@ This release has the following known issue:
 
 The following components are compatible with this release:
 
-<table class="nice"> <th>Component</th> <th>Version</th> 	<tr>
-		<td><%= vars.app_runtime_full %></td>
-		<td>2.7.x, 2.8.x, 2.9.x, 2.10.x, 2.11.x, 2.12.x</td>
-	</tr>
-	<tr>
-		<td>Erlang</td>
-		<td>24.2.1</td>
-	</tr>
-	<tr>
-		<td>HAProxy</td>
-		<td>1.8.30</td>
-	</tr>
-	<tr>
-		<td>OSS RabbitMQ*</td>
-		<td>3.8.27 and 3.9.13</td>
-	</tr>
-	<tr>
-		<td>Stemcell</td>
-		<td>621.x</td>
-	</tr>
-	<tr>
-		<td>bpm</td>
-		<td>1.1.16</td>
-	</tr>
-	<tr>
-		<td>cf-cli</td>
-		<td>1.37.0</td>
-	</tr>
-	<tr>
-		<td>cf-rabbitmq</td>
-		<td>422.0.0</td>
-	</tr>
-	<tr>
-		<td>cf-rabbitmq-multitenant-broker</td>
-		<td>109.0.0</td>
-	</tr>
-	<tr>
-		<td>cf-rabbitmq-smoke-tests</td>
-		<td>121.0.0</td>
-	</tr>
-	<tr>
-		<td>cf-service-gateway</td>
-		<td>64.0.0</td>
-	</tr>
-	<tr>
-		<td>loggregator-agent</td>
-		<td>6.3.8</td>
-	</tr>
-	<tr>
-		<td>on-demand-service-broker</td>
-		<td>0.42.4</td>
-	</tr>
-	<tr>
-		<td>rabbitmq-metrics</td>
-		<td>71.0.0</td>
-	</tr>
-	<tr>
-		<td>rabbitmq-on-demand-adapter</td>
-		<td>201.0.0</td>
-	</tr>
-	<tr>
-		<td>routing</td>
-		<td>0.229.0</td>
-	</tr>
-	<tr>
-		<td>service-metrics</td>
-		<td>2.0.15</td>
-	</tr>\n</table>
+<table class="nice"> <th>Component</th> <th>Version</th>   <tr>
+    <td><%= vars.app_runtime_full %></td>
+    <td>2.7.x, 2.8.x, 2.9.x, 2.10.x, 2.11.x, 2.12.x</td>
+  </tr>
+  <tr>
+    <td>Erlang</td>
+    <td>24.2.1</td>
+  </tr>
+  <tr>
+    <td>HAProxy</td>
+    <td>1.8.30</td>
+  </tr>
+  <tr>
+    <td>OSS RabbitMQ*</td>
+    <td>3.8.27 and 3.9.13</td>
+  </tr>
+  <tr>
+    <td>Stemcell</td>
+    <td>621.x</td>
+  </tr>
+  <tr>
+    <td>bpm</td>
+    <td>1.1.16</td>
+  </tr>
+  <tr>
+    <td>cf-cli</td>
+    <td>1.37.0</td>
+  </tr>
+  <tr>
+    <td>cf-rabbitmq</td>
+    <td>422.0.0</td>
+  </tr>
+  <tr>
+    <td>cf-rabbitmq-multitenant-broker</td>
+    <td>109.0.0</td>
+  </tr>
+  <tr>
+    <td>cf-rabbitmq-smoke-tests</td>
+    <td>121.0.0</td>
+  </tr>
+  <tr>
+    <td>cf-service-gateway</td>
+    <td>64.0.0</td>
+  </tr>
+  <tr>
+    <td>loggregator-agent</td>
+    <td>6.3.8</td>
+  </tr>
+  <tr>
+    <td>on-demand-service-broker</td>
+    <td>0.42.4</td>
+  </tr>
+  <tr>
+    <td>rabbitmq-metrics</td>
+    <td>71.0.0</td>
+  </tr>
+  <tr>
+    <td>rabbitmq-on-demand-adapter</td>
+    <td>201.0.0</td>
+  </tr>
+  <tr>
+    <td>routing</td>
+    <td>0.229.0</td>
+  </tr>
+  <tr>
+    <td>service-metrics</td>
+    <td>2.0.15</td>
+  </tr>\n</table>
 
 <sup>*</sup> For more information, see the <a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.9.13">v3.9.13</a> GitHub documentation.
 
@@ -435,8 +438,8 @@ For more information, see [Enable Extra RabbitMQ Server Plugins](install-config.
 and [Configure the Service Plan](install-config.html#service-plan).
 
 * **Filtering per-object Prometheus metrics:**
-You can now filter the set of per-object metrics scraped from your RabbitMQ service instances if you are using
-a Prometheus deployment. This reduces performance impact.
+You can now filter the set of per-object metrics scraped from your RabbitMQ service instances if
+you are using a Prometheus deployment. This reduces performance impact.
 For more information, see [Filter the Per-Object Metrics](monitor.html#filter-per-object).
 
 ### Resolved Issues

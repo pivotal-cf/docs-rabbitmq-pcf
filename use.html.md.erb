@@ -258,35 +258,41 @@ the `cf push` command.
 
 ### <a id='detailed-metrics'></a>Collect additional RabbitMQ metrics in Loggregator
 
-RabbitMQ collects numerous different metrics automatically and sends these to the Loggregator firehose system for
-collation. This section pertains to this automatic collection for this system; if you are using purely a Prometheus
-server for scraping your observed systems, you may ignore this section.
-For more information on metrics collected in general in <%= vars.product_short %>, see @TODO.
+RabbitMQ collects numerous different metrics automatically and sends these to the
+Loggregator Firehose system for collation.
+This section pertains to this automatic collection for this system. If you are using purely a
+Prometheus server for scraping your observed systems, you can ignore this section.
+<!-- For more information on metrics collected in general in <%= vars.product_short %>, see @TODO. -->
 
-You can also configure your on-demand Service Instances to collect additional, more detailed, metrics for specific vhosts
-or families of metrics. These metrics are more resource-consumptive to collect, but can be focused to only collect
-information for objects of your choosing based on a provided query parameter. For more information on this metrics
-collection, and on building this query parameter, see the [RabbitMQ documentation](https://github.com/rabbitmq/rabbitmq-server/tree/master/deps/rabbitmq_prometheus#selective-querying-of-per-object-metrics).
+You can also configure your on-demand Service Instances to collect additional, more detailed,
+metrics for specific vhosts or families of metrics.
+These metrics are more resource-consumptive to collect, but can be focused to only collect
+information for objects you choose based on a provided query parameter.
+
+For more information about this metrics collection, and on building this query parameter, see the
+[RabbitMQ documentation](https://github.com/rabbitmq/rabbitmq-server/tree/master/deps/rabbitmq_prometheus#selective-querying-of-per-object-metrics) in GitHub.
 
 To configure your service instance to collect additional detailed metrics:
 
-1. Determine the query parameter needed for your use case from the [RabbitMQ documentation](https://github.com/rabbitmq/rabbitmq-server/tree/master/deps/rabbitmq_prometheus#selective-querying-of-per-object-metrics).
-    You will only require the query string going forwards, i.e. everything from the <code>?</code> onwards.
+1. Discover the query parameter needed for your use case from the [RabbitMQ documentation](https://github.com/rabbitmq/rabbitmq-server/tree/master/deps/rabbitmq_prometheus#selective-querying-of-per-object-metrics) in GitHub.
+You require only the query string going forwards. That is say, everything from the `?` onwards.
 
 1. Enable additional metric collection by doing one of the following steps:
-  * If you have already created a <%= vars.product_short %> service instance, update the service instance to use your query parameter by running:
+
+    * If you have already created a <%= vars.product_short %> service instance, update the service instance to use your query parameter by running:
 
         ```
         cf update-service MY-INSTANCE -c '{"detailed_metrics_query": "?family=queue_coarse_metrics&family=queue_consumer_count"}'
         ```
+
         Where `MY-INSTANCE` is the name you chose when you created your service instance.<br><br>
-  * If you have not created a <%= vars.product_short %> service instance, create one using your query parameter by running:
+    * If you have not created a <%= vars.product_short %> service instance, create one using your query parameter by running:
 
         ```
         cf create-service p.rabbitmq PLAN MY-INSTANCE -c '{"detailed_metrics_query": "?family=queue_coarse_metrics&family=queue_consumer_count"}'
         ```
 
-        Where:<br>
+        Where:<br><br>
           * `PLAN` is the name of the deployment plan to use for this service instance
           * `MY-INSTANCE` is the name to give to the new service instance
 
@@ -295,6 +301,7 @@ To configure your service instance to collect additional detailed metrics:
     ```
     watch cf services
     ```
+
     If successful, the <code>last operation</code> for your instance is reported as
     `create succeeded` or `update succeeded`.<br><br>
     For example:
@@ -307,11 +314,14 @@ To configure your service instance to collect additional detailed metrics:
        my-instance   p.rabbitmq     single-node                  create succeeded
     </pre>
 
-If you later wish to remove this additional metric collection, you can do so at any time by updating the service instance:
+If you later wish to remove this additional metric collection, you can do so at any time by
+updating the service instance:
+
 ```
 cf update-service MY-INSTANCE -c '{"detailed_metrics_query": ""}'
 ```
-Where `MY-INSTANCE` is the name you chose when you created your service instance.<br><br>
+
+Where `MY-INSTANCE` is the name you chose when you created your service instance.
 
 ## <a id="bind"></a>Bind a Service Instance to Your App
 
