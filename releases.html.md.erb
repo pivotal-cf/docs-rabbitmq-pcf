@@ -5,9 +5,9 @@ owner: London Services
 
 <%= partial vars.path_to_partials + '/upgrade-planner' %>
 
-<p class="note warning">
-  <strong>Note:</strong> As of <%= vars.product_short %> v2.0, the format of the metrics emitted
-  through the Loggregator system has changed.
+<p class="note breaking">
+  <strong>Breaking Change:</strong> As of <%= vars.product_short %> v2.0, the format of the
+  metrics emitted through the Loggregator system has changed.
   If you were using the Loggregator Firehose or Healthwatch to observe <%= vars.product_short %>
   metrics in v1.x, you might need to alter any dashboards or queries previously configured to
   match the new metric names.
@@ -28,7 +28,7 @@ owner: London Services
 
 New features and changes in this release:
 
-* **RabbitMQ v3.9 pre-provisioned support:** 
+* **RabbitMQ v3.9 pre-provisioned support:**
 Pre-provisioned users can use RabbitMQ v3.9 for their service instances.
 * **Extra vhost metrics:** It is now possible to collect additional metrics about specific vhosts by
 using Loggregator.
