@@ -3,7 +3,8 @@ title: Setting Limits for On-Demand Service Instances
 owner: London Services
 ---
 
-
+<%# The below partial is in https://github.com/pivotal-cf/docs-partials %>
+<%= partial vars.path_to_partials + '/services/toc-set-quotas'%>
 
 <strong><%= modified_date %></strong>
 
@@ -205,15 +206,12 @@ The specific costs depend on your IaaS.
 
 To view configurations for your <%= vars.product_short %> on-demand plan, do the following:
 
-1. Navigate to **<%= vars.ops_manager %> Installation Dashboard** > **<%= vars.product_short %>** > **Settings**.
+1. Navigate to **<%= vars.ops_manager %> Installation Dashboard** > **<%= vars.product_short %> ** > **Settings**.
 
 1. Click the section for the plan you want to view. For example, **On Demand Instance: Plan 1**.
 
 
-The image below shows an example that includes the VM type and persistent disk
-selected for the server VMs, as well as the quota for this plan.
-
-
+<% # Tabbed table to display image for MySQL, otherwise display image plainly with different alt text for each service. %>
 
 <p class="note"><strong>Note:</strong>
 	Although operators can limit on-demand instances with plan quotas and a global
