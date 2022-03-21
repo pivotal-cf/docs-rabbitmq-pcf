@@ -50,7 +50,9 @@ A service may offer one or more plans.
 You can set a separate quota per plan so that instances of that plan cannot exceed the plan quota.
 For a service with multiple plans, the total number of instances created for all
 plans combined cannot exceed the [global quota](#global) for the service.
-
+<% if vars.product_short == "Tanzu SQL for VMs" %>
+If the plan quota field is blank, the plan quota is set to the global quota by default.
+<% end %>
 
 When the plan quota is reached, no more instances of that plan can be created
 unless the plan quota is increased or some instances of that plan are deleted.
@@ -208,8 +210,28 @@ To view configurations for your <%= vars.product_short %> on-demand plan, do the
 
 1. Navigate to **<%= vars.ops_manager %> Installation Dashboard** > **<%= vars.product_short %> ** > **Settings**.
 
+<% if vars.product_short == "Tanzu RabbitMQ" %>
 1. Click the section for the plan you want to view. For example, **On Demand Instance: Plan 1**.
+<% end %>
 
+<% if vars.product_short == "Tanzu SQL for VMs" %>
+1. Click the section for the plan you want to view. For example, **Plan 1**.
+<% end %>
+
+<% if vars.product_short == "Tanzu GemFire" || vars.product_short == "Pivotal Cloud Cache" %>
+1. Click the section for the plan you want to view. For example, **Plan 1**.
+<% end %>
+
+<% if vars.product_short == "Redis for Tanzu Application Service" || vars.product_short == "Redis for Pivotal Platform" %>
+1. Click **On-Demand Plans**.
+1. Click the dropdown for the plan you want to view. For example, **on-demand-cache**.
+<% end %>
+
+The image below shows an example that includes the VM type and persistent disk
+selected for the server VMs, as well as the quota for this plan.
+<% if vars.product_short == "Tanzu GemFire" || vars.product_short == "Pivotal Cloud Cache" %>
+The quota is shown in the **Maximum service instances** field.
+<% end %>
 
 <% # Tabbed table to display image for MySQL, otherwise display image plainly with different alt text for each service. %>
 
