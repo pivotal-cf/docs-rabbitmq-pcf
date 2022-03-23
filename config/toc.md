@@ -13,7 +13,7 @@
         *   [Enabling OAuth for Apps](../enable-oauth-for-apps.html)
         *   [Securing Inter‑node Traffic with TLS](../secure-inter-node.html)
         *   [Smoke Tests](../smoke-tests.html)
-    *   [Managing the On‑Demand Service](../on-demand-managing-index.html)
+    *   [Managing the On‑Demand Service](../on-demand-manage-index.html)
         *   [Rotating Certificates](../rotating-ca.html)
         *   [Setting Limits for Resource Use](../set-quotas.html)
         *   [Controlling Access to Service Plans by Org](../control-access.html)
