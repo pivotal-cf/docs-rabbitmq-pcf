@@ -71,30 +71,86 @@ The following errors occur in multiple services:
 
 The following troubleshooting errors are specific to <%= vars.product_short %>:
 
-<%= partial vars.path_to_partials + "/troubleshoot-template", locals: {
-    id: 'failed-deployment' ,
-    description: 'Failed Deployment on Upgrade or after Apply Changes',
-    symptom: 'Your deployment fails after editing the <strong>Assign AZs and Networks</strong>
-    pane in the ' + vars.product_short + ' tile.' ,
-    cause: 'This error might occur if you change the
-    IP addresses assigned to the <code>RabbitMQ Server</code> job. ' + vars.product_short + ' requires
-    that you do not change these IP addresses after they are assigned.
-    This includes changes made to your current installation or during an upgrade.' ,
-    solution: 'To diagnose and solve this issue, see
-    <a href="./changing-ips.html">Changing Network or IP Addresses Results in a Failed Deployment</a>.'
-} %>
+<a name="failed-deployment"></a>
+<table class="nice">
+  <style>
+    main table {
+      table-layout: fixed;
+    }
+  </style>
+  <col width="20%">
+  <col width="80%">
+  <tr>
+  <th colspan="2" style="text-align: left;">
+    <br>
+    Failed Deployment on Upgrade or after Apply Changes
+    <br><br>
+  </th>
+  </tr>
+  <tr>
+    <th>Symptom</th>
+    <td>
+      Your deployment fails after editing the <strong>Assign AZs and Networks</strong>
+      pane in the <%= vars.product_short %> tile.
+    </td>
+  </tr>
+  <tr>
+    <th>Cause</th>
+    <td>
+      This error might occur if you change the
+      IP addresses assigned to the <code>RabbitMQ Server</code> job. <%= vars.product_short %> requires
+      that you do not change these IP addresses after they are assigned.
+      This includes changes made to your current installation or during an upgrade.
+    </td>
+  </tr>
+  <tr>
+    <th style="vertical-align: top; padding-top: 1em;">Solution</th>
+    <td>
+      To diagnose and solve this issue, see
+      <a href="./changing-ips.html">Changing Network or IP Addresses Results in a Failed Deployment</a>.s
+    </td>
+  </tr>
+</table>
 
-<%= partial vars.path_to_partials + "/troubleshoot-template", locals: {
-    id: 'manual-queues',
-    description: 'Pre-Stop Script Times Out When Waiting for Queue Synchronization',
-    symptom: 'A pre-stop script times out with the error message:
-    <pre class="terminal">Timed out waiting for mirror queue critical node to sync after 3600 seconds</pre>',
-    cause: 'You have not manually synced your queues,
-    but you selected the <strong>Wait for Queue Synchronization</strong> checkbox and have
-    mirrored queues with the default policy setting <code>ha-sync-mode: manual</code>.',
-    solution: 'To manually sync your queues, run <code>rabbitmqctl sync_queue</code>.
-    To set <code>ha-sync-mode</code> to <code>automatic</code> instead, see <a href="./policies-pp.html#viewing">Setting or Changing the Policy</a>.'
-} %>
+<a name="manual-queues"></a>
+<table class="nice">
+  <style>
+    main table {
+      table-layout: fixed;
+    }
+  </style>
+  <col width="20%">
+  <col width="80%">
+  <tr>
+  <th colspan="2" style="text-align: left;">
+    <br>
+    Pre-Stop Script Times Out When Waiting for Queue Synchronization
+    <br><br>
+  </th>
+  </tr>
+  <tr>
+    <th>Symptom</th>
+    <td>
+      A pre-stop script times out with the error message:
+      <pre class="terminal">Timed out waiting for mirror queue critical node to sync after 3600 seconds</pre>
+    </td>
+  </tr>
+  <tr>
+    <th>Cause</th>
+    <td>
+      You have not manually synced your queues,
+      but you selected the <strong>Wait for Queue Synchronization</strong> checkbox and have
+      mirrored queues with the default policy setting <code>ha-sync-mode: manual</code>.
+    </td>
+  </tr>
+  <tr>
+    <th style="vertical-align: top; padding-top: 1em;">Solution</th>
+    <td>
+      To manually sync your queues, run <code>rabbitmqctl sync_queue</code>.
+      To set <code>ha-sync-mode</code> to <code>automatic</code> instead, see <a href="./policies-pp.html#viewing">Setting or Changing the Policy</a>.
+    </td>
+  </tr>
+</table>
 
 ## <a id="components"></a> Troubleshoot Components
 
