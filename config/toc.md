@@ -1,6 +1,6 @@
 *   [Overview](../index.html)
 *   [Release Notes](../releases.html)
-*   [Unlocking the Power of On‑Demand Service](../ondemand.html)
+*   [Unlocking the Power of On‑Demand Services](../ondemand.html)
 *   [Architecture](../architecture.html)
     *   [On‑Demand Service Architecture](../about.html)
     *   [Pre‑Provisioned Service Deployment](../deploying.html)
