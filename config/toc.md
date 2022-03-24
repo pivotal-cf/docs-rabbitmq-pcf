@@ -5,7 +5,7 @@
     *   [On‑Demand Service Architecture](../about.html)
     *   [Pre‑Provisioned Service Deployment](../deploying.html)
     *   [Service‑Gateway Access](../service-gateway-access.html)
-*   [Operator Guide](../op-guide.html)
+*   [Operator Guide](../operator-index.html)
     *   [On‑Demand Service Offering](../od-index.html)
         *   [Installing and Configuring](../od-install-index.html)
             *   [Preparing for TLS](../prepare-tls.html)
