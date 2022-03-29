@@ -194,10 +194,17 @@ new shovels. This is to avoid overloading the system.
     1. Click **Add a new shovel**.
     1. Under **Source**:
         - Set **URI** to the URI you retrieved from the service key for the blue cluster.
-        For example: <pre>amqp://user:password@server-name</pre>
-        If you are using TLS for AMQP traffic, you must add a query parameter onto the end of the URI above.
-        This query parameter is always: <pre>?cacertfile=/var/vcap/jobs/rabbitmq-server/etc/cacert.pem&certfile=/var/vcap/jobs/rabbitmq-server/etc/cert.pem&keyfile=/var/vcap/jobs/rabbitmq-server/etc/key.pem&verify=verify\_peer</pre>
-        For example, your shovel's source URI will look similar to: <pre>amqps://user:password@server-name?cacertfile=/var/vcap/jobs/rabbitmq-server/etc/cacert.pem&certfile=/var/vcap/jobs/rabbitmq-server/etc/cert.pem&keyfile=/var/vcap/jobs/rabbitmq-server/etc/key.pem&verify=verify\_peer</pre>
+        For example: <code>amqp://user:password@server-name</code>
+        <br><br>
+        If you are using TLS for AMQP traffic, add the following query parameter onto the end of the URI:
+
+            ```
+            ?cacertfile=/var/vcap/jobs/rabbitmq-server/etc/cacert.pem&certfile=/var/vcap/jobs/rabbitmq-server/etc/cert.pem&keyfile=/var/vcap/jobs/rabbitmq-server/etc/key.pem&verify=verify\_peer</pre>
+            ```
+            For example, your shovel's source URI will look similar to:
+
+            <pre class="terminal">amqps://user:password@server-name?cacertfile=/var/vcap/jobs/rabbitmq-server/etc/cacert.pem&certfile=/var/vcap/jobs/rabbitmq-server/etc/cert.pem&keyfile=/var/vcap/jobs/rabbitmq-server/etc/key.pem&verify=verify\_peer</pre>
+
         - Set **Queue** to the name of a queue that you want to drain from the blue cluster.
         - Set **Auto-delete** to **After initial length transferred**.
 
