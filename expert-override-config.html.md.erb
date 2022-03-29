@@ -1,5 +1,5 @@
 ---
-title: Expert Mode - Overriding RabbitMQ Server Configuration
+title: Expert Mode&#58; Overriding RabbitMQ Server Configuration
 owner: RabbitMQ
 ---
 
@@ -47,30 +47,32 @@ To provide override configuration on a per-plan basis for on-demand service plan
 Any service instances created under this plan will have this override configuration applied to them.
 
 1. In on-demand, you can provide override configuration in sysctl-style or Erlang-style config format.
-    * To provide configuration in the newer sysctl-style format:
+    * **To provide configuration in the newer sysctl-style format:**
         1. Paste the configuration into the **Expert Mode: Override Server Config** field.
         You can make this configuration a multiline string if you require multiple configuration items.
         <%= image_tag("images/override-config-od.png",
         :alt => "Screenshot of the 'Expert Mode: Override Server Config' field. The field contains a multiline string; the lines are 'management.rates_mode = detailed', 'management.ssl.ciphers.1 = ECDHE-ECDSA-AES256-GCM-SHA384' and 'management.ssl.ciphers.2 = ECDHE-RSA-AES256-GCM-SHA384'") %>
         1. Click **Save**.
-    * To provide configuration in the older Erlang-style format:
+    * **To provide configuration in the older Erlang-style format:**
         1. Encode the configuration as a base64 string.
         For example, to provide the same config as above in the older format, you can do so on Linux
-        by running:<br>
-        <pre class="terminal">
-        $ echo -n '[
-          {rabbitmq_management, [
-            {rates_mode, detailed},
-            {ssl_options, [
-              {ciphers, [
-                "ECDHE-ECDSA-AES256-GCM-SHA384",
-                "ECDHE-RSA-AES256-GCM-SHA384"
+        by running:
+
+            ```
+            echo -n '[
+              {rabbitmq_management, [
+                {rates_mode, detailed},
+                {ssl_options, [
+                  {ciphers, [
+                    "ECDHE-ECDSA-AES256-GCM-SHA384",
+                    "ECDHE-RSA-AES256-GCM-SHA384"
+                  ]}
+                ]}
               ]}
-            ]}
-          ]}
-        ].' | base64<br><br>
-        WwogIHtyYWJiaXRtcV9tYW5hZ2VtZW50LCBbCiAgICB7cmF0ZXNfbW9kZSwgZGV0YWlsZWR9LAogICAge3NzbF9vcHRpb25zLCBbCiAgICAgIHtjaXBoZXJzLCBbCiAgICAgICAgIkVDREhFLUVDRFNBLUFFUzI1Ni1HQ00tU0hBMzg0IiwKICAgICAgICAiRUNESEUtUlNBLUFFUzI1Ni1HQ00tU0hBMzg0IgogICAgICBdfQogICAgXX0KICBdfQpdLg==
-        </pre>
+            ].' | base64
+
+            WwogIHtyYWJiaXRtcV9tYW5hZ2VtZW50LCBbCiAgICB7cmF0ZXNfbW9kZSwgZGV0YWlsZWR9LAogICAge3NzbF9vcHRpb25zLCBbCiAgICAgIHtjaXBoZXJzLCBbCiAgICAgICAgIkVDREhFLUVDRFNBLUFFUzI1Ni1HQ00tU0hBMzg0IiwKICAgICAgICAiRUNESEUtUlNBLUFFUzI1Ni1HQ00tU0hBMzg0IgogICAgICBdfQogICAgXX0KICBdfQpdLg==
+            ```
         1. Paste this base64-encoded config into the **Expert Mode: Override Server Advanced Config** field.
         <%= image_tag("images/override-adv-config-od.png",
         :alt => "Screenshot of the 'Expert Mode: Override Server Advanced Config' field.
@@ -97,8 +99,8 @@ In pre-provisioned, to set configuration on all service instances:
 the older Erlang-style format of override configuration.
 For example, you can do this on Linux by running:
 
-    <pre class="terminal">
-    $ echo -n '[
+    ```
+    echo -n '[
       {rabbitmq_management, [
         {rates_mode, detailed},
         {ssl_options, [
@@ -108,9 +110,10 @@ For example, you can do this on Linux by running:
           ]}
         ]}
       ]}
-    ].' | base64<br><br>
+    ].' | base64
+
     WwogIHtyYWJiaXRtcV9tYW5hZ2VtZW50LCBbCiAgICB7cmF0ZXNfbW9kZSwgZGV0YWlsZWR9LAogICAge3NzbF9vcHRpb25zLCBbCiAgICAgIHtjaXBoZXJzLCBbCiAgICAgICAgIkVDREhFLUVDRFNBLUFFUzI1Ni1HQ00tU0hBMzg0IiwKICAgICAgICAiRUNESEUtUlNBLUFFUzI1Ni1HQ00tU0hBMzg0IgogICAgICBdfQogICAgXX0KICBdfQpdLg==
-    </pre>
+    ```
 
 1. Paste this base64-encoded config into the **Expert Mode: Override Server Advanced Config** field.
 

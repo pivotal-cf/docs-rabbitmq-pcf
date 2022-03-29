@@ -1,6 +1,6 @@
 ---
 breadcrumb: VMware Tanzu RabbitMQ for VMs Documentation
-title: Controlling Access to Service Plans <br>by Org
+title: Controlling Access to Service Plans by Org
 owner: London Services
 ---
 
@@ -17,13 +17,15 @@ You can also limit the number of service instances by setting quotas---for instr
 
 To restrict access to a plan for a specific org, run this command:
 
-`cf enable-service-access p.rabbitmq -p PLAN_NAME -o ORG_NAME`
+```
+cf enable-service-access p.rabbitmq -p PLAN_NAME -o ORG_NAME
+```
 
 For example:
 
 <pre class="terminal">
-  $ cf enable-service-access p.rabbitmq -p my-cluster-plan -o my-dev-org
+$ cf enable-service-access p.rabbitmq -p my-cluster-plan -o my-dev-org
 </pre>
 
 For more information about the above command,
-see [Access Control](https://docs.pivotal.io/pivotalcf/services/access-control.html).
+see [Access Control](https://docs.pivotal.io/application-service/services/access-control.html).

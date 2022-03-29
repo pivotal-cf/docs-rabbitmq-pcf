@@ -1,5 +1,5 @@
 ---
-title: Installing and Configuring the <br>On-Demand Service
+title: Installing and Configuring the On-Demand Service
 owner: London Services
 ---
 
@@ -32,9 +32,8 @@ Therefore, your role permissions might not permit you to follow every procedure 
 guide.
 
 For more information about roles in <%= vars.ops_manager %>, see
-<a href="https://docs.pivotal.io/pivotalcf/opsguide/config-rbac.html#about">
-  Understand Roles in <%= vars.ops_manager %>
-</a>.
+<a href="https://docs.pivotal.io/ops-manager/opsguide/config-rbac.html#about">
+  Understand Roles in <%= vars.ops_manager %></a>.
 
 
 ## <a id="prerequisites"></a> Prerequisites for Deploying the On-Demand Service
@@ -172,7 +171,7 @@ Follow the steps below to configure the AZs and networks:
 ### <a id='logging'></a> Set up Syslog Forwarding and Metrics Polling Interval
 
 VMware recommends that you configure logging to monitor the health of <%= vars.product_short %>.
-Follow the instructions in [Configure Syslog Forwarding](./monitor.html#config)
+Follow the instructions in [Configure Syslog Forwarding](./monitor.html#syslog-forwarding)
 and [Configure the Metrics Polling Interval](./monitor.html#metrics-polling-interval).
 
 
@@ -189,7 +188,6 @@ Follow the steps below to configure global settings:
         <th>Field</th>
         <th>Instructions</th>
       </tr>
-
       <tr>
         <td>
           <strong>Dedicated Instance Service Quota</strong>
@@ -200,7 +198,6 @@ Follow the steps below to configure global settings:
           <a href="./set-quotas.html">Setting Limits for On-Demand Service Instances</a>.
         </td>
       </tr>
-
       <tr>
         <td>
           <strong>Allow outbound internet access (IaaS-dependent)</strong>
@@ -215,7 +212,6 @@ Follow the steps below to configure global settings:
           </p>
         </td>
       </tr>
-
       <tr>
         <td>
           <strong>RabbitMQ plugins that can be enabled by App Developers</strong>
@@ -225,7 +221,6 @@ Follow the steps below to configure global settings:
           <a href="#optional-plugins">Enable Extra Optional RabbitMQ Server Plugins</a> below.
         </td>
       </tr>
-
       <tr>
         <td><strong>Use Service Instance ID as cluster name</strong></td>
         <td>
@@ -240,7 +235,6 @@ Follow the steps below to configure global settings:
           </p>
         </td>
       </tr>
-
       <tr>
         <td>
           <strong>External TCP domain</strong>
@@ -250,7 +244,6 @@ Follow the steps below to configure global settings:
           This corresponds to your external load balancer.
         </td>
       </tr>
-
       <tr>
         <td>
           <strong>Port Range</strong>
@@ -262,7 +255,6 @@ Follow the steps below to configure global settings:
           instances.
         </td>
       </tr>
-
       <tr>
         <td>
           <strong>Shareable Instances</strong>
@@ -271,16 +263,13 @@ Follow the steps below to configure global settings:
           Click <strong>Yes</strong> to enable the feature for sharing instances.<br>
           Sharing a service instance between spaces enables apps in different spaces to share
           databases and messaging queues. For more information, see
-          <a href="https://docs.pivotal.io/pivotalcf/devguide/services/sharing-instances.html">
+          <a href="https://docs.pivotal.io/application-service/devguide/services/sharing-instances.html">
           Sharing Service Instances</a>.
         </td>
       </tr>
-
-      <a id="credhub"></a>
-
       <tr>
         <td>
-          <strong>On Demand - Secure Service Instance Credentials with Runtime CredHub</strong>
+          <a id="credhub"></a><strong>On Demand - Secure Service Instance Credentials with Runtime CredHub</strong>
         </td>
         <td>For on-demand services instances, click <strong>Yes</strong> to secure credentials with
           CredHub.
@@ -293,7 +282,6 @@ Follow the steps below to configure global settings:
           </p>
         </td>
       </tr>
-
       <tr>
         <td>
           <strong>On Demand Service Broker Static IP</strong>
@@ -303,7 +291,6 @@ Follow the steps below to configure global settings:
           BOSH allocates an IP address if the field is left blank.
         </td>
       </tr>
-
       <tr>
         <td>
           <strong>Number of upgrade canary instances</strong>
@@ -314,7 +301,6 @@ Follow the steps below to configure global settings:
           If the errand succeeds on all canary instances, it runs on the remaining instances.
         </td>
       </tr>
-
       <tr>
         <td>
           <strong>Maximum number of instances upgraded in parallel</strong>
@@ -329,7 +315,6 @@ Follow the steps below to configure global settings:
           Set the value lower than this limit to avoid over-saturating BOSH.
         </td>
       </tr>
-
       <tr>
         <td><strong>Custom apps domain for smoke tests</strong></td>
         <td>Configure to provide a custom apps domain for the smoke tests.
@@ -375,7 +360,7 @@ To configure the security settings:
 before configuring the tile and applying changes.
 
 1. Click the <strong>Security for On-Demand Plans</strong> tab.
-    <%= image_tag("/images/configure-oauth.png",
+    <%= image_tag("images/configure-oauth.png",
     :alt => "Screenshot of the Security for On-Demand Plans tab.
     The fields are described in the table in the next step.") %>
     <a href="./images/configure-oauth.png" target="_blank" aria-hidden="true">
@@ -387,7 +372,6 @@ before configuring the tile and applying changes.
         <th>Field</th>
         <th>Instructions</th>
       </tr>
-
       <tr>
         <td><strong>TLS Options</strong></td>
         <td>
@@ -408,7 +392,6 @@ before configuring the tile and applying changes.
           </p>
         </td>
       </tr>
-
       <tr>
         <td><strong>Secure Inter-node communications with TLS on new Instances</strong></td>
         <td>
@@ -432,7 +415,6 @@ before configuring the tile and applying changes.
           <a href="./secure-inter-node.html">Securing Inter-node Traffic with TLS</a>.
         </td>
       </tr>
-
       <tr>
         <td><strong>RabbitMQ TLS Versions</strong></td>
         <td>
@@ -442,7 +424,6 @@ before configuring the tile and applying changes.
           <a href="https://www.rabbitmq.com/ssl.html#tls-versions-why-limit">RabbitMQ documentation</a>.
         </td>
       </tr>
-
       <tr>
         <td><strong>OAuth Options</strong></td>
         <td>
@@ -456,7 +437,7 @@ before configuring the tile and applying changes.
 
 1. Click <strong>Review Pending Changes</strong>. For more information about this
 <%= vars.ops_manager %> page, see
-<a href="https://docs.pivotal.io/pivotalcf/customizing/review-pending-changes.html">Reviewing Pending Product Changes</a>.
+<a href="https://docs.pivotal.io/ops-manager/install/review-pending-changes.html">Reviewing Pending Product Changes</a>.
 
 1. In the <%= vars.ops_manager %> Installation Dashboard, ensure the
 <strong>Upgrade All Service Instances</strong> errand is set to <strong>On</strong>,
@@ -481,6 +462,8 @@ Plan 5**.
   <strong>Note:</strong> You must fully configure <strong>On Demand Instance: Plan 1</strong> even
   if you disable access to this plan. See <strong>CF Service Access</strong> in the table below.
 </p>
+
+To configure an on-demand service plan:
 
 1. Choose the on-demand service instance you want to configure.
 You must complete the required fields for **On Demand Instance: Plan 1** even if you disable this
@@ -701,7 +684,7 @@ Your installation is not complete until you apply your configuration changes. To
 
 1. Click **Review Pending Changes**.
 For more information about this <%= vars.ops_manager %> page,
-see [Reviewing Pending Product Changes](https://docs.pivotal.io/pivotalcf/customizing/review-pending-changes.html).
+see [Reviewing Pending Product Changes](https://docs.pivotal.io/ops-manager/install/review-pending-changes.html).
 
 1. Click **Apply Changes** to complete the installation of <%= vars.product_short %>.
 
@@ -724,7 +707,7 @@ Underneath the text 'Select errands to run during the deploy' are the following 
 'On Demand Instance Smoke Tests',
 'Upgrade All Service Instances',
 'Recreate All Service Instances'.
-All the checkboxes are enabled except for 'Recreate All Service Instances'](./images/errands-installation-pending-changes.png)
+All the checkboxes are enabled except for 'Recreate All Service Instances'](images/errands-installation-pending-changes.png)
 
 <p class='note warning'>
   <strong>Warning:</strong> In <%= vars.product_short %> v1.9.0 and later,
@@ -738,7 +721,7 @@ You can change these defaults by clicking **Errands** in the <%= vars.product_sh
 **Settings** tab as well as the defaults for [pre-delete](#pre-delete-errands) errands.
 
 For more information, see
-[Errand Run Rules](https://docs.pivotal.io/pivotalcf/customizing/managing_errands.html#rules).
+[Errand Run Rules](https://docs.pivotal.io/ops-manager/install/managing_errands.html#rules).
 
 <%= vars.product_short %> errands are co-located with their brokers to decrease errand run time and
 VM footprint.
@@ -827,15 +810,16 @@ To create an admin user on a <%= vars.product_short %> service instance:
     cf create-service-key SERVICE-INSTANCE-NAME SERVICE-KEY -c '{"tags": "administrator"}'
     ```
 
-    <br>Where:
+    Where:
+
     * `SERVICE-INSTANCE-NAME` is the name you supplied when you ran `cf create-service`.
     * `SERVICE-KEY` is a name you choose to identify the service key.
 
-    <br>For example:
+    For example:
 
     <pre class="terminal">
     $ cf create-service-key my-instance my-admin-key -c '{"tags":"administrator"}'<br>
-    Creating service key my-admin-key for service instance my-instance as user<span>@</span>example.com...
+    Creating service key my-admin-key for service instance my-instance as user<span>@</span>example.com...<br>
     OK
     </pre>
 
@@ -846,18 +830,19 @@ To create an admin user on a <%= vars.product_short %> service instance:
     ```
     Where the variables are the same as above.
 
-    <br>This returns a Dashboard URL containing the admin credentials, which can be used to access the RabbitMQ Management UI. For example:
+    This returns a Dashboard URL containing the admin credentials, which can be used to access the RabbitMQ Management UI.
+    For example:
 
     <pre class="terminal">
-   $ cf service-key my-instance my-admin-key<br>
-   Getting key my-admin-key for service instance my-instance as user<span>@</span>example.com...
-   {
-     "dashboard_url": "https://my-instance.bosh-lite.com",
-     "username": "admin-username",
-     "password": "admin-password",
-     ...
-   }
-</pre>
+    $ cf service-key my-instance my-admin-key<br>
+    Getting key my-admin-key for service instance my-instance as user<span>@</span>example.com...<br>
+    {<br>
+      "dashboard_url": "https://my-instance.bosh-lite.com",<br>
+      "username": "admin-username",<br>
+      "password": "admin-password",<br>
+      ...<br>
+    }<br>
+    </pre>
 
 ## <a id="service-key-tags"></a> Creating Users with Other Privilege Levels
 
@@ -879,7 +864,7 @@ You can enable any supported tag for the user by providing it as a comma-separat
 
     <pre class="terminal">
     $ cf create-service-key my-instance my-monitoring-key -c '{"tags":"monitoring"}'<br>
-    Creating service key my-monitoring-key for service instance my-instance as user<span>@</span>example.com...
+    Creating service key my-monitoring-key for service instance my-instance as user<span>@</span>example.com...<br>
     OK
     </pre>
 
@@ -893,7 +878,7 @@ You can enable any supported tag for the user by providing it as a comma-separat
 
     <pre class="terminal">
     $ cf create-service-key my-instance my-default-key -c '{"tags":"policymaker,monitoring"}'<br>
-    Creating service key my-default-key for service instance my-instance as user<span>@</span>example.com...
+    Creating service key my-default-key for service instance my-instance as user<span>@</span>example.com...<br>
     OK
     </pre>
 
@@ -903,141 +888,134 @@ If no tags are specified, the default tags applied are <code>management,policyma
 
 <%= vars.product_short %> supports a subset of available RabbitMQ plugins.
 See the sections below for which plugins are supported, and whether they are
-enabled or disabled by default.
+activated or deactivated by default.
 
 
 ### <a id="enabled-plugins"></a> Enabled RabbitMQ Server Plugins
 
-The following plugins are enabled by default, you cannot disable them:
+The following plugins are activated by default, you cannot deactivate them:
 
 <table class="nice">
 <col width="40%">
 <col width="60%">
-	<th>Plugin</th>
-	<th>For more information, see…</th>
-	<tr>
-                <td><code>rabbitmq_management</code></td>
-                <td><a href="https://www.rabbitmq.com/management.html">Management Plugin</a> in the RabbitMQ documentation.</td>
-        </tr>
-        <tr>
-
-                <td><code>rabbitmq_federation</code></td>
-                <td><a href="./use.html#federation">Federate Exchanges and Queues</a>.</td>
-        </tr>
-        <tr>
-
-                <td><code>rabbitmq_federation_management</code></td>
-                <td><em>n/a</em></td>
-        </tr>
-        <tr>
-
-                <td><code>rabbitmq_shovel</code></td>
-                <td><a href="./use.html#shovel">Shovel Exchanges and Queues</a>.</td>
-        </tr>
-        <tr>
-
-                <td><code>rabbitmq_shovel_management</code></td>
-                <td><em>n/a</em></td>
-        </tr>
-        <tr>
-
-                <td><code>rabbitmq_sharding</code></td>
-                <td><a href="https://github.com/rabbitmq/rabbitmq-sharding/blob/master/README.md"> rabbitmq sharding</a> in GitHub.</td>
-        </tr>
-        <tr>
-
-                <td><code>rabbitmq_consistent_hash_exchange</code></td>
-                <td><a href="https://github.com/rabbitmq/rabbitmq-consistent-hash-exchange/blob/master/README.md">rabbitmq consistent hash exchange</a> in GitHub.</td>
-        </tr>
-        <tr>
-
-                <td><code>rabbitmq_prometheus</code></td>
-                <td><a href="https://github.com/rabbitmq/rabbitmq-prometheus/blob/master/README.md">rabbitmq prometheus</a> in GitHub.</td>
-        </tr>
-        <tr>
+  <th>Plugin</th>
+  <th>For more information, see…</th>
+  <tr>
+    <td><code>rabbitmq_management</code></td>
+    <td><a href="https://www.rabbitmq.com/management.html">Management Plugin</a> in the RabbitMQ documentation.</td>
+  </tr>
+  <tr>
+    <td><code>rabbitmq_federation</code></td>
+    <td><a href="./use.html#federation">Federate Exchanges and Queues</a>.</td>
+  </tr>
+  <tr>
+    <td><code>rabbitmq_federation_management</code></td>
+    <td><em>n/a</em></td>
+  </tr>
+  <tr>
+    <td><code>rabbitmq_shovel</code></td>
+    <td><a href="./use.html#shovel">Shovel Exchanges and Queues</a>.</td>
+  </tr>
+  <tr>
+    <td><code>rabbitmq_shovel_management</code></td>
+    <td><em>n/a</em></td>
+  </tr>
+  <tr>
+    <td><code>rabbitmq_sharding</code></td>
+    <td><a href="https://github.com/rabbitmq/rabbitmq-sharding/blob/master/README.md"> rabbitmq sharding</a> in GitHub.</td>
+  </tr>
+  <tr>
+    <td><code>rabbitmq_consistent_hash_exchange</code></td>
+    <td><a href="https://github.com/rabbitmq/rabbitmq-consistent-hash-exchange/blob/master/README.md">rabbitmq consistent hash exchange</a> in GitHub.</td>
+  </tr>
+  <tr>
+    <td><code>rabbitmq_prometheus</code></td>
+    <td><a href="https://github.com/rabbitmq/rabbitmq-prometheus/blob/master/README.md">rabbitmq prometheus</a> in GitHub.</td>
+  </tr>
+  <tr>
 </table>
 
 ### <a id="optional-plugins"></a> (Optional) Enable Extra RabbitMQ Server Plugins
 
-The following plugins are disabled by default:
+The following plugins are deactivated by default:
 
 <table class="nice">
 <col width="40%">
 <col width="60%">
-	<th>Plugin</th>
-	<th>For more information, see…</th>
-	<tr>
-                <td><code>rabbitmq_amqp1_0</code></td>
-                <td><a href="https://github.com/rabbitmq/rabbitmq-server/blob/master/deps/rabbitmq_amqp1_0/README.md"> AMQP 1.0 Plugin</a> in GitHub.</td>
-	</tr>
-	<tr>
-                <td><code>rabbitmq_auth_backend_cache</code></td>
-                <td> <a href="https://github.com/rabbitmq/rabbitmq-server/blob/master/deps/rabbitmq_auth_backend_cache/README.md"> Auth Backend Cache Plugin</a> in GitHub.</td>
-	</tr>
-	<tr>
-                <td><code>rabbitmq_auth_backend_http</code></td>
-                <td> <a href="https://github.com/rabbitmq/rabbitmq-server/blob/master/deps/rabbitmq_auth_backend_http/README.md"> Auth Backend HTTP Plugin</a> in GitHub.</td>
-	</tr>
-	<tr>
-                <td><code>rabbitmq_auth_backend_ldap</code></td>
-                <td> <a href="https://www.rabbitmq.com/ldap.html"> LDAP Plugin</a> in the RabbitMQ documentation.</td>
-	</tr>
-	<tr>
-                <td><code>rabbitmq_auth_mechanism_ssl</code></td>
-                <td> <a href="https://github.com/rabbitmq/rabbitmq-server/blob/master/deps/rabbitmq_auth_mechanism_ssl/README.md"> Auth Mechanism SSL Plugin</a> in GitHub.</td>
-	</tr>
-	<tr>
-                <td><code>rabbitmq_event_exchange</code></td>
-                <td> <a href="https://www.rabbitmq.com/event-exchange.html"> Event Exchange Plugin</a> in the RabbitMQ documentation.</td>
-	</tr>
-	<tr>
-                <td><code>rabbitmq_jms_topic_exchange</code></td>
-                <td> <a href="https://github.com/rabbitmq/rabbitmq-server/blob/master/deps/rabbitmq_jms_topic_exchange/README.md"> JMS Topic Exchange Plugin</a> in the RabbitMQ documentation.</td>
-	</tr>
-	<tr>
-                <td><code>rabbitmq_mqtt</code></td>
-                <td> <a href="https://www.rabbitmq.com/mqtt.html"> MQTT Plugin</a> in the RabbitMQ documentation.</td>
-	</tr>
-	<tr>
-                <td><code>rabbitmq_stomp</code></td>
-                <td> <a href="https://www.rabbitmq.com/stomp.html"> STOMP Plugin</a> in the RabbitMQ documentation.</td>
-	</tr>
+  <th>Plugin</th>
+  <th>For more information, see…</th>
   <tr>
-                <td><code>rabbitmq_stream</code></td>
-                <td> <a href="https://www.rabbitmq.com/stream.html"> Stream Plugin</a> in the RabbitMQ documentation.</td>
+    <td><code>rabbitmq_amqp1_0</code></td>
+    <td><a href="https://github.com/rabbitmq/rabbitmq-server/blob/master/deps/rabbitmq_amqp1_0/README.md"> AMQP 1.0 Plugin</a> in GitHub.</td>
   </tr>
-	<tr>
-                <td><code>rabbitmq_tracing</code></td>
-                <td> <a href="https://github.com/rabbitmq/rabbitmq-server/blob/master/deps/rabbitmq_tracing/README.md"> Tracing Plugin</a> in GitHub.</td>
-	</tr>
-	<tr>
-                <td><code>rabbitmq_trust_store</code></td>
-                <td> <a href="https://github.com/rabbitmq/rabbitmq-server/blob/master/deps/rabbitmq_trust_store/README.md"> Trust Store Plugin</a> in GitHub.</td>
-	</tr>
-	<tr>
-                <td><code>rabbitmq_web_mqtt</code></td>
-                <td> <a href="https://www.rabbitmq.com/web-mqtt.html"> Web MQTT Plugin</a> in the RabbitMQ documentation.</td>
-	</tr>
-	<tr>
-                <td><code>rabbitmq_web_mqtt_examples</code></td>
-                <td> <a href="https://github.com/rabbitmq/rabbitmq-server/blob/master/deps/rabbitmq_web_mqtt_examples/README.md"> Web MQTT Examples Plugin</a> in GitHub.</td>
-	</tr>
-	<tr>
-                <td><code>rabbitmq_web_stomp</code></td>
-                <td> <a href="https://www.rabbitmq.com/web-stomp.html"> Web STOMP Plugin</a> in the RabbitMQ documentation.</td>
-	</tr>
-	<tr>
-                <td><code>rabbitmq_web_stomp_examples</code></td>
-                <td> <a href="https://github.com/rabbitmq/rabbitmq-server/blob/master/deps/rabbitmq_web_stomp_examples/README.md"> Web STOMP Examples Plugin</a> in GitHub.</td>
-	</tr>
+  <tr>
+    <td><code>rabbitmq_auth_backend_cache</code></td>
+    <td> <a href="https://github.com/rabbitmq/rabbitmq-server/blob/master/deps/rabbitmq_auth_backend_cache/README.md"> Auth Backend Cache Plugin</a> in GitHub.</td>
+  </tr>
+  <tr>
+    <td><code>rabbitmq_auth_backend_http</code></td>
+    <td> <a href="https://github.com/rabbitmq/rabbitmq-server/blob/master/deps/rabbitmq_auth_backend_http/README.md"> Auth Backend HTTP Plugin</a> in GitHub.</td>
+  </tr>
+  <tr>
+    <td><code>rabbitmq_auth_backend_ldap</code></td>
+    <td> <a href="https://www.rabbitmq.com/ldap.html"> LDAP Plugin</a> in the RabbitMQ documentation.</td>
+  </tr>
+  <tr>
+    <td><code>rabbitmq_auth_mechanism_ssl</code></td>
+    <td> <a href="https://github.com/rabbitmq/rabbitmq-server/blob/master/deps/rabbitmq_auth_mechanism_ssl/README.md"> Auth Mechanism SSL Plugin</a> in GitHub.</td>
+  </tr>
+  <tr>
+    <td><code>rabbitmq_event_exchange</code></td>
+    <td> <a href="https://www.rabbitmq.com/event-exchange.html"> Event Exchange Plugin</a> in the RabbitMQ documentation.</td>
+  </tr>
+  <tr>
+    <td><code>rabbitmq_jms_topic_exchange</code></td>
+    <td> <a href="https://github.com/rabbitmq/rabbitmq-server/blob/master/deps/rabbitmq_jms_topic_exchange/README.md"> JMS Topic Exchange Plugin</a> in the RabbitMQ documentation.</td>
+  </tr>
+  <tr>
+    <td><code>rabbitmq_mqtt</code></td>
+    <td> <a href="https://www.rabbitmq.com/mqtt.html"> MQTT Plugin</a> in the RabbitMQ documentation.</td>
+  </tr>
+  <tr>
+    <td><code>rabbitmq_stomp</code></td>
+    <td> <a href="https://www.rabbitmq.com/stomp.html"> STOMP Plugin</a> in the RabbitMQ documentation.</td>
+  </tr>
+  <tr>
+    <td><code>rabbitmq_stream</code></td>
+    <td> <a href="https://www.rabbitmq.com/stream.html"> Stream Plugin</a> in the RabbitMQ documentation.</td>
+  </tr>
+  <tr>
+    <td><code>rabbitmq_tracing</code></td>
+    <td> <a href="https://github.com/rabbitmq/rabbitmq-server/blob/master/deps/rabbitmq_tracing/README.md"> Tracing Plugin</a> in GitHub.</td>
+  </tr>
+  <tr>
+    <td><code>rabbitmq_trust_store</code></td>
+    <td> <a href="https://github.com/rabbitmq/rabbitmq-server/blob/master/deps/rabbitmq_trust_store/README.md"> Trust Store Plugin</a> in GitHub.</td>
+  </tr>
+  <tr>
+    <td><code>rabbitmq_web_mqtt</code></td>
+    <td> <a href="https://www.rabbitmq.com/web-mqtt.html"> Web MQTT Plugin</a> in the RabbitMQ documentation.</td>
+  </tr>
+  <tr>
+    <td><code>rabbitmq_web_mqtt_examples</code></td>
+    <td> <a href="https://github.com/rabbitmq/rabbitmq-server/blob/master/deps/rabbitmq_web_mqtt_examples/README.md"> Web MQTT Examples Plugin</a> in GitHub.</td>
+  </tr>
+  <tr>
+    <td><code>rabbitmq_web_stomp</code></td>
+    <td> <a href="https://www.rabbitmq.com/web-stomp.html"> Web STOMP Plugin</a> in the RabbitMQ documentation.</td>
+  </tr>
+  <tr>
+    <td><code>rabbitmq_web_stomp_examples</code></td>
+    <td> <a href="https://github.com/rabbitmq/rabbitmq-server/blob/master/deps/rabbitmq_web_stomp_examples/README.md"> Web STOMP Examples Plugin</a> in GitHub.</td>
+  </tr>
 </table>
 
-To enable disabled plugins:
+To activate plugins:
 
 1. Navigate to **<%= vars.ops_manager %> Installation Dashboard** > **RabbitMQ** > **Settings** >
 **Global Settings for On-Demand Plans**.
 
-1. Select the plugins you want to enable under **RabbitMQ plugins that can be enabled by App
+1. Select the plugins you want to activate under **RabbitMQ plugins that can be enabled by App
 Developers**.
   ![Screenshot with the header 'Global Settings for On-Demand Plans'.
    Underneath is the required field 'Dedicated Instance Service Quota (min: 0)', a 'Dedicated Instance
@@ -1045,5 +1023,5 @@ Developers**.
    enable'.
    These checkboxes are labeled 'rabbitmq_event_exchange' and 'rabbitmq_mqtt'.](images/on-demand-plugins-operator.png)
 
-  After plugins are enabled for the platform, developers can enable them for each service instance.
+  After plugins are activated for the platform, developers can activate them for each service instance.
   For more information, see [Enable Optional Plugins](./use.html#optional-plugins).

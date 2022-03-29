@@ -90,7 +90,7 @@ To configure the metrics polling interval:
 1. Return to the <%= vars.ops_manager %> Installation Dashboard.
 1. Click **Review Pending Changes**.
    For more information about this <%= vars.ops_manager %> page,
-   see [Reviewing Pending Product Changes](https://docs.pivotal.io/pivotalcf/customizing/review-pending-changes.html).
+   see [Reviewing Pending Product Changes](https://docs.pivotal.io/ops-manager/install/review-pending-changes.html).
 1. Click **Apply Changes** to redeploy with the changes.
 
 #### <a id="detailed-metrics"></a> Gathering Additional Metrics
@@ -258,8 +258,8 @@ means the service is not responding and you must investigate the issue.
         You can find this VM by targeting your <%= vars.product_short %> deployment
         with BOSH, and running one of these commands:
         <ul>
-          <li><strong>For on-demand:</strong> <pre>bosh -d service-instance_GUID vms</pre></li>
-          <li><strong>For pre-provisioned:</strong> <pre>bosh -d p-rabbitmq-GUID vms</pre></li>
+          <li><strong>For on-demand:</strong> <pre class="terminal">bosh -d service-instance_GUID vms</pre></li>
+          <li><strong>For pre-provisioned:</strong> <pre class="terminal">bosh -d p-rabbitmq-GUID vms</pre></li>
         </ul>
       </td>
    </tr>
@@ -305,7 +305,7 @@ means the service is not responding and you must investigate the issue.
          Search the RabbitMQ HAProxy logs for errors.
          You can find the VM by targeting your <%= vars.product_short %> deployment
          with BOSH and running the following command, which lists <code>HAProxy_GUID</code>:
-         <pre>bosh -d service-instance_GUID vms</pre>
+         <pre class="terminal">bosh -d service-instance_GUID vms</pre>
       </td>
    </tr>
 </table>
@@ -658,7 +658,7 @@ The fields shown are described in the table in the next step.](images/syslog-con
 1. Return to the <%= vars.ops_manager %> Installation Dashboard.
 1. Click **Review Pending Changes**.
 For more information about this <%= vars.ops_manager %> page,
-see [Reviewing Pending Product Changes](https://docs.pivotal.io/pivotalcf/customizing/review-pending-changes.html).
+see [Reviewing Pending Product Changes](https://docs.pivotal.io/ops-manager/install/review-pending-changes.html).
 1. Click **Apply Changes** to redeploy with the changes.
 
 
