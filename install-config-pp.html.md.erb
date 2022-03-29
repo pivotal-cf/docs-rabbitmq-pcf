@@ -21,7 +21,7 @@ operators can make deployment changes, view credentials, and manage user roles i
 Therefore, your role permissions might not allow you to follow every procedure in this operator guide.
 
 For more information about roles in <%= vars.ops_manager %>, see
-<a href="https://docs.pivotal.io/pivotalcf/opsguide/config-rbac.html#about">Understand Roles in <%= vars.ops_manager %></a>.
+<a href="https://docs.pivotal.io/ops-manager/opsguide/config-rbac.html#about">Understand Roles in <%= vars.ops_manager %></a>.
 
 
 ## <a id="install"></a> Download and Install the Tile
@@ -520,7 +520,7 @@ labeled 'Do you want to configure Syslog forwarding?', 'Address',
 1. Return to the <%= vars.ops_manager %> Installation Dashboard.
 1. Click **Review Pending Changes**.
 For more information about this <%= vars.ops_manager %> page,
-see [Reviewing Pending Product Changes](https://docs.pivotal.io/pivotalcf/customizing/review-pending-changes.html).
+see [Reviewing Pending Product Changes](https://docs.pivotal.io/ops-manager/install/review-pending-changes.html).
 1. Click **Apply Changes** to redeploy with the changes.
 
 ## <a id="metrics-polling-interval"></a> Configure the Metrics Polling Interval
@@ -551,7 +551,7 @@ with a value of 30, and a save button.](images/metrics-configuration-1.20.png)
 1. Return to the <%= vars.ops_manager %> Installation Dashboard.
 1. Click **Review Pending Changes**.
 For more information about this <%= vars.ops_manager %> page,
-see [Reviewing Pending Product Changes](https://docs.pivotal.io/pivotalcf/customizing/review-pending-changes.html).
+see [Reviewing Pending Product Changes](https://docs.pivotal.io/ops-manager/install/review-pending-changes.html).
 1. Click **Apply Changes** to redeploy with the changes.
 
 ## <a id="global-settings"></a>Global Settings
@@ -559,7 +559,7 @@ see [Reviewing Pending Product Changes](https://docs.pivotal.io/pivotalcf/custom
 Follow the steps below to enable the shareable instances feature.
 Sharing a service instance between spaces, allows apps in different spaces to share databases,
 messaging queues, and many other types of services. For more information,
-see [Sharing Service Instances](https://docs.pivotal.io/pivotalcf/devguide/services/sharing-instances.html).
+see [Sharing Service Instances](https://docs.pivotal.io/application-service/devguide/services/sharing-instances.html).
 
 1. Click **Pre-Provisioned RabbitMQ**.
 
@@ -693,7 +693,7 @@ Installation Dashboard, but before <%= vars.ops_manager %> finishes deleting the
 ## <a id="stemcell"></a> Stemcell
 
 To verify that you have the correct stemcell, follow the procedure in
-[Importing and Managing Stemcells](https://docs.pivotal.io/pivotalcf/opsguide/managing-stemcells.html).
+[Importing and Managing Stemcells](https://docs.pivotal.io/ops-manager/opsguide/managing-stemcells.html).
 
 ## <a id="apply-changes"></a>Apply Configuration and Complete the Installation
 
@@ -703,7 +703,7 @@ To apply the configuration and complete the installation:
 
 1. Click **Review Pending Changes**.
 For more information about this <%= vars.ops_manager %> page,
-see [Reviewing Pending Product Changes](https://docs.pivotal.io/pivotalcf/customizing/review-pending-changes.html).
+see [Reviewing Pending Product Changes](https://docs.pivotal.io/ops-manager/install/review-pending-changes.html).
 
 1. Click **Apply Changes** to complete the installation of <%= vars.product_short %>.
 
@@ -719,11 +719,12 @@ contain the first value from the equivalent plural property. The singular
 properties will eventually be deprecated.
 
 For example, with two HAProxy jobs deployed, the following properties are present:
-<pre><code>"hostname": "10.0.0.41",
-"hostnames": [
-    "10.0.0.41",
-    "10.0.0.51"]
-</code></pre>
+<pre class="terminal">
+"hostname": "10.0.0.41",<br>
+"hostnames": [<br>
+    "10.0.0.41",<br>
+    "10.0.0.51"]<br>
+</pre>
 
 ### <a id='port-map'></a>Port to Protocol Mappings
 

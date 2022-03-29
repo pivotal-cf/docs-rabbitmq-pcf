@@ -1,5 +1,5 @@
 ---
-title: Enable OAuth for Apps
+title: Enabling OAuth for Apps
 owner: RabbitMQ
 ---
 
@@ -79,6 +79,7 @@ To create a UAA group for a space:
     uaac token client get CLIENT -s SECRET
     ```
     Where:
+
     * `SYSTEM-DOMAIN` is the system domain for your <%= vars.app_runtime_abbr %> foundation.
     * `CLIENT` and `SECRET` are the credentials for the UAA admin client.
 
@@ -88,6 +89,7 @@ To create a UAA group for a space:
     uaac group add p-rabbitmq_SPACE-GUID.SCOPE:VHOST/NAME[/ROUTING-KEY]
     ```
     Where:
+
     * `SPACE-GUID` was recorded above.
     * `SCOPE` is an access permission, such as `configure`, `read`, or `write`.
     * `VHOST` is a wildcard pattern for the vhosts that you want to grant the client access to.
@@ -158,6 +160,7 @@ following binding JSON:
     cf bind-service APP-NAME INSTANCE-NAME -c binding.json
     ```
     Where:
+
     * `APP-NAME` is the name of the app.
     * `INSTANCE-NAME` is the name of the Single Sign-On instance you created earlier.
 
@@ -188,6 +191,7 @@ SSO instance dashboard or run the following UAA CLI command:
       --authorities LIST-OF-AUTHORITIES
     ```
     Where:
+
     * `CLIENT-NAME` is the name of the UAA client associated with the application recorded above.
     * `LIST-OF-AUTHORITIES` is a single string containing a space-separated list of scopes the client
     must be granted, corresponding to one or more of the UAA groups created above.

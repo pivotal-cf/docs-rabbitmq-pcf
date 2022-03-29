@@ -112,8 +112,8 @@ A blue botton is at the bottom called 'Save Syslog Settings'.](images/syslog-con
 1. Click **Save**.
 1. Return to the <%= vars.ops_manager %> Installation Dashboard.
 1. Click **Review Pending Changes**.
-For more information about this <%= vars.ops_manager %> page,
-see [Reviewing Pending Product Changes](https://docs.pivotal.io/pivotalcf/customizing/review-pending-changes.html).
+   For more information about this <%= vars.ops_manager %> page,
+   see [Reviewing Pending Product Changes](https://docs.pivotal.io/ops-manager/install/review-pending-changes.html).
 1. Click **Apply Changes** to redeploy with the changes.
 
 
@@ -240,7 +240,7 @@ service is not responding and should be investigated.
         Search the RabbitMQ Service Broker logs for errors.
         You can find this VM by targeting your <%= vars.product_short %> deployment with BOSH and
         running the command.
-               <code>bosh -d service-instance_GUID vms</code>
+        <pre class="terminal">bosh -d service-instance_GUID vms</pre>
       </td>
    </tr>
 </table>
@@ -274,10 +274,10 @@ service is not responding and should be investigated.
    <tr>
       <th>Recommended response</th>
       <td>
-         Search the RabbitMQ Server logs for errors.
-         You can find the VM by targeting your <%= vars.product_short %> deployment with BOSH and
-         listing <code>rabbitmq</code> by running:
-               <code>bosh -d service-instance_GUID vms</code>
+         Search the RabbitMQ HAProxy logs for errors.
+         You can find the VM by targeting your <%= vars.product_short %> deployment
+         with BOSH and listing <code>rabbitmq</code> by running:
+         <pre class="terminal">bosh -d service-instance_GUID vms</pre>
       </td>
    </tr>
 </table>
