@@ -36,7 +36,9 @@ To create a service instance:
     ```
     cf create-service p.rabbitmq PLAN SERVICE-INSTANCE-NAME
     ```
+
     Where:
+
     * `SERVICE-INSTANCE-NAME` is a name of your choice.
     * `PLAN` is the plan. For example, `single-node`.
 
@@ -60,6 +62,7 @@ credentials `http_api_uri`, `vhost`, `password`, and `username`:
         cf create-service-key SERVICE-INSTANCE-NAME SERVICE-KEY
         ```
         Where:
+
         * `SERVICE-INSTANCE-NAME` is the name of your service instance.
         * `SERVICE-KEY` is a name you choose to identify the service key.
     1. Obtain the credentials by running:
@@ -75,6 +78,7 @@ credentials `http_api_uri`, `vhost`, `password`, and `username`:
         cf bind-service APP-NAME SERVICE-INSTANCE-NAME
         ```
         Where:
+
         * `APP-NAME` is the name of your app.
         * `SERVICE-INSTANCE-NAME` is the name of your service instance.
     1. Obtain the credentials for the user assigned to the app by running:
@@ -87,20 +91,20 @@ credentials `http_api_uri`, `vhost`, `password`, and `username`:
         <pre class="terminal">
         ...
 
-        System-Provided:
-        VCAP_SERVICES: {
-         "p.rabbitmq": [
-          {
-            "credentials": {
-              ...
-              "http_api_uri": "https://a9b37966-d67a-448f-b93d-744e3dc95890:hWD38Vvc9wdQAXG8Lh_AAjRI@rmq-a1d3c836-c670-4d22-9191-3e497b68a885.sys.philippinepink.cf-app.com/api/",
-              "password": "xxxxxx",
-              "username": "a9b37966-d67a-448f-b93d-xxxxx",
-              "vhost": "a1d3c836-c670-4d22-9191-3e497b68a885"
-              ...
-            }
-          }
-        }
+        System-Provided:<br>
+        VCAP_SERVICES: {<br>
+         "p.rabbitmq": [<br>
+          {<br>
+            "credentials": {<br>
+              ...<br>
+              "http_api_uri": "https://a9b37966-d67a-448f-b93d-744e3dc95890:hWD38Vvc9wdQAXG8Lh_AAjRI@rmq-a1d3c836-c670-4d22-9191-3e497b68a885.sys.philippinepink.cf-app.com/api/",<br>
+              "password": "xxxxxx",<br>
+              "username": "a9b37966-d67a-448f-b93d-xxxxx",<br>
+              "vhost": "a1d3c836-c670-4d22-9191-3e497b68a885"<br>
+              ...<br>
+            }<br>
+          }<br>
+        }<br>
         ...
         </pre>
 
@@ -150,6 +154,7 @@ To set up an HA policy:
     ./set-policy APP-NAME ha "^ha\." '{"ha-mode":"exactly", "ha-params":2, "ha-sync-mode":"automatic"}' NUMBER
     ```
     Where:
+
     * `APP-NAME` is your app.
     * `NUMBER` is the priority value, such as `10`.
 
@@ -197,6 +202,7 @@ To create a policy for temporary queues:
     ./set-policy APP-NAME ha "^temp\." '{"max-length": NUMBER, "overflow": "reject-publish", "message-ttl": MILLISECONDS}'
     ```
     Where:
+
     * `APP-NAME` is the name of the app.
     * `NUMBER` is the maximum number of messages, such as `2`.
     * `MILLISECONDS` is a number of milliseconds, such as `60000`.
@@ -222,6 +228,7 @@ To set up a policy for a concrete queue:
     ./set-policy APP-NAME ha "^CONCRETE-QUEUE$" '{"queue-mode":"lazy"}'
     ```
     Where:
+
     * `APP-NAME` is the name of the app.
     * `CONCRETE-QUEUE` is the name of the concrete queue, such as `event-log`.
 
@@ -248,19 +255,19 @@ To see the policies you created:
     Where `APP-NAME` is your app.
     For example:
     <pre class="terminal">
-    $ ./list-policies demo-app
-    [
-      {
-        "vhost": "a1d3c836-c670-4d22-9191-3e497b68a885",
-        "name": "test",
-        "pattern": "^ha\\.",
-        "apply-to": "all",
-        "definition": {
-          "ha-mode": "exactly",
-          "ha-params": 2,
-          "ha-sync-mode": "automatic"
-        },
-        "priority": 10
-      }
+    $ ./list-policies demo-app <br>
+    [<br>
+      {<br>
+        "vhost": "a1d3c836-c670-4d22-9191-3e497b68a885",<br>
+        "name": "test",<br>
+        "pattern": "^ha\\.",<br>
+        "apply-to": "all",<br>
+        "definition": {<br>
+          "ha-mode": "exactly",<br>
+          "ha-params": 2,<br>
+          "ha-sync-mode": "automatic"<br>
+        },<br>
+        "priority": 10 <br>
+      }<br>
     ]
     </pre>

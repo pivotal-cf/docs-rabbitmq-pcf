@@ -37,7 +37,7 @@ To configure inter-node TLS for on-demand service instances:
 To configure inter-node mutual TLS in the <%= vars.product_short %> tile:
 
 1. Click the <strong>Security for On-Demand Plans</strong> tab.
-  <%= image_tag("/images/configure-oauth.png",
+  <%= image_tag("images/configure-oauth.png",
     :alt => "Screenshot of the Security for On-Demand Plans pane.
     The pane contains the **TLS Options** group of radio buttons,
     a checkbox to **Secure Inter-node communications with TLS on new Instances**,
@@ -100,6 +100,7 @@ with the same plan and configuration as the original service instance by running
     cf create-service p.rabbitmq PLAN-NAME GREEN-INSTANCE-NAME -c PARAMETERS-AS-JSON
     ```
     Where:
+
     - `PLAN-NAME` is plan you used for the original service instance
     - `GREEN-INSTANCE-NAME` is the name of the new service instance
     - `PARAMETERS-AS-JSON` is the configuration you applied to the original service instance
@@ -116,28 +117,34 @@ with the same plan and configuration as the original service instance by running
       and cluster are referred to as blue.
     </p>
 
-1. After the green service instance is deployed, create admin credentials for both the blue
+1. After the green service instance is deployed, run these commands to create admin credentials for both the blue
 and green service instances if they do not already have credentials:
 
     ```
     cf create-service-key BLUE-INSTANCE-NAME admin-key -c '{"tags": "administrator"}'
+    ```
+    ```
     cf create-service-key GREEN-INSTANCE-NAME admin-key -c '{"tags": "administrator"}'
     ```
     Where:
+
     - `BLUE-INSTANCE-NAME` is the name of your original service instance
     - `GREEN-INSTANCE-NAME` is the name of the new service instance
 
-1. Retrieve the service key for the blue and green instances by running:
+1. Retrieve the service key for the blue and green instances by running these commands:
 
     ```
     cf service-key BLUE-INSTANCE-NAME admin-key
+    ```
+    ```
     cf service-key GREEN-INSTANCE-NAME admin-key
     ```
     From the output, record:
+
     - The URL and admin credentials for the Management UI
     - The AMQP or AMQPS URI listed in the service-key.
     You will need this to set up shovels between the two clusters.
-    This is stored under the key <code>uri</code>.
+    This is stored under the key `uri`.
 
 1. Log in to the Management UI on both the blue and green clusters.
 
@@ -198,10 +205,12 @@ new shovels. This is to avoid overloading the system.
 This indicates that all messages have been drained from the blue cluster.
 
 1. Unbind your apps from the blue cluster and bind them to the green cluster:
-    - If your apps are running on the same foundation, re-bind your apps by running:
+    - If your apps are running on the same foundation, re-bind your apps by running these commands:
 
         ```
         cf unbind-service APP-NAME BLUE-INSTANCE-NAME
+        ```
+        ```
         cf bind-service APP-NAME GREEN-INSTANCE-NAME
         ```
     - If your apps are running off-foundation and communicate with RabbitMQ through

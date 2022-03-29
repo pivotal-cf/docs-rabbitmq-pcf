@@ -30,9 +30,11 @@ To configure OAuth for an on-demand offering:
 
 1. [Configure UAA Groups for RabbitMQ](#configure-uaa-groups)
 1. [Configure OAuth in <%= vars.ops_manager %>](#configure-oauth)
-
+<br>
 
 ## <a id='configure-uaa-groups'></a> Configure UAA Groups for RabbitMQ
+
+To configure UAA groups:
 
 1. [Get Admin User Credentials for UAA](#uaa-admin-user)
 1. [Install and Set up UAAC](#install-uaac)
@@ -48,11 +50,11 @@ To fetch the UAA Admin Client secret from the <%= vars.ops_manager %> UI:
 1. Click the **Credentials** tab.
     ![Screenshot of the <%= vars.app_runtime_full %> tile UI in <%= vars.ops_manager %>.
     The location of the Credentials tab is shown with a red circle.
-    The Credentials tab is the third tab from the left, after 'Settings' and 'Status'.](/images/oauth-create-uaa-group-1.png)
+    The Credentials tab is the third tab from the left, after 'Settings' and 'Status'.](images/oauth-create-uaa-group-1.png)
 1. Locate the Admin Client Credentials in the UAA job.
     ![Screenshot of the <%= vars.app_runtime_full %> tile UI in <%= vars.ops_manager %>.
     There is a list of credential types and, next to it, a list of corresponding links.
-    The location of the link for Admin Client Credentials is shown with a red circle.](/images/oauth-create-uaa-group-2.png)
+    The location of the link for Admin Client Credentials is shown with a red circle.](images/oauth-create-uaa-group-2.png)
 1. Click **Link to Credential** next to **Admin Client Credentials**.
 1. Record the text in the identity field (`UAA-ADMIN-CLIENT-IDENTITY` in the next step) and password
 field (`UAA-ADMIN-CLIENT-SECRET` in the next step).
@@ -68,7 +70,7 @@ To install and set up UAAC:
     gem install cf-uaac
     ```
 
-1. Set up UAAC by running:
+1. Set up UAAC by running these commands:
 
     ```
     uaac target UAA-URL
@@ -77,6 +79,7 @@ To install and set up UAAC:
     uaac token client get UAA-ADMIN-CLIENT-IDENTITY -s UAA-ADMIN-CLIENT-SECRET
     ```
     Where:
+
     * `UAA-URL` is the UAA URL.
     * `UAA-ADMIN-CLIENT-IDENTITY` and `UAA-ADMIN-CLIENT-SECRET` are from the text you recorded in
     [Get Admin User Credentials for UAA](#uaa-admin-user) above.
@@ -104,6 +107,7 @@ To create a UAA group for a space:
     uaac group add p-rabbitmq_SPACE-GUID.tag:RABBITMQ-TAG
     ```
     Where:
+
     * `SPACE-GUID` is the space GUID.
     * `RABBITMQ-TAG` must be either `monitoring` or `administrator`. The RabbitMQ tag dictates what
     the user is permitted to do. For more information about RabbitMQ tags, see
@@ -123,6 +127,7 @@ by running:
     uaac group add p-rabbitmq_SPACE-GUID.PERMISSION:VHOST-PATTERN/NAME-PATTERN[/ROUTING-KEY-PATTERN]
     ```
     Where:
+
     * `SPACE-GUID` is the space GUID.
     * `PERMISSION` is an access permission -- `configure`, `read`, or `write`.
     * `VHOST-PATTERN` is a wildcard pattern for virtual hosts.
@@ -161,6 +166,7 @@ command for every RabbitMQ UAA group:
     uaac group map --name "RABBITMQ-UAA-GROUP" "GROUP-DISTINGUISHED-NAME"
     ```
     Where:
+
     * `RABBITMQ-UAA-GROUP` is the UAA group name created above. For example:
     `p-rabbitmq_64bd9d4d-d2c8-4207-bb76-91a245e67d9d.tag:monitoring`.
     * `GROUP-DISTINGUISHED-NAME` is the Distinguished Name (DN) of the LDAP group. For example:
@@ -173,6 +179,7 @@ for every RabbitMQ UAA group:
     uaac group map --name "RABBITMQ-UAA-GROUP" "GROUP-NAME" --origin "PROVIDER-NAME"
     ```
     Where:
+
     * `RABBITMQ-UAA-GROUP` is the UAA group name created above. For example:
     `p-rabbitmq_64bd9d4d-d2c8-4207-bb76-91a245e67d9d.tag:monitoring`.
     * `GROUP-NAME` is the name of the group in the SAML IdP.
@@ -184,6 +191,7 @@ for every RabbitMQ UAA group:
     uaac member add RABBITMQ-UAA-GROUP USERNAME
     ```
     Where:
+
     * `RABBITMQ-UAA-GROUP` is the UAA group name created above. For example,
     `p-rabbitmq_64bd9d4d-d2c8-4207-bb76-91a245e67d9d.tag:monitoring`.
     * `USERNAME` is a UAA group member, such as a Cloud Foundry user.
@@ -206,7 +214,7 @@ To configure OAuth in the <%= vars.product_short %> tile:
     ![Screenshot of the Security for On-Demand Plans section. This shows the **TLS Options** group
     of radio buttons, the **OAuth Options** group of radio buttons, and a Save button.
     The example shows the **Not Configured** radio button selected for TLS and the **Optional**
-    radio button selected for OAuth.](/images/configure-oauth.png)
+    radio button selected for OAuth.](images/configure-oauth.png)
     <a href="./images/configure-oauth.png" target="_blank" aria-hidden="true">Click here to view a larger version of the image above</a>
 
 1. Click **Save**.

@@ -46,7 +46,7 @@ For more information, see [Errands](./install-config.html#errands).
 
 To offer RabbitMQ as a cloud messaging service in the Marketplace, create one or several replicas,
 install them in <%= vars.ops_manager %>, and either allow the broker registrar errand to run, or
-[register the service manually using CF](https://docs.pivotal.io/pivotalcf/services/managing-service-brokers.html#register-broker).
+[register the service manually using CF](https://docs.pivotal.io/application-service/services/managing-service-brokers.html#register-broker).
 
 ### <a id="dedicated"></a> Providing a Pre-Provisioned Dedicated Cluster
 
@@ -56,7 +56,7 @@ This prevents service registration in the Marketplace.
 For more information, see [Errands](./install-config.html#errands).
 
 After you deploy the tile, manually expose the service broker to your desired orgs and spaces.
-For instructions, see [Register a Broker](https://docs.pivotal.io/pivotalcf/services/managing-service-brokers.html#register-broker).
+For instructions, see [Register a Broker](https://docs.pivotal.io/application-service/services/managing-service-brokers.html#register-broker).
 
 ### <a id="on-demand"></a> Using Replicas While Offering the On-Demand <%= vars.product_short %> Service
 
@@ -198,13 +198,13 @@ result for the section about the service plan you want:
 
     <pre class="terminal">
       {
-         "metadata": {
-            "guid": "a0a2fae9-e5de-47f5-b2b3-23cf07ff6142",
-         },
-         "entity": {
-            "name": "single-node",
-            "service_guid": "3e3a9413-50bd-4c76-a226-8721b0d2b3d7",
-         }
+         "metadata": {<br>
+            "guid": "a0a2fae9-e5de-47f5-b2b3-23cf07ff6142",<br>
+         },<br>
+         "entity": {<br>
+            "name": "single-node",<br>
+            "service_guid": "3e3a9413-50bd-4c76-a226-8721b0d2b3d7",<br>
+         }<br>
       }
     </pre>
     - The plan UUID is found under `metadata`, `guid`.
