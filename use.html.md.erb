@@ -38,18 +38,20 @@ To confirm this availability:
     ```
     cf marketplace
     ```
-1. Verify that `p.rabbitmq` is in the `service` column. If it is, on-demand <%= vars.product_short %> is available. If it is not, ask your operator to install it.
-<br><br>
-For example:
-<pre class="terminal">
-$ cf marketplace
-Getting services from marketplace in org my-org / space my-space as user<span>@</span>example.com...
-OK
-service      plans         description
-[...]
-p.rabbitmq   single-node   RabbitMQ service to provide dedicated instances of this high-performance multi-protocol messaging broker
-[...]
-</pre>
+1. Verify that `p.rabbitmq` is in the `service` column.
+If it is, on-demand <%= vars.product_short %> is available. If it is not, ask your operator to install it.
+
+    For example:
+
+    <pre class="terminal">
+    $ cf marketplace
+    Getting services from marketplace in org my-org / space my-space as user<span>@</span>example.com...
+    OK
+    service      plans         description
+    [...]
+    p.rabbitmq   single-node   RabbitMQ service to provide dedicated instances of this high-performance multi-protocol messaging broker
+    [...]
+    </pre>
 
 ## <a id='create'></a>Create a Service Instance
 
@@ -70,8 +72,9 @@ To create an instance of the on-demand <%= vars.product_short %> service:
     ```
     Look for instances that have `p.rabbitmq` in the `service` column.
     If there is an existing instance that you want to use, skip to the [Bind a Service Instance to Your App](#bind) section below.
-    <br><br>
+
     For example:
+
     <pre class="terminal">
     $ cf services
     Getting services in org my-org / space my-space as user<span>@</span>example.com...
@@ -87,6 +90,7 @@ To create an instance of the on-demand <%= vars.product_short %> service:
     ```
 
     Where:
+
     + `SERVICE-INSTANCE-NAME` is a name you choose to identify the service instance.
     This name appears under `name` in the output from `cf services`.
     + `SINGLE-NODE` is the plan.
@@ -99,17 +103,19 @@ To create an instance of the on-demand <%= vars.product_short %> service:
     watch cf services
     ```
 
-    If successful, `last operation` for your instance is reported as `create succeeded`.<br><br>
+    If successful, `last operation` for your instance is reported as `create succeeded`.
+
     For example:
+
     <pre class="terminal">
-      $ cf create-service p.rabbitmq single-node my-instance<br>
-       Creating service my-instance in org my-org / space my-space as user<span>@</span>example.com...
-       OK<br>
-      $ watch cf services<br>
-       Getting services in org my-org / space my-space as user<span>@</span>example.com...
-       OK
-       name          service        plan           bound apps    last operation
-       my-instance   p.rabbitmq     single-node                  create succeeded
+    $ cf create-service p.rabbitmq single-node my-instance
+    Creating service my-instance in org my-org / space my-space as user<span>@</span>example.com...
+    OK
+    $ watch cf services
+    Getting services in org my-org / space my-space as user<span>@</span>example.com...
+    OK
+    name          service        plan           bound apps    last operation
+    my-instance   p.rabbitmq     single-node                  create succeeded
     </pre>
 
    If you encounter an error, see [Troubleshooting Instances](./troubleshoot-instances.html).
@@ -140,21 +146,23 @@ To configure TLS for your service instance:
 </p>
 
 1. Enable TLS by doing one of the following steps:
-  * If you have already created a <%= vars.product_short %> service instance, update the service instance to use TLS by running:
+
+    * If you have already created a <%= vars.product_short %> service instance, update the service instance to use TLS by running:
 
         ```
         cf update-service MY-INSTANCE -c '{"tls": true}'
         ```
-        Where `MY-INSTANCE` is the name you chose when you created your service instance.<br><br>
-  * If you have not created a <%= vars.product_short %> service instance, create one with TLS enabled by running:
+        Where `MY-INSTANCE` is the name you chose when you created your service instance.
+
+    * If you have not created a <%= vars.product_short %> service instance, create one with TLS enabled by running:
 
         ```
         cf create-service p.rabbitmq PLAN MY-INSTANCE -c '{"tls": true}'
         ```
+        Where:
 
-        Where:<br>
-          * `PLAN` is the name of the deployment plan to use for this service instance
-          * `MY-INSTANCE` is the name to give to the new service instance
+        * `PLAN` is the name of the deployment plan to use for this service instance
+        * `MY-INSTANCE` is the name to give to the new service instance
 
 1. Verify that the process was successful by running:
 
@@ -162,7 +170,8 @@ To configure TLS for your service instance:
     watch cf services
     ```
     If successful, the <code>last operation</code> for your instance is reported as
-    `create succeeded` or `update succeeded`.<br><br>
+    `create succeeded` or `update succeeded`.
+
     For example:
 
     <pre class="terminal">
@@ -180,22 +189,24 @@ If the operator has configured TLS to be optional or not configured, then follow
 For more information, see [Configure Security](./install-config.html#security).
 
 1. Disable TLS by doing one of the following:
-  * If you have already created a <%= vars.product_short %> service instance, update the service instance by running:
+
+    * If you have already created a <%= vars.product_short %> service instance, update the service instance by running:
 
         ```
         cf update-service MY-INSTANCE -c '{"tls": false}'
         ```
         Where `MY-INSTANCE` is the name you chose when you created your service instance.<br><br>
-  * If you have not created a <%= vars.product_short %> service instance,
-  request a service instance with TLS disabled by running:
+
+    * If you have not created a <%= vars.product_short %> service instance,
+    request a service instance with TLS disabled by running:
 
         ```
         cf create-service p.rabbitmq PLAN MY-INSTANCE -c '{"tls": false}'
         ```
+        Where:
 
-        Where:<br>
-          * `PLAN` is the name of the deployment plan to use for this service instance
-          * `MY-INSTANCE` is the name to give to the new service instance
+        * `PLAN` is the name of the deployment plan to use for this service instance.
+        * `MY-INSTANCE` is the name to give to the new service instance.
 
 1. Verify that the process was successful by running:
 
@@ -203,7 +214,8 @@ For more information, see [Configure Security](./install-config.html#security).
     watch cf services
     ```
     If successful, the last operation for your instance is reported as
-    `update succeeded`.<br><br>
+    `update succeeded`.
+
     For example:
 
     <pre class="terminal">
@@ -326,7 +338,7 @@ To disable plugins for an existing service instance:
     cf update-service SERVICE-INSTANCE-NAME -c PARAMETER-AS-JSON
     ```
 
-    Where the `PARAMETER-AS-JSON` key is the plugin and the value is `false`.<br><br>
+    Where the `PARAMETER-AS-JSON` key is the plugin and the value is `false`.
 
     For example:
 
@@ -353,13 +365,14 @@ To bind an app to a <%= vars.product_short %> service instance:
     ```
 
     Where:
+
     - `APP-NAME` is the app you want to use the <%= vars.product_short %> service instance.
     - `SERVICE-INSTANCE-NAME` is the name you supplied when you ran `cf create-service`.
 
     For example:
 
     <pre class="terminal">
-    $ cf bind-service my-app my-instance<br>
+    $ cf bind-service my-app my-instance
     Binding service mydb to my-app in org my-org / space test as user<span>@</span>example.com...
     OK
     </pre>
@@ -482,13 +495,15 @@ To unbind a service instance from your app:
     ```
 
     Where:
+
     - `APP-NAME` is the app you want to stop using the <%= vars.product_short %> service instance.
     - `SERVICE-INSTANCE-NAME` is the name you supplied when you ran `cf create-service`.
 
     For example:
 
     <pre class="terminal">
-    $ cf unbind-service my-app my-instance<br>
+    $ cf unbind-service my-app my-instance
+
     Unbinding app my-app from service my-instance in org my-org / space my-space as user<span>@</span>example.com...
     OK
     </pre>
@@ -509,7 +524,8 @@ To delete a service instance:
 
     For example:
     <pre class="terminal">
-    $ cf delete-service my-instance<br>
+    $ cf delete-service my-instance
+
     Are you sure you want to delete the service my-instance ? y
     Deleting service my-service in org my-org / space my-space as user<span>@</span>example.com...
     OK
@@ -553,28 +569,28 @@ To federate exchanges and queues:
 
 1. Create a service key by following the instructions in [Create an Admin User for a Service Instance](./install-config.html#admin-service-key). The output of the above procedure returns admin user credentials, along with other data.
 
-1. In the output from the above step, look for the `uris` array. It has the following pattern<br>
-<pre class="terminal">
-{
-  ...
-  "uri": "amqp://USERNAME:PASSWORD@DNS_ENTRY/VHOST",
-  "uris": [
-    "amqp://USERNAME:PASSWORD@DNS_ENTRY/VHOST"
-  ],
-  ...
-}
-</pre>
-as seen in the below example.<br>
-<pre class="terminal">
-{
-...
-"uri": "amqp://b5d0ad14-4352-48e8-8982-d5b1d257029f:passwordexample123456789<span>@</span>q-s0.rabbitmq-server.services-subnet.service-instance-e0e7fc5f-c1c7-4211-81b9-284fb29ba851.bosh:5672/62e5ab21-7b38-44ac-b139-6aa97af01cd7",
-"uris": [
-"amqp://b5d0ad14-4352-48e8-8982-d5b1d257029f:passwordexample123456789<span>@</span>q-s0.rabbitmq-server.services-subnet.service-instance-e0e7fc5f-c1c7-4211-81b9-284fb29ba851.bosh:5672/62e5ab21-7b38-44ac-b139-6aa97af01cd7",
-...
-}
-</pre>
+1. In the output from the above step, look for the `uris` array. It has the following pattern:
 
+    <pre class="terminal">
+    {
+      ...
+      "uri": "amqp://USERNAME:PASSWORD@DNS\_ENTRY/VHOST",
+      "uris": [
+        "amqp://USERNAME:PASSWORD@DNS\_ENTRY/VHOST"
+      ],
+      ...
+    }
+    </pre>
+    as seen in the below example.<br>
+    <pre class="terminal">
+    {
+    ...
+    "uri": "amqp://b5d0ad14-4352-48e8-8982-d5b1d257029f:passwordexample123456789<span>@</span>q-s0.rabbitmq-server.services-subnet.service-instance-e0e7fc5f-c1c7-4211-81b9-284fb29ba851.bosh:5672/62e5ab21-7b38-44ac-b139-6aa97af01cd7",
+    "uris": [
+    "amqp://b5d0ad14-4352-48e8-8982-d5b1d257029f:passwordexample123456789<span>@</span>q-s0.rabbitmq-server.services-subnet.service-instance-e0e7fc5f-c1c7-4211-81b9-284fb29ba851.bosh:5672/62e5ab21-7b38-44ac-b139-6aa97af01cd7",
+    ...
+    }
+    </pre>
 
 1. Set up federation as usual, using the RabbitMQ Management UI or API, with the URIs found in the `uris` array you got from the step above.<br><br>
     For instructions on federation, see the [RabbitMQ documentation](https://www.rabbitmq.com/federation.html).
@@ -587,27 +603,28 @@ To shovel exchanges and queues:
 
 1. Create a service key by following the instructions in [Create an Admin User for a Service Instance](./install-config.html#admin-service-key). The output of the above procedure returns admin user credentials, along with other data.
 
-1. In the output from the above step, look for the `uris` array. It has the following pattern<br>
-<pre class="terminal">
-{
-  ...
-  "uri": "amqp://USERNAME:PASSWORD@DNS-ENTRY/VHOST",
-  "uris": [
-    "amqp://USERNAME:PASSWORD@DNS-ENTRY/VHOST"
-  ],
-  ...
-}
-</pre>
-as seen in the example below.<br>
-<pre class="terminal">
-{
-...
-"uri": "amqp://b5d0ad14-4352-48e8-8982-d5b1d257029f:passwordexample123456789<span>@</span>q-s0.rabbitmq-server.services-subnet.service-instance-e0e7fc5f-c1c7-4211-81b9-284fb29ba851.bosh:5672/62e5ab21-7b38-44ac-b139-6aa97af01cd7",
-"uris": [
-"amqp://b5d0ad14-4352-48e8-8982-d5b1d257029f:passwordexample123456789<span>@</span>q-s0.rabbitmq-server.services-subnet.service-instance-e0e7fc5f-c1c7-4211-81b9-284fb29ba851.bosh:5672/62e5ab21-7b38-44ac-b139-6aa97af01cd7",
-...
-}
-</pre>
+1. In the output from the above step, look for the `uris` array. It has the following pattern:
+
+    <pre class="terminal">
+    {
+      ...
+      "uri": "amqp://USERNAME:PASSWORD@DNS\_ENTRY/VHOST",
+      "uris": [
+        "amqp://USERNAME:PASSWORD@DNS\_ENTRY/VHOST"
+      ],
+      ...
+    }
+    </pre>
+    as seen in the example below.<br>
+    <pre class="terminal">
+    {
+    ...
+    "uri": "amqp://b5d0ad14-4352-48e8-8982-d5b1d257029f:passwordexample123456789<span>@</span>q-s0.rabbitmq-server.services-subnet.service-instance-e0e7fc5f-c1c7-4211-81b9-284fb29ba851.bosh:5672/62e5ab21-7b38-44ac-b139-6aa97af01cd7",
+    "uris": [
+    "amqp://b5d0ad14-4352-48e8-8982-d5b1d257029f:passwordexample123456789<span>@</span>q-s0.rabbitmq-server.services-subnet.service-instance-e0e7fc5f-c1c7-4211-81b9-284fb29ba851.bosh:5672/62e5ab21-7b38-44ac-b139-6aa97af01cd7",
+    ...
+    }
+    </pre>
 
 1. Set up shovel as usual, using the RabbitMQ Management UI or API,
 with the URIs found in the `uris` array you got from the step above.<br><br>
