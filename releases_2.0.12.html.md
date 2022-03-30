@@ -6,10 +6,18 @@
 
 This release fixes the following issues:
 
+- Updated [Routing release][routing-release-notes] to fix a process leak caused by constant reloading of HAProxy.
+- Updated OpenSSL to 1.1.1n to address [CVE-2022-0778][cve-2022-0778]
+
+[routing-release-notes]: https://github.com/cloudfoundry/routing-release/releases/tag/0.231.0
+[cve-2022-0778]: https://www.cve.org/CVERecord?id=CVE-2022-0778
 
 ### Known Issues
 
 This release has the following known issues:
+
+- Metrics can't be exported to the firehose when TLS is enabled.
+- HealthWatch v2 can't scrape metrics from on-demand instances when TLS is enabled.
 
 
 ### Compatibility
@@ -22,15 +30,15 @@ The following components are compatible with this release:
 	</tr>
 	<tr>
 		<td>Erlang</td>
-		<td></td>
+		<td>24.3.2</td>
 	</tr>
 	<tr>
 		<td>HAProxy</td>
-		<td></td>
+		<td>1.8.30</td>
 	</tr>
 	<tr>
 		<td>OSS RabbitMQ*</td>
-		<td></td>
+		<td>3.8.28 3.9.14</td>
 	</tr>
 	<tr>
 		<td>Stemcell</td>
