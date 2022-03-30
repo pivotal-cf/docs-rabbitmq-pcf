@@ -17,8 +17,106 @@ owner: London Services
 
 ## <a id="lts"></a> Long-Term Support for <%= vars.product_full %> v2.0
 
-<%= partial vars.path_to_partials + '/services/services-lts-notice', :locals => {
-  :eogs_date => "April 2024"} %>
+<%= partial vars.path_to_partials + '/services/services-lts-notice', :locals => {:eogs_date => "April 2024"} %>
+
+## <a id="2-0-12"></a> v2.0.12
+
+**Release Date**: March 31, 2022
+
+### Resolved Issues
+
+This release fixes the following issues:
+
+- **Process leak fix:** Routing release v0.231.0 fixes a process leak caused by constant reloading of HAProxy. For more information, see the [release notes](https://github.com/cloudfoundry/routing-release/releases/tag/0.231.0) in GitHub.
+- **Updated OpenSSL to v1.1.1n:** Updated OpenSSL to v1.1.1n to address [CVE-2022-0778](https://www.cve.org/CVERecord?id=CVE-2022-0778).
+
+
+### Known Issues
+
+This release has the following known issues:
+
+- **TLS can prevent metric exporting:** Metrics can't be exported to the Firehose when TLS is enabled.
+- **TLS can prevent metric scraping:** Healthwatch v2 can't scrape metrics from on-demand instances when TLS is enabled.
+
+
+### Compatibility
+
+The following components are compatible with this release:
+
+<table class="nice">
+  <th>Component</th>
+  <th>Version</th>
+  <tr>
+    <td><%= vars.app_runtime_full %></td>
+    <td>2.7.x, 2.8.x, 2.9.x, 2.10.x, 2.11.x, 2.12.x</td>
+  </tr>
+  <tr>
+    <td>Erlang</td>
+    <td>24.3.2</td>
+  </tr>
+  <tr>
+    <td>HAProxy</td>
+    <td>1.8.30</td>
+  </tr>
+  <tr>
+    <td>OSS RabbitMQ*</td>
+    <td>3.8.28 3.9.14</td>
+  </tr>
+  <tr>
+    <td>Stemcell</td>
+    <td>621.x</td>
+  </tr>
+  <tr>
+    <td>bpm</td>
+    <td>1.1.16</td>
+  </tr>
+  <tr>
+    <td>cf-cli</td>
+    <td>1.38.0</td>
+  </tr>
+  <tr>
+    <td>cf-rabbitmq</td>
+    <td>428.0.0</td>
+  </tr>
+  <tr>
+    <td>cf-rabbitmq-multitenant-broker</td>
+    <td>112.0.0</td>
+  </tr>
+  <tr>
+    <td>cf-rabbitmq-smoke-tests</td>
+    <td>126.0.0</td>
+  </tr>
+  <tr>
+    <td>cf-service-gateway</td>
+    <td>69.0.0</td>
+  </tr>
+  <tr>
+    <td>loggregator-agent</td>
+    <td>6.3.8</td>
+  </tr>
+  <tr>
+    <td>on-demand-service-broker</td>
+    <td>0.42.4</td>
+  </tr>
+  <tr>
+    <td>rabbitmq-metrics</td>
+    <td>75.0.0</td>
+  </tr>
+  <tr>
+    <td>rabbitmq-on-demand-adapter</td>
+    <td>205.0.0</td>
+  </tr>
+  <tr>
+    <td>routing</td>
+    <td>0.231.0</td>
+  </tr>
+  <tr>
+    <td>service-metrics</td>
+    <td>2.0.15</td>
+  </tr>
+</table>
+
+<sup>*</sup> For more information, see the <a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v">v</a> GitHub documentation.
 
 ## <a id="2-0-11"></a> v2.0.11
 
