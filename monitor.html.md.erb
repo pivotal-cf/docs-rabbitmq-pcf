@@ -135,7 +135,7 @@ dns_sd_configs:
 
 <p class="note">
   <strong>Note:</strong> If you are using TLS in the on-demand service offering,
-  your port will be `15691`.
+  your port will be <code>15691</code>.
 </p>
 
 The regular expression in the scrape config name ensures that Prometheus discovers all future service
@@ -600,60 +600,61 @@ To specify the destination for <%= vars.product_short %> log entries:
 ![Screenshot of RabbitMQ tile settings with header called 'Syslog'.
 The fields shown are described in the table in the next step.](images/syslog-config-1.20.0.png)
 1. Configure the fields on the **Syslog** pane as follows:
-<table class="nice">
-    <th>Field</th>
-    <th>Description</th>
-    <tr>
-        <td><strong>Syslog Address</strong></td>
-        <td>Enter the IP or DNS address of the syslog server</td>
-    </tr>
-    <tr>
-        <td><strong>Syslog Port</strong></td>
-        <td>Enter the port of the syslog server</td>
-    </tr>
-    <tr>
-        <td><strong>Transport Protocol</strong></td>
-        <td>Select the transport protocol of the syslog server. The options are <strong>TLS</strong>,
-          <strong>UDP</strong>, or <strong>RELP</strong>.</td>
-    </tr>
-    <tr>
-        <td><strong>Enable TLS</strong></td>
-        <td>Enable TLS to the syslog server.</td>
-    </tr>
-    <tr>
-        <td><strong>Permitted Peer</strong></td>
-        <td>If there are several peer servers that can respond to remote syslog connections,
-            enter a wildcard in the domain, such as <code>*.example.com</code>.</td>
-    </tr>
-    <tr>
-        <td><strong>SSL Certificate</strong></td>
-        <td>If the server certificate is not signed by a known authority, such as an internal syslog
-          server, enter the CA certificate of the log management service endpoint.</td>
-    </tr>
-    <tr>
-        <td><strong>Queue Size</strong></td>
-        <td>The number of log entries the buffer holds before dropping messages.
-          A larger buffer size might overload the system. The default is 100000.</td>
-    </tr>
-    <tr>
-        <td><strong>Forward Debug Logs</strong></td>
-        <td>Some components produce very long debug logs. This option prevents them from being
-          forwarded.
-          These logs are still written to local disk.</td>
-    </tr>
-    <tr>
-        <td><strong>Custom Rules</strong></td>
-        <td>
-          The custom rsyslog rules are written in
-          <a href="https://www.rsyslog.com/doc/v8-stable/rainerscript/index.html">RainerScript</a>
-          and are inserted before the rule that forwards logs.
-          For the list of custom rules you can add in this field, see
-          <a href="#rabbitmq-syslog-custom-rules">RabbitMQ Syslog Custom Rules</a> later in this topic.
-          For more information about the program names you can use in the custom rules, see
-          <a href="#program-names">Program Names</a> later in this topic.
-        </td>
-    </tr>
-</table>
+   
+   <table class="nice">
+       <th>Field</th>
+       <th>Description</th>
+       <tr>
+           <td><strong>Syslog Address</strong></td>
+           <td>Enter the IP or DNS address of the syslog server</td>
+       </tr>
+       <tr>
+           <td><strong>Syslog Port</strong></td>
+           <td>Enter the port of the syslog server</td>
+       </tr>
+       <tr>
+           <td><strong>Transport Protocol</strong></td>
+           <td>Select the transport protocol of the syslog server. The options are <strong>TLS</strong>,
+             <strong>UDP</strong>, or <strong>RELP</strong>.</td>
+       </tr>
+       <tr>
+           <td><strong>Enable TLS</strong></td>
+           <td>Enable TLS to the syslog server.</td>
+       </tr>
+       <tr>
+           <td><strong>Permitted Peer</strong></td>
+           <td>If there are several peer servers that can respond to remote syslog connections,
+               enter a wildcard in the domain, such as <code>*.example.com</code>.</td>
+       </tr>
+       <tr>
+           <td><strong>SSL Certificate</strong></td>
+           <td>If the server certificate is not signed by a known authority, such as an internal syslog
+             server, enter the CA certificate of the log management service endpoint.</td>
+       </tr>
+       <tr>
+           <td><strong>Queue Size</strong></td>
+           <td>The number of log entries the buffer holds before dropping messages.
+             A larger buffer size might overload the system. The default is 100000.</td>
+       </tr>
+       <tr>
+           <td><strong>Forward Debug Logs</strong></td>
+           <td>Some components produce very long debug logs. This option prevents them from being
+             forwarded.
+             These logs are still written to local disk.</td>
+       </tr>
+       <tr>
+           <td><strong>Custom Rules</strong></td>
+           <td>
+             The custom rsyslog rules are written in
+             <a href="https://www.rsyslog.com/doc/v8-stable/rainerscript/index.html">RainerScript</a>
+             and are inserted before the rule that forwards logs.
+             For the list of custom rules you can add in this field, see
+             <a href="#rabbitmq-syslog-custom-rules">RabbitMQ Syslog Custom Rules</a> later in this topic.
+             For more information about the program names you can use in the custom rules, see
+             <a href="#program-names">Program Names</a> later in this topic.
+           </td>
+       </tr>
+   </table>
 
 1. Click **Save**.
 1. Return to the <%= vars.ops_manager %> Installation Dashboard.
