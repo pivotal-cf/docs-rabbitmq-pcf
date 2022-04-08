@@ -725,7 +725,7 @@ For example, with two HAProxy jobs deployed, the following properties are presen
 "hostname": "10.0.0.41",<br>
 "hostnames": [<br>
     "10.0.0.41",<br>
-    "10.0.0.51"]<br>
+    "10.0.0.51"]
 </pre>
 
 ### <a id='port-map'></a>Port to Protocol Mappings
@@ -809,7 +809,7 @@ Create an ASG named `rabbitmq-app-containers` with the above configuration and b
   load balancer, or have more than one IP address for HAProxy, you must also create egress rules for these.
   For example:
 
-  ```
+  <pre><code>
   [
     {
         "ports": "5671-5672",
@@ -817,7 +817,7 @@ Create an ASG named `rabbitmq-app-containers` with the above configuration and b
         "destination": "10.10.10.10/32"
     }
   ]
-  ```
+  </code></pre>
 
 ### <a id="assigned_ips"></a> Assigned IPs
 
