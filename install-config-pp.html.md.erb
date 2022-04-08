@@ -62,7 +62,7 @@ Follow the steps below to configure the AZs and networks:
 1. In the [Settings](#tile_configurations) screen, click **Assign AZs and Networks**.
     <p class="note warning">
       <strong>Warning:</strong> You cannot change the regions or networks after you have clicked
-      <strong>Apply Changes</strong> during the <a id="#apply-changes">Apply Configuration and Complete the Installation</a> procedure below.</p>
+      <strong>Apply Changes</strong> during the <a href="#apply-changes">Apply Configuration and Complete the Installation</a> procedure below.</p>
 
 2. Configure the fields on the **Assign AZs and Networks** as follows.
     **All fields are required**, though some do not apply to the pre-provisioned service.
@@ -147,9 +147,9 @@ cluster to use.
 This is useful if you want to connect directly to the RabbitMQ cluster, for example, with
 `rabbitmqctl` or to connect other VMs running Erlang.
 
-If you leave this field blank, BOSH CredHub generates a secure Erlang cookie.
+    If you leave this field blank, BOSH CredHub generates a secure Erlang cookie.
 
-<%= image_tag("images/config-erlang.png", :alt => "Screenshot of text field with the label
+    <%= image_tag("images/config-erlang.png", :alt => "Screenshot of text field with the label
 'Erlang cookie used by RabbitMQ nodes and rabbitmqctl'.") %>
 
 #### <a id="changing-issue"></a> Changing the Erlang Cookie Value Known Issue
@@ -260,7 +260,8 @@ To configure TLS support:
 TLS v1.3 and TLS v1.2 are enabled by default.
 For more information about TLS versions, see the
 [RabbitMQ documentation](https://www.rabbitmq.com/ssl.html#tls-versions-why-limit).
-<%= image_tag("images/config_tls.png", :width => "225",
+
+    <%= image_tag("images/config_tls.png", :width => "225",
 :alt => "Screenshot of a multi-select checkbox field labeled 'RabbitMQ TLS Versions'.
 The two checkboxes are labeled 'TLS v1.3' and 'TLS v1.2'.
 They are both enabled.") %>
@@ -440,10 +441,7 @@ To specify static IP addresses:
       BOSH allocates an IP address.
     </p>
 
-    <%= image_tag("config-networking-pp.png", :width => "350",
-    :alt => "Screenshot of three text fields labeled 'Pre-Provisioned HAProxy Static IPs',
-    'Pre-Provisioned RabbitMQ Server Static IPs', and
-    'Pre-Provisioned Service Broker Static IP'.") %>
+    ![Screenshot of three text fields labeled 'Pre-Provisioned HAProxy Static IPs', 'Pre-Provisioned RabbitMQ Server Static IPs', and 'Pre-Provisioned Service Broker Static IP'.](images/config-networking-pp.png)
 
 1. Click **Save**.
 
@@ -469,57 +467,57 @@ labeled 'Do you want to configure Syslog forwarding?', 'Address',
 'Queue Size', 'Forward Debug Logs', and 'Custom rsyslog Configuration'.](images/syslog-config-1.20.0.png)
 
 1. Configure the fields on the **Syslog** pane as follows:
-<table class="nice">
-    <th>Field</th>
-    <th>Description</th>
-    <tr>
-        <td><strong>Syslog Address</strong></td>
-        <td>Enter the IP or DNS address of the syslog server</td>
-    </tr>
-    <tr>
-        <td><strong>Syslog Port</strong></td>
-        <td>Enter the port of the syslog server</td>
-    </tr>
-    <tr>
-        <td><strong>Transport Protocol</strong></td>
-        <td>Select the transport protocol of the syslog server. The options are <strong>TLS</strong>,
-          <strong>UDP</strong>, or <strong>RELP</strong>.</td>
-    </tr>
-    <tr>
-        <td><strong>Enable TLS</strong></td>
-        <td>Enable TLS to the syslog server.</td>
-    </tr>
-    <tr>
-        <td><strong>Permitted Peer</strong></td>
-        <td>If there are several peer servers that can respond to remote syslog connections,
-            enter a wildcard in the domain, such as <code>*.example.com</code>.</td>
-    </tr>
-    <tr>
-        <td><strong>SSL Certificate</strong></td>
-        <td>If the server certificate is not signed by a known authority, such as an internal syslog
-          server, enter the CA certificate of the log management service endpoint.</td>
-    </tr>
-    <tr>
-        <td><strong>Queue Size</strong></td>
-        <td>The number of log entries the buffer holds before dropping messages.
-          A larger buffer size might overload the system. The default is 100000.</td>
-    </tr>
-    <tr>
-        <td><strong>Forward Debug Logs</strong></td>
-        <td>Some components produce very long debug logs. This option prevents them from being
-          forwarded. These logs are still written to local disk.</td>
-    </tr>
-    <tr>
-        <td><strong>Custom Rules</strong></td>
-        <td>The custom rsyslog rules are written in
-          <a href="https://www.rsyslog.com/doc/v8-stable/rainerscript/index.html">RainerScript</a>
-          and are inserted before the rule that forwards logs.
-          For the list of custom rules you can add in this field, see
-          <a href="monitor.html#rabbitmq-syslog-custom-rules">RabbitMQ Syslog Custom Rules</a>.
-          For more information about the program names you can use in the custom rules, see
-          <a href="monitor.html#program-names">Program Names</a>.</td>
-    </tr>
-</table>
+    <table class="nice">
+        <th>Field</th>
+        <th>Description</th>
+        <tr>
+            <td><strong>Syslog Address</strong></td>
+            <td>Enter the IP or DNS address of the syslog server</td>
+        </tr>
+        <tr>
+            <td><strong>Syslog Port</strong></td>
+            <td>Enter the port of the syslog server</td>
+        </tr>
+        <tr>
+            <td><strong>Transport Protocol</strong></td>
+            <td>Select the transport protocol of the syslog server. The options are <strong>TLS</strong>,
+              <strong>UDP</strong>, or <strong>RELP</strong>.</td>
+        </tr>
+        <tr>
+            <td><strong>Enable TLS</strong></td>
+            <td>Enable TLS to the syslog server.</td>
+        </tr>
+        <tr>
+            <td><strong>Permitted Peer</strong></td>
+            <td>If there are several peer servers that can respond to remote syslog connections,
+                enter a wildcard in the domain, such as <code>*.example.com</code>.</td>
+        </tr>
+        <tr>
+            <td><strong>SSL Certificate</strong></td>
+            <td>If the server certificate is not signed by a known authority, such as an internal syslog
+              server, enter the CA certificate of the log management service endpoint.</td>
+        </tr>
+        <tr>
+            <td><strong>Queue Size</strong></td>
+            <td>The number of log entries the buffer holds before dropping messages.
+              A larger buffer size might overload the system. The default is 100000.</td>
+        </tr>
+        <tr>
+            <td><strong>Forward Debug Logs</strong></td>
+            <td>Some components produce very long debug logs. This option prevents them from being
+              forwarded. These logs are still written to local disk.</td>
+        </tr>
+        <tr>
+            <td><strong>Custom Rules</strong></td>
+            <td>The custom rsyslog rules are written in
+              <a href="https://www.rsyslog.com/doc/v8-stable/rainerscript/index.html">RainerScript</a>
+              and are inserted before the rule that forwards logs.
+              For the list of custom rules you can add in this field, see
+              <a href="./monitor.html#rabbitmq-syslog-custom-rules">RabbitMQ Syslog Custom Rules</a>.
+              For more information about the program names you can use in the custom rules, see
+              <a href="./monitor.html#program-names">RabbitMQ Program Names</a>.</td>
+        </tr>
+    </table>
 
 1. Click **Save**.
 1. Return to the <%= vars.ops_manager %> Installation Dashboard.
@@ -539,18 +537,18 @@ On-Demand service offerings', which has one required field labeled 'Metrics poll
 with a value of 30, and a save button.](images/metrics-configuration-1.20.png)
 1. Click **Metrics**.
 1. Configure the fields on the Metrics pane as follows:
-<table class="nice">
-    <th>Field</th>
-    <th>Description</th>
-    <tr>
-        <td><strong>Metrics polling interval</strong></td>
-        <td>The default setting is 30 seconds for all deployed components.
-          VMware recommends that you do not change this interval.
-          To avoid overwhelming components, do not set this below 10 seconds.
-          Set this to <code>-1</code> to disable metrics.
-          Changing this setting affects all deployed instances.</td>
-    </tr>
-</table>
+    <table class="nice">
+        <th>Field</th>
+        <th>Description</th>
+        <tr>
+            <td><strong>Metrics polling interval</strong></td>
+            <td>The default setting is 30 seconds for all deployed components.
+              VMware recommends that you do not change this interval.
+              To avoid overwhelming components, do not set this below 10 seconds.
+              Set this to <code>-1</code> to disable metrics.
+              Changing this setting affects all deployed instances.</td>
+        </tr>
+    </table>
 
 1. Click **Save**.
 1. Return to the <%= vars.ops_manager %> Installation Dashboard.
@@ -812,15 +810,15 @@ Create an ASG named `rabbitmq-app-containers` with the above configuration and b
   load balancer, or have more than one IP address for HAProxy, you must also create egress rules for these.
   For example:
 
-```
-[
-  {
-      "ports": "5671-5672",
-      "protocol": "tcp",
-      "destination": "10.10.10.10/32"
-  }
-]
-```
+  ```
+  [
+    {
+        "ports": "5671-5672",
+        "protocol": "tcp",
+        "destination": "10.10.10.10/32"
+    }
+  ]
+  ```
 
 ### <a id="assigned_ips"></a> Assigned IPs
 
