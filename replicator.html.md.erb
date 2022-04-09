@@ -134,7 +134,7 @@ The On-Demand service is not offered on replica tiles.
 When you replicate <%= vars.product_short %>, the replica tile has the **Broker Registrar** errand set to **On** by default.
 This field appears in the **Errands** tab in the tile:
 
-![Screenshot of the RabbitMQ tile. Header is 'Errands'.  Description says 'Errands are scripts that run at designated points durinng an installation.' A subheader says, 'Post-Deploy Errands'. Underneath is two dropdown fields called 'Pre-Provisioned Broker Registrar' and 'Pre-Provisioned Smoke tests'. Both fields are set to 'Default (On)'.](./images/broker_registrar_errand.png)
+<br><br><%= image_tag("images/broker_registrar_errand.png", :alt => "Screenshot of the RabbitMQ tile. Header is 'Errands'.  Description says 'Errands are scripts that run at designated points durinng an installation.' A subheader says, 'Post-Deploy Errands'. Underneath is two dropdown fields called 'Pre-Provisioned Broker Registrar' and 'Pre-Provisioned Smoke tests'. Both fields are set to 'Default (On)'.") %>
 
 With any tile, if the **Broker Registrar** errand is set to **On**, it runs automatically when you finish installing the tile
 and causes the tile to be available to all CF orgs.
