@@ -126,19 +126,15 @@ For the purposes of this example, assume that when you generate a replica tile a
 ## <a id="install"></a> Installing Replica Tiles
 
 After you have generated a replica tile, you can upload it to <%= vars.ops_manager %> as you would any other tile.
-After you have uploaded it, follow the instructions for [Installing and Configuring <%= vars.product_short %> as a
-Pre-Provisioned Service](./install-config-pp.html).
+After you have uploaded it, follow the instructions for [Installing and Configuring the Pre-Provisioned Service](./install-config-pp.html).
 The On-Demand service is not offered on replica tiles.
 
 ## <a id="org-access"></a> Limiting Access to Replica Tiles to Specific Orgs
 
 When you replicate <%= vars.product_short %>, the replica tile has the **Broker Registrar** errand set to **On** by default.
 This field appears in the **Errands** tab in the tile:
-<br><br>![Screenshot of the RabbitMQ tile. Header is 'Errands'.
-Description says 'Errands are scripts that run at designated points durinng an installation.'
-A subheader says, 'Post-Deploy Errands'. Underneath is two dropdown fields called
-'Pre-Provisioned Broker Registrar' and 'Pre-Provisioned Smoke tests'. Both fields are
-set to 'Default (On)'.](/images/broker_registrar_errand.png)
+<br><br>
+![Screenshot of the RabbitMQ tile. Header is 'Errands'.  Description says 'Errands are scripts that run at designated points durinng an installation.' A subheader says, 'Post-Deploy Errands'. Underneath is two dropdown fields called 'Pre-Provisioned Broker Registrar' and 'Pre-Provisioned Smoke tests'. Both fields are set to 'Default (On)'.](images/broker_registrar_errand.png)
 
 With any tile, if the **Broker Registrar** errand is set to **On**, it runs automatically when you finish installing the tile
 and causes the tile to be available to all CF orgs.
@@ -196,7 +192,7 @@ result for the section about the service plan you want:
 <br>
     The result is similar to the following, with some extra properties:
 
-    <pre class="terminal">
+    ```
       {
          "metadata": {<br>
             "guid": "a0a2fae9-e5de-47f5-b2b3-23cf07ff6142",<br>
@@ -206,7 +202,8 @@ result for the section about the service plan you want:
             "service_guid": "3e3a9413-50bd-4c76-a226-8721b0d2b3d7",<br>
          }<br>
       }
-    </pre>
+    ```
+
     - The plan UUID is found under `metadata`, `guid`.
     - The service UUID is found under `entity`, `service_guid`.
 
