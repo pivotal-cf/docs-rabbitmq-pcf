@@ -36,6 +36,7 @@ This release fixes the following issues:
 
 This release has the following known issues:
 
+<%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
 
 ### Compatibility
 
@@ -131,7 +132,7 @@ This release has the following known issues:
 - **TLS can prevent metric exporting:** Metrics can't be exported to the Firehose when TLS is enabled.
 - **TLS can prevent metric scraping:** Healthwatch v2 can't scrape metrics from on-demand instances when TLS is enabled.
 - **RAFT log crash can cause Quourm Queues to crash:** Should a RAFT log process crash and a quorurm queue member attempt to write to the log while down, the quourum queue will also crash, causing unavailability.
-
+<%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
 
 ### Compatibility
 
