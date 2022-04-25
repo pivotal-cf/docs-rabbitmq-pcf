@@ -67,11 +67,17 @@ delete the key after troubleshooting.
 
 To retrieve the credentials, do the following:
 
-1. Create a service-key for your <%= vars.product_short %> service instance using the command
-`cf create-service-key INSTANCE-NAME SERVICE-KEY-NAME`.
+1. Create a service-key for your <%= vars.product_short %> service instance by running:
 
-1. Retrieve the credentials using the command
-`cf service-key INSTANCE-NAME SERVICE-KEY-NAME`.
+    ```
+    cf create-service-key INSTANCE-NAME SERVICE-KEY-NAME
+    ```
+
+1. Retrieve the credentials by running:
+
+    ```
+    cf service-key INSTANCE-NAME SERVICE-KEY-NAME
+    ```
 
 1. Navigate to the RabbitMQ Management UI using the URL from the service key.
 
