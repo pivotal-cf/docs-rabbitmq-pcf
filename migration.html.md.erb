@@ -33,10 +33,10 @@ the new instance and replace the old credentials.
 ## <a id="policies-and-params"></a> Migrate Policies and Parameters
 
 If your old instance uses any of the following, ensure that you apply them to the new instance:
-     <ul>
-       <li>Policies</li>
-       <li>Virtual host-specific parameters, such as <code>max_connections</code></li>
-     </ul>
+
+* Policies
+* Virtual host-specific parameters, such as `max_connections`
+
 You can apply them using the API by following the steps below.
 
 <p class="note">
@@ -47,68 +47,72 @@ You can apply them using the API by following the steps below.
 1. Create a service key for the new instance with the admin username and
    password by running the following command:
 
-     ```
-     cf create-service-key SERVICE-INSTANCE SERVICE-KEY -c '{"tags": "administrator"}'
-     ```
+    ```
+    cf create-service-key SERVICE-INSTANCE SERVICE-KEY -c '{"tags": "administrator"}'
+    ```
 
-     Where:
-     * `SERVICE-INSTANCE` is your service instance
-     * `SERVICE-KEY` is a name of your choice for your service key
+    Where:
+
+    * `SERVICE-INSTANCE` is your service instance
+    * `SERVICE-KEY` is a name of your choice for your service key
 
 1. Retrieve the admin username and password with the following command:
 
-     ```
-     cf service-key SERVICE-INSTANCE SERVICE-KEY
-     ```
+    ```
+    cf service-key SERVICE-INSTANCE SERVICE-KEY
+    ```
 
-     Where:
-     * `SERVICE-INSTANCE` is your service instance
-     * `SERVICE-KEY` is the service key name you chose in the step above
+    Where:
+
+    * `SERVICE-INSTANCE` is your service instance
+    * `SERVICE-KEY` is the service key name you chose in the step above
 
 1. Retrieve the URL of the new service instance with the following command:
 
-       ```
-       cf service SERVICE-INSTANCE
-       ```
+    ```
+    cf service SERVICE-INSTANCE
+    ```
 
-       Where `SERVICE-INSTANCE` is your service instance.
+    Where `SERVICE-INSTANCE` is your service instance.
 
 1. Export the virtual host (vhost) limit parameters JSON to a local file with the following command:
 
-       ```
-       curl -u USERNAME:PASSWORD OLD-MANAGEMENT-URL/api/definitions/VHOST | jq '{"parameters":[.parameters[]]}' > PATH-TO-FILE
-       ```
+    ```
+    curl -u USERNAME:PASSWORD OLD-MANAGEMENT-URL/api/definitions/VHOST | jq '{"parameters":[.parameters[]]}' > PATH-TO-FILE
+    ```
 
-       Where:
-       * `USERNAME` is the admin username for the cluster
-       * `PASSWORD` is the admin password for the cluster
-       * `OLD-MANAGEMENT-URL` is the RabbitMQ Management UI URL for your old service instance
-       * `VHOST` is your virtual host ID
+    Where:
+
+    * `USERNAME` is the admin username for the cluster
+    * `PASSWORD` is the admin password for the cluster
+    * `OLD-MANAGEMENT-URL` is the RabbitMQ Management UI URL for your old service instance
+    * `VHOST` is your virtual host ID
 
 1. Upload the virtual host limit parameters JSON to the new instance with the
    following command:
 
-     ```
-     curl -H 'Content-type: application/json' -i -XPOST -u USERNAME:PASSWORD NEW-MANAGEMENT-URL/api/definitions/VHOST -d "$(cat PATH-TO-FILE)"
-     ```
+    ```
+    curl -H 'Content-type: application/json' -i -XPOST -u USERNAME:PASSWORD NEW-MANAGEMENT-URL/api/definitions/VHOST -d "$(cat PATH-TO-FILE)"
+    ```
 
-     Where:
-     * `USERNAME` is the admin username for the cluster
-     * `PASSWORD` is the admin password for the cluster
-     * `NEW-MANAGEMENT-URL` is the RabbitMQ Management UI URL for your new service instance
-     * `VHOST` is your virtual host ID
+    Where:
+
+    * `USERNAME` is the admin username for the cluster
+    * `PASSWORD` is the admin password for the cluster
+    * `NEW-MANAGEMENT-URL` is the RabbitMQ Management UI URL for your new service instance
+    * `VHOST` is your virtual host ID
 
 1. Export the policies JSON to a local file with the following command:
 
-     ```
-     curl -u USERNAME:PASSWORD OLD-MANAGEMENT-URL/api/definitions/VHOST | jq '{"policies":[.policies[]]}' > PATH-TO-FILE
-     ```
+    ```
+    curl -u USERNAME:PASSWORD OLD-MANAGEMENT-URL/api/definitions/VHOST | jq '{"policies":[.policies[]]}' > PATH-TO-FILE
+    ```
 
 1. Upload the policies JSON to the new instance with the following command:
 
-     ```
-     curl -H 'Content-type: application/json' -i -XPOST -u USERNAME:PASSWORD NEW-MANAGEMENT-URL/api/definitions/VHOST -d "$(cat PATH-TO-FILE)"
-     ```
+    ```
+    curl -H 'Content-type: application/json' -i -XPOST -u USERNAME:PASSWORD NEW-MANAGEMENT-URL/api/definitions/VHOST -d "$(cat PATH-TO-FILE)"
+    ```
 
 ## <a id="messages"></a> Migrate Messages in Queues
 
@@ -121,6 +125,7 @@ Use of the shovel plugin requires less waiting time and manual steps, however, i
 ordering of messages.
 
 ### <a id="messages-shovel"></a> Migrate Messages Using the RabbitMQ Shovel Plugin
+
 You can safely migrate messages to the new instance by using a shovel to move messages between queues on the two instances.
 For more information, see [the RabbitMQ documentation](https://www.rabbitmq.com/shovel.html).
 
@@ -143,6 +148,7 @@ For instructions about how to do so with or without OAuth enabled, see
 1. Verify no messages are in the old instance by checking its Management Web UI.
 
 ### <a id="messages-consumers"></a> Migrate Messages by Using Consumers to Drain the Old Service Instance
+
 You can safely migrate messages to the new instance without the use of the shovel plugin.
 This method is better for ensuring that messages are ordered consistently.
 However, it requires more manual steps and waiting for queues to be drained.
