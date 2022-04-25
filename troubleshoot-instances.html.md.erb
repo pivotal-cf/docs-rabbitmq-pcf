@@ -34,12 +34,14 @@ Basic cf CLI operations include `create`, `update`, `bind`, `unbind`, and `delet
 
 ### <a id="instance"></a> Retrieve Service Instance Information
 
-1. Log into the space containing the instance or failed instance.
-    <pre class="terminal">
-    $ cf login
-    </pre>
+1. Log into the space containing the instance or failed instance:
 
-1. If you do not know the name of the service instance, run `cf services` to see a listing of all service instances in the space. The service instances are listed in the `name` column.
+    ```
+    cf login
+    ```
+
+1. If you do not know the name of the service instance, run `cf services` to see a listing of all service instances in the space.
+The service instances are listed in the `name` column, for example:
     <pre class="terminal">
     $ cf services
     Getting services in org my-org / space my-space as user<span>@</span>example.com...
@@ -48,9 +50,17 @@ Basic cf CLI operations include `create`, `update`, `bind`, `unbind`, and `delet
     my-instance   p.rabbitmq  single-node                  create succeeded
     </pre>
 
-1. Run `cf service SERVICE-INSTANCE-NAME` to retrieve more information about a specific instance.
+1. To retrieve more information about a specific instance, run:
 
-1. Run `cf service SERVICE-INSTANCE-NAME --guid` to retrieve the GUID of the instance, which is useful for debugging.
+    ```
+    cf service SERVICE-INSTANCE-NAME
+    ```
+
+1. To retrieve the GUID of the instance, which is useful for debugging, run:
+
+    ```
+    cf service SERVICE-INSTANCE-NAME --guid
+    ```
 
 ### <a id="management-ui-credentials"></a> Retrieve <%= vars.product_short %> Service Instance Credentials
 
