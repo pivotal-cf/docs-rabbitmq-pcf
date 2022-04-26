@@ -1,4 +1,4 @@
-quorum---
+---
 title: VMware Tanzu RabbitMQ for VMs Release Notes
 owner: London Services
 ---
@@ -26,14 +26,14 @@ owner: London Services
 
 ### Resolved Issues
 
-This release fixes the following issues:
+This release has the following fixes:
 
-- **TLS can prevent metric exporting:**
-Metrics can't be exported to the Firehose when TLS is enabled.
-- **TLS can prevent metric scraping:**
-Healthwatch v2 can't scrape metrics from on-demand instances when TLS is enabled.
-- **RAFT log crash can cause quorum queues to fail:**
-If a RAFT log process crashes and a quorum queue member attempts to write to the log while it is unavailable, the quorum queue also crashes, causing further unavailability.
+- **TLS no longer prevents metric exporting:**
+Metrics can now be exported to the Firehose when TLS is enabled.
+- **TLS no longer prevents metric scraping:**
+Healthwatch v2 can now scrape metrics from on-demand instances when TLS is enabled.
+- **RAFT log crash no longer causes quorum queues to fail:**
+If a RAFT log process crashes and a quorum queue member attempts to write to the log while it is unavailable, the quorum queue no longer crashes.
 
 
 ### Known Issues
@@ -126,7 +126,7 @@ The following components are compatible with this release:
 
 ### Resolved Issues
 
-This release fixes the following issues:
+This release has the following fixes:
 
 - **Process leak fix:** Routing release v0.231.0 fixes a process leak caused by constant reloading of HAProxy. For more information, see the [release notes](https://github.com/cloudfoundry/routing-release/releases/tag/0.231.0) in GitHub.
 - **Updated OpenSSL to v1.1.1n:** Updated OpenSSL to v1.1.1n to address [CVE-2022-0778](https://www.cve.org/CVERecord?id=CVE-2022-0778).
@@ -138,7 +138,7 @@ This release has the following known issues:
 
 - **TLS can prevent metric exporting:** Metrics can't be exported to the Firehose when TLS is enabled.
 - **TLS can prevent metric scraping:** Healthwatch v2 can't scrape metrics from on-demand instances when TLS is enabled.
-- **RAFT log crash can cause Quourm Queues to crash:** Should a RAFT log process crash and a quorurm queue member attempt to write to the log while down, the quourum queue will also crash, causing unavailability.
+- **RAFT log crash can cause Quourm Queues to crash:** If a RAFT log process crashes and a quorum queue member attempts to write to the log while it is unavailable, the quorum queue also crashes, causing further unavailability.
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
 
 ### Compatibility
@@ -326,7 +326,7 @@ The following components are compatible with this release:
 
 ### Resolved Issues
 
-This release fixes the following issue:
+This release has the following fixes:
 
 * **Metrics when TLS is enabled:** When TLS is enabled, the Prometheus endpoint is now correctly
 configured and metrics are now available.
