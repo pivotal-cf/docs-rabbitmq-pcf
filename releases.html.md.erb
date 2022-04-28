@@ -22,7 +22,7 @@ owner: London Services
 
 ## <a id="2-0-13"></a> v2.0.13
 
-**Release Date**: April 29, 2022
+**Release Date**: April 28, 2022
 
 ### Resolved Issues
 
@@ -32,7 +32,7 @@ This release has the following fixes:
 Metrics can now be exported to the Firehose when TLS is enabled.
 - **TLS no longer prevents metric scraping:**
 Healthwatch v2 can now scrape metrics from on-demand instances when TLS is enabled.
-- **RAFT log crash no longer causes quorum queues to fail:**
+- **RAFT log crashes no longer cause quorum queues to fail:**
 If a RAFT log process crashes and a quorum queue member attempts to write to the log while it is unavailable, the quorum queue no longer crashes.
 
 
