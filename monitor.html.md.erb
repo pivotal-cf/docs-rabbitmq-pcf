@@ -71,7 +71,7 @@ To configure the metrics polling interval:
    The fields shown are described in the table in the step.](images/metrics-configuration-1.20.png)
 
 1. Configure the fields on the **Metrics** pane as follows:
-   
+
    <table class="nice">
        <th>Field</th>
        <th>Description</th>
@@ -429,17 +429,16 @@ the <%= vars.product_short %> service.
 #### <a id="ram"></a> RAM
 
 <table>
-   <tr><th colspan="2" style="text-align: center;"><br> system_mem_percent <br><br></th></tr>
-   <tr>
-      <th width="25%">Description</th>
-      <td>
-        RAM being consumed by the <code>p.rabbitmq</code> VM.
-        <br><br>
-
+  <tr><th colspan="2" style="text-align: center;"><br> system_mem_percent <br><br></th></tr>
+  <tr>
+    <th width="25%">Description</th>
+    <td>
+      RAM being consumed by the <code>p.rabbitmq</code> VM.
+      <br><br>
       <strong>Use</strong>: RabbitMQ is considered to be in a good state when it has few or no messages.
-              In other words, "an empty rabbit is a happy rabbit."
-              Alerting on this metric can indicate that there are too few consumers or apps that
-              read messages from the queue.
+      In other words, "an empty rabbit is a happy rabbit."
+      Alerting on this metric can indicate that there are too few consumers or apps that
+      read messages from the queue.
       <br><br>
       Healthmonitor reports when RabbitMQ uses more than 40% of its RAM for the past ten minutes.
       <br><br>
@@ -447,32 +446,33 @@ the <%= vars.product_short %> service.
       <strong>Type</strong>: Percent<br>
       <strong>Frequency</strong>: 30 seconds (default), 10 seconds (configurable minimum)
     </td>
-   </tr>
-   <tr>
-      <th>Recommended measurement</th>
-      <td>Average over last 10 minutes</td>
-   </tr>
-   <tr>
-      <th>Recommended alert thresholds</th>
-      <td>
-        <strong>Yellow warning</strong>: &gt; 40 <br>
-        <strong>Red critical</strong>: &gt; 50
-      </td>
-   </tr>
-   <tr>
-      <th>Recommended response</th>
-      <td>Add more consumers to drain the queue as fast as possible.</td>
-   </tr>
+  </tr>
+  <tr>
+    <th>Recommended measurement</th>
+    <td>Average over last 10 minutes</td>
+  </tr>
+  <tr>
+    <th>Recommended alert thresholds</th>
+    <td>
+      <strong>Yellow warning</strong>: &gt; 40 <br>
+      <strong>Red critical</strong>: &gt; 50
+    </td>
+  </tr>
+  <tr>
+    <th>Recommended response</th>
+    <td>Add more consumers to drain the queue as fast as possible.</td>
+  </tr>
 </table>
 
 #### <a id="cpu"></a> CPU
 
 <table>
-   <tr><th colspan="2" style="text-align: center;"><br> system_cpu_user<br><br></th></tr>
-   <tr>
-      <th width="25%">Description</th>
-      <td>CPU being consumed by user processes on the <code>p.rabbitmq</code> VM.<br><br>
-
+  <tr><th colspan="2" style="text-align: center;"><br> system_cpu_user<br><br></th></tr>
+  <tr>
+    <th width="25%">Description</th>
+    <td>
+      CPU being consumed by user processes on the <code>p.rabbitmq</code> VM.
+      <br><br>
       <strong>Use</strong>: A node that experiences context switching or high CPU usage becomes unresponsive.
       This also affects the ability of the node to report metrics.
       <br><br>
@@ -481,99 +481,100 @@ the <%= vars.product_short %> service.
       <strong>Origin</strong>:  BOSH HM<br>
       <strong>Type</strong>: Percent<br>
       <strong>Frequency</strong>: 30 seconds (default), 10 seconds (configurable minimum)<br>
-   </tr>
-   <tr>
-      <th>Recommended measurement</th>
-      <td>Average over last 10 minutes</td>
-   </tr>
-   <tr>
-      <th>Recommended alert thresholds</th>
-      <td>
-        <strong>Yellow warning</strong>: &gt; 60 <br>
-        <strong>Red critical</strong>: &gt; 75
-      </td>
-   </tr>
-   <tr>
-      <th>Recommended response</th>
-      <td>
-        Remember that "an empty rabbit is a happy rabbit". Add more consumers to drain the queue as fast as possible.
-      </td>
-   </tr>
+    </td>
+  </tr>
+  <tr>
+    <th>Recommended measurement</th>
+    <td>Average over last 10 minutes</td>
+  </tr>
+  <tr>
+    <th>Recommended alert thresholds</th>
+    <td>
+      <strong>Yellow warning</strong>: &gt; 60 <br>
+      <strong>Red critical</strong>: &gt; 75
+    </td>
+  </tr>
+  <tr>
+    <th>Recommended response</th>
+    <td>
+      Remember that "an empty rabbit is a happy rabbit". Add more consumers to drain the queue as fast as possible.
+    </td>
+  </tr>
 </table>
 
 #### <a id="ephemeral-disk"></a> Ephemeral Disk
 
 <table>
-   <tr><th colspan="2" style="text-align: center;"><br> system_disk_ephemeral_percent<br><br></th></tr>
-   <tr>
-      <th width="25%">Description</th>
-      <td>
-        Ephemeral Disk being consumed by the <code>p.rabbitmq</code> VM.
-        <br><br>
-        <strong>Use</strong>: If system disk fills up, there are too few consumers.
-        <br><br>
-        Healthmonitor reports when RabbitMQ uses more than 50% of its Ephemeral Disk for the past ten minutes.
-        <br><br>
-        <strong>Origin</strong>:  BOSH HM<br>
-        <strong>Type</strong>: Percent<br>
-        <strong>Frequency</strong>: 30 seconds (default), 10 seconds (configurable minimum)
-      </td>
-   </tr>
-   <tr>
-      <th>Recommended measurement</th>
-      <td>Average over last 10 minutes</td>
-   </tr>
-   <tr>
-      <th>Recommended alert thresholds</th>
-      <td>
-        <strong>Yellow warning</strong>: &gt; 50 <br>
-        <strong>Red critical</strong>: &gt; 75
-      </td>
-   </tr>
-   <tr>
-      <th>Recommended response</th>
-      <td>
-        Remember that "an empty rabbit is a happy rabbit". Add more consumers to drain the queue as
-        fast as possible. Insufficient disk space leads to node failures and might result in data
-        loss due to all disk writes failing.
-      </td>
-   </tr>
+  <tr><th colspan="2" style="text-align: center;"><br> system_disk_ephemeral_percent<br><br></th></tr>
+  <tr>
+    <th width="25%">Description</th>
+    <td>
+      Ephemeral Disk being consumed by the <code>p.rabbitmq</code> VM.
+      <br><br>
+      <strong>Use</strong>: If system disk fills up, there are too few consumers.
+      <br><br>
+      Healthmonitor reports when RabbitMQ uses more than 50% of its Ephemeral Disk for the past ten minutes.
+      <br><br>
+      <strong>Origin</strong>:  BOSH HM<br>
+      <strong>Type</strong>: Percent<br>
+      <strong>Frequency</strong>: 30 seconds (default), 10 seconds (configurable minimum)
+    </td>
+  </tr>
+  <tr>
+    <th>Recommended measurement</th>
+    <td>Average over last 10 minutes</td>
+  </tr>
+  <tr>
+    <th>Recommended alert thresholds</th>
+    <td>
+      <strong>Yellow warning</strong>: &gt; 50 <br>
+      <strong>Red critical</strong>: &gt; 75
+    </td>
+  </tr>
+  <tr>
+    <th>Recommended response</th>
+    <td>
+      Remember that "an empty rabbit is a happy rabbit". Add more consumers to drain the queue as
+      fast as possible. Insufficient disk space leads to node failures and might result in data
+      loss due to all disk writes failing.
+    </td>
+  </tr>
 </table>
 
 #### <a id="persistent-disk"></a> Persistent Disk
 
 <table>
-   <tr><th colspan="2" style="text-align: center;"><br> system_disk_persistent_percent<br><br></th></tr>
-   <tr>
-      <th width="25%">Description</th>
-      <td>
-        Persistent Disk being consumed by the <code>p.rabbitmq</code> VM.<br><br>
-        <strong>Use</strong>: If system disk fills up, there are too few consumers.
-        <br><br>
-        Healthmonitor reports when RabbitMQ uses more than 50% of its Persistent Disk.
-        <br><br>
-        <strong>Origin</strong>:  BOSH HM<br>
-        <strong>Type</strong>: percent<br>
-        <strong>Frequency</strong>: 30 seconds (default), 10 seconds (configurable minimum)
-      </td>
-   </tr>
-   <tr>
-      <th>Recommended measurement</th>
-      <td>Average over last 10 minutes</td>
-   </tr>
-   <tr>
-      <th>Recommended alert thresholds</th>
-      <td>
-        <strong>Yellow warning</strong>: &gt; 50 <br>
-        <strong>Red critical</strong>: &gt; 75
-      </td>
-   </tr>
-   <tr>
-      <th>Recommended response</th>
-      <td>
-        Remember that "an empty rabbit is a happy rabbit". Add more consumers to drain the queue as fast as possible. Insufficient disk space leads to node failures and might result in data loss due to all disk writes failing.
-      </td>
-   </tr>
+  <tr><th colspan="2" style="text-align: center;"><br> system_disk_persistent_percent<br><br></th></tr>
+  <tr>
+    <th width="25%">Description</th>
+    <td>
+      Persistent Disk being consumed by the <code>p.rabbitmq</code> VM.<br><br>
+      <strong>Use</strong>: If system disk fills up, there are too few consumers.
+      <br><br>
+      Healthmonitor reports when RabbitMQ uses more than 50% of its Persistent Disk.
+      <br><br>
+      <strong>Origin</strong>:  BOSH HM<br>
+      <strong>Type</strong>: percent<br>
+      <strong>Frequency</strong>: 30 seconds (default), 10 seconds (configurable minimum)
+    </td>
+  </tr>
+  <tr>
+    <th>Recommended measurement</th>
+    <td>Average over last 10 minutes</td>
+  </tr>
+  <tr>
+    <th>Recommended alert thresholds</th>
+    <td>
+      <strong>Yellow warning</strong>: &gt; 50 <br>
+      <strong>Red critical</strong>: &gt; 75
+    </td>
+  </tr>
+  <tr>
+    <th>Recommended response</th>
+    <td>
+      Remember that "an empty rabbit is a happy rabbit". Add more consumers to drain the queue as fast as possible. Insufficient disk space leads to node failures and might result in data loss due to all disk writes failing.
+    </td>
+  </tr>
 </table>
 
 ## <a id="logging"></a> Logging
@@ -600,61 +601,61 @@ To specify the destination for <%= vars.product_short %> log entries:
 ![Screenshot of RabbitMQ tile settings with header called 'Syslog'.
 The fields shown are described in the table in the next step.](images/syslog-config-1.20.0.png)
 1. Configure the fields on the **Syslog** pane as follows:
-   
-   <table class="nice">
-       <th>Field</th>
-       <th>Description</th>
-       <tr>
-           <td><strong>Syslog Address</strong></td>
-           <td>Enter the IP or DNS address of the syslog server</td>
-       </tr>
-       <tr>
-           <td><strong>Syslog Port</strong></td>
-           <td>Enter the port of the syslog server</td>
-       </tr>
-       <tr>
-           <td><strong>Transport Protocol</strong></td>
-           <td>Select the transport protocol of the syslog server. The options are <strong>TLS</strong>,
-             <strong>UDP</strong>, or <strong>RELP</strong>.</td>
-       </tr>
-       <tr>
-           <td><strong>Enable TLS</strong></td>
-           <td>Enable TLS to the syslog server.</td>
-       </tr>
-       <tr>
-           <td><strong>Permitted Peer</strong></td>
-           <td>If there are several peer servers that can respond to remote syslog connections,
-               enter a wildcard in the domain, such as <code>*.example.com</code>.</td>
-       </tr>
-       <tr>
-           <td><strong>SSL Certificate</strong></td>
-           <td>If the server certificate is not signed by a known authority, such as an internal syslog
-             server, enter the CA certificate of the log management service endpoint.</td>
-       </tr>
-       <tr>
-           <td><strong>Queue Size</strong></td>
-           <td>The number of log entries the buffer holds before dropping messages.
-             A larger buffer size might overload the system. The default is 100000.</td>
-       </tr>
-       <tr>
-           <td><strong>Forward Debug Logs</strong></td>
-           <td>Some components produce very long debug logs. This option prevents them from being
-             forwarded.
-             These logs are still written to local disk.</td>
-       </tr>
-       <tr>
-           <td><strong>Custom Rules</strong></td>
-           <td>
-             The custom rsyslog rules are written in
-             <a href="https://www.rsyslog.com/doc/v8-stable/rainerscript/index.html">RainerScript</a>
-             and are inserted before the rule that forwards logs.
-             For the list of custom rules you can add in this field, see
-             <a href="#rabbitmq-syslog-custom-rules">RabbitMQ Syslog Custom Rules</a> later in this topic.
-             For more information about the program names you can use in the custom rules, see
-             <a href="#program-names">RabbitMQ Program Names</a> later in this topic.
-           </td>
-       </tr>
-   </table>
+
+    <table class="nice">
+      <th>Field</th>
+      <th>Description</th>
+      <tr>
+         <td><strong>Syslog Address</strong></td>
+         <td>Enter the IP or DNS address of the syslog server</td>
+      </tr>
+      <tr>
+         <td><strong>Syslog Port</strong></td>
+         <td>Enter the port of the syslog server</td>
+      </tr>
+      <tr>
+         <td><strong>Transport Protocol</strong></td>
+         <td>Select the transport protocol of the syslog server. The options are <strong>TLS</strong>,
+           <strong>UDP</strong>, or <strong>RELP</strong>.</td>
+      </tr>
+      <tr>
+         <td><strong>Enable TLS</strong></td>
+         <td>Enable TLS to the syslog server.</td>
+      </tr>
+      <tr>
+         <td><strong>Permitted Peer</strong></td>
+         <td>If there are several peer servers that can respond to remote syslog connections,
+             enter a wildcard in the domain, such as <code>*.example.com</code>.</td>
+      </tr>
+      <tr>
+         <td><strong>SSL Certificate</strong></td>
+         <td>If the server certificate is not signed by a known authority, such as an internal syslog
+           server, enter the CA certificate of the log management service endpoint.</td>
+      </tr>
+      <tr>
+         <td><strong>Queue Size</strong></td>
+         <td>The number of log entries the buffer holds before dropping messages.
+           A larger buffer size might overload the system. The default is 100000.</td>
+      </tr>
+      <tr>
+         <td><strong>Forward Debug Logs</strong></td>
+         <td>Some components produce very long debug logs. This option prevents them from being
+           forwarded.
+           These logs are still written to local disk.</td>
+      </tr>
+      <tr>
+         <td><strong>Custom Rules</strong></td>
+         <td>
+           The custom rsyslog rules are written in
+           <a href="https://www.rsyslog.com/doc/v8-stable/rainerscript/index.html">RainerScript</a>
+           and are inserted before the rule that forwards logs.
+           For the list of custom rules you can add in this field, see
+           <a href="#rabbitmq-syslog-custom-rules">RabbitMQ Syslog Custom Rules</a> later in this topic.
+           For more information about the program names you can use in the custom rules, see
+           <a href="#program-names">RabbitMQ Program Names</a> later in this topic.
+         </td>
+      </tr>
+    </table>
 
 1. Click **Save**.
 1. Return to the <%= vars.ops_manager %> Installation Dashboard.
