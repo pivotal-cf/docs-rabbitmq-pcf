@@ -217,12 +217,13 @@ result for the section about the service plan you want:
       --service-uuid SERVICE-UUID \
       --output /output/p-rabbitmq-v2-trading-team.pivotal
     ```
-    Where:<br>
-      - `NAME-OF-EXISTING-REPLICA` must be the same as the name used for the existing replica.
-      This is **trading-team** in this example.
-      - `PATH-TO-NEW-TILE` is the path to the new <%= vars.product_short %> v2 tile.
-      - `PLAN-UUID` is the plan UUID found in Step 2.
-      - `SERVICE-UUID` is the service UUID found in Step 2.
+    Where:
+
+    - `NAME-OF-EXISTING-REPLICA` must be the same as the name used for the existing replica.
+    This is **trading-team** in this example.
+    - `PATH-TO-NEW-TILE` is the path to the new <%= vars.product_short %> v2 tile.
+    - `PLAN-UUID` is the plan UUID found in Step 2.
+    - `SERVICE-UUID` is the service UUID found in Step 2.
 
     Specifying the parameters `--plan-uuid` and `--service-uuid` ensures the new
     replica updates the existing service offering and plans.
