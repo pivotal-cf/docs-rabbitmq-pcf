@@ -24,9 +24,9 @@ Then, if necessary, immediately cherry-pick/copy any changes that you want to pu
 
 | Branch Name| Use for… |
 |------------| ---------|
-| master     | "edge" branch for v2.x, staged here: http://docs-pcf-staging.cfapps.io/rabbitmq-cf/2-n/index.html |
-| 2.0        | v2.0 (http://docs.pivotal.io/rabbitmq-cf/2-0/)   |
-| 1.21       | v1.21 (http://docs.pivotal.io/rabbitmq-cf/1-21/) |
+| master     | "edge" branch for v2.x, staged here: https://docs-staging.vmware.com/en/draft/VMware-Tanzu-RabbitMQ-for-VMs/2.1/tanzu-rmq/GUID-index.html |
+| 2.0        | v2.0 (https://docs.vmware.com/en/VMware-Tanzu-RabbitMQ-for-VMs/2.0/tanzu-rmq/GUID-index.html)   |
+| 1.21       | v1.21 (https://docs.vmware.com/en/VMware-Tanzu-RabbitMQ-for-VMs/1.21/tanzu-rmq/GUID-index.html) |
 | 1.20       | NOT IN USE docs have been deprecated (http://docs.pivotal.io/rabbitmq-cf/1-20/) |
 | 1.19       | NOT IN USE docs have been deprecated (http://docs.pivotal.io/rabbitmq-cf/1-19/) |
 | 1.18       | NOT IN USE docs have been deprecated (http://docs.pivotal.io/rabbitmq-cf/1-18/) |
