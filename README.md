@@ -2,7 +2,7 @@
 
 This repo contains the VMware Tanzu RabbitMQ for VMs documentation.
 
-In this README: 
+In this README:
 
 - [Branches in this Content Repo](#branches-in-this-content-repo)
 - [Releasing a New Minor Version](#releasing-a-new-minor-version)
@@ -24,7 +24,8 @@ Then, if necessary, immediately cherry-pick/copy any changes that you want to pu
 
 | Branch Name| Use for… |
 |------------| ---------|
-| master     | "edge" branch for v2.x, staged here: https://docs-staging.vmware.com/en/draft/VMware-Tanzu-RabbitMQ-for-VMs/2.1/tanzu-rmq/GUID-index.html |
+| master     | "edge" branch for v2.x, staged here: https://docs-staging.vmware.com/en/draft/VMware-Tanzu-RabbitMQ-for-VMs/2.2/tanzu-rmq/GUID-index.html |
+| 2.1        | v2.1 (https://docs.vmware.com/en/VMware-Tanzu-RabbitMQ-for-VMs/2.1/tanzu-rmq/GUID-index.html)   |
 | 2.0        | v2.0 (https://docs.vmware.com/en/VMware-Tanzu-RabbitMQ-for-VMs/2.0/tanzu-rmq/GUID-index.html)   |
 | 1.21       | v1.21 (https://docs.vmware.com/en/VMware-Tanzu-RabbitMQ-for-VMs/1.21/tanzu-rmq/GUID-index.html) |
 | 1.20       | NOT IN USE docs have been deprecated (http://docs.pivotal.io/rabbitmq-cf/1-20/) |
