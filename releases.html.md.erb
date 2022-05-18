@@ -5,15 +5,28 @@ owner: London Services
 
 <%= partial vars.path_to_partials + '/upgrade-planner' %>
 
-## <a id="2-0-x"></a> v2.0.x
+## <a id="2-1-x"></a> v2.1.x
 
-**Release Date**: DD MM, YYYY
+**Release Date**: May 17, 2022
 
 ### Features
 
 New features and changes in this release:
 
-* **Run-in header:** Feature description.
+* **TAS 2.13 Support:**: New changes to the log collection architecture within TAS required
+changes to our product in order to support existing metrics flows. These changes to TAS 2.13 have
+also been backported to TAS 2.12. As a result VMWare Tanzu RabbitMQ for VMs versions 2.0.x and below will
+only be compatible with TAS 2.12 and below. If you are upgrading your TAS installation to 2.13, you MUST
+also upgrade VMware Tanzu RabbitMQ for VMs to version 2.1.x.
+
+* **RabbitMQ 3.9:** RabbitMQ 3.9 is now the default installed version. On-Demand instances
+that are currently running RabbitMQ version 3.8 will be upgraded to
+RabbitMQ 3.9 if you run the `upgrade-all-service-instances` errand
+when installing this releease.
+
+Important changes in RabbitMQ 3.9 include Streams, Erlang 24 support and
+JSON logging. For more information on the specifics of these features see
+the [RabbitMQ 3.9 release page](https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.9.17)
 
 ### Known Issues
 
@@ -25,20 +38,21 @@ This release has the following issues:
 
 The following components are compatible with this release:
 
-<table class="nice">
-  <th>Component</th>
-  <th>Version</th>
+<table class="nice"> <th>Component</th> <th>Version</th> 	<tr>
+		<td><%= vars.app_runtime_full %></td>
+		<td>2.11.x, 2.12.x, 2.13.x</td>
+	</tr>
   <tr>
     <td>Erlang</td>
-    <td>23.2.7</td>
+    <td>24.3.3</td>
   </tr>
   <tr>
     <td>HAProxy</td>
-    <td>1.8.29</td>
+    <td>1.8.30</td>
   </tr>
   <tr>
     <td>OSS RabbitMQ<sup>*</sup></td>
-    <td>3.8.14</td>
+    <td>3.9.15</td>
   </tr>
   <tr>
     <td>Stemcell</td>
@@ -48,53 +62,53 @@ The following components are compatible with this release:
     <td><%= vars.app_runtime_full%></td>
     <td>2.7.x, 2.8.x, 2.9.x, 2.10.x, and 2.11.x</td>
   </tr>
-  <tr>
-    <td>bpm</td>
-    <td>1.1.9</td>
-  </tr>
+	<tr>
+		<td>bpm</td>
+		<td>1.1.17</td>
+	</tr>
   <tr>
     <td>cf-cli</td>
-    <td>1.32.0</td>
+		<td>1.38.0</td>
   </tr>
   <tr>
     <td>cf-rabbitmq</td>
-    <td>366.0.0</td>
+		<td>434.0.0</td>
   </tr>
   <tr>
     <td>cf-rabbitmq-multitenant-broker</td>
-    <td>93.0.0</td>
+		<td>114.0.0</td>
   </tr>
   <tr>
     <td>cf-service-gateway</td>
-    <td>48.0.0</td>
+		<td>72.0.0</td>
   </tr>
   <tr>
     <td>cf-rabbitmq-smoke-tests</td>
-    <td>94.0.0</td>
+		<td>129.0.0</td>
   </tr>
   <tr>
     <td>loggregator-agent</td>
-    <td>6.2.0</td>
+		<td>6.4.0</td>
   </tr>
   <tr>
     <td>on-demand-service-broker</td>
-    <td>0.40.0</td>
+		<td>0.42.4</td>
   </tr>
   <tr>
     <td>rabbitmq-metrics</td>
-    <td>55.0.0</td>
+		<td>78.0.0</td>
   </tr>
   <tr>
     <td>rabbitmq-on-demand-adapter</td>
-    <td>174.0.0</td>
+		<td>209.0.0</td>
   </tr>
   <tr>
     <td>routing</td>
-    <td>0.213.0</td>
+		<td>0.232.0</td>
   </tr>
   <tr>
     <td>service-metrics</td>
-    <td>2.0.13</td>
+		<td>2.0.16</td>
   </tr>
 </table>
 
