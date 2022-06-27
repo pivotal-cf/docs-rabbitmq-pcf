@@ -11,15 +11,18 @@ owner: London Services
 
 ### Features
 
-This release contains the following changes:
+This release contains the following change:
 
-- RabbitMQ 3.10 is now available in this version. Service Instances running on RabbitMQ 3.9 will continue to run on 3.9 until configured to run on 3.10.
+RabbitMQ v3.10 is now available in this version.
+Service instances running on RabbitMQ v3.9 continue to run on v3.9 until configured to run on v3.10.
 
 ### Resolved Issues
 
-This release fixes the following issues:
+This release fixes the following issue:
 
-- LDAP authentication will no longer fail in some cases where connecting over TLS. For more information, see <a href="https://github.com/rabbitmq/rabbitmq-server/discussions/4726">the issue on GitHub</a>.
+LDAP authentication no longer fails in some cases when connecting over TLS.
+For more information about this issue, see
+[issue 4726](https://github.com/rabbitmq/rabbitmq-server/discussions/4726) on GitHub.
 
 ### Known Issues
 
@@ -121,7 +124,7 @@ New features and changes in this release:
 
 This release has the following issues:
 
-- Service Instances using LDAP authentication over TLS may fail in some cases. This is fixed in v2.1.2.
+Service instances that use LDAP authentication over TLS can fail in some cases. This is fixed in v2.0.16. For more information about the issue, see [issue 4726](https://github.com/rabbitmq/rabbitmq-server/discussions/4726) on GitHub.
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
 
 ### Compatibility
