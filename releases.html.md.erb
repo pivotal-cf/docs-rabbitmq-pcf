@@ -25,9 +25,9 @@ owner: London Services
 
 ### Resolved Issues
 
-This release fixes the following issues:
-
-- LDAP authentication will no longer fail in some cases where connecting over TLS. For more information, see <a href="https://github.com/rabbitmq/rabbitmq-server/discussions/4726">the issue on GitHub</a>.
+LDAP authentication no longer fails in some cases where connecting over TLS.
+For more information, see [issue 4726](https://github.com/rabbitmq/rabbitmq-server/discussions/4726)
+on GitHub.
 
 ### Known Issues
 
@@ -129,7 +129,7 @@ This release fixes the following issues:
 
 This release has the following known issues:
 
-- Service Instances using LDAP authentication over TLS may fail in some cases. This is fixed in v2.0.16.
+- Service instances that use LDAP authentication over TLS can fail in some cases. This is fixed in v2.0.16. For more information about the issue, see [issue 4726](https://github.com/rabbitmq/rabbitmq-server/discussions/4726) on GitHub.
 <%= partial vars.path_to_partials + '/rabbitmq/erlang-ki' %>
 
 ### Compatibility
