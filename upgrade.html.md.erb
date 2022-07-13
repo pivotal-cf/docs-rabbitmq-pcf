@@ -24,6 +24,7 @@ To upgrade the product:
 1. Ensure BOSH DNS is enabled. This is enabled by default.
 If you have disabled BOSH DNS, you must enable it for BOSH Hot Swaps to work.
 For more information, see [BOSH Hot Swap](#vm-strategy) below.
+1. Ensure the `register-on-demand-service-broker` errand is enabled. This errand is enabled by default, but if it has been disabled, it can be re-enabled by navigating to the **Errands** pane and selecting **On** for **Register On Demand Service Broker**.
 1. (Optional) If you want developers to individually upgrade service instances, navigate
 to the **Errands** pane and select **Off** for **Upgrade All Service Instances**.
 <br><br>
