@@ -656,6 +656,8 @@ to share your service instances across Cloud Foundry orgs and spaces.
 <%= partial vars.path_to_partials + '/services/log-cache-cli-plugin',
 :locals => {:service_name => vars.product_short} %>
 
+Please note, the log cache cli plugin will not show metrics from On-Demand service instances if the
+'Prom Scraper Compatibility with Log Cache' property in 'Global settings for On-Demand plans' is disabled.
 ## <a id="federation"></a> Federate Exchanges and Queues
 
 You can federate exchanges and queues in <%= vars.product_short %>, just like in any other RabbitMQ deployment.
