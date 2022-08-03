@@ -11,18 +11,20 @@ owner: London Services
 
 ### Resolved Issues
 
-This release fixes the following issues:
+This release fixes the following issue:
 
-- RabbitMQ system metrics are now available via the log-cache Cloud Foundry CLI Plugin. This functionality requires
-<strong>Prom Scraper Compatibility with Log Cache</strong> property in <strong>Global settings for on-demand plans</strong>
-to be enabled.
+- **RabbitMQ system metrics are now available through the Log Cache cf CLI plug-in:**
+This function requires you to enable the <strong>Prom Scraper Compatibility with Log Cache</strong>
+property in <strong>Global settings for on-demand plans</strong>.
+For more information, see [Configure Global Settings](install-config.html#global).
 
-<p class="note">
-  <strong>Note:</strong> For systems upgraded from previous versions of <%= vars.product_short %>, this property is
-  disabled by default to prevent a discontinuity in emitted metrics over upgrade. You may enable this property and
-  'Apply Changes' to allow compatibility with log-cache, however be aware that this will cause RabbitMQ system metrics
-  to be emitted under a new `source_id`, which will be the GUID of the service instance.
-</p>
+    <p class="note">
+      <strong>Note:</strong> If you are upgrading from a previous version of <%= vars.product_short %>,
+      this property is disabled by default to prevent a discontinuity in emitted metrics after upgrading.
+
+      If you enable this property and <strong>Apply Changes</strong>, be aware that RabbitMQ system metrics
+      will be emitted under a new <code>source_id</code>, which will be the GUID of the service instance.
+    </p>
 
 ### Known Issues
 
@@ -122,7 +124,7 @@ Service instances running on RabbitMQ v3.9 continue to run on v3.9 until configu
 
 This release fixes the following issue:
 
-LDAP authentication no longer fails in some cases when connecting over TLS.
+* **LDAP authentication no longer fails when connecting over TLS:**
 For more information about this issue, see
 [issue 4726](https://github.com/rabbitmq/rabbitmq-server/discussions/4726) on GitHub.
 
@@ -130,11 +132,9 @@ For more information about this issue, see
 
 This release has the following known issues:
 
-Metrics for on-demand RabbitMQ Clusters do not appear when using the log-cache plugin for the Cloud Foundry CLI. This
-is resolved in v2.1.3+, though you will need to manually enable compatibility with this plugin. See the [v2.1.3 release notes](#2-1-3)
-for more information.
-
 <%= partial vars.path_to_partials + '/rabbitmq/erlang-ki' %>
+
+<%= partial vars.path_to_partials + '/rabbitmq/ki-rmq-cluster-metrics' %>
 
 ### Compatibility
 
@@ -231,13 +231,12 @@ New features and changes in this release:
 
 This release has the following issues:
 
-Service instances that use LDAP authentication over TLS can fail in some cases. This is fixed in v2.1.2. For more information about the issue, see [issue 4726](https://github.com/rabbitmq/rabbitmq-server/discussions/4726) on GitHub.
-
-Metrics for on-demand RabbitMQ Clusters do not appear when using the log-cache plugin for the Cloud Foundry CLI. This
-is resolved in v2.1.3+, though you will need to manually enable compatibility with this plugin. See the [v2.1.3 release notes](#2-1-3)
-for more information.
-
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
+
+<%= partial vars.path_to_partials + '/rabbitmq/ki-ldap-over-tls' %>
+
+<%= partial vars.path_to_partials + '/rabbitmq/ki-rmq-cluster-metrics' %>
+
 
 ### Compatibility
 
@@ -347,11 +346,11 @@ when installing this release.
 
 This release has the following issues:
 
-Metrics for on-demand RabbitMQ Clusters do not appear when using the log-cache plugin for the Cloud Foundry CLI. This
-is resolved in v2.1.3+, though you will need to manually enable compatibility with this plugin. See the [v2.1.3 release notes](#2-1-3)
-for more information.
-
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
+
+<%= partial vars.path_to_partials + '/rabbitmq/ki-ldap-over-tls' %>
+
+<%= partial vars.path_to_partials + '/rabbitmq/ki-rmq-cluster-metrics' %>
 
 ### Compatibility
 
