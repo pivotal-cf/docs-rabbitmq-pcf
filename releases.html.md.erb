@@ -422,7 +422,7 @@ This release has the following fixes:
 
 - **Process leak fix:** Routing release v0.231.0 fixes a process leak caused by constant reloading of HAProxy. For more information, see the [release notes](https://github.com/cloudfoundry/routing-release/releases/tag/0.231.0) in GitHub.
 - **Updated OpenSSL to v1.1.1n:** Updated OpenSSL to v1.1.1n to address [CVE-2022-0778](https://www.cve.org/CVERecord?id=CVE-2022-0778).
-
+- Deleting a pre-provisioned RabbitMQ v3.9 service instance will no longer fail every other attempt when running <code>cf delete-service</code>
 
 ### Known Issues
 
@@ -533,6 +533,7 @@ For more information, see [Gather additional detailed metrics](monitor.html#deta
 This release has the following known issue:
 
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
+* Deleting a pre-provisioned RabbitMQ v3.9 service instance will fail every other attempt when running <code>cf delete-service</code>. This is fixed in v2.0.12+ and v2.1.0+.
 
 ### Compatibility
 
@@ -631,6 +632,7 @@ configured and metrics are now available.
 This release has the following known issue:
 
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
+* Deleting a pre-provisioned RabbitMQ v3.9 service instance will fail every other attempt when running <code>cf delete-service</code>. This is fixed in v2.0.12+ and v2.1.0+.
 
 ### Compatibility
 
@@ -737,6 +739,7 @@ This release has the following issue:
 
 * **Metrics unavailable when TLS enabled:** When TLS is enabled, the Prometheus endpoint is
 misconfigured, resulting in metrics being unavailable.
+* Deleting a pre-provisioned RabbitMQ v3.9 service instance will fail every other attempt when running <code>cf delete-service</code>. This is fixed in v2.0.12+ and v2.1.0+.
 
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
 
@@ -846,6 +849,8 @@ Cloud Controller over TLS. This is fixed in v2.0.9.
 
 * **Metrics unavailable when TLS enabled:** When TLS is enabled, the Prometheus endpoint is
 misconfigured, resulting in metrics being unavailable.
+
+* Deleting a pre-provisioned RabbitMQ v3.9 service instance will fail every other attempt when running <code>cf delete-service</code>. This is fixed in v2.0.12+ and v2.1.0+.
 
 ### Compatibility
 
@@ -974,6 +979,7 @@ and memory alarm metrics to the Loggregator subsystem.
 * **Metrics unavailable when TLS enabled:** When TLS is enabled, the Prometheus endpoint is
 misconfigured, resulting in metrics being unavailable.
 
+* Deleting a pre-provisioned RabbitMQ v3.9 service instance will fail every other attempt when running <code>cf delete-service</code>. This is fixed in v2.0.12+ and v2.1.0+.
 
 ### Compatibility
 
@@ -1085,6 +1091,8 @@ and memory alarm metrics to the Loggregator subsystem.
 
 * **Metrics unavailable when TLS enabled:** When TLS is enabled, the Prometheus endpoint is
 misconfigured, resulting in metrics being unavailable.
+
+* Deleting a pre-provisioned RabbitMQ v3.9 service instance will fail every other attempt when running <code>cf delete-service</code>. This is fixed in v2.0.12+ and v2.1.0+.
 
 ### Compatibility
 
@@ -1199,6 +1207,8 @@ and memory alarm metrics to the Loggregator subsystem.
 
 * **Metrics unavailable when TLS enabled:** When TLS is enabled, the Prometheus endpoint is
 misconfigured, resulting in metrics being unavailable.
+
+* Deleting a pre-provisioned RabbitMQ v3.9 service instance will fail every other attempt when running <code>cf delete-service</code>. This is fixed in v2.0.12+ and v2.1.0+.
 
 ### Compatibility
 
@@ -1327,6 +1337,8 @@ and memory alarm metrics to the Loggregator subsystem.
 * **Metrics unavailable when TLS enabled:** When TLS is enabled, the Prometheus endpoint is
 misconfigured, resulting in metrics being unavailable.
 
+* Deleting a pre-provisioned RabbitMQ v3.9 service instance will fail every other attempt when running <code>cf delete-service</code>. This is fixed in v2.0.12+ and v2.1.0+.
+
 ### Compatibility
 
 The following components are compatible with this release:
@@ -1441,6 +1453,8 @@ See [Provide SSL Certificates](install-config-pp.html#ssl) for details.
 
 * **Disk and memory alarm metrics:** Instances running RabbitMQ v3.8 do not emit disk
 and memory alarm metrics to the Loggregator subsystem.
+
+* Deleting a pre-provisioned RabbitMQ v3.9 service instance will fail every other attempt when running <code>cf delete-service</code>. This is fixed in v2.0.12+ and v2.1.0+.
 
 ### Compatibility
 
@@ -1564,6 +1578,8 @@ and memory alarm metrics to the Loggregator subsystem.
 
 * **Metrics unavailable when TLS enabled:** When TLS is enabled, the Prometheus endpoint is
 misconfigured, resulting in metrics being unavailable.
+
+* Deleting a pre-provisioned RabbitMQ v3.9 service instance will fail every other attempt when running <code>cf delete-service</code>. This is fixed in v2.0.12+ and v2.1.0+.
 
 ### Compatibility
 
@@ -1718,6 +1734,8 @@ and memory alarm metrics to the Loggregator subsystem.
 
 * **Metrics unavailable when TLS enabled:** When TLS is enabled, the Prometheus endpoint is
 misconfigured, resulting in metrics being unavailable.
+
+* Deleting a pre-provisioned RabbitMQ v3.9 service instance will fail every other attempt when running <code>cf delete-service</code>. This is fixed in v2.0.12+ and v2.1.0+.
 
 ### Compatibility
 
