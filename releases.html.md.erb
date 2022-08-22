@@ -5,6 +5,110 @@ owner: London Services
 
 <%= partial vars.path_to_partials + '/upgrade-planner' %>
 
+## <a id="2-1-3"></a> v2.1.3
+
+**Release Date**: August 17, 2022
+
+### Resolved Issues
+
+This release fixes the following issue:
+
+- **RabbitMQ system metrics are now available through the Log Cache cf CLI plug-in:**
+This function requires you to enable the <strong>Prom Scraper Compatibility with Log Cache</strong>
+property in <strong>Global settings for on-demand plans</strong>.
+For more information, see [Configure Global Settings](install-config.html#global).
+
+    <p class="note">
+      <strong>Note:</strong> If you are upgrading from a previous version of <%= vars.product_short %>,
+      this property is disabled by default to prevent a discontinuity in emitted metrics after upgrading.
+
+      If you enable this property and <strong>Apply Changes</strong>, be aware that RabbitMQ system metrics
+      will be emitted under a new <code>source_id</code>, which will be the GUID of the service instance.
+    </p>
+
+### Known Issues
+
+This release has the following known issues:
+
+<%= partial vars.path_to_partials + '/rabbitmq/erlang-ki' %>
+
+### Compatibility
+
+The following components are compatible with this release:
+
+<table class="nice"> <th>Component</th> <th>Version</th> 	<tr>
+		<td><%= vars.app_runtime_full %></td>
+		<td>2.11.x, 2.12.x, 2.13.x</td>
+	</tr>
+	<tr>
+		<td>Erlang</td>
+		<td>24.3.4.2</td>
+	</tr>
+	<tr>
+		<td>HAProxy</td>
+		<td>1.8.30</td>
+	</tr>
+	<tr>
+		<td>OSS RabbitMQ<sup>*</sup></td>
+		<td>3.9.21, 3.10.6</td>
+	</tr>
+	<tr>
+		<td>Stemcell</td>
+		<td>621.x</td>
+	</tr>
+	<tr>
+		<td>bpm</td>
+		<td>1.1.18</td>
+	</tr>
+	<tr>
+		<td>cf-cli</td>
+		<td>1.38.0</td>
+	</tr>
+	<tr>
+		<td>cf-rabbitmq</td>
+		<td>448.0.0</td>
+	</tr>
+	<tr>
+		<td>cf-rabbitmq-multitenant-broker</td>
+		<td>118.0.0</td>
+	</tr>
+	<tr>
+		<td>cf-rabbitmq-smoke-tests</td>
+		<td>133.0.0</td>
+	</tr>
+	<tr>
+		<td>cf-service-gateway</td>
+		<td>77.0.0</td>
+	</tr>
+	<tr>
+		<td>loggregator-agent</td>
+		<td>6.4.3</td>
+	</tr>
+	<tr>
+		<td>on-demand-service-broker</td>
+		<td>0.42.4</td>
+	</tr>
+	<tr>
+		<td>rabbitmq-metrics</td>
+		<td>82.0.0</td>
+	</tr>
+	<tr>
+		<td>rabbitmq-on-demand-adapter</td>
+		<td>215.0.0</td>
+	</tr>
+	<tr>
+		<td>routing</td>
+		<td>0.237.0</td>
+	</tr>
+	<tr>
+		<td>service-metrics</td>
+		<td>2.0.17</td>
+	</tr>\n</table>
+
+<sup>*</sup> For more information, see the
+<a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.9.21">v3.9.21</a> and
+<a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.10.6">v3.10.6</a> GitHub documentation.
+
 ## <a id="2-1-2"></a> v2.1.2
 
 **Release Date**: June 24, 2022
@@ -20,7 +124,7 @@ Service instances running on RabbitMQ v3.9 continue to run on v3.9 until configu
 
 This release fixes the following issue:
 
-LDAP authentication no longer fails in some cases when connecting over TLS.
+* **LDAP authentication no longer fails when connecting over TLS:**
 For more information about this issue, see
 [issue 4726](https://github.com/rabbitmq/rabbitmq-server/discussions/4726) on GitHub.
 
@@ -29,6 +133,8 @@ For more information about this issue, see
 This release has the following known issues:
 
 <%= partial vars.path_to_partials + '/rabbitmq/erlang-ki' %>
+
+<%= partial vars.path_to_partials + '/rabbitmq/ki-rmq-cluster-metrics' %>
 
 ### Compatibility
 
@@ -125,8 +231,12 @@ New features and changes in this release:
 
 This release has the following issues:
 
-Service instances that use LDAP authentication over TLS can fail in some cases. This is fixed in v2.0.16. For more information about the issue, see [issue 4726](https://github.com/rabbitmq/rabbitmq-server/discussions/4726) on GitHub.
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
+
+<%= partial vars.path_to_partials + '/rabbitmq/ki-ldap-over-tls' %>
+
+<%= partial vars.path_to_partials + '/rabbitmq/ki-rmq-cluster-metrics' %>
+
 
 ### Compatibility
 
@@ -237,6 +347,10 @@ when installing this release.
 This release has the following issues:
 
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
+
+<%= partial vars.path_to_partials + '/rabbitmq/ki-ldap-over-tls' %>
+
+<%= partial vars.path_to_partials + '/rabbitmq/ki-rmq-cluster-metrics' %>
 
 ### Compatibility
 
