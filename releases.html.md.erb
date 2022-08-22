@@ -11,17 +11,19 @@ owner: London Services
 
 ### Resolved Issue
 
-**RabbitMQ system metrics are now available through the Log Cache cf CLI plug-in:**
-This function requires you to enable the <strong>Prom Scraper Compatibility with Log Cache</strong>
-property in <strong>Global settings for on-demand plans</strong>.
-For more information, see [Configure Global Settings](install-config.html#global).
+This release fixes the following issue:
 
-<p class="note">
-  <strong>Note:</strong> If you are upgrading from a previous version of <%= vars.product_short %>,
-  this property is disabled by default to prevent discontinuity in emitted metrics after upgrading.
-  If you enable this property and click <strong>Apply Changes</strong>, RabbitMQ system metrics
-  are emitted under a new <code>source_id</code>, which is the GUID of the service instance.
-</p>
+* **RabbitMQ system metrics are now available through the Log Cache cf CLI plug-in:**
+  This function requires you to enable the <strong>Prom Scraper Compatibility with Log Cache</strong>
+  property in <strong>Global settings for on-demand plans</strong>.
+  For more information, see [Configure Global Settings](install-config.html#global).
+
+  <p class="note">
+    <strong>Note:</strong> If you are upgrading from a previous version of <%= vars.product_short %>,
+    this property is disabled by default to prevent discontinuity in emitted metrics after upgrading.
+    If you enable this property and click <strong>Apply Changes</strong>, RabbitMQ system metrics
+    are emitted under a new <code>source_id</code>, which is the GUID of the service instance.
+  </p>
 
 ### Known Issues
 
