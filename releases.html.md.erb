@@ -31,7 +31,7 @@ on GitHub.
 
 ### Known Issues
 
-This release has the following known issues:
+This release has the following known issue:
 
 <%= partial vars.path_to_partials + '/rabbitmq/erlang-ki' %>
 
@@ -422,7 +422,9 @@ This release has the following fixes:
 
 - **Process leak fix:** Routing release v0.231.0 fixes a process leak caused by constant reloading of HAProxy. For more information, see the [release notes](https://github.com/cloudfoundry/routing-release/releases/tag/0.231.0) in GitHub.
 - **Updated OpenSSL to v1.1.1n:** Updated OpenSSL to v1.1.1n to address [CVE-2022-0778](https://www.cve.org/CVERecord?id=CVE-2022-0778).
-- Deleting a pre-provisioned RabbitMQ v3.9 service instance will no longer fail every other attempt when running <code>cf delete-service</code>
+- **Deleting pre-provisioned RabbitMQ v3.9 no longer causes failures:** Deleting a pre-provisioned
+  RabbitMQ v3.9 service instance no longer causes every other attempt when running
+  <code>cf delete-service</code> to fail.
 
 ### Known Issues
 
@@ -530,10 +532,12 @@ For more information, see [Gather additional detailed metrics](monitor.html#deta
 
 ### Known Issues
 
-This release has the following known issue:
+This release has the following known issues:
 
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
-* Deleting a pre-provisioned RabbitMQ v3.9 service instance will fail every other attempt when running <code>cf delete-service</code>. This is fixed in v2.0.12+ and v2.1.0+.
+* **Failure after deleting pre-provisioned RabbitMQ v3.9:** Deleting a pre-provisioned RabbitMQ v3.9
+  service instance causes every other attempt when running <code>cf delete-service</code> to fail.
+  This is fixed in v2.0.12 and later patches and in v2.1.0 and later patches.
 
 ### Compatibility
 
