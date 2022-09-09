@@ -327,6 +327,7 @@ Follow the steps below to configure global settings:
       <tr>
         <td><strong>List of VM Extensions</strong></td>
         <td>Click <strong>Add</strong> to enter names of VM extensions to apply to all service instances.
+          Note that you may separately apply additional sets of VM extensions on each specific plan; see [On-demand plans](#service-plan) for more information.
           You can manage custom VM Extensions in <%= vars.ops_manager %> or through the OM CLI.
           For more information, see
           <a href="https://docs.pivotal.io/ops-manager/install/custom-vm-extensions.html#create-vm-extension">
@@ -582,6 +583,21 @@ plan.
       <td>
       (Optional, experts only) Provide server config to set on service instances that use this plan.
       For more information, see <a href="./expert-override-config.html">Expert mode: Overriding RabbitMQ Server configuration</a>.</td></tr>
+      <tr>
+        <td><strong>List of VM Extensions</strong></td>
+        <td>Click <strong>Add</strong> to enter names of VM extensions to apply to service instances created under this plan.
+          These are applied in addition to any global VM extensions that are configured under the [Global Settings section](#global).
+          You can manage custom VM Extensions in <%= vars.ops_manager %> or through the OM CLI.
+          For more information, see
+          <a href="https://docs.pivotal.io/ops-manager/install/custom-vm-extensions.html#create-vm-extension">
+            Create or Update a VM Extension</a> or
+          <a href="https://github.com/pivotal-cf/om/blob/main/docs/create-vm-extension/README.md">
+            om create-vm-extension</a> in GitHub.<br><br>
+          You can use this to disable IaaS specific behavior.
+          For example, you can use a VM extension to disable vMotion in a vSphere infrastructure.<br><br>
+          To remove a VM extension, click the trash can icon.
+        </td>
+      </tr>
     </table>
 
 3. Click **Save**.
