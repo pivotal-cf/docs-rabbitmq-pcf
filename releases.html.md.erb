@@ -15,11 +15,12 @@ owner: London Services
 
 New features and changes in this release:
 
-* It is now possible to specify a different set of VM Extensions for each on-demand plan, in addition to global VM
-extensions that apply to all on-demand service instances.
-* This release now ships with the latest HAProxy v2, upgraded from v1. For multitenant service instances, if you are
-using a HTTP client to connect to the RabbitMQ Management UI via HAProxy, and this client is not conformant with
-the HTTP spec (for example, treating HTTP headers as case-sensitive), you may see errors connecting to the UI after upgrading.
+* You can now specify a different set of VM extensions for each on-demand plan, in addition
+  to global VM extensions that apply to all on-demand service instances.
+* This release ships with the latest HAProxy v2, upgraded from v1. For multitenant service
+  instances, if you are using an HTTP client to connect to the RabbitMQ Management UI through HAProxy,
+  and this client doesn't conform with the HTTP spec (for example, by treating HTTP headers as
+  case-sensitive), you might see errors when connecting to the UI after upgrading.
 
 ### Known Issues
 
@@ -98,7 +99,8 @@ The following components are compatible with this release:
 	<tr>
 		<td>service-metrics</td>
 		<td>2.0.19</td>
-	</tr>\n</table>
+	</tr>
+</table>
 
 <sup>*</sup> For more information, see the
 <a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.9.22">v3.9.22</a> and

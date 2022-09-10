@@ -3,9 +3,10 @@ title: Rolling Upgrades in VMware Tanzu RabbitMQ for VMs
 owner: London Services
 ---
 
-This topic describes the rolling upgrade strategy and how it can incur less downtime than other upgrade
-methods.
-It includes steps for running a rolling upgrade and a description of an experiment that illustrates the
+This topic describes the rolling upgrade strategy and how it can incur less downtime than other
+upgrade methods.
+It includes steps for running a rolling upgrade and a description of an experiment that illustrates
+the
 benefits of rolling upgrades in detail.
 
 ## <a id='overview'></a> Overview
@@ -13,22 +14,22 @@ benefits of rolling upgrades in detail.
 A rolling upgrade is a strategy for updating a distributed system.
 
 In a rolling upgrade, each VM is updated in turn.
-After the update completes, the VM is started, and, after the specified processes are running, the update
-procedure begins for the next VM in the sequence.
+After the update completes, the VM is started, and, after the specified processes are running, the
+update procedure begins for the next VM in the sequence.
 
 In a <%= vars.product_short %> cluster, each node runs on a separate VM.
-Rolling upgrades help to ensure availability by keeping at least one node up throughout the upgrade process.
+Rolling upgrades help to ensure availability by keeping at least one node up throughout the upgrade
+process.
 
 Before v1.17.3, some upgrades required the whole cluster to be shut down.
 For example, when a major or minor version of <%= vars.product_short %> was updated, or when a major
 version of the Erlang distribution was updated.
 
 As of v1.17.3, upgrades are performed using a rolling upgrade strategy.
-The only case where a cluster is required to fully shut down as part of an upgrade is where the Erlang cookie
-for the cluster is changed.
-Due to ongoing development, VMware cannot guarantee that rolling upgrades will always be possible in the future.
-VMware recommends always checking the release notes for each version before upgrading.
-
+The only case where a cluster is required to fully shut down as part of an upgrade is where the
+Erlang cookie for the cluster is changed.
+Due to ongoing development, VMware cannot guarantee that rolling upgrades will always be possible in
+the future. VMware recommends always checking the release notes for each version before upgrading.
 
 ## <a id='rolling'></a> Running a Rolling Upgrade for <%= vars.product_full %>
 
@@ -54,11 +55,11 @@ In the experiment, an operator upgrades their platform to use a new version of <
 They upgrade from v1.17.4 to v1.18.1.
 
 This experiment is designed to show a system performing a rolling upgrade under a heavy load: there is
-substantial disk I/O with both the underlying <%= vars.product_short %> and Erlang software upgrading to a
-newer version.
+substantial disk I/O with both the underlying <%= vars.product_short %> and Erlang software upgrading
+to a newer version.
 
 Without a rolling upgrade, the whole cluster must shut down, resulting in a service outage given
-publishers and consumers are unable to connect to the cluster.
+publishers and consumers are unable to connect to the cluster
 This experiment shows the extent of downtime associated with a rolling upgrade.
 
 <p class='note'>
