@@ -23,9 +23,13 @@ owner: London Services
 
 **Release Date**: June 24, 2022
 
+### Security fixes
+
+- <strong>Important:</strong> Erlang has been updated to v24.3.4.2 in resolve [CVE-2022-37026](https://nvd.nist.gov/vuln/detail/CVE-2022-37026).
+
 ### Resolved Issues
 
-LDAP authentication no longer fails in some cases where connecting over TLS.
+- LDAP authentication no longer fails in some cases where connecting over TLS.
 For more information, see [issue 4726](https://github.com/rabbitmq/rabbitmq-server/discussions/4726)
 on GitHub.
 
@@ -130,6 +134,10 @@ This release fixes the following issues:
 
 This release has the following known issues:
 
+<p class="note warning">
+  <strong>Warning:</strong> This version contains a release of Erlang that is affected by [CVE-2022-37026](https://nvd.nist.gov/vuln/detail/CVE-2022-37026).
+  VMware strongly recommends upgrading to v2.0.16 or higher as soon as possible.
+</p>
 - Service instances that use LDAP authentication over TLS can fail in some cases. This is fixed in v2.0.16. For more information about the issue, see [issue 4726](https://github.com/rabbitmq/rabbitmq-server/discussions/4726) on GitHub.
 <%= partial vars.path_to_partials + '/rabbitmq/erlang-ki' %>
 
@@ -226,8 +234,12 @@ Subject Alternative Name of the RabbitMQ server TLS certificate.
 
 ### Known Issues
 
-This release has the following known issue:
+This release has the following known issues:
 
+<p class="note warning">
+  <strong>Warning:</strong> This version contains a release of Erlang that is affected by [CVE-2022-37026](https://nvd.nist.gov/vuln/detail/CVE-2022-37026).
+  VMware strongly recommends upgrading to v2.0.16 or higher as soon as possible.
+</p>
 <%= partial vars.path_to_partials + '/rabbitmq/erlang-ki' %>
 
 ### Compatibility
@@ -331,6 +343,10 @@ If a RAFT log process crashes and a quorum queue member attempts to write to the
 
 This release has the following known issues:
 
+<p class="note warning">
+  <strong>Warning:</strong> This version contains a release of Erlang that is affected by [CVE-2022-37026](https://nvd.nist.gov/vuln/detail/CVE-2022-37026).
+  VMware strongly recommends upgrading to v2.0.16 or higher as soon as possible.
+</p>
 <%= partial vars.path_to_partials + '/rabbitmq/erlang-ki' %>
 
 ### Compatibility
@@ -430,6 +446,10 @@ This release has the following fixes:
 
 This release has the following known issues:
 
+<p class="note warning">
+  <strong>Warning:</strong> This version contains a release of Erlang that is affected by [CVE-2022-37026](https://nvd.nist.gov/vuln/detail/CVE-2022-37026).
+  VMware strongly recommends upgrading to v2.0.16 or higher as soon as possible.
+</p>
 - **TLS can prevent metric exporting:** Metrics can't be exported to the Firehose when TLS is enabled.
 - **TLS can prevent metric scraping:** Healthwatch v2 can't scrape metrics from on-demand instances when TLS is enabled.
 - **RAFT log crash can cause Quourm Queues to crash:** If a RAFT log process crashes and a quorum queue member attempts to write to the log while it is unavailable, the quorum queue also crashes, causing further unavailability.
@@ -534,6 +554,10 @@ For more information, see [Gather additional detailed metrics](monitor.html#deta
 
 This release has the following known issues:
 
+<p class="note warning">
+  <strong>Warning:</strong> This version contains a release of Erlang that is affected by [CVE-2022-37026](https://nvd.nist.gov/vuln/detail/CVE-2022-37026).
+  VMware strongly recommends upgrading to v2.0.16 or higher as soon as possible.
+</p>
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
 * **Failure after deleting pre-provisioned RabbitMQ v3.9:** Deleting a pre-provisioned RabbitMQ v3.9
   service instance causes every other attempt when running <code>cf delete-service</code> to fail.
@@ -633,8 +657,12 @@ configured and metrics are now available.
 
 ### Known Issues
 
-This release has the following known issue:
+This release has the following known issues:
 
+<p class="note warning">
+  <strong>Warning:</strong> This version contains a release of Erlang that is affected by [CVE-2022-37026](https://nvd.nist.gov/vuln/detail/CVE-2022-37026).
+  VMware strongly recommends upgrading to v2.0.16 or higher as soon as possible.
+</p>
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
 
 ### Compatibility
@@ -740,6 +768,10 @@ This release has the following fixes:
 
 This release has the following issue:
 
+<p class="note warning">
+  <strong>Warning:</strong> This version contains a release of Erlang that is affected by [CVE-2022-37026](https://nvd.nist.gov/vuln/detail/CVE-2022-37026).
+  VMware strongly recommends upgrading to v2.0.16 or higher as soon as possible.
+</p>
 * **Metrics unavailable when TLS enabled:** When TLS is enabled, the Prometheus endpoint is
 misconfigured, resulting in metrics being unavailable.
 
@@ -842,6 +874,10 @@ This release has the following fixes:
 
 This release has the following issues:
 
+<p class="note warning">
+  <strong>Warning:</strong> This version contains a release of Erlang that is affected by [CVE-2022-37026](https://nvd.nist.gov/vuln/detail/CVE-2022-37026).
+  VMware strongly recommends upgrading to v2.0.16 or higher as soon as possible.
+</p>
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
 
 * **OAuth2 errors:** Enabling OAuth2 identification for RabbitMQ causes errors. This is fixed in v2.0.9.
@@ -965,6 +1001,10 @@ For more information, see [Provide SSL Certificates](install-config-pp.html#ssl)
 
 This release has the following issue:
 
+<p class="note warning">
+  <strong>Warning:</strong> This version contains a release of Erlang that is affected by [CVE-2022-37026](https://nvd.nist.gov/vuln/detail/CVE-2022-37026).
+  VMware strongly recommends upgrading to v2.0.16 or higher as soon as possible.
+</p>
 * **TLS 1.2 unsupported:** Due to an issue in Erlang OTP v24.1.2, when TLS is enabled, only TLS 1.3 is supported.
 
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
@@ -1074,6 +1114,10 @@ Prometheus endpoint to use TLS no longer breaks the `prom_scraper` job.
 
 This release has the following issues:
 
+<p class="note warning">
+  <strong>Warning:</strong> This version contains a release of Erlang that is affected by [CVE-2022-37026](https://nvd.nist.gov/vuln/detail/CVE-2022-37026).
+  VMware strongly recommends upgrading to v2.0.16 or higher as soon as possible.
+</p>
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
 
 * **Smoke tests for the pre-provisioned offering fail if mTLS is enabled:**
@@ -1188,6 +1232,10 @@ This release has the following fixes:
 
 This release has the following issues:
 
+<p class="note warning">
+  <strong>Warning:</strong> This version contains a release of Erlang that is affected by [CVE-2022-37026](https://nvd.nist.gov/vuln/detail/CVE-2022-37026).
+  VMware strongly recommends upgrading to v2.0.16 or higher as soon as possible.
+</p>
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
 
 * **HTTP access logs can build up on disk and are not rotated as expected:** This is fixed in v2.0.6.
@@ -1310,6 +1358,10 @@ New features and changes in this release:
 
 This release has the following issues:
 
+<p class="note warning">
+  <strong>Warning:</strong> This version contains a release of Erlang that is affected by [CVE-2022-37026](https://nvd.nist.gov/vuln/detail/CVE-2022-37026).
+  VMware strongly recommends upgrading to v2.0.16 or higher as soon as possible.
+</p>
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
 
 * **Duplicated RabbitMQ server metrics when both the Healthwatch Exporter for TAS and the Healthwatch tile are installed:**
@@ -1433,6 +1485,10 @@ directory traversal.
 
 This release has the following issues:
 
+<p class="note warning">
+  <strong>Warning:</strong> This version contains a release of Erlang that is affected by [CVE-2022-37026](https://nvd.nist.gov/vuln/detail/CVE-2022-37026).
+  VMware strongly recommends upgrading to v2.0.16 or higher as soon as possible.
+</p>
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
 
 * **HTTP access logs can build up on disk and are not rotated as expected:** This is fixed in v2.0.6.
@@ -1551,6 +1607,10 @@ This release has the following fix:
 
 This release has the following issue:
 
+<p class="note warning">
+  <strong>Warning:</strong> This version contains a release of Erlang that is affected by [CVE-2022-37026](https://nvd.nist.gov/vuln/detail/CVE-2022-37026).
+  VMware strongly recommends upgrading to v2.0.16 or higher as soon as possible.
+</p>
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
 
 * **This release does not contain the fix to [CVE-2021-30465](https://nvd.nist.gov/vuln/detail/CVE-2021-30465):**
@@ -1700,6 +1760,10 @@ For more information, see
 
 This release has the following issues:
 
+<p class="note warning">
+  <strong>Warning:</strong> This version contains a release of Erlang that is affected by [CVE-2022-37026](https://nvd.nist.gov/vuln/detail/CVE-2022-37026).
+  VMware strongly recommends upgrading to v2.0.16 or higher as soon as possible.
+</p>
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
 
 * **This release is incompatible with Ruby buildpack v1.8.33 and later:**
