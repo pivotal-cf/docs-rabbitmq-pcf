@@ -223,6 +223,10 @@ This release contains the following change:
 RabbitMQ v3.10 is now available in this version.
 Service instances running on RabbitMQ v3.9 continue to run on v3.9 until configured to run on v3.10.
 
+### Security fixes
+
+- <strong>Important:</strong> Erlang has been updated to v24.3.4.2 in resolve [CVE-2022-37026](https://nvd.nist.gov/vuln/detail/CVE-2022-37026).
+
 ### Resolved Issues
 
 This release fixes the following issue:
@@ -333,6 +337,11 @@ New features and changes in this release:
 ### Known Issues
 
 This release has the following issues:
+
+<p class="note warning">
+  <strong>Warning:</strong> This version contains a release of Erlang that is affected by [CVE-2022-37026](https://nvd.nist.gov/vuln/detail/CVE-2022-37026).
+  VMware strongly recommends upgrading to v2.1.2 or higher as soon as possible.
+</p>
 
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
 
@@ -448,6 +457,11 @@ when installing this release.
 ### Known Issues
 
 This release has the following issues:
+
+<p class="note warning">
+  <strong>Warning:</strong> This version contains a release of Erlang that is affected by [CVE-2022-37026](https://nvd.nist.gov/vuln/detail/CVE-2022-37026).
+  VMware strongly recommends upgrading to v2.1.2 or higher as soon as possible.
+</p>
 
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
 
