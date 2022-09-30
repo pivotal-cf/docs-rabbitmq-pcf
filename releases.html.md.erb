@@ -9,14 +9,13 @@ owner: London Services
 
 **Release Date**: September 26, 2022
 
-### New Features
-
 ### Features
 
 New features and changes in this release:
 
 * You can now specify a different set of VM extensions for each on-demand plan, in addition
   to global VM extensions that apply to all on-demand service instances.
+
 * This release ships with the latest HAProxy v2, upgraded from v1. For multitenant service
   instances, if you are using an HTTP client to connect to the RabbitMQ Management UI through HAProxy,
   and this client doesn't conform with the HTTP spec (for example, by treating HTTP headers as
@@ -220,12 +219,12 @@ The following components are compatible with this release:
 
 This release contains the following change:
 
-RabbitMQ v3.10 is now available in this version.
+* **RabbitMQ v3.10 is now available in this version.**
 Service instances running on RabbitMQ v3.9 continue to run on v3.9 until configured to run on v3.10.
 
-### Security fixes
+### Security Fixes
 
-- <strong>Important:</strong> Erlang has been updated to v24.3.4.2 in resolve [CVE-2022-37026](https://nvd.nist.gov/vuln/detail/CVE-2022-37026).
+* **Important:** Erlang has been updated to v24.3.4.2 to resolve [CVE-2022-37026](https://nvd.nist.gov/vuln/detail/CVE-2022-37026).
 
 ### Resolved Issues
 
@@ -338,9 +337,10 @@ New features and changes in this release:
 
 This release has the following issues:
 
-<p class="note warning">
-  <strong>Warning:</strong> This version contains a release of Erlang that is affected by [CVE-2022-37026](https://nvd.nist.gov/vuln/detail/CVE-2022-37026).
-  VMware strongly recommends upgrading to v2.1.2 or higher as soon as possible.
+<p class="note important">
+    <strong>Important:</strong> This version contains a release of Erlang that is affected by
+    <a href="https://nvd.nist.gov/vuln/detail/CVE-2022-37026">CVE-2022-37026</a>.
+    VMware strongly recommends upgrading to <%= vars.product_full %> v2.1.2 or later as soon as possible.
 </p>
 
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
@@ -450,17 +450,18 @@ that are currently running RabbitMQ version v3.8 are upgraded to
 RabbitMQ v3.9 if you run the `upgrade-all-service-instances` errand
 when installing this release.
 
-    Important changes in RabbitMQ 3.9 include Streams, Erlang v24 support and
+    Important changes in RabbitMQ v3.9 include Streams, Erlang v24 support and
     JSON logging. For more information about these features, see
-    the [RabbitMQ 3.9 release page](https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.9.15) in GitHub.
+    the [RabbitMQ v3.9 release page](https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.9.15) in GitHub.
 
 ### Known Issues
 
 This release has the following issues:
 
-<p class="note warning">
-  <strong>Warning:</strong> This version contains a release of Erlang that is affected by [CVE-2022-37026](https://nvd.nist.gov/vuln/detail/CVE-2022-37026).
-  VMware strongly recommends upgrading to v2.1.2 or higher as soon as possible.
+<p class="note important">
+    <strong>Important:</strong> This version contains a release of Erlang that is affected by
+    <a href="https://nvd.nist.gov/vuln/detail/CVE-2022-37026">CVE-2022-37026</a>.
+    VMware strongly recommends upgrading to <%= vars.product_full %> v2.1.2 or later as soon as possible.
 </p>
 
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
