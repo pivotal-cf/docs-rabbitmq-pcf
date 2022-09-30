@@ -1,5 +1,6 @@
 ---
 template_variables:
+  hide_content: true
   book_title: VMware Tanzu Documentation
   book_title_short: VMware Tanzu Docs
   title: <span class="title-deemph">VMware Tanzu</span> Documentation
