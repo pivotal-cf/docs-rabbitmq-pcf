@@ -5,12 +5,9 @@ owner: London Services
 
 <%= partial vars.path_to_partials + '/upgrade-planner' %>
 
-<%# The following if statement hides the v2.1.4 release notes until release day. %>
-<% if vars.hide_content == false %>
-
 ## <a id="2-1-4"></a> v2.1.4
 
-**Release Date**: September 26, 2022
+**Release Date**: October 13, 2022
 
 ### Features
 
@@ -29,6 +26,9 @@ New features and changes in this release:
 This release has the following known issues:
 
 <%= partial vars.path_to_partials + '/rabbitmq/erlang-ki' %>
+* For on-demand service instances, the prom_scraper BOSH job may generate many error logs about metrics scraping failures.
+ Note that this has no effect on collected RabbitMQ metrics, which continue to be successfully collected, and only occurs
+ if the Ops Manager root TLS CA and the Services TLS CA do not share a common trust chain.
 
 ### Compatibility
 
@@ -108,8 +108,6 @@ The following components are compatible with this release:
 <a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.9.22">v3.9.22</a> and
 <a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.10.7">v3.10.7</a> GitHub documentation.
 
-<% end %>
-
 ## <a id="2-1-3"></a> v2.1.3
 
 **Release Date**: August 22, 2022
@@ -135,6 +133,9 @@ This release fixes the following issue:
 This release has the following known issues:
 
 <%= partial vars.path_to_partials + '/rabbitmq/erlang-ki' %>
+* For on-demand service instances, the prom_scraper BOSH job may generate many error logs about metrics scraping failures.
+ Note that this has no effect on collected RabbitMQ metrics, which continue to be successfully collected, and only occurs
+ if the Ops Manager root TLS CA and the Services TLS CA do not share a common trust chain.
 
 ### Compatibility
 
