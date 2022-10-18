@@ -182,13 +182,13 @@ To configure TLS for your service instance:
     my-instance   p.rabbitmq     single-node                  create succeeded
     </pre>
 
-### <a id="tls-turn-off"></a> Disable TLS for Your Service Instance
+### <a id="tls-turn-off"></a> Deactivate TLS for Your Service Instance
 
-If the operator has configured TLS to be enforced, then all service instances have TLS enabled and it is not possible to disable TLS.
-If the operator has configured TLS to be optional or not configured, then follow the steps below to disable TLS on a service instance.
+If the operator has configured TLS to be enforced, then all service instances have TLS enabled and it is not possible to deactivate TLS.
+If the operator has configured TLS to be optional or not configured, then follow the steps below to deactivate TLS on a service instance.
 For more information, see [Configure Security](./install-config.html#security).
 
-1. Disable TLS by doing one of the following:
+1. Deactivate TLS by doing one of the following:
 
     * If you have already created a <%= vars.product_short %> service instance, update the service instance by running:
 
@@ -198,7 +198,7 @@ For more information, see [Configure Security](./install-config.html#security).
         Where `MY-INSTANCE` is the name you chose when you created your service instance.<br><br>
 
     * If you have not created a <%= vars.product_short %> service instance,
-    request a service instance with TLS disabled by running:
+    request a service instance with TLS deactivated by running:
 
         ```
         cf create-service p.rabbitmq PLAN MY-INSTANCE -c '{"tls": false}'
@@ -269,22 +269,22 @@ the `cf push` command.
 </p>
 
 
-## <a id="optional-plugins"></a> Enable Optional Plugins
+## <a id="optional-plugins"></a> Activate Optional Plugins
 
-For a list of RabbitMQ plugins that are enabled or disabled by default in
+For a list of RabbitMQ plugins that are activated or deactivated by default in
 on-demand <%= vars.product_short %> instances, see
 [RabbitMQ Server Plugins](./install-config.html#server-plugins).
 
 <p class="note">
-  <strong>Note:</strong> If a plugin is disabled by default,
-  the operator must enable the plugin for the platform before you can enable it on your service instances.
+  <strong>Note:</strong> If a plugin is deactivated by default,
+  the operator must activated the plugin for the platform before you can enable it on your service instances.
   For more information, see <a href="./install-config.html#optional-plugins">Enable Extra RabbitMQ Server Plugins</a>.
 </p>
 
-You can enable plugins when you create a service instance or by updating an existing
-service instance. When enabling more than one plugin, specify all the plugin names in the same command.
+You can activate plugins when you create a service instance or by updating an existing
+service instance. When activating more than one plugin, specify all the plugin names in the same command.
 
-To enable plugins, run one of these commands, specifying the plugins
+To activate plugins, run one of these commands, specifying the plugins
 as a configuration parameter in JSON:
 
 * When creating a service instance, run:
@@ -324,13 +324,13 @@ as a configuration parameter in JSON:
     </pre>
 
 
-## <a id="disable-plugins"></a> Disable Optional Plugins
+## <a id="deactivate-plugins"></a> Deactivate Optional Plugins
 
 <p class="note">
-  <strong>Note:</strong> When creating a service instance, optional plugins are disabled by default.
+  <strong>Note:</strong> When creating a service instance, optional plugins are deactivated by default.
 </p>
 
-To disable plugins for an existing service instance:
+To deactivate plugins for an existing service instance:
 
 1. Run:
 
@@ -345,7 +345,7 @@ To disable plugins for an existing service instance:
     <pre class="terminal">
     $ cf update-service myservice -c '{ "plugins": { "rabbitmq_event_exchange": false}}'
     </pre>
-    For example, when disabling more than one plugin:
+    For example, when deactivating more than one plugin:
     <pre class="terminal">
     $ cf update-service myservice -c '{ "plugins": { "rabbitmq_amqp1_0": false, "rabbitmq_event_exchange": false } }'
     </pre>
@@ -545,7 +545,7 @@ The order of the IP addresses rotates so that there is load balancing.
 A RabbitMQ client can use the first IP address returned.
 If a node becomes unavailable, BOSH DNS removes it from the list of resolved IP addresses.
 Because of this, apps should not cache the IP addresses of the nodes, as the cache might become outdated.
-The Java buildpack automatically disables DNS caching.
+The Java buildpack automatically deactivates DNS caching.
 
 
 ## <a id="single"></a> Upgrade an Individual Service Instance
@@ -659,7 +659,7 @@ to share your service instances across Cloud Foundry orgs and spaces.
 <p class="note">
   <strong>Note:</strong> The Log Cache CLI plugin will not show metrics from on-demand
   service instances if the <strong>Prom Scraper Compatibility with Log Cache</strong> property
-  in <strong>Global settings for on-demand plans</strong> is disabled.
+  in <strong>Global settings for on-demand plans</strong> is deactivated.
 </p>
 
 ## <a id="federation"></a> Federate Exchanges and Queues

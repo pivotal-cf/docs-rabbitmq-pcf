@@ -17,7 +17,7 @@ see the Production Checklist in the
     <li>For how to install and configure the <%= vars.product_short %> pre-provisioned service, see
       <a href="./install-config-pp.html">Installing and Configuring the Pre-Provisioned Service.</a>
     </li>
-    <li>For how to disable the pre-provisioned service, see
+    <li>For how to deactivate the pre-provisioned service, see
       <a href="./turn-pre-provisioned-off.html">Turning Off the Pre-Provisioned Service</a>.
     </li>
   </ul>
@@ -51,7 +51,7 @@ see [Required Networking Rules for On-Demand Services](about.html#network-rules)
 and configuring the tile.
 
 * <strong>BOSH DNS must be enabled:</strong> This is enabled by default.
-If you have disabled BOSH DNS, you must enable it for BOSH Hot Swaps to work.
+If you have deactivated BOSH DNS, you must activate it for BOSH Hot Swaps to work.
 For more information, see [BOSH Hot Swap](./upgrade.html#vm-strategy).
 
 ## <a id="install"></a> Download and Install <%= vars.product_short %>
@@ -337,8 +337,8 @@ Follow the steps below to configure global settings:
           <a href="https://github.com/pivotal-cf/om/blob/main/docs/create-vm-extension/README.md">
             om create-vm-extension</a> in GitHub.
           <br><br>
-          You can use this to disable IaaS specific behavior.
-          For example, you can use a VM extension to disable vMotion in a vSphere infrastructure.
+          You can use this to deactivate IaaS specific behavior.
+          For example, you can use a VM extension to deactivate vMotion in a vSphere infrastructure.
           <br><br>
           To remove a VM extension, click the trash can icon.
         </td>
@@ -475,13 +475,13 @@ Plan 5**.
 
 <p class="note">
   <strong>Note:</strong> You must fully configure <strong>On Demand Instance: Plan 1</strong> even
-  if you disable access to this plan. See <strong>CF Service Access</strong> in the table below.
+  if you deactivate access to this plan. See <strong>CF Service Access</strong> in the table below.
 </p>
 
 To configure an on-demand service plan:
 
 1. Choose the on-demand service instance you want to configure.
-You must complete the required fields for **On Demand Instance: Plan 1** even if you disable this
+You must complete the required fields for **On Demand Instance: Plan 1** even if you deactivate this
 plan.
 
     ![Screenshot of the Plan 1 Configuration tab.
@@ -491,18 +491,18 @@ plan.
     <table>
       <tr><th>Field</th><th>Instructions</th></tr>
       <tr><td><strong>Enable This Plan</strong></td>
-          <td>For Plans 2 - 5, enable the plan by selecting <strong>Plan Enable</strong>.</td></tr>
+          <td>For Plans 2 - 5, activate the plan by selecting <strong>Plan Enable</strong>.</td></tr>
       <tr><td><strong>CF Service Access</strong></td>
-      <td>Enable or disable access to this plan, or leave access unchanged.<br><br>
+      <td>Activate or deactivate access to this plan, or leave access unchanged.<br><br>
           If you enable Plan 1, the default setting for Plans 2 - 5 is
           <strong>Enable Service Access</strong>.
           If you change this default setting, the smoke tests fail.
-          Therefore, if you enable Plan 1 and want to change this default, before doing so, set the <strong>On-Demand Instance Smoke Tests</strong> errand to <strong>Off</strong>.
+          Therefore, if you activate Plan 1 and want to change this default, before doing so, set the <strong>On-Demand Instance Smoke Tests</strong> errand to <strong>Off</strong>.
           For more information, see <a href="#errands">Errands</a> below.<br>
         <br><ul>
           <li><strong>Enable Service Access</strong>---Gives access to all orgs, and displays the service plan to all developers in the Marketplace.
           </li>
-          <li><strong>Disable Service Access</strong>---Disables access to all orgs, and hides the service plan to all developers in the Marketplace. This setting cannot be selected at a later time in the UI.
+          <li><strong>Disable Service Access</strong>---Deactivates access to all orgs, and hides the service plan to all developers in the Marketplace. This setting cannot be selected at a later time in the UI.
           </li>
           <li><strong>Leave Service Access Unchanged</strong>---Keeps any existing access settings, and only displays the service plan in the Marketplace to members of orgs that have access to the plan. You can change the access settings later using the cf CLI. For instructions, see <a href="./control-access.html">Controlling Access to Service Plans by Org</a>.
           </li>
