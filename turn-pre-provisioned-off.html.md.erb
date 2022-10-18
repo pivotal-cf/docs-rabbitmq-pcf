@@ -5,13 +5,13 @@ owner: London Services
 ---
 
 This topic provides instructions on how to turn off the pre-provisioned service.
-If you are not planning to use the pre-provisioned service, disable it.
-Disabling the pre-provisioned service broker means that no instances for the
+If you are not planning to use the pre-provisioned service, deactivate it.
+Deactivating the pre-provisioned service broker means that no instances for the
 pre-provisioned service will be deployed.  This, in turn, saves money.
 
 <div class="note"><strong>Note: </strong><%= vars.note_pre_provisioned %></div>
 
-## <a id="manual"></a> Disable the Pre-Provisioned Service Manually
+## <a id="manual"></a> Deactivate the Pre-Provisioned Service Manually
 
 To turn off the pre-provisioned service manually, do the following:
 
@@ -44,16 +44,16 @@ de-register the pre-provisioned service broker by running the following command:
    For more information about this <%= vars.ops_manager %> page,
    see [Reviewing Pending Product Changes](https://docs.pivotal.io/ops-manager/install/review-pending-changes.html).
 
-1. Click **Apply Changes** to redeploy and disable the pre-provisioned service.
+1. Click **Apply Changes** to redeploy and deactivate the pre-provisioned service.
 
-## <a id="automation"></a> Disable the Pre-Provisioned Service Using Automation
+## <a id="automation"></a> Deactivate the Pre-Provisioned Service Using Automation
 
 
 You can turn off the pre-provisioned service if you are using automation such as scripts
 or pipelines to configure the <%= vars.product_short %> tile.
 
 To do this, set the `.properties.multitenant_support` property to `disabled`.
-For more information about properties, see [Configure a Product](https://docs.pivotal.io/ops-manager/install/ops-man-api.html#configure-product) in the Ops Manager 
+For more information about properties, see [Configure a Product](https://docs.pivotal.io/ops-manager/install/ops-man-api.html#configure-product) in the Ops Manager
 documentation.
 When you make this change, <%= vars.ops_manager %> automatically sets instance counts to <code>0</code>.
 

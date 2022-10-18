@@ -29,7 +29,7 @@ To enable service-gateway access for an on-demand offering:
 
 ## <a id='tcp-routing'></a> Enable TCP Routing Using the <%= vars.app_runtime_abbr %> Tile
 
-TCP routing is disabled by default. To enable TCP routing:
+TCP routing is deactivated by default. To enable TCP routing:
 
 1. Go to the Networking pane of the <%= vars.app_runtime_abbr %> tile.
 1. Under **Enable TCP requests to apps through specific ports on the TCP router**, select
@@ -123,7 +123,7 @@ To configure a service-gateway-enabled plan:
     ![Screenshot of the service plan pane with the service-gateway access checkbox selected.](images/enable-service-gateway.png)
 
     <p class="note">
-      <strong>Note:</strong> If service-gateway access is disabled and then re-enabled, app developers must
+      <strong>Note:</strong> If service-gateway access is deactivated and then re-activated, app developers must
       create new service keys to obtain a new set of credentials for service-gateway access.
     </p>
 
@@ -132,20 +132,20 @@ To configure a service-gateway-enabled plan:
 1. Click **Apply Changes** to apply the changes to the <%= vars.product_short %> tile.
 
 
-## <a id='disable-service-gateway-access'></a> Disable Service-Gateway Access
+## <a id='deactivate-service-gateway-access'></a> Deactivate Service-Gateway Access
 
 <p class="note">
-  <strong>Note:</strong> If service-gateway access is disabled and then re-enabled, app developers must
+  <strong>Note:</strong> If service-gateway access is deactivated and then re-enabled, app developers must
   create new service keys to obtain a new set of credentials for service-gateway access.
 </p>
 
-To disable service-gateway access:
+To deactivate service-gateway access:
 
-1. Navigate to the service plan that you want to disable service-gateway access for
+1. Navigate to the service plan that you want to deactivate service-gateway access for
 and clear the **Service-Gateway Access** checkbox.
     <p class="note">
       <strong>Note:</strong> VMware recommends that you change the name or the
-      description of the plan to indicate that service-gateway access is disabled for that plan.
+      description of the plan to indicate that service-gateway access is deactivated for that plan.
     </p>
 
 1. Go back to **<%= vars.ops_manager %> Installation Dashboard &gt; Review Pending Changes**.

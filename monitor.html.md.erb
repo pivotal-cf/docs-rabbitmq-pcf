@@ -53,7 +53,7 @@ and how to consume the metrics from the Loggregator system, see
 
 The default metrics polling interval for Loggregator is 30 seconds.
 The **metrics polling interval** is a configuration option on the <%= vars.product_short %> tile
-(**Settings** > **RabbitMQ**). Setting this interval to -1 disables metrics.
+(**Settings** > **RabbitMQ**). Setting this interval to -1 deactivates metrics.
 The interval setting applies to all components deployed by the tile.
 
 To configure the metrics polling interval:
@@ -76,7 +76,7 @@ To configure the metrics polling interval:
               The default setting is 30 seconds for all deployed components.
               VMware recommends that you do not change this interval.
               To avoid overwhelming components, do not set this below 10 seconds.
-              Set this to -1 to disable metrics.
+              Set this to -1 to deactivate metrics.
               Changing this setting affects all deployed instances.
             </td>
         </tr>
