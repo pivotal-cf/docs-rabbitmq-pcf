@@ -17,16 +17,9 @@ owner: London Services
 
 * Error log spam when using on-demand due to TLS certification failures fixed
 
-
 ### Known Issues
 
 <%= partial vars.path_to_partials + '/rabbitmq/erlang-ki' %>
-
-* **The `prom_scraper` BOSH job might generate multiple error logs about metrics scraping failures:**
-This applies to on-demand service instances and has no effect on collected RabbitMQ metrics,
-which continue to be successfully collected.
-This issue only occurs if the Ops Manager root TLS CA and the Services TLS CA do not share a common trust chain.
-
 
 ### Compatibility
 
