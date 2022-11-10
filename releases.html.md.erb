@@ -17,15 +17,22 @@ owner: London Services
 
 ## <a id="2-0-17"></a> v2.0.17
 
-**Release Date**: November 9, 2022
+**Release Date**: November 10, 2022
 
 ### Security Fixes
 
-* Golang CVEs fixed in 1.19.2: https://github.com/golang/go/issues?q=milestone%3AGo1.19.2+label%3ACherryPickApproved
+This release fixes the following security issue:
+
+* **golang:** Updated to v1.19.2 to fix CVEs. For more information, see
+  the [golang](https://github.com/golang/go/issues?q=milestone%3AGo1.19.2+label%3ACherryPickApproved)
+  repository in GitHub.
 
 ### Resolved Issues
 
-* Error log spam when using on-demand due to TLS certification failures fixed
+This release fixes the following issue:
+
+* **The `prom_scraper` BOSH job no longer generates multiple error logs about metrics scraping failures:**
+  This release fixes the error log spam caused by TLS certification failures when using on-demand service instances.
 
 ### Known Issues
 
@@ -33,12 +40,14 @@ This release has the following known issue:
 
 <%= partial vars.path_to_partials + '/rabbitmq/erlang-ki' %>
 
-
 ### Compatibility
 
 The following components are compatible with this release:
 
-<table class="nice"> <th>Component</th> <th>Version</th> 	<tr>
+<table class="nice">
+  <th>Component</th>
+  <th>Version</th>
+  <tr>
 		<td><%= vars.app_runtime_full %></td>
 		<td>2.7.x, 2.8.x, 2.9.x, 2.10.x, 2.11.x, 2.12.x</td>
 	</tr>
@@ -105,7 +114,12 @@ The following components are compatible with this release:
 	<tr>
 		<td>service-metrics</td>
 		<td>2.0.22</td>
-	</tr>\n</table>
+	</tr>
+</table>
+
+<sup>*</sup> For more information, see the
+<a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.8.34">v3.8.34</a> and
+<a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.9.20">v3.9.20</a> GitHub documentation.
 
 ## <a id="2-0-16"></a> v2.0.16
 
