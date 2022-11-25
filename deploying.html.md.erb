@@ -20,7 +20,7 @@ The diagram below shows the default <%= vars.product_short %> pre-provisioned de
 <%= image_tag("images/deployment_default.png",
 :alt => "The default pre-provisioned deployment shows
 Tanzu Application Service and an app within it. The app communnicates to the HAProxy, which communicates to three RabbitMQ nodes. The HAProxy and RabbitMQ nodes are within
-VMware Tanzu RabbitMQ, which is within availability zone 1.") %>
+VMware RabbitMQ for Tanzu Application Service, which is within availability zone 1.") %>
 
 ### <a id="default-consider"></a>Considerations for the Default Deployment
 
@@ -48,7 +48,7 @@ your cluster can remain online and apps remain connected.
 :alt => "An app is inside 'Tanzu Application Service'. It tries to communicate
 to the failed HAProxy and to a functioning HA Proxy. The HA proxy
 tries to communicate with the failed RabbitMQ node before communicating
-with a functioning RabbitMQ node. These components are inside the VMware Tanzu RabbitMQ
+with a functioning RabbitMQ node. These components are inside the VMware RabbitMQ for Tanzu Application Service
 service, within Availability Zone 1 and Availability Zone 2.") %>
 
 ### <a id="upgrade-from-single-az"></a>Upgrading to the Recommended Deployment from a Single AZ Deployment
