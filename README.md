@@ -1,6 +1,6 @@
-# VMware Tanzu RabbitMQ for VMs docs
+# VMware RabbitMQ for Tanzu Application Service docs
 
-This repo contains the VMware Tanzu RabbitMQ for VMs documentation.
+This repo contains the VMware RabbitMQ for Tanzu Application Service documentation.
 
 In this README: 
 
@@ -142,7 +142,7 @@ replacing the publication with the same version.
 
 ## Style Guide
 
-Use this section to specify spelling of special words for VMware Tanzu RabbitMQ for VMs:
+Use this section to specify spelling of special words for VMware RabbitMQ for Tanzu Application Service:
 
 + on-demand plan
 + shared-VM plan

@@ -1,7 +1,7 @@
-# Contributing to VMware Tanzu RabbitMQ for VMs documentation
+# Contributing to VMware RabbitMQ for Tanzu Application Service documentation
 
-The VMware Tanzu RabbitMQ for VMs documentation project team welcomes contributions from the community. Before you start working with
-the VMware Tanzu RabbitMQ for VMs documentation, please
+The VMware RabbitMQ for Tanzu Application Service documentation project team welcomes contributions from the community. Before you start working with
+the VMware RabbitMQ for Tanzu Application Service documentation, please
 read our [Developer Certificate of Origin](https://cla.vmware.com/dco). All contributions to this repository must be
 signed as described on that page. Your signature certifies that you wrote the patch or have the right to pass it on
 as an open-source patch.

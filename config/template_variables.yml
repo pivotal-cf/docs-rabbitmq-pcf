@@ -74,6 +74,6 @@ template_variables:
 
   service_name: Tanzu RabbitMQ
   service_name_article: the Tanzu RabbitMQ
-  service_name_article_full: the VMware Tanzu RabbitMQ for VMs service
+  service_name_article_full: the VMware RabbitMQ for Tanzu Application Service service
 
   note_pre_provisioned: Previous deprecation warnings for the pre-provisioned service are no longer in effect. VMware continues to support the pre-provisioned service.
