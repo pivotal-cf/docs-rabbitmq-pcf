@@ -7,7 +7,7 @@ template_variables:
   title_image: images/icon-p-green.jpg
   hero_text: "Detailed documentation to help you install, understand, and succeed with VMware's enterprise-grade software."
 
-  tile_name: VMware RabbitMQ for Tanzu Application Service
+  tile_name: VMware Tanzu RabbitMQ for VMs
   product_url: https://network.pivotal.io/products/pivotal-cf
   product_link: <div class="header-item"><a href="https://network.pivotal.io/products/VMware Tanzu-cf">Back to Product Page</a></div>
 
@@ -28,9 +28,9 @@ template_variables:
 
   # Tanzu variables
 
-  product_full: VMware RabbitMQ for Tanzu Application Service
-  product_short: RabbitMQ for Tanzu Application Service
-  product_abbr: RabbitMQ for Tanzu Application Service
+  product_full: VMware Tanzu RabbitMQ for VMs
+  product_short: Tanzu RabbitMQ
+  product_abbr: Tanzu RabbitMQ
 
   app_runtime_full: VMware Tanzu Application Service for VMs
   app_runtime_abbr: TAS for VMs
