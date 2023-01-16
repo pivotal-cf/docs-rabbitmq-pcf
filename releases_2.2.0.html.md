@@ -1,10 +1,18 @@
 ## <a id="2-2-0"></a> v2.2.0
 
-**Release Date**: January 13, 2023
+**Release Date**: January 17, 2023
+
+### Support for
+
+* Jammy Stemcell & compatibility with TAS 3.0
 
 ### Resolved Issues
 
 This release fixes the following issues:
+
+* CVE-2022-41720 (Golang issue https://go.dev/issue/56694, fixed in Go 1.19.4)
+* CVE-2022-41717 (Golang issue https://go.dev/issue/56350, fixed in Go 1.19.4)
+* https://pivotal-io.atlassian.net/browse/RMQFPAS-82 (Fixed by https://github.com/cloudfoundry/loggregator-agent-release/releases/tag/v6.5.6)
 
 
 ### Known Issues
@@ -22,19 +30,19 @@ The following components are compatible with this release:
 	</tr>
 	<tr>
 		<td>Erlang</td>
-		<td></td>
+		<td>24.3.4.7, 25.2</td>
 	</tr>
 	<tr>
 		<td>HAProxy</td>
-		<td></td>
+		<td>2.6.7</td>
 	</tr>
 	<tr>
 		<td>OSS RabbitMQ*</td>
-		<td></td>
+		<td>3.9.27, 3.10.13</td>
 	</tr>
 	<tr>
 		<td>Stemcell</td>
-		<td>1.x</td>
+		<td>621.x</td>
 	</tr>
 	<tr>
 		<td>bpm</td>
@@ -85,4 +93,4 @@ The following components are compatible with this release:
 		<td>2.0.24</td>
 	</tr>\n</table>
 
-<sup>*</sup> For more information, see the <a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v">v</a> GitHub documentation.
+<sup>*</sup> For more information, see the <a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.10.13">v3.10.13</a> GitHub documentation.
