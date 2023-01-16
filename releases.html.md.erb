@@ -11,15 +11,23 @@ owner: London Services
 
 ## <a id="2-2-0"></a> v2.2.0
 
-**Release Date**: MMM DD, YYYY
+**Release Date**: Jan 17, 2023
 
 ### Features
 
 New features and changes in this release:
 
-* **Run-in header:** Feature description
+* Jammy Stemcell
 
-* **Run-in header:** Feature description
+* Compatibility with TAS 3.0
+
+### Resolved Issues
+
+This release fixes the following issues:
+
+* CVE-2022-41720 (Golang issue https://go.dev/issue/56694, fixed in Go 1.19.4)
+* CVE-2022-41717 (Golang issue https://go.dev/issue/56350, fixed in Go 1.19.4)
+* https://pivotal-io.atlassian.net/browse/RMQFPAS-82 (Fixed by https://github.com/cloudfoundry/loggregator-agent-release/releases/tag/v6.5.6)
 
 ### Known Issues
 
@@ -52,7 +60,7 @@ The following components are compatible with this release:
   </tr>
   <tr>
     <td>Stemcell</td>
-    <td>621.x</td>
+    <td>Jammy v1</td>
   </tr>
   <tr>
     <td><%= vars.app_runtime_full%></td>
