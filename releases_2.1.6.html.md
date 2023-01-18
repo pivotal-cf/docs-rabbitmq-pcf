@@ -1,10 +1,14 @@
 ## <a id="2-1-6"></a> v2.1.6
 
-**Release Date**: January 13, 2023
+**Release Date**: January 20, 2023
 
 ### Resolved Issues
 
 This release fixes the following issues:
+
+* *VE-2022-41720 (Golang issue https://go.dev/issue/56694, fixed in Go 1.19.4)
+* CVE-2022-41717 (Golang issue https://go.dev/issue/56350, fixed in Go 1.19.4)
+* https://pivotal-io.atlassian.net/browse/RMQFPAS-82 (Fixed by https://github.com/cloudfoundry/loggregator-agent-release/releases/tag/v6.5.6)
 
 
 ### Known Issues
@@ -22,15 +26,15 @@ The following components are compatible with this release:
 	</tr>
 	<tr>
 		<td>Erlang</td>
-		<td></td>
+		<td>24.3.4.7, 25.2</td>
 	</tr>
 	<tr>
 		<td>HAProxy</td>
-		<td></td>
+		<td>2.6.7</td>
 	</tr>
 	<tr>
 		<td>OSS RabbitMQ*</td>
-		<td></td>
+		<td>3.9.27</td>
 	</tr>
 	<tr>
 		<td>Stemcell</td>
@@ -85,4 +89,4 @@ The following components are compatible with this release:
 		<td>2.0.24</td>
 	</tr>\n</table>
 
-<sup>*</sup> For more information, see the <a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v">v</a> GitHub documentation.
+<sup>*</sup> For more information, see the <a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.9.27">v3.9.27</a> GitHub documentation.
