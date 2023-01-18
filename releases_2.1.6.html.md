@@ -1,6 +1,6 @@
 ## <a id="2-1-6"></a> v2.1.6
 
-**Release Date**: January 20, 2023
+**Release Date**: January 18, 2023
 
 ### Resolved Issues
 
