@@ -11,21 +11,27 @@ owner: London Services
 
 ## <a id="2-2-0"></a> v2.2.0
 
-**Release Date**: MMM DD, YYYY
+**Release Date**: January 18, 2023
 
 ### Features
 
 New features and changes in this release:
 
-* **Run-in header:** Feature description
-
-* **Run-in header:** Feature description
+- Jammy Stemcell and compatibility with Tanzu Application Service v3.0.
 
 ### Known Issues
 
 This release has the following issues:
 
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
+
+### Resolved Issues
+
+This release fixes the following issues:
+
+- CVE-2022-41720. The Golang issue is https://go.dev/issue/56694. It is fixed in Go 1.19.4.
+- CVE-2022-41717 The Golang issue is https://go.dev/issue/56350. It is fixed in Go 1.19.4.
+- https://pivotal-io.atlassian.net/browse/RMQFPAS-82. The fix is https://github.com/cloudfoundry/loggregator-agent-release/releases/tag/v6.5.6.
 
 ### Compatibility
 
@@ -40,15 +46,15 @@ The following components are compatible with this release:
 	</tr>
   <tr>
     <td>Erlang</td>
-    <td>24.3.4</td>
+    <td>24.3.4.7, 25.2</td>
   </tr>
   <tr>
     <td>HAProxy</td>
-    <td>1.8.30</td>
+    <td>2.6.7</td>
   </tr>
   <tr>
     <td>OSS RabbitMQ<sup>*</sup></td>
-    <td>3.9.18</td>
+    <td>3.9.27, 3.10.13</td>
   </tr>
   <tr>
     <td>Stemcell</td>
@@ -60,55 +66,55 @@ The following components are compatible with this release:
   </tr>
 	<tr>
 		<td>bpm</td>
-		<td>1.1.18</td>
+		<td>1.1.21</td>
 	</tr>
   <tr>
     <td>cf-cli</td>
-		<td>1.38.0</td>
+		<td>1.41.0</td>
   </tr>
   <tr>
     <td>cf-rabbitmq</td>
-		<td>440.0.0</td>
+		<td>478.0.0</td>
   </tr>
 	<tr>
 		<td>cf-rabbitmq-multitenant-broker</td>
-		<td>115.0.0</td>
+		<td>128.0.0</td>
 	</tr>
 	<tr>
 		<td>cf-service-gateway</td>
-		<td>74.0.0</td>
+		<td>91.0.0</td>
 	</tr>
 	<tr>
 		<td>cf-rabbitmq-smoke-tests</td>
-		<td>130.0.0</td>
+		<td>154.0.0</td>
 	</tr>
 	<tr>
 		<td>loggregator-agent</td>
-		<td>6.4.1</td>
+		<td>7.0.1</td>
 	</tr>
   <tr>
     <td>on-demand-service-broker</td>
-		<td>0.42.4</td>
+		<td>0.42.6</td>
   </tr>
 	<tr>
 		<td>rabbitmq-metrics</td>
-		<td>79.0.0</td>
+		<td>96.0.0</td>
 	</tr>
 	<tr>
 		<td>rabbitmq-on-demand-adapter</td>
-		<td>210.0.0</td>
+		<td>227.0.0</td>
 	</tr>
   <tr>
     <td>routing</td>
-		<td>0.232.0</td>
+		<td>0.254.0</td>
   </tr>
   <tr>
     <td>service-metrics</td>
-		<td>2.0.16</td>
+		<td>2.0.24</td>
   </tr>
 </table>
 
-<sup>*</sup> For more information, see the <a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.8.14">v3.8.14</a> GitHub documentation.
+<sup>*</sup> For more information, see the <a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.10.13">v3.10.13</a> GitHub documentation.
 
 ## <a id="view"></a> View Release Notes for Another Version
 

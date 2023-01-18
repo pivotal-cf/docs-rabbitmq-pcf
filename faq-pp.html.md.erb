@@ -3,10 +3,8 @@ title: Frequently Asked Questions for Pre-Provisioned VMware RabbitMQ for Tanzu 
 owner: London Services Enablement
 ---
 
-
 This topic lists frequently asked questions that apply to the <%= vars.product_full %> pre-provisioned
 service.
-
 
 ## <a id="faq"></a> Frequently Asked Questions
 
@@ -37,7 +35,7 @@ with job index 0), but this node cannot start first because it was not the last 
 To start the nodes after running `bosh stop rabbitmq-server`, start each instance individually by
 specifying each job index. For example:
 
-```
+```console
 bosh start rabbitmq-server/2
 bosh start rabbitmq-server/1
 bosh start rabbitmq-server/0
@@ -46,7 +44,7 @@ bosh start rabbitmq-server/0
 Alternatively, you can stop a full cluster by stopping each node individually, from highest index to
 lowest, and then running `bosh start rabbitmq-server`. See the example below:
 
-```
+```console
 bosh stop rabbitmq-server/2
 bosh stop rabbitmq-server/1
 bosh stop rabbitmq-server/0
