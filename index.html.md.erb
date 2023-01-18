@@ -40,13 +40,11 @@ This table summarizes the main differences between the two:
    </tr>
 </table>
 
-
 <p class="note">
   <strong>Note:</strong> For most new apps, VMware recommends that you use on-demand services instead
   of pre-provisioned services. The on-demand service offering isolates workloads by creating a
   separate VM for each service instance.
 </p>
-
 
 ### <a id="dedicated"></a> Overview of On-Demand Instances
 
@@ -56,8 +54,7 @@ correspond to a unique RabbitMQ virtual host on the multi-tenant RabbitMQ cluste
 That means you can create a new single-tenant cluster and dedicate it to a single app.
 
 For more information, see
-[Unlocking the Power of On-Demand <%= vars.product_full %>](./ondemand.html) and [On-Demand Service Architecture](./about.html).
-
+[Unlocking the Power of On-Demand <%= vars.product_full %>](ondemand.html.md.erb) and [On-Demand Service Architecture](about.html.md.erb).
 
 ## <a id='AboutRabbit'></a>About RabbitMQ
 
@@ -69,7 +66,6 @@ Emerging as the de facto standard for cloud messaging, RabbitMQ is used for effi
 between servers, apps, and devices, and creates lasting value by enabling rapid development of modern
 decentralized app and data architectures that can scale with your business needs.
 
-
 ## <a id='snapshot'></a> Product Snapshot
 
 The following table provides version and version-support information about <%= vars.product_short %>.
@@ -79,11 +75,11 @@ The following table provides version and version-support information about <%= v
     <th>Details</th>
     <tr>
         <td>Version</td>
-        <td>2.2.0</td>
+        <td>2.3.0</td>
     </tr>
     <tr>
         <td>Release date</td>
-        <td>January 18, 2023</td>
+        <td>MMMM DD, 2023</td>
     </tr>
     <tr>
         <td>Software component version</td>
@@ -107,51 +103,51 @@ The following table provides version and version-support information about <%= v
     </tr>
 </table>
 
-
 ## <a id='features'></a>Features
 
-###<a id='on-demand'></a> On-Demand
+### <a id='on-demand'></a> On-Demand
 
-* Create up to 5 different on-demand <%= vars.product_short %> plans which can be provisioned through the Marketplace
-* Choose whether a plan has 1, 3, 5, or 7 nodes
-* Default resource sizes in plans to guide selection
-* More control over which Orgs and Spaces have visibility of each configured plan
-* Bind apps to an instance of the plan, providing unique credentials for each binding
-* Management UI access to app developers
-* Deployment into an availability zone (AZ) specified by the plan
-* Enable Transport Layer Security (TLS) for the AMQP protocol
-* Automated upgrades of RabbitMQ for major, minor, and patch releases (see the release notes for downtime requirements)
-* <%= vars.product_short %> syslog forwarding configuration inherited from the pre-provisioned configuration
-* <%= vars.product_short %> metrics are exposed on the Firehose
-* Run smoke tests for on-demand plans on plan 1
-* Errands are run on co-located VMs to decrease deployment times
+- Create up to 5 different on-demand <%= vars.product_short %> plans which can be provisioned through
+  the Marketplace
+- Choose whether a plan has 1, 3, 5, or 7 nodes
+- Default resource sizes in plans to guide selection
+- More control over which Orgs and Spaces have visibility of each configured plan
+- Bind apps to an instance of the plan, providing unique credentials for each binding
+- Management UI access to app developers
+- Deployment into an availability zone (AZ) specified by the plan
+- Enable Transport Layer Security (TLS) for the AMQP protocol
+- Automated upgrades of RabbitMQ for major, minor, and patch releases.
+  See the release notes for downtime requirements.
+- <%= vars.product_short %> syslog forwarding configuration inherited from the pre-provisioned
+  configuration
+- <%= vars.product_short %> metrics are exposed on the Firehose
+- Run smoke tests for on-demand plans on plan 1
+- Errands are run on co-located VMs to decrease deployment times
 
-For more information, see [Unlocking the Power of On-Demand <%= vars.product_full %>](./ondemand.html).
-
+For more information, see [Unlocking the Power of On-Demand <%= vars.product_full %>](ondemand.html.md.erb).
 
 ### <a id='pre-provisioned'></a> Pre-Provisioned
 
-* Provision an instance of the RabbitMQ service, which corresponds to a unique RabbitMQ virtual host
-* Bind apps to an instance of the plan, providing unique credentials for each binding
-* Management UI access to operators and app developers
-* Deployment across multiple AZs, with nodes striped across the AZs automatically
-* Enable SSL (Secure Sockets Layer) for the AMQP, MQTT, STOMP, and Web STOMP protocols
-* HA Proxy load balancer across all nodes to balance connections
-* Plugin configuration can be easily changed at any time and the cluster redeployed and updated
-* The cluster topology can be changed and easily scaled out
-* Automated upgrades of RabbitMQ for major, minor, and patch releases. For downtime requirements, see [Downtime When Upgrading](./upgrade.html#downtime).
-* Configure the end point for the <%= vars.product_short %> syslog
-* RabbitMQ and HA Proxy metrics are exposed on the Firehose
-* Syslog forwarding on by default
-* Errands are run on co-located VMs to decrease deployment times
-
+- Provision an instance of the RabbitMQ service, which corresponds to a unique RabbitMQ virtual host
+- Bind apps to an instance of the plan, providing unique credentials for each binding
+- Management UI access to operators and app developers
+- Deployment across multiple AZs, with nodes striped across the AZs automatically
+- Enable SSL (Secure Sockets Layer) for the AMQP, MQTT, STOMP, and Web STOMP protocols
+- HA Proxy load balancer across all nodes to balance connections
+- Plugin configuration can be easily changed at any time and the cluster redeployed and updated
+- The cluster topology can be changed and easily scaled out
+- Automated upgrades of RabbitMQ for major, minor, and patch releases. For downtime requirements, see
+  [Downtime When Upgrading](upgrade.html.md.erb#downtime).
+- Configure the end point for the <%= vars.product_short %> syslog
+- RabbitMQ and HA Proxy metrics are exposed on the Firehose
+- Syslog forwarding on by default
+- Errands are run on co-located VMs to decrease deployment times
 
 ## <a id='known-issues'></a>Release Notes and Known Issues
 
-See the [release notes](releases.html) for your release version for important information and known
+See the [release notes](releases.html.md.erb) for your release version for important information and known
 issues.
 To see release notes for another version, select the version from the dropdown at the top of the page.
-
 
 ## <a id="other-services"></a> <%= vars.product_short %> and Other On-Demand Services
 
@@ -165,7 +161,6 @@ To see release notes for another version, select the version from the dropdown a
   :cloud_cache => "VMware Tanzu GemFire for VMs",
   :gemfire => "VMware GemFire"
 } %>
-
 
 ## <a id='feedback'></a>Feedback
 
