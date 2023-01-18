@@ -16,15 +16,16 @@ In this README:
 
 The master branch is the tree-trunk, so ALWAYS make changes you want carried forward in this branch. This includes:
 
-* Unreleased features
-* Doc bug fixes
-* Doc reorganization or enhancement
+- Unreleased features
+- Doc bug fixes
+- Doc reorganization or enhancement
 
 Then, if necessary, immediately cherry-pick/copy any changes that you want to push immediately to production into the appropriate branches listed below:
 
 | Branch Name| Use for… |
 |------------| ---------|
-| master     | "edge" branch for v2.x, staged here: https://docs-staging.vmware.com/en/draft/VMware-Tanzu-RabbitMQ-for-VMs/2.2/tanzu-rmq/GUID-index.html |
+| master     | "edge" branch for v2.x, staged here: https://docs-staging.vmware.com/en/draft/VMware-RabbitMQ-for-Tanzu-Application-Service/2.3/tanzu-rmq/GUID-index.html |
+| 2.2        | v2.2 (https://docs.vmware.com/en/VMware-RabbitMQ-for-Tanzu-Application-Service/2.2/tanzu-rmq/GUID-index.html)   |
 | 2.1        | v2.1 (https://docs.vmware.com/en/VMware-Tanzu-RabbitMQ-for-VMs/2.1/tanzu-rmq/GUID-index.html)   |
 | 2.0        | v2.0 (https://docs.vmware.com/en/VMware-Tanzu-RabbitMQ-for-VMs/2.0/tanzu-rmq/GUID-index.html)   |
 | 1.21       | v1.21 (https://docs.vmware.com/en/VMware-Tanzu-RabbitMQ-for-VMs/1.21/tanzu-rmq/GUID-index.html) |
@@ -45,7 +46,6 @@ Then, if necessary, immediately cherry-pick/copy any changes that you want to pu
 | 1.6-live   | NOT IN USE (PDF is here: https://docs.pivotal.io/archives/rabbitmq-pcf-1.6.pdf)|
 | 1.5-live   | NOT IN USE (PDF is here: https://docs.pivotal.io/archives/rabbitmq-pcf-1.5.pdf)|
 
-
 ## Releasing a New Minor Version
 
 Because **master** is the latest and greatest documentation, the process would be to cut a **x.x** branch
@@ -53,11 +53,9 @@ for the version that **master** was targeting during that time.
 
 After this point, **master** will then be the target for the next version of this product.
 
-
 ## Partials
 
 Cross-product partials for these docs are single sourced from the [Docs Partials](https://github.com/pivotal-cf/docs-partials) repository.
-
 
 ## Contributing to Documentation
 
@@ -68,14 +66,14 @@ the next time a documentation deployment occurs.
 
 If the documentation is meant to be target several released versions,
 then you will need to:
-+ create a pull request for each individual minor version
-+ or ask the technical writer to cherry-pick to particular branches/versions.
+
+- create a pull request for each individual minor version
+- or ask the technical writer to cherry-pick to particular branches/versions.
 
 For instructions on how to create a pull request on a branch and instructions on how to create a
 pull request using a fork, see
 [Creating a PR](https://docs-wiki.sc2-04-pcf1-apps.oc.vmware.com/wiki/external/create-pr.html)
 in the documentation team wiki.
-
 
 ## Publishing Docs
 
@@ -102,14 +100,14 @@ replacing the publication with the same version.
 
 **Prerequisite** Needs additional privileges - reach out to a manager on the docs team [#tanzu-docs](https://vmware.slack.com/archives/C055V2M0H) or ask a writer to do this step for you.
 
-1. Go to Staging publications in docsdash  
+1. Go to Staging publications in docsdash
   https://docsdash.vmware.com/deployment-stage
 
 2. Select a publication (make sure it's the latest version)
 
 3. Click "Deploy selected to Pre-Prod" and wait for the pop to turn green (refresh if necessary after about 10s)
 
-4. Go to Pre-Prod list  
+4. Go to Pre-Prod list
   https://docsdash.vmware.com/deployment-pre-prod
 
 5. Select a publication
@@ -121,7 +119,6 @@ replacing the publication with the same version.
 8. Select the publication again
 
 9. Click "Deploy selected to Prod"
-
 
 ## Troubleshooting Markdown
 
@@ -140,12 +137,11 @@ replacing the publication with the same version.
 | Symptom:| VMware publishing system doesn't accept code tags after the three back ticks.|
 | Solution: | Make sure you're not using `shell` or `bash` or `console` or `yaml` after back ticks.|
 
-
 ## Style Guide
 
 Use this section to specify spelling of special words for VMware RabbitMQ for Tanzu Application Service:
 
-+ on-demand plan
-+ shared-VM plan
-+ dedicated-VM plan
-+ RabbitMQ Management UI
+- on-demand plan
+- shared-VM plan
+- dedicated-VM plan
+- RabbitMQ Management UI
