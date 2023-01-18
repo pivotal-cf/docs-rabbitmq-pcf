@@ -5,6 +5,21 @@ owner: London Services
 
 <%= partial vars.path_to_partials + '/upgrade-planner' %>
 
+## <a id="2-1-6"></a> v2.1.6
+
+**Release Date**: January 18, 2023
+
+### Resolved Issues
+
+This release fixes the following issues:
+
+- [CVE-2022-41720](https://nvd.nist.gov/vuln/detail/CVE-2022-41720).
+  The golang issue is [56694](https://go.dev/issue/56694). It is fixed in Go v1.19.4.
+- [CVE-2022-41717](https://nvd.nist.gov/vuln/detail/CVE-2022-41717).
+  The golang issue is [56350](https://go.dev/issue/56350). It is fixed in Go v1.19.4.
+- Deployments with metrics polling interval set to `-1` failing.
+  [loggregator-agent-release v6.5.6](https://github.com/cloudfoundry/loggregator-agent-release/releases/tag/v6.5.6) fixes this.
+
 ## <a id="2-1-5"></a> v2.1.5
 
 **Release Date**: November 10, 2022
