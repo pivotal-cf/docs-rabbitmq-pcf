@@ -42,7 +42,7 @@ The following components are compatible with this release:
 	</tr>
 	<tr>
 		<td>Stemcell</td>
-		<td>621.x</td>
+		<td>Jammy v1</td>
 	</tr>
 	<tr>
 		<td>bpm</td>
