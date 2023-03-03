@@ -8,6 +8,8 @@ owner: London Services
   Tanzu Application Service.
 </p>
 
+<% if vars.hide_content == false %>
+
 <%= partial vars.path_to_partials + '/upgrade-planner' %>
 
 ## <a id="2-2-1"></a> v2.2.1
@@ -21,13 +23,11 @@ This release fixes the following issues:
 - The Loggregator subsystem might fail to collect logs because of a missing certificate.
 - If the metrics collection is set to a negative interval to disable collection, deployment will fail.
 
-
 ### Known Issues
 
 This release has the following known issues:
 
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
-
 
 ### Compatibility
 
@@ -103,6 +103,8 @@ The following components are compatible with this release:
 	</tr>\n</table>
 
 <sup>*</sup> For more information, see the <a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.10.18">v3.10.18</a> GitHub documentation.
+
+<% end %>
 
 ## <a id="2-2-0"></a> v2.2.0
 
