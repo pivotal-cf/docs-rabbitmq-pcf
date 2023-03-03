@@ -10,6 +10,100 @@ owner: London Services
 
 <%= partial vars.path_to_partials + '/upgrade-planner' %>
 
+## <a id="2-2-1"></a> v2.2.1
+
+**Release Date**: March 16, 2023
+
+### Resolved Issues
+
+This release fixes the following issues:
+
+- The Loggregator subsystem might fail to collect logs because of a missing certificate.
+- If the metrics collection is set to a negative interval to disable collection, deployment will fail.
+
+
+### Known Issues
+
+This release has the following known issues:
+
+<%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
+
+
+### Compatibility
+
+The following components are compatible with this release:
+
+<table class="nice"> <th>Component</th> <th>Version</th> 	<tr>
+		<td><%= vars.app_runtime_full %></td>
+		<td>2.11.x, 2.12.x, 2.13.x, 3.0.x</td>
+	</tr>
+	<tr>
+		<td>Erlang</td>
+		<td>25.2.3</td>
+	</tr>
+	<tr>
+		<td>HAProxy</td>
+		<td>2.6.9</td>
+	</tr>
+	<tr>
+		<td>OSS RabbitMQ*</td>
+		<td>3.10.18</td>
+	</tr>
+	<tr>
+		<td>Stemcell</td>
+		<td>1.x</td>
+	</tr>
+	<tr>
+		<td>bpm</td>
+		<td>1.1.21</td>
+	</tr>
+	<tr>
+		<td>cf-cli</td>
+		<td>1.41.0</td>
+	</tr>
+	<tr>
+		<td>cf-rabbitmq</td>
+		<td>492.0.0</td>
+	</tr>
+	<tr>
+		<td>cf-rabbitmq-multitenant-broker</td>
+		<td>139.0.0</td>
+	</tr>
+	<tr>
+		<td>cf-rabbitmq-smoke-tests</td>
+		<td>166.0.0</td>
+	</tr>
+	<tr>
+		<td>cf-service-gateway</td>
+		<td>97.0.0</td>
+	</tr>
+	<tr>
+		<td>loggregator-agent</td>
+		<td>7.1.2</td>
+	</tr>
+	<tr>
+		<td>on-demand-service-broker</td>
+		<td>0.42.6</td>
+	</tr>
+	<tr>
+		<td>rabbitmq-metrics</td>
+		<td>103.0.0</td>
+	</tr>
+	<tr>
+		<td>rabbitmq-on-demand-adapter</td>
+		<td>240.0.0</td>
+	</tr>
+	<tr>
+		<td>routing</td>
+		<td>0.259.0</td>
+	</tr>
+	<tr>
+		<td>service-metrics</td>
+		<td>2.0.26</td>
+	</tr>\n</table>
+
+<sup>*</sup> For more information, see the <a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.10.18">v3.10.18</a> GitHub documentation.
+
 ## <a id="2-2-0"></a> v2.2.0
 
 **Release Date**: January 18, 2023
@@ -26,6 +120,7 @@ This release has the following issues:
 
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
 - The Loggregator subsystem might fail to collect logs because of a missing certificate.
+- If the metrics collection is set to a negative interval to disable collection, deployment will fail.
 
 ### Resolved Issues
 
