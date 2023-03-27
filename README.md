@@ -2,7 +2,7 @@
 
 This repo contains the VMware Tanzu RabbitMQ for VMs documentation.
 
-In this README: 
+In this README:
 
 - [Branches in this Content Repo](#branches-in-this-content-repo)
 - [Releasing a New Minor Version](#releasing-a-new-minor-version)
@@ -11,6 +11,7 @@ In this README:
 - [Publishing Docs](#publishing-docs)
 - [Troubleshooting Markdown](#troubleshooting-markdown)
 - [Style Guide](#style-guide)
+
 
 ## Branches in this Content Repo
 
