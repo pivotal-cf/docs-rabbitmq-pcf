@@ -8,9 +8,10 @@ owner: London Services
   Tanzu Application Service.
 </p>
 
-<% if vars.hide_content == false %>
 
 <%= partial vars.path_to_partials + '/upgrade-planner' %>
+
+<% if vars.hide_content == false %>
 
 ## <a id="2-2-2"></a> v2.2.2
 
@@ -20,7 +21,8 @@ owner: London Services
 
 This release fixes the following issues:
 
-- **Auth code flow for accessing the RabbitMQ management interface:** When you configure OAuth2, access to the RabbitMQ management interface is by auth code flow. This improves security.
+- **Auth code flow for accessing the RabbitMQ management interface:** 
+When you configure OAuth2, access to the RabbitMQ management interface is by auth code flow. This improves security.
 
 ### Known Issues
 
