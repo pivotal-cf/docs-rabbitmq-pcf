@@ -23,9 +23,9 @@ The master branch is the tree-trunk, so ALWAYS make changes you want carried for
 
 Then, if necessary, immediately cherry-pick/copy any changes that you want to push immediately to production into the appropriate branches listed below:
 
-| Branch Name| Use for… |
-|------------| ---------|
-| master     | "edge" branch for v2.x, staged here: https://docs-staging.vmware.com/en/draft/VMware-Tanzu-RabbitMQ-for-VMs/2.2/tanzu-rmq/GUID-index.html |
+| Branch Name | Use for… |
+|-------------| ---------|
+| master      | "edge" branch for v2.x, staged here: https://docs-staging.vmware.com/en/draft/VMware-Tanzu-RabbitMQ-for-VMs/2.2/tanzu-rmq/GUID-index.html |
 | 2.1        | v2.1 (https://docs.vmware.com/en/VMware-Tanzu-RabbitMQ-for-VMs/2.1/tanzu-rmq/GUID-index.html)   |
 | 2.0        | v2.0 (https://docs.vmware.com/en/VMware-Tanzu-RabbitMQ-for-VMs/2.0/tanzu-rmq/GUID-index.html)   |
 | 1.21       | v1.21 (https://docs.vmware.com/en/VMware-Tanzu-RabbitMQ-for-VMs/1.21/tanzu-rmq/GUID-index.html) |
