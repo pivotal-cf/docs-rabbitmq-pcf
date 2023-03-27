@@ -5,18 +5,17 @@ owner: London Services
 
 <%= partial vars.path_to_partials + '/upgrade-planner' %>
 
-<% if vars.hide_content == false %>
-
 ## <a id="2-1-8"></a> v2.1.8
 
-**Release Date**: April 7, 2023
+**Release Date**: March 27, 2023
 
 ### Resolved Issues
 
 This release fixes the following issues:
 
-- **Auth code flow for accessing the RabbitMQ management interface:** 
-When you configure OAuth2, access to the RabbitMQ management interface is by auth code flow. This improves security.
+- **Auth code flow for accessing the RabbitMQ management interface:**
+  When you configure OAuth2, access to the RabbitMQ management interface is by auth code flow.
+  This improves security.
 
 ### Known Issues
 
@@ -28,7 +27,7 @@ This release has the following known issues:
 
 The following components are compatible with this release:
 
-<table class="nice"> <th>Component</th> <th>Version</th> 	
+<table class="nice"> <th>Component</th> <th>Version</th>
 	<tr>
 		<td><%= vars.app_runtime_full %></td>
 		<td>2.11.x, 2.12.x, 2.13.x</td>
@@ -99,9 +98,8 @@ The following components are compatible with this release:
 	</tr>
 </table>
 
-<sup>*</sup> For more information, see the <a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.10.20">v3.10.20</a> and 
+<sup>*</sup> For more information, see the <a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.10.20">v3.10.20</a> and
 <a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.11.11">v3.11.11</a> GitHub documentation.
-<% end %>
 
 ## <a id="2-1-7"></a> v2.1.7
 
