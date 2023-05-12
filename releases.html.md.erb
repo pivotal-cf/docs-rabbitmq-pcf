@@ -5,6 +5,7 @@ owner: London Services
 
 <%= partial vars.path_to_partials + '/upgrade-planner' %>
 
+<% if vars.hide_content == true %>
 ## <a id="2-1-9"></a> v2.1.9
 
 **Release Date**: May 30, 2023
@@ -13,12 +14,13 @@ owner: London Services
 
 This release fixes the following issues:
 
-- Upgrades to RabbitMQ 3.11 from instances which were created before RabbitMQ 3.8 can fail. This tile must first be installed and the upgrade-all-on-demand-service-instances errand run, then the instances can be upgraded to RabbitMQ 3.11
+- Attempts to upgrade to RabbitMQ v3.11 can fail on instances that were created before RabbitMQ v3.8.
+  Install this tile first and then run the `upgrade-all-on-demand-instances` errand to become able to
+  upgrade such instances to v3.11.
 
 ### Known Issues
 
 This release has the following known issues:
-
 
 ### Compatibility
 
@@ -99,6 +101,7 @@ The following components are compatible with this release:
 </table>
 
 <sup>*</sup> For more information, see the <a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.10.22">v3.10.22</a> and <a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.11.15">v3.11.15</a> GitHub documentation.
+<% end %>
 
 ## <a id="2-1-8"></a> v2.1.8
 
@@ -116,7 +119,7 @@ This release fixes the following issues:
 
 This release has the following known issues:
 
-- Upgrades to RabbitMQ 3.11 from instances which were created before RabbitMQ 3.8 can fail
+- Attempts to upgrade to RabbitMQ v3.11 can fail on instances that were created before RabbitMQ v3.8.
 
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
 
