@@ -11,9 +11,10 @@ owner: London Services
 
 ### Resolved Issues
 
-This release fixes the following issue:
+This release has the following fix:
 
-- Attempts to upgrade to RabbitMQ v3.11 failed on instances that were created before RabbitMQ v3.8.
+- **Failed upgrades to RabbitMQ v3.11:** Attempts to upgrade to RabbitMQ v3.11 failed on instances that
+  were created before RabbitMQ v3.8.
   To upgrade such instances to RabbitMQ v3.11, install the <%= vars.product_full %> v2.1.9 tile first and
   then run the `upgrade-all-on-demand-instances` errand.
 
@@ -117,7 +118,8 @@ This release fixes the following issues:
 
 This release has the following known issues:
 
-- Attempts to upgrade to RabbitMQ v3.11 can fail on instances that were created before RabbitMQ v3.8.
+- **Failed upgrades to RabbitMQ v3.11:** Attempts to upgrade to RabbitMQ v3.11 can fail for instances
+that were created before RabbitMQ v3.8.
 
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
 
