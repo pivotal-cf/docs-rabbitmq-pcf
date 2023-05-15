@@ -13,25 +13,29 @@ owner: London Services
 <% if vars.hide_content == true %>
 ## <a id="2-2-3"></a> v2.2.3
 
-**Release Date**: May 30, 2023
+**Release Date**: May 15, 2023
 
 ### Resolved Issues
 
-This release fixes the following issues:
+This release has the following fix:
 
-- Attempts to upgrade to RabbitMQ v3.11 can fail on instances that were created before RabbitMQ v3.8.
-  Install this tile first and then run the `upgrade-all-on-demand-instances` errand to become able to
-  upgrade such instances to v3.11.
+- **Failed upgrades to RabbitMQ v3.11:** Attempts to upgrade to RabbitMQ v3.11 failed for instances that
+  were created before RabbitMQ v3.8.
+  To upgrade such instances to RabbitMQ v3.11, install the <%= vars.product_full %> v2.1.9 tile first and
+  then run the `upgrade-all-on-demand-instances` errand.
 
 ### Known Issues
 
 This release has the following known issues:
 
+<%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
+
 ### Compatibility
 
 The following components are compatible with this release:
 
-<table class="nice"> <th>Component</th> <th>Version</th> 	<tr>
+<table class="nice"> <th>Component</th> <th>Version</th>
+  <tr>
 		<td><%= vars.app_runtime_full %></td>
 		<td>2.11.x, 2.12.x, 2.13.x, 3.0.x, 4.0.x</td>
 	</tr>
@@ -123,7 +127,8 @@ This release fixes the following issues:
 
 This release has the following known issues:
 
-- Attempts to upgrade to RabbitMQ v3.11 can fail on instances that were created before RabbitMQ v3.8.
+- **Failed upgrades to RabbitMQ v3.11:** Attempts to upgrade to RabbitMQ v3.11 can fail for instances
+that were created before RabbitMQ v3.8.
 
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
 
