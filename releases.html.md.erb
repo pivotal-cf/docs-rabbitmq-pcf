@@ -5,18 +5,17 @@ owner: London Services
 
 <%= partial vars.path_to_partials + '/upgrade-planner' %>
 
-<% if vars.hide_content == true %>
-## <a id="2-1-9"></a> v2.1.9
+## <a id="2-1-9"></a>
 
-**Release Date**: May 30, 2023
+**Release Date**: May 15, 2023
 
 ### Resolved Issues
 
-This release fixes the following issues:
+This release fixes the following issue:
 
-- Attempts to upgrade to RabbitMQ v3.11 can fail on instances that were created before RabbitMQ v3.8.
-  Install this tile first and then run the `upgrade-all-on-demand-instances` errand to become able to
-  upgrade such instances to v3.11.
+- Attempts to upgrade to RabbitMQ v3.11 failed on instances that were created before RabbitMQ v3.8.
+  To upgrade such instances to RabbitMQ v3.11, install the <%= vars.product_full %> v2.1.9 tile first and
+  then run the `upgrade-all-on-demand-instances` errand.
 
 ### Known Issues
 
@@ -101,7 +100,6 @@ The following components are compatible with this release:
 </table>
 
 <sup>*</sup> For more information, see the <a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.10.22">v3.10.22</a> and <a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.11.15">v3.11.15</a> GitHub documentation.
-<% end %>
 
 ## <a id="2-1-8"></a> v2.1.8
 
