@@ -15,7 +15,7 @@ In this README:
 
 ## Branches in this Content Repo
 
-The master branch is the tree-trunk, so ALWAYS make changes you want carried forward in this branch. This includes:
+The main branch is the tree-trunk, so ALWAYS make changes you want carried forward in this branch. This includes:
 
 - Unreleased features
 - Doc bug fixes
@@ -25,7 +25,7 @@ Then, if necessary, immediately cherry-pick/copy any changes that you want to pu
 
 | Branch Name | Use for… |
 |-------------| ---------|
-| master      | "edge" branch for v2.x, staged here: https://docs-staging.vmware.com/en/draft/VMware-RabbitMQ-for-Tanzu-Application-Service/2.3/tanzu-rmq/GUID-index.html |
+| main      | "edge" branch for v2.x, staged here: https://docs-staging.vmware.com/en/draft/VMware-RabbitMQ-for-Tanzu-Application-Service/2.3/tanzu-rmq/GUID-index.html |
 | 2.2        | v2.2 (https://docs.vmware.com/en/VMware-RabbitMQ-for-Tanzu-Application-Service/2.2/tanzu-rmq/GUID-index.html)   |
 | 2.1        | v2.1 (https://docs.vmware.com/en/VMware-RabbitMQ-for-Tanzu-Application-Service/2.1/tanzu-rmq/GUID-index.html)   |
 | 2.0        | v2.0 (https://docs.vmware.com/en/VMware-RabbitMQ-for-Tanzu-Application-Service/2.0/tanzu-rmq/GUID-index.html)   |
@@ -49,10 +49,10 @@ Then, if necessary, immediately cherry-pick/copy any changes that you want to pu
 
 ## Releasing a New Minor Version
 
-Because **master** is the latest and greatest documentation, the process would be to cut a **x.x** branch
-for the version that **master** was targeting during that time.
+Because **main** is the latest and greatest documentation, the process would be to cut a **x.x** branch
+for the version that **main** was targeting during that time.
 
-After this point, **master** will then be the target for the next version of this product.
+After this point, **main** will then be the target for the next version of this product.
 
 ## Partials
 
