@@ -1,12 +1,13 @@
 ---
 breadcrumb: VMware Tanzu RabbitMQ for VMs Documentation
-title: Clustering and Network Partitions
+title: Clustering and Network Partitions for VMware Tanzu RabbitMQ for VMs
 owner: London Services
 ---
 
-This topic contains information about clustering and network partitions, and applies to both the on-demand and pre-provisioned services.
+This topic gives you information about clustering and network partitions for <%= vars.product_full %>.
+This applies to both the on-demand and pre-provisioned services.
 
-## Clustering in <%= vars.product_full %>
+## <a id="clustering"></a>Clustering in <%= vars.product_short %>
 
 In <%= vars.product_short %>, the RabbitMQ broker is always deployed as a cluster of one or more virtual machines (nodes).  A RabbitMQ broker is a logical grouping of one or several Erlang nodes, each running the RabbitMQ application and sharing users, virtual hosts, queues, exchanges, bindings, and runtime parameters.
 
@@ -17,7 +18,7 @@ All data/state required for the operation of a RabbitMQ broker is replicated acr
 Replicating message queues across nodes is an expensive operation and should only be done to the extent needed by the application. To understand more about replicating queues across nodes in a cluster, see the [documentation](http://www.rabbitmq.com/ha.html) on high availability.
 
 
-## Automatic Network Partition Behaviors in RabbitMQ Clusters
+## <a id="auto-partition"></a>Automatic Network Partition Behaviors in RabbitMQ Clusters
 
 The <%= vars.product_short %> tile uses the `pause_minority` option for handling cluster partitions by default.
 This ensures data integrity by pausing the partition of the cluster in the minority,
