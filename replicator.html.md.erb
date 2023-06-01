@@ -3,17 +3,16 @@ title: Isolating Clusters with the VMware RabbitMQ for Tanzu Application Service
 owner: Services
 ---
 
-<div class="note"><strong>Note: </strong><%= vars.note_pre_provisioned %></div>
-
-## <a id="overview"></a> Overview
-
-<%= vars.product_full %> Replicator is a tool that allows you to install multiple <%= vars.product_short %> tiles
-in a single <%= vars.ops_manager %> environment.
+This topic gives you information about how to use <%= vars.product_full %> Replicator
+to install multiple <%= vars.product_short %> tiles in a single <%= vars.ops_manager %> environment.
 This lets you run multiple pre-provisioned RabbitMQ clusters that are isolated from each other.
 
-For example, you may want to isolate the cluster serving Spring Cloud Services (SCS) from the cluster serving apps in the Marketplace.
+For example, you might want to isolate the cluster serving Spring Cloud Services (SCS) from the cluster serving apps in the Marketplace.
 Or you may want to give a certain team their own dedicated, pre-provisioned cluster that you manage for them.
 For information on how to accomplish these scenarios, see [Common Use Cases](#usecases).
+
+<div class="note"><strong>Note: </strong><%= vars.note_pre_provisioned %></div>
+
 
 ### <a id="usecases"></a> Common Use Cases
 
@@ -71,10 +70,9 @@ and migrate data and users over to the new cluster over a period of time.
 Speak with your Platform Architect about how to enable this workflow.
 
 
-
 ## <a id="generate"></a> Generating Replica Tiles
 
-This topic describes how to install the replicator and generate replica tiles of <%= vars.product_short %>.
+This section describes how to install the replicator and generate replica tiles of <%= vars.product_short %>.
 
 ### <a id="prereqs"></a> Prerequisites
 
