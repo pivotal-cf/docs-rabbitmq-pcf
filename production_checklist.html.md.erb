@@ -4,8 +4,7 @@ title: Production Checklist for VMware RabbitMQ for Tanzu Application Service
 owner: London Services
 ---
 
-## <a id="checklist"></a>Production Check List
-There are a number of things which it is important to setup and configure when deploying the <%= vars.product_full %> tile into production.
+There are a number of things that you must configure when deploying the <%= vars.product_full %> tile into production.
 
 1. Only deploy with an odd number of nodes when using a [partition healing](https://www.rabbitmq.com/partitions.html) strategy of 'pause minority'
 2. Ensure that you have a least two HAProxy nodes deployed so that applications can fail over during rolling updates
