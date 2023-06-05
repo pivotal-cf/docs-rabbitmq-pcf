@@ -30,14 +30,14 @@ Then, if necessary, immediately cherry-pick/copy any changes that you want to pu
 | 2.1        | v2.1 (https://docs.vmware.com/en/VMware-RabbitMQ-for-Tanzu-Application-Service/2.1/tanzu-rmq/GUID-index.html)   |
 | 2.0        | v2.0 (https://docs.vmware.com/en/VMware-RabbitMQ-for-Tanzu-Application-Service/2.0/tanzu-rmq/GUID-index.html)   |
 | 1.21       | v1.21 (https://docs.vmware.com/en/VMware-RabbitMQ-for-Tanzu-Application-Service/1.21/tanzu-rmq/GUID-index.html) |
-| 1.20       | NOT IN USE docs have been deprecated (http://docs.pivotal.io/rabbitmq-cf/1-20/) |
-| 1.19       | NOT IN USE docs have been deprecated (http://docs.pivotal.io/rabbitmq-cf/1-19/) |
-| 1.18       | NOT IN USE docs have been deprecated (http://docs.pivotal.io/rabbitmq-cf/1-18/) |
-| 1.17       | NOT IN USE docs have been deprecated (http://docs.pivotal.io/rabbitmq-cf/1-17/) |
-| 1.16       | NOT IN USE docs have been deprecated (http://docs.pivotal.io/rabbitmq-cf/1-16/) |
-| 1.15-live  | NOT IN USE docs have been deprecated (http://docs.pivotal.io/rabbitmq-cf/1-15/) |
-| 1.14-live  | NOT IN USE docs have been deprecated (http://docs.pivotal.io/rabbitmq-cf/1-14/)|
-| 1.13-live  | NOT IN USE docs have been deprecated (http://docs.pivotal.io/rabbitmq-cf/1-13/)|
+| 1.20       | NOT IN USE (PDF is here: https://docs.vmware.com/en/VMware-RabbitMQ-for-Tanzu-Application-Service/1.20/rabbitmq-for-tas-1-20.pdf) |
+| 1.19       | NOT IN USE (PDF is here: https://docs.vmware.com/en/VMware-RabbitMQ-for-Tanzu-Application-Service/1.19/rabbitmq-for-tas-1-19.pdf) |
+| 1.18       | NOT IN USE (PDF is here: https://docs.vmware.com/en/VMware-RabbitMQ-for-Tanzu-Application-Service/1.18/rabbitmq-for-tas-1-18.pdf) |
+| 1.17       | NOT IN USE (PDF is here: https://docs.vmware.com/en/VMware-RabbitMQ-for-Tanzu-Application-Service/1.17/rabbitmq-for-tas-1-17.pdf) |
+| 1.16       | NOT IN USE (PDF is here: https://docs.vmware.com/en/VMware-RabbitMQ-for-Tanzu-Application-Service/1.16/rabbitmq-for-tas-1-16.pdf) |
+| 1.15-live  | NOT IN USE (PDF is here: https://docs.vmware.com/en/VMware-RabbitMQ-for-Tanzu-Application-Service/1.15/rabbitmq-for-tas-1-15.pdf) |
+| 1.14-live  | NOT IN USE (PDF is here: https://docs.vmware.com/en/VMware-RabbitMQ-for-Tanzu-Application-Service/1.14/rabbitmq-for-tas-1-14.pdf)|
+| 1.13-live  | NOT IN USE (PDF is here: https://docs.vmware.com/en/VMware-RabbitMQ-for-Tanzu-Application-Service/1.13/rabbitmq-for-tas-1-13.pdf)|
 | 1.12-live  | NOT IN USE (PDF is here: https://docs.pivotal.io/archives/rabbitmq-pcf-1.12.pdf)|
 | 1.11-live  | NOT IN USE (PDF is here: https://docs.pivotal.io/archives/rabbitmq-pcf-1.11.pdf)|
 | 1.10-live  | NOT IN USE (PDF is here: https://docs.pivotal.io/archives/rabbitmq-pcf-1.10.pdf)|
