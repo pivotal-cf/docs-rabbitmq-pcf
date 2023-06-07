@@ -22,8 +22,7 @@ This release has the following fix:
 
 - **Failed upgrades to RabbitMQ v3.11:** Attempts to upgrade to RabbitMQ v3.11 failed for instances that
   were created before RabbitMQ v3.8.
-  To upgrade such instances to RabbitMQ v3.11, install the <%= vars.product_full %> v2.2.3 tile first and
-  then run the `upgrade-all-on-demand-instances` errand.
+  To upgrade such instances to RabbitMQ v3.11, install the <%= vars.product_full %> v2.2.3 tile first, select RabbitMQ v3.10, run the `upgrade-all-on-demand-instances` errand, then select RabbitMQ v3.11 and run the `upgrade-all-on-demand-instances` errand again.
 
 ### Known Issues
 
