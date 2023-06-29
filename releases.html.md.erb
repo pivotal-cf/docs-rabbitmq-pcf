@@ -9,15 +9,15 @@ This topic describes the changes in this minor release of <%= vars.product_full 
 
 ## <a id="2-1-10"></a> v2.1.10
 
-**Release Date**: June 29, 2023
+**Release date**: June 29, 2023
 
-### Resolved Issues
+### Known issues
 
 This release has the following fix:
 
 - Resolves an issue in route-registrar that caused unnecessary routing churn.
 
-### Known Issues
+### Known issues
 
 This release has the following known issues:
 
@@ -107,7 +107,7 @@ The following components are compatible with this release:
 
 **Release Date**: May 15, 2023
 
-### Resolved Issues
+### Known issues
 
 This release has the following fix:
 
@@ -118,7 +118,7 @@ This release has the following fix:
       2. Select RabbitMQ v3.10 and run the `upgrade-all-on-demand-instances` errand.
       3. Select RabbitMQ v3.11 and run the `upgrade-all-on-demand-instances` errand again.
 
-### Known Issues
+### Known issues
 
 This release has the following known issues:
 
@@ -208,7 +208,7 @@ The following components are compatible with this release:
 
 **Release Date**: March 27, 2023
 
-### Resolved Issues
+### Known issues
 
 This release fixes the following issues:
 
@@ -216,7 +216,7 @@ This release fixes the following issues:
   When you configure OAuth2, access to the RabbitMQ management interface is by auth code flow.
   This improves security.
 
-### Known Issues
+### Known issues
 
 This release has the following known issues:
 
@@ -307,14 +307,14 @@ The following components are compatible with this release:
 
 **Release Date**: March 16, 2023
 
-### Resolved Issues
+### Known issues
 
 This release fixes the following issues:
 
 - The Loggregator subsystem might fail to collect logs because of a missing certificate.
 - If the metrics collection is set to a negative interval to deactivate collection, the deployment fails.
 
-### Known Issues
+### Known issues
 
 This release has the following known issues:
 
@@ -400,7 +400,7 @@ The following components are compatible with this release:
 
 **Release Date**: January 18, 2023
 
-### Resolved Issues
+### Known issues
 
 This release fixes the following issues:
 
@@ -415,7 +415,7 @@ This release fixes the following issues:
 
 **Release Date**: November 10, 2022
 
-### Security Fixes
+### Security fixes
 
 This release includes the following security fix:
 
@@ -423,14 +423,14 @@ This release includes the following security fix:
   the [golang](https://github.com/golang/go/issues?q=milestone%3AGo1.19.2+label%3ACherryPickApproved)
   repository in GitHub.
 
-### Resolved Issues
+### Known issues
 
 This release has the following fix:
 
 * **The `prom_scraper` BOSH job no longer generates multiple error logs about metrics scraping failures:**
   This release fixes the error log spam caused by TLS certification failures when using on-demand service instances.
 
-### Known Issues
+### Known issues
 
 This release has the following known issues:
 
@@ -535,7 +535,7 @@ This is in addition to global VM extensions that apply to all on-demand service 
   and this client doesn't conform with the HTTP spec (for example, by treating HTTP headers as
   case-sensitive), you might see errors when connecting to the UI after upgrading.
 
-### Known Issues
+### Known issues
 
 This release has the following known issues:
 
@@ -628,7 +628,7 @@ The following components are compatible with this release:
 
 **Release Date**: August 22, 2022
 
-### Resolved Issue
+### Resolved issues
 
 This release fixes the following issue:
 
@@ -644,7 +644,7 @@ This release fixes the following issue:
     are emitted under a new <code>source_id</code>, which is the GUID of the service instance.
   </p>
 
-### Known Issues
+### Known issues
 
 This release has the following known issues:
 
@@ -737,7 +737,7 @@ The following components are compatible with this release:
 
 **Release Date**: June 24, 2022
 
-### Security Fixes
+### Security fixes
 
 * **Important:** Erlang has been updated to v24.3.4.2 to resolve [CVE-2022-37026](https://nvd.nist.gov/vuln/detail/CVE-2022-37026).
 
@@ -748,7 +748,7 @@ This release contains the following change:
 * **RabbitMQ v3.10 is now available in this version.**
 Service instances running on RabbitMQ v3.9 continue to run on v3.9 until configured to run on v3.10.
 
-### Resolved Issues
+### Known issues
 
 This release fixes the following issue:
 
@@ -756,7 +756,7 @@ This release fixes the following issue:
 For more information about this issue, see
 [issue 4726](https://github.com/rabbitmq/rabbitmq-server/discussions/4726) on GitHub.
 
-### Known Issues
+### Known issues
 
 This release has the following known issues:
 
@@ -855,7 +855,7 @@ New features and changes in this release:
 
 - Updates RabbitMQ version to fix a CVE.
 
-### Known Issues
+### Known issues
 
 This release has the following issues:
 
@@ -976,7 +976,7 @@ when installing this release.
     JSON logging. For more information about these features, see
     the [RabbitMQ v3.9 release page](https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.9.15) in GitHub.
 
-### Known Issues
+### Known issues
 
 This release has the following issues:
 
@@ -1072,7 +1072,6 @@ The following components are compatible with this release:
 <sup>*</sup> For more information, see the <a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.9.15">v3.9.15</a> GitHub documentation.
 
 
-## <a id="view"></a> View Release Notes for Another Version
+## <a id="view"></a> View release notes for another version
 
-To view the release notes for another product version, select the version from the dropdown at the
-top of this page.
+To view the release notes for another product version, select the version from the drop-down menu at the top of this page.
