@@ -10,9 +10,9 @@ template_variables:
   product_url: https://network.pivotal.io/products/pivotal-cf
   product_link: <div class="header-item"><a href="https://network.pivotal.io/products/VMware Tanzu-cf">Back to Product Page</a></div>
 
-  support_link: <a href="http://support.pivotal.io" target="_blank">Support</a>
-  support_call_to_action: <a href="http://support.io" target="_blank">Need Support?</a>
-  support_url: http://support.pivotal.io
+  support_link: <a href="http://tanzu.vmware.com/support" target="_blank">Support</a>
+  support_call_to_action: <a href="http://tanzu.vmware.com/support" target="_blank">Need Support?</a>
+  support_url: http://tanzu.vmware.com/support
 
   product_network: VMware Tanzu Network
 
