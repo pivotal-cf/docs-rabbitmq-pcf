@@ -15,6 +15,7 @@ template_variables:
   support_call_to_action: <a href="http://tanzu.vmware.com/support" target="_blank">Need Support?</a>
   support_url: http://tanzu.vmware.com/support
 
+  company_name: VMware
   product_network: VMware Tanzu Network
 
   path_to_partials: /rabbitmq-cf/partials
