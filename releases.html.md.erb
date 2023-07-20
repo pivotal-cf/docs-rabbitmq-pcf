@@ -7,6 +7,8 @@ This topic describes the changes in this minor release of <%= vars.product_full 
 
 <%= partial vars.path_to_partials + '/upgrade-planner' %>
 
+<% if vars.hide_content == false %>
+
 ## <a id="2-1-11"></a> v2.1.11
 
 **Release Date**: July 31, 2023
@@ -103,6 +105,8 @@ The following components are compatible with this release:
 </table>
 
 <sup>*</sup> For more information, see the <a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.10.25">v3.10.25</a> and <a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.11.20">v3.11.20</a> GitHub documentation.
+
+<% end %>
 
 ## <a id="2-1-10"></a> v2.1.10
 
