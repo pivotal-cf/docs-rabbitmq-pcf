@@ -26,6 +26,9 @@ template_variables:
   global_header_product_href: https://network.tanzu.vmware.com/
   global_header_product_link_text: Downloads
 
+  # Current _TAS_ major version -- used by a partial
+  current_major_version: "4.0"
+
   # Tanzu variables
 
   company_name: VMware
