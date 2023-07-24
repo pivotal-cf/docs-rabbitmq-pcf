@@ -558,8 +558,8 @@ plan.
           For more information, see <a href="#azs-networks">Assign AZs and Networks</a> above.
           <ul>
             <li>For a single-node plan, select one or more AZs.</li>
-            <li>For a plan containing multiple nodes, select only one AZ.
-              VMware recommends this for multi-node plans to minimize risks due
+            <li>For a plan containing multiple nodes, if there is high network latency between the AZs,
+              select only one AZ. VMware recommends this for multi-node plans to minimize risks due
               to network latency and partitions.
               See <a href="./ondemand.html#latency">Network Latency</a> and
               <a href="./ondemand.html#tradeoff">Consistency or Availability Tradeoff</a> for details.
