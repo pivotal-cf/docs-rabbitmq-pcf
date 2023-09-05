@@ -28,6 +28,7 @@ template_variables:
 
   # Tanzu variables
 
+  company_name: VMware
   product_full: VMware Tanzu RabbitMQ for VMs
   product_short: Tanzu RabbitMQ
   product_abbr: Tanzu RabbitMQ
