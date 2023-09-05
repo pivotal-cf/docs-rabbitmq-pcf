@@ -28,8 +28,8 @@ Then, if necessary, immediately cherry-pick/copy any changes that you want to pu
 | main      | "edge" branch for v2.x, staged here: https://docs-staging.vmware.com/en/draft/VMware-RabbitMQ-for-Tanzu-Application-Service/2.3/tanzu-rmq/GUID-index.html |
 | 2.2        | v2.2 (https://docs.vmware.com/en/VMware-RabbitMQ-for-Tanzu-Application-Service/2.2/tanzu-rmq/GUID-index.html)   |
 | 2.1        | v2.1 (https://docs.vmware.com/en/VMware-RabbitMQ-for-Tanzu-Application-Service/2.1/tanzu-rmq/GUID-index.html)   |
-| 2.0        | v2.0 (https://docs.vmware.com/en/VMware-RabbitMQ-for-Tanzu-Application-Service/2.0/tanzu-rmq/GUID-index.html)   |
-| 1.21       | v1.21 (https://docs.vmware.com/en/VMware-RabbitMQ-for-Tanzu-Application-Service/1.21/tanzu-rmq/GUID-index.html) |
+| 2.0        | NOT IN USE (PDF is here: https://docs.vmware.com/en/VMware-RabbitMQ-for-Tanzu-Application-Service/2.0/rabbitmq-for-tas-2-0.pdf)  |
+| 1.21       | NOT IN USE (PDF is here: https://docs.vmware.com/en/VMware-RabbitMQ-for-Tanzu-Application-Service/1.21/rabbitmq-for-tas-1-21.pdf) |
 | 1.20       | NOT IN USE (PDF is here: https://docs.vmware.com/en/VMware-RabbitMQ-for-Tanzu-Application-Service/1.20/rabbitmq-for-tas-1-20.pdf) |
 | 1.19       | NOT IN USE (PDF is here: https://docs.vmware.com/en/VMware-RabbitMQ-for-Tanzu-Application-Service/1.19/rabbitmq-for-tas-1-19.pdf) |
 | 1.18       | NOT IN USE (PDF is here: https://docs.vmware.com/en/VMware-RabbitMQ-for-Tanzu-Application-Service/1.18/rabbitmq-for-tas-1-18.pdf) |
