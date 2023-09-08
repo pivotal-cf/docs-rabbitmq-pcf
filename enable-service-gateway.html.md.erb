@@ -43,6 +43,7 @@ TCP router.
     ![Screenshot showing Ops Manager UI with the 'Status' tab selected.
     In the tab contents, there is a table with several columns labeled 'Job', 'Index,' 'IPS', 'AZ', and 'CID'.
     The screenshot highlights with a red outline the last row in the table for the job 'TCP Router'.](images/TCP-router-CID.png)
+
     <a href="./images/TCP-router-CID.png" target="_blank" aria-hidden="true">Click here to view a larger version of the image above</a>
 
 ## <a id='configure-firewall'></a> Configure the Firewall to Allow Incoming Traffic to the TCP Router
@@ -64,17 +65,20 @@ To configure the load balancer:
 
     For example, if your TCP routing port range is `1024-1123`,
     then your load balancer port range for service gateway must not overlap `1024-1123`.
+
     <p class="note">
       <strong>Note:</strong> Each <%= vars.product_short %> service instance using service-gateway
       access requires a unique port.
       Ensure that the port range configured above has enough capacity to accommodate all the service
       instances that you need. The start port and the end port are both inclusive.
     </p>
+
     ![Diagram showing Service Gateway port ranges: Traffic flows to the apps from the Load Balancer
     using ports in the TAS LB port range through the TCP Router using ports in the TAS TCP port
     range. Traffic flows to the RabbitMQ service instances from the Load Balancer using ports
     in the Service Gateway LB port range through the TPC Router using ports in the Service Gateway
     TCP port range.](images/service-gateway-ports.png)
+    
     <a href="./images/service-gateway-ports.png" target="_blank" aria-hidden="true">Click here to
       view a larger version of the image above</a>
 1. Record this port range.

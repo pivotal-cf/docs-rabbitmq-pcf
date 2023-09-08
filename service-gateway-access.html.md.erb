@@ -46,7 +46,7 @@ The load balancer then forwards the requests for this <%= vars.product_short %> 
 the TCP router.
 The TCP router internally load balances between the <%= vars.product_short %> service instance nodes.
 
-The diagram below shows how the traffic is routed from apps to the RabbitMQ nodes in this case.
+The following diagram shows how the traffic is routed from apps to the RabbitMQ nodes in this case.
 All apps using this <%= vars.product_short %> service instance follow the same route,
 irrespective of whether they are hosted on the foundation or are hosted outside of the foundation.
 
@@ -57,6 +57,6 @@ The TCP router balances the load among the RabbitMQ nodes in the RabbitMQ servic
 
 <a href="./images/service-gateway-architecture.png" target="_blank" aria-hidden="true">Click here to view a larger version of the image above</a>
 
-In the diagram, the <%= vars.app_runtime_abbr %> tile ports are a range of ports to facilitate TCP
+In the diagram, the **<%= vars.app_runtime_abbr %> Tile Ports** are a range of ports to facilitate TCP
 traffic to apps in <%= vars.app_runtime_abbr %>.
-The RabbitMQ tile ports are a range of ports used by RabbitMQ service instances.
+The **RabbitMQ Tile Ports** are a range of ports used by RabbitMQ service instances.
