@@ -20,8 +20,8 @@ To enable service-gateway access for an on-demand offering:
 1. [Create a DNS record that maps to the load balancer](#create-dns-record)
 1. [Configure a service-gateway-enabled plan](#configure-service-gateway-plan)
 
-<p class="note warning">
-  <strong>Warning:</strong> VMware recommends that you configure Transport Layer Security (TLS) alongside
+<p class="note caution">
+  <span class="note__title">Caution</span> VMware recommends that you configure Transport Layer Security (TLS) alongside
   service-gateway access to prevent man-in-the-middle attacks.
   For instructions on how to configure TLS, see <a href="./install-config.html#security">Configure Security</a>.
 </p>
@@ -78,7 +78,7 @@ To configure the load balancer:
     range. Traffic flows to the RabbitMQ service instances from the Load Balancer using ports
     in the Service Gateway LB port range through the TPC Router using ports in the Service Gateway
     TCP port range.](images/service-gateway-ports.png)
-    
+
     <a href="./images/service-gateway-ports.png" target="_blank" aria-hidden="true">Click here to
       view a larger version of the image above</a>
 1. Record this port range.
@@ -106,8 +106,8 @@ To configure a service-gateway-enabled plan:
 
     <img src="images/global-settings-service-gateway.png" alt="Example of the Global Settings for On-Demand Plans pane. The External TCP domain field has tcp.elcajon.cf-app.com. The Port Range field has 1024–2025." width="450">
 
-     <p class="note warning">
-       <strong>Warning:</strong>
+     <p class="note caution">
+       <span class="note__title">Caution</span>
        If you already have service instances using service-gateway, any modifications to this range
        must include ports that are already assigned to these service instances.
        If the port range does not contain the ports already assigned to service instances, the

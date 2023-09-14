@@ -60,8 +60,8 @@ and a 'Service Network' field.](./images/rmq_tile_config.png)
 Follow the steps below to configure the AZs and networks:
 
 1. In the [Settings](#tile_configurations) screen, click **Assign AZs and Networks**.
-    <p class="note warning">
-      <strong>Warning:</strong> You cannot change the regions or networks after you have clicked
+    <p class="note caution">
+      <span class="note__title">Caution</span> You cannot change the regions or networks after you have clicked
       <strong>Apply Changes</strong> during the <a href="#apply-changes">Apply Configuration and Complete the Installation</a> procedure below.</p>
 
 2. Configure the fields on the **Assign AZs and Networks** as follows.
@@ -86,8 +86,8 @@ Follow the steps below to configure the AZs and networks:
              This selection only affects the on-demand service.</td></tr>
    </table>
 
-    <p class="note warning">
-      <strong>Warning:</strong> Changing the Network after you have configured it, or changing the IP
+    <p class="note caution">
+      <span class="note__title">Caution</span> Changing the Network after you have configured it, or changing the IP
       address configuration, causes a failed deployment.
       For more information, see
       <a href="./changing-ips.html">Changing Network or IP Addresses Results in a Failed Deployment</a>.
@@ -329,8 +329,8 @@ For example, `?family=queue_coarse_metrics&family=queue_consumer_count`.
 
 ### <a id="configfile"></a> (Optional, Expert only) Override RabbitMQ Server Advanced Configuration
 
-<p class='note warning'>
-  <strong>Warning:</strong>
+<p class='note caution'>
+  <span class="note__title">Caution</span>
   This feature is for expert users only. Any override configuration set on the RabbitMQ
   cluster might conflict with other configurations set by the <%= vars.product_short %> broker.
 </p>
@@ -607,8 +607,8 @@ This is a one-time action before an update.
 You can change these defaults by clicking **Errands** in the <%= vars.product_short %>
 **Settings** tab as well as the defaults for [pre-delete](#pre-delete-errands) errands.
 
-<p class='note warning'>
-  <strong>Warning:</strong>
+<p class='note caution'>
+  <span class="note__title">Caution</span>
   In <%= vars.product_short %> v1.9.0 and later, post-deploy errands are on by default
   except the Recreate All Service Instances errand.
   VMware recommends keeping these defaults, because the smoke tests can encounter

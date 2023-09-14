@@ -27,8 +27,8 @@ To create a service instance that enables service-gateway access:
     cf create-service p.rabbitmq SERVICE-GATEWAY-PLAN SERVICE-INSTANCE-NAME -c '{"tls": true}'
     ```
 
-    <p class="note warning">
-      <strong>Warning:</strong> VMware recommends that you configure service-gateway access with TLS to
+    <p class="note caution">
+      <span class="note__title">Caution</span> VMware recommends that you configure service-gateway access with TLS to
       prevent man-in-the-middle attacks.
       For instructions on using TLS on your platform, see <a href="./use.html#using-tls">Use Transport Layer Security</a>.
     </p>

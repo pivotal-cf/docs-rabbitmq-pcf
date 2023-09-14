@@ -92,8 +92,8 @@ Follow the steps below to configure the AZs and networks:
 
 1. Click **Assign AZs and Networks**.
 
-    <p class="note warning">
-      <strong>Warning:</strong> You cannot change the regions or networks after you have clicked
+    <p class="note caution">
+      <span class="note__title">Caution</span> You cannot change the regions or networks after you have clicked
       <strong>Apply Changes</strong> in the
       <a href="#apply-changes">Apply Changes from Your Configuration</a> below.
     </p>
@@ -153,8 +153,8 @@ Follow the steps below to configure the AZs and networks:
       </tr>
     </table>
 
-    <p class="note warning">
-      <strong>Warning:</strong> Changing the Network or Service Network after you have configured
+    <p class="note caution">
+      <span class="note__title">Caution</span> Changing the Network or Service Network after you have configured
       them or changing their IP configurations results in a failed deployment.
       For more information, see
       <a href="./changing-ips.html">Changing Network or IP Addresses Results in a Failed Deployment</a>.
@@ -227,7 +227,7 @@ Follow the steps below to configure global settings:
           Select this checkbox to set the cluster name to its service instance GUID
           instead of the default name `rabbit@localhost`.
           This enables you to filter metrics by cluster name.
-          <p class="note warning"><strong>Warning:</strong>
+          <p class="note caution"><span class="note__title">Caution</span>
             If you have federated queues and you select this checkbox,
             <%= vars.product_short %> recreates the federated queues with a new cluster name.
             This duplicates the number of downstream federated queues that consume messages from an
@@ -348,7 +348,7 @@ Follow the steps below to configure global settings:
         <td>
           Select this check box to ensure metrics from on-demand service instances
           are compatible with Log Cache.
-          <p class="note warning"><strong>Warning:</strong>
+          <p class="note caution"><span class="note__title">Caution</span>
             VMware strongly recommends to leave this box checked.
             If you deactivate this feature, metrics might not be visible from on-demand service instances.
           </p>
@@ -414,8 +414,8 @@ before configuring the tile and applying changes.
           <%= vars.product_short %> cluster with TLS.
           This includes communication with <%= vars.product_short %> CLI tools,
           such as <code>rabbitmqctl</code>.
-          <p class="note warning">
-            <strong>Warning:</strong> This option only affects service instances
+          <p class="note caution">
+            <span class="note__title">Caution</span> This option only affects service instances
             created after running <strong>Apply Changes</strong>.
             It has no effect on existing service instances.
             To migrate your app traffic to a cluster using inter-node TLS, see
@@ -534,7 +534,7 @@ plan.
             <li><code>rabbitmq-upgrade await\_online\_synchronized\_mirror --timeout 3600</code></li>
           </ul>
           Enabling these checks ensures that queues are synced before an upgrade.
-          <p class="note warning"><strong>Warning:</strong>
+          <p class="note caution"><span class="note__title">Caution</span>
             If you enable these checks, the pre-stop script can fail with the error:
             <code>Timed out waiting for mirror queue critical node to sync after 3600 seconds</code><br><br>
             For more information, see <a href="troubleshoot.html#rabbitmQ">Pre-Stop Script Times Out When Waiting for Queue Synchronization</a>.
@@ -611,8 +611,8 @@ plan.
 
 #### <a id="determineaz"></a> Determine Which AZs a Service Instance Uses
 
-<p class="note warning">
-  <strong>Warning:</strong> If you change this configuration after you have selected AZs and deployed
+<p class="note caution">
+  <span class="note__title">Caution</span> If you change this configuration after you have selected AZs and deployed
   service instances, existing instances are not placed in the newly configured AZs when the
   Upgrade All Service Instances or Recreate All Service Instances errands are run.
   This prevents re-creation of the VMs in different AZs, which could lead to data loss.<br>
@@ -742,8 +742,8 @@ Underneath the text 'Select errands to run during the deploy' are the following 
 'Recreate All Service Instances'.
 All the checkboxes are enabled except for 'Recreate All Service Instances'](images/errands-installation-pending-changes.png)
 
-<p class='note warning'>
-  <strong>Warning:</strong> In <%= vars.product_short %> v1.9.0 and later,
+<p class="note caution">
+  <span class="note__title">Caution</span> In <%= vars.product_short %> v1.9.0 and later,
   post-deploy errands are on by default except for the Recreate All Service Instances errand.
   VMware recommends keeping these defaults, because the smoke tests can encounter
   unexpected issues, and on-demand instances of <%= vars.product_short %> might fall behind
