@@ -10,7 +10,7 @@ If you are not planning to use the pre-provisioned service, deactivate it.
 Deactivating the pre-provisioned service broker means that no instances for the
 pre-provisioned service will be deployed.  This, in turn, saves money.
 
-<div class="note"><strong>Note: </strong><%= vars.note_pre_provisioned %></div>
+<p class="note important"><span class="note__title">Important</span><%= vars.note_pre_provisioned %></p>
 
 ## <a id="manual"></a> Deactivate the Pre-Provisioned Service Manually
 
@@ -58,7 +58,7 @@ For more information about properties, see [Configure a Product](https://docs.pi
 documentation.
 When you make this change, <%= vars.ops_manager %> automatically sets instance counts to <code>0</code>.
 
-<p class="note caution"><<span class="note__title">Caution</span>
+<p class="note caution"><span class="note__title">Caution</span>
   For instance groups related to the pre-provisioned service, such as <code>rabbitmq-server</code>,
   <code>rabbitmq-broker</code>, <code>rabbitmq-haproxy</code>, if you modify instance
   counts to a non-zero value, BOSH fails to deploy the tile.
