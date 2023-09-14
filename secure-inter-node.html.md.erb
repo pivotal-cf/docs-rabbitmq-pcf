@@ -22,7 +22,7 @@ For more information about clustering with TLS in RabbitMQ, see the
 <a href="https://www.rabbitmq.com/clustering-ssl.html">RabbitMQ documentation</a>.
 
 <p class="note">
-  <strong>Note:</strong> Inter-node communication is independent of communication
+  <span class="note__title">Note</span> Inter-node communication is independent of communication
   between your apps and RabbitMQ. You can secure inter-node traffic without modifying
   your apps to communicate over TLS.
 </p>
@@ -82,7 +82,7 @@ The rolling upgrade would fail because an Erlang distribution cannot contain a
 mix of nodes that communicate over TLS and nodes that do not.
 
 <p class="note">
-  <strong>Note:</strong> This migration procedure assumes that you are familiar with RabbitMQ concepts,
+  <span class="note__title">Note</span> This migration procedure assumes that you are familiar with RabbitMQ concepts,
   such as dynamic shovels and how to configure them.
   If you need help with this procedure, contact VMware Support.
   <br><br>
@@ -112,7 +112,7 @@ with the same plan and configuration as the original service instance by running
     </pre>
 
     <p class="note">
-      <strong>Note:</strong> In this procedure, this new service instance and its
+      <span class="note__title">Note</span> In this procedure, this new service instance and its
       corresponding cluster are referred to as green. The original service instance
       and cluster are referred to as blue.
     </p>
@@ -162,7 +162,7 @@ navigate to **Export Definitions** and click **Download broker definitions**.
 This saves a JSON file to your local machine that contains the topology metadata you need to re-create
 the cluster on another service instance.
   <p class="note">
-    <strong>Note:</strong> If you do not see the <strong>Export definitions</strong> section of
+    <span class="note__title">Note</span> If you do not see the <strong>Export definitions</strong> section of
     the <strong>Overview</strong> pane, it is likely that the service-key you created did not
     contain the tag to enable admin permissions.
     Re-check the command you ran to create the key.
@@ -178,7 +178,7 @@ navigate to **Import Definitions** and add the JSON file you downloaded from
 the **blue** cluster and click **Upload broker definitions**.
 This creates the topology required on the green cluster.
   <p class="note">
-    <strong>Note:</strong> If you do not see the <strong>Import definitions</strong> section of
+    <span class="note__title">Note</span> If you do not see the <strong>Import definitions</strong> section of
     the <strong>Overview</strong> pane, it is likely that the service-key you created did not
     contain the tag to enable admin permissions.
     Re-check the command you ran to create the key.
