@@ -12,7 +12,7 @@ see the Production Checklist in the
 [RabbitMQ Documentation](https://www.rabbitmq.com/production-checklist.html).
 
 <div class="note">
-  <strong>Note:</strong><br><br>
+  <span class="note__title">Note</span><br><br>
   <ul>
     <li>For how to install and configure the <%= vars.product_short %> pre-provisioned service, see
       <a href="./install-config-pp.html">Installing and Configuring the Pre-Provisioned Service.</a>
@@ -163,7 +163,7 @@ Follow the steps below to configure the AZs and networks:
 1. Click **Save**.
 
 <p class="note">
-  <strong>Note:</strong> BOSH randomly deploys single node on-demand service instances across
+  <span class="note__title">Note</span> BOSH randomly deploys single node on-demand service instances across
   configured AZs. This minimizes the impact of an AZ outage and removes single points of failure.
 </p>
 
@@ -206,7 +206,7 @@ Follow the steps below to configure global settings:
           Select this checkbox to enable external log forwarding, send backup artifacts to external
           destinations, or communicate with an external BOSH blobstore.
           <p class="note">
-            <strong>Note:</strong> Outbound network traffic rules also depend on your IaaS settings.
+            <span class="note__title">Note</span> Outbound network traffic rules also depend on your IaaS settings.
             Consult your network or IaaS admin to ensure that your IaaS permits outbound traffic to
             the external networks you need.
           </p>
@@ -274,7 +274,7 @@ Follow the steps below to configure global settings:
         <td>For on-demand services instances, click <strong>Yes</strong> to secure credentials with
           CredHub.
           <p class="note">
-            <strong>Note:</strong> For this feature to work you must also enable it in
+            <span class="note__title">Note</span> For this feature to work you must also enable it in
             <%= vars.app_runtime_abbr %>.
             For instructions, see <a href="https://docs.pivotal.io/application-service/operating/secure-si-creds.html#pas-config">Step 1: Configure the <%= vars.app_runtime_abbr %> Tile</a>.
             After deploying the tile, notify developers that they must unbind and rebind existing
@@ -403,7 +403,7 @@ before configuring the tile and applying changes.
             <%= vars.product_short %> service instance through TLS.
           </p>
           <p class="note">
-            <strong>Note:</strong> When TLS is subsequently set to <strong>Not Configured</strong>, existing
+            <span class="note__title">Note</span> When TLS is subsequently set to <strong>Not Configured</strong>, existing
             service instances continue to use TLS. However, new instances are not configured with TLS.
           </p>
         </td>
@@ -423,7 +423,7 @@ before configuring the tile and applying changes.
             <a href="./secure-inter-node.html#migration">Migrate to a Secure Inter-node Cluster</a>.
           </p>
           <p class="note">
-            <strong>Note:</strong> Inter-node communication is independent of communication
+            <span class="note__title">Note</span> Inter-node communication is independent of communication
             between your apps and RabbitMQ. You can secure inter-node traffic without modifying
             your apps to communicate over TLS.
           </p>
@@ -475,7 +475,7 @@ Plan 5**.
 <%= vars.product_short %> installation, but it is not available in the Marketplace.
 
 <p class="note">
-  <strong>Note:</strong> You must fully configure <strong>On Demand Instance: Plan 1</strong> even
+  <span class="note__title">Note</span> You must fully configure <strong>On Demand Instance: Plan 1</strong> even
   if you deactivate access to this plan. See <strong>CF Service Access</strong> in the table below.
 </p>
 
@@ -832,7 +832,7 @@ for a service instance and share the user credentials with app developers.
 Both operators and app developers can use this procedure.
 
 <p class="note">
-  <strong>Note:</strong> If OAuth is enabled, you log in to the RabbitMQ Management UI using your
+  <span class="note__title">Note</span> If OAuth is enabled, you log in to the RabbitMQ Management UI using your
   <%= vars.app_runtime_abbr %> credentials. For more information, see
   <a href="./managing.html#ui-with-oa">Access RabbitMQ Management UI with OAuth Enabled</a>.
 </p>

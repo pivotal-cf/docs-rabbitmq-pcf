@@ -11,7 +11,7 @@ For more information about getting started with RabbitMQ and ensuring production
 see the Production Checklist in the [RabbitMQ documentation](https://www.rabbitmq.com/production-checklist.html).
 
 <p class="note">
-  <strong>Note:</strong> <%= vars.note_pre_provisioned %>
+  <span class="note__title">Note</span> <%= vars.note_pre_provisioned %>
 </p>
 
 ## <a id="rbac"></a>Role-Based Access in <%= vars.ops_manager %>
@@ -114,13 +114,13 @@ You can use a combination of upper or lowercase alphanumerics and supported spec
 `-=_+":;/?.><,~`.
 
 <p class="note">
-  <strong>Note:</strong> You cannot use a back quote <code>`</code> or single quote <code>'</code>.
+  <span class="note__title">Note</span> You cannot use a back quote <code>`</code> or single quote <code>'</code>.
 </p>
 
 This grants you full admin access to the RabbitMQ Management UI.
 
 <p class="note">
-  <strong>Note:</strong> To rotate your admin credentials, enter a new username and password,
+  <span class="note__title">Note</span> To rotate your admin credentials, enter a new username and password,
   save your options, and redeploy by returning to the <%= vars.ops_manager %> Installation Dashboard
   and clicking <strong>Apply Changes</strong>.
 </p>
@@ -209,7 +209,7 @@ The list defaults to:
   * 15674 - WebSTOMP
 
     <p class="note">
-      <strong>Note:</strong> You do not need to expose port <code>15671</code> because the
+      <span class="note__title">Note</span> You do not need to expose port <code>15671</code> because the
       pre-provisioned offering does not support access to the Management UI over TLS.
     </p>
 
@@ -281,7 +281,7 @@ They are both enabled.") %>
 ### <a id="detailed-metrics"></a> Collect Additional RabbitMQ Metrics in Loggregator
 
 <p class="note">
-  <strong>Note:</strong> If you only use a Prometheus server to scrape your observed
+  <span class="note__title">Note</span> If you only use a Prometheus server to scrape your observed
   systems, you can skip this section.
 </p>
 
@@ -322,7 +322,7 @@ For example, `?family=queue_coarse_metrics&family=queue_consumer_count`.
 1. Click **Save**.
 
 <p class="note">
-  <strong>Note:</strong> To stop collecting additional metrics, clear the
+  <span class="note__title">Note</span> To stop collecting additional metrics, clear the
   <strong>Detailed metrics query for Loggregator</strong> text box, then <strong>Apply Changes</strong>
   in the <%= vars.ops_manager %> installation dashboard.
 </p>
@@ -436,7 +436,7 @@ To specify static IP addresses:
     This IP address is assigned to your Pre-Provisioned Service Broker node.
 
     <p class="note">
-      <strong>Note:</strong> If any of the above fields are left blank,
+      <span class="note__title">Note</span> If any of the above fields are left blank,
       BOSH allocates an IP address.
     </p>
 
@@ -783,7 +783,7 @@ The following is a template for configuring your <%= vars.app_runtime_abbr %> fi
 To allow this service to have network access, you must create
 [Application Security Groups](http://docs.pivotal.io/application-service/operating/app-sec-groups.html) (ASGs).
 
-<p class="note"><strong>Note:</strong> The service is unusable without Application Security Groups.</p>
+<p class="note"><span class="note__title">Note</span> The service is unusable without Application Security Groups.</p>
 
 ### Application Container Network Connections
 
