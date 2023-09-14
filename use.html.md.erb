@@ -142,7 +142,7 @@ For more information, see [Configure Security](./install-config.html#security).
 To configure TLS for your service instance:
 
 <p class="note">
-  <strong>Note:</strong> If you enable TLS for a service instance, you can no longer connect to it without using TLS.
+  <span class="note__title">Note</span> If you enable TLS for a service instance, you can no longer connect to it without using TLS.
 </p>
 
 1. Enable TLS by doing one of the following steps:
@@ -229,7 +229,7 @@ For more information, see [Configure Security](./install-config.html#security).
 ### <a id="tls-java-spring"></a> Activate TLS for Java and Spring Apps
 
 <p class="note">
-  <strong>Note:</strong> If your app is not written in Java or Spring, see <a href="./modify-apps-tls.html"> Modifying Apps for TLS</a>.
+  <span class="note__title">Note</span> If your app is not written in Java or Spring, see <a href="./modify-apps-tls.html"> Modifying Apps for TLS</a>.
 </p>
 
 
@@ -264,7 +264,7 @@ the `cf push` command.
         ```
 
 <p class="note">
-  <strong>Note:</strong> If the operator used a self-signed certificate,
+  <span class="note__title">Note</span> If the operator used a self-signed certificate,
   configure your app to use the same CA certificate and valid certificate and key.
 </p>
 
@@ -276,7 +276,7 @@ on-demand <%= vars.product_short %> instances, see
 [RabbitMQ Server Plugins](./install-config.html#server-plugins).
 
 <p class="note">
-  <strong>Note:</strong> If a plugin is disabled by default,
+  <span class="note__title">Note</span> If a plugin is disabled by default,
   the operator must enable the plugin for the platform before you can enable it on your service instances.
   For more information, see <a href="./install-config.html#optional-plugins">Enable Extra RabbitMQ Server Plugins</a>.
 </p>
@@ -327,7 +327,7 @@ as a configuration parameter in JSON:
 ## <a id="disable-plugins"></a> Disable Optional Plugins
 
 <p class="note">
-  <strong>Note:</strong> When creating a service instance, optional plugins are disabled by default.
+  <span class="note__title">Note</span> When creating a service instance, optional plugins are disabled by default.
 </p>
 
 To disable plugins for an existing service instance:
@@ -354,7 +354,7 @@ To disable plugins for an existing service instance:
 ## <a id="detailed-metrics"></a> Collect Additional RabbitMQ Metrics in Loggregator
 
 <p class="note">
-  <strong>Note:</strong> If you only use a Prometheus server to scrape your observed
+  <span class="note__title">Note</span> If you only use a Prometheus server to scrape your observed
   systems, you can skip these sections about configuring additional metrics.
 </p>
 
@@ -607,7 +607,7 @@ To unbind a service instance from your app:
 ## <a id="delete"></a>Delete a Service Instance
 
 <p class="note">
-  <strong>Note:</strong> You cannot delete a service instance that an app is bound to.
+  <span class="note__title">Note</span> You cannot delete a service instance that an app is bound to.
 </p>
 
 To delete a service instance:

@@ -65,7 +65,7 @@ To configure the load balancer:
     For example, if your TCP routing port range is `1024-1123`,
     then your load balancer port range for service gateway must not overlap `1024-1123`.
     <p class="note">
-      <strong>Note:</strong> Each <%= vars.product_short %> service instance using service-gateway
+      <span class="note__title">Note</span> Each <%= vars.product_short %> service instance using service-gateway
       access requires a unique port.
       Ensure that the port range configured above has enough capacity to accommodate all the service
       instances that you need. The start port and the end port are both inclusive.
@@ -116,14 +116,14 @@ To configure a service-gateway-enabled plan:
 
 1. Navigate to the service plan that you want to use and select the **Service-Gateway Access** checkbox.
     <p class="note">
-      <strong>Note:</strong> VMware recommends that you change the name or the description of the plan to
+      <span class="note__title">Note</span> VMware recommends that you change the name or the description of the plan to
       indicate that service-gateway access is enabled for that plan.
     </p>
 
     ![Screenshot of the service plan pane with the service-gateway access checkbox selected.](images/enable-service-gateway.png)
 
     <p class="note">
-      <strong>Note:</strong> If service-gateway access is disabled and then re-enabled, app developers must
+      <span class="note__title">Note</span> If service-gateway access is disabled and then re-enabled, app developers must
       create new service keys to obtain a new set of credentials for service-gateway access.
     </p>
 
@@ -135,7 +135,7 @@ To configure a service-gateway-enabled plan:
 ## <a id='disable-service-gateway-access'></a> Disable Service-Gateway Access
 
 <p class="note">
-  <strong>Note:</strong> If service-gateway access is disabled and then re-enabled, app developers must
+  <span class="note__title">Note</span> If service-gateway access is disabled and then re-enabled, app developers must
   create new service keys to obtain a new set of credentials for service-gateway access.
 </p>
 
@@ -144,7 +144,7 @@ To disable service-gateway access:
 1. Navigate to the service plan that you want to disable service-gateway access for
 and clear the **Service-Gateway Access** checkbox.
     <p class="note">
-      <strong>Note:</strong> VMware recommends that you change the name or the
+      <span class="note__title">Note</span> VMware recommends that you change the name or the
       description of the plan to indicate that service-gateway access is disabled for that plan.
     </p>
 
