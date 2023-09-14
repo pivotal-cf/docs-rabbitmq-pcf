@@ -8,7 +8,7 @@ service using the logs, metrics, and Key Performance Indicators (KPIs) generated
 <%= vars.product_short %> component VMs.
 
 <p class="note">
-  <strong>Note:</strong> As of <%= vars.product_short %> v2.0, <code>rabbitmq_prometheus</code>
+  <span class="note__title">Note</span> As of <%= vars.product_short %> v2.0, <code>rabbitmq_prometheus</code>
   plug-in now provides RabbitMQ Server metrics.
   Consequently, many metric names change after upgrading to <%= vars.product_short %> v2.0.
   Both on-demand and pre-provisioned <%= vars.product_short %> are affected.
@@ -30,7 +30,7 @@ instances of <%= vars.product_short %>, see the [Component Metrics Reference](#r
 later in this topic.
 
 <p class="note">
-  <strong>Note:</strong> As of <%= vars.product_short %> v2.0, the format of the metrics has changed.
+  <span class="note__title">Note</span> As of <%= vars.product_short %> v2.0, the format of the metrics has changed.
   For a list of the changes to metric names in <%= vars.product_short %> v2.0, see
   <a href="./migrate-2-0-metrics.html">Migrating Metrics from <%= vars.product_short %> v1.x to v2.0</a>.
 </p>
@@ -129,7 +129,7 @@ dns_sd_configs:
 ```
 
 <p class="note">
-  <strong>Note:</strong> If you are using TLS in the on-demand service offering,
+  <span class="note__title">Note</span> If you are using TLS in the on-demand service offering,
   your port will be <code>15691</code>.
 </p>
 
@@ -139,7 +139,7 @@ instances too.
 If Prometheus is deployed with the Healthwatch v2 tile, then the above configuration is automatically applied.
 
 <p class="note">
-  <strong>Note:</strong> By default, metrics are aggregated.
+  <span class="note__title">Note</span> By default, metrics are aggregated.
   This results in a lower performance overhead at the cost of lower data fidelity.
   For more information, see the
   <a href="https://www.rabbitmq.com/prometheus.html#metric-aggregation">RabbitMQ documentation</a>.
@@ -167,7 +167,7 @@ To collect metrics on a per-object scope, such as per-queue, do one of the follo
     ```
 
 <p class="note">
-  <strong>Note:</strong> Collecting per-object metrics on a system with many objects,
+  <span class="note__title">Note</span> Collecting per-object metrics on a system with many objects,
   such as queues or connections, is very slow.
   Ensure you understand the impact on your system and its load before enabling
   this on a production cluster.
@@ -264,7 +264,7 @@ means the service is not responding and you must investigate the issue.
 #### <a id="haproxy-heartbeat"></a> HAProxy Heartbeat
 
 <p class="note">
-  <strong>Note:</strong> The HAProxy is only used in the pre-provisioned service
+  <span class="note__title">Note</span> The HAProxy is only used in the pre-provisioned service
   offering, so HAProxy heartbeats are only present if this service offering is enabled.
 </p>
 
@@ -345,7 +345,7 @@ metrics. For more information, see [Component Heartbeats](#heartbeats) earlier i
         <strong>Use</strong>: If the number of file descriptors consumed becomes too large,
         the VM might lose the ability to perform disk I/O, which can cause data loss.
         <p class="note">
-          <strong>Note:</strong> nonpersistent messages are handled by retries or some other
+          <span class="note__title">Note</span> nonpersistent messages are handled by retries or some other
           logic by the producers.
         </p>
         <strong>Origin</strong>: Doppler/Firehose<br>
@@ -695,7 +695,7 @@ warnings, and informational messages.
 <%= vars.product_short %> component VMs emit the following raw metrics.
 
 <p class="note">
-  <strong>Note:</strong> As of <%= vars.product_short %> v2.0, the format of the metrics has changed.
+  <span class="note__title">Note</span> As of <%= vars.product_short %> v2.0, the format of the metrics has changed.
   For a list of the changes to metric names in <%= vars.product_short %> v2.0, see
   <a href="./migrate-2-0-metrics.html">Migrating Metrics from <%= vars.product_short %> v1.x to v2.0</a>.
 </p>
