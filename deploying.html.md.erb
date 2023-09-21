@@ -11,19 +11,17 @@ This topic gives you information about the different deployment configurations f
 
 Deploying <%= vars.product_full %> through <%= vars.ops_manager %> deploys a
 RabbitMQ cluster of **3 nodes** by default.
-The deployment includes a single load balancer `haproxy` which spreads connections
-on all of the default ports, for all of the shipped plugins across all of the machines within the cluster.
+The deployment includes a single load balancer `haproxy`, which spreads connections
+on all of the default ports for all of the shipped plug-ins across all of the machines within the cluster.
 The deployment occurs in a single availability zone (AZ).
 
 The default configuration is for testing purposes only and VMware recommends that
 customers have a minimum of **3 RabbitMQ nodes** and **2 HAProxy nodes**
 
-The diagram below shows the default <%= vars.product_short %> pre-provisioned deployment.
+The following diagram shows the default <%= vars.product_short %> pre-provisioned deployment.
 
 <%= image_tag("images/deployment_default.png",
-:alt => "The default pre-provisioned deployment shows
-Tanzu Application Service and an app within it. The app communnicates to the HAProxy, which communicates to three RabbitMQ nodes. The HAProxy and RabbitMQ nodes are within
-VMware Tanzu RabbitMQ, which is within availability zone 1.") %>
+:alt => "The default configuration with only one HAProxy node and three RabbitMQ nodes.") %>
 
 ### <a id="default-consider"></a>Considerations for the Default Deployment
 
@@ -43,7 +41,7 @@ Only use replication of queues where required as it can have a big impact on sys
 The HAProxy job instance count should also be increased to match the number of AZs to ensure there is a HAProxy located in each AZ.
 This removes the HAProxy SPOF and provides further redundancy.
 
-The diagram below shows the recommended <%= vars.product_short %> pre-provisioned deployment.
+The following diagram shows the recommended <%= vars.product_short %> pre-provisioned deployment.
 It shows that when you use this configuration, if a single HAProxy and single RabbitMQ node fail,
 your cluster can remain online and apps remain connected.
 
