@@ -7,6 +7,103 @@ This topic describes the changes in this minor release of <%= vars.product_full 
 
 <%= partial vars.path_to_partials + '/upgrade-planner' %>
 
+## <a id="2-1-13"></a> v2.1.13
+
+**Release Date**: November 13, 2023
+
+### Resolved Issues
+
+This release fixes the following issues:
+
+* Resolves [CVE-2023-46118](https://github.com/rabbitmq/rabbitmq-server/security/advisories/GHSA-w6cq-9cf4-gqpg)
+
+### Known Issues
+
+This release has the following known issues:
+
+<%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
+
+### Compatibility
+
+The following components are compatible with this release:
+
+<table class="nice"> <th>Component</th> <th>Version</th>
+ 	<tr>
+		<td><%= vars.app_runtime_full %></td>
+		<td>2.11.16 or later, 2.12.x, 2.13.x</td>
+	</tr>
+	<tr>
+		<td>Erlang</td>
+		<td>26.1.2 and 25.3.2.7</td>
+	</tr>
+	<tr>
+		<td>HAProxy</td>
+		<td>2.6.15</td>
+	</tr>
+	<tr>
+		<td>OSS RabbitMQ*</td>
+		<td>3.12.8, 3.11.25, and 3.10.25</td>
+	</tr>
+	<tr>
+		<td>Stemcell</td>
+		<td>621.x</td>
+	</tr>
+	<tr>
+		<td>bpm</td>
+		<td>1.2.9</td>
+	</tr>
+	<tr>
+		<td>cf-cli</td>
+		<td>1.50.0</td>
+	</tr>
+	<tr>
+		<td>cf-rabbitmq</td>
+		<td>562.0.0</td>
+	</tr>
+	<tr>
+		<td>cf-rabbitmq-multitenant-broker</td>
+		<td>171.0.0</td>
+	</tr>
+	<tr>
+		<td>cf-rabbitmq-smoke-tests</td>
+		<td>198.0.0</td>
+	</tr>
+	<tr>
+		<td>cf-service-gateway</td>
+		<td>129.0.0</td>
+	</tr>
+	<tr>
+		<td>count-cores-indicator</td>
+		<td>2.0.0</td>
+	</tr>
+	<tr>
+		<td>loggregator-agent</td>
+		<td>7.6.4</td>
+	</tr>
+	<tr>
+		<td>on-demand-service-broker</td>
+		<td>0.45.0</td>
+	</tr>
+	<tr>
+		<td>rabbitmq-metrics</td>
+		<td>129.0.0</td>
+	</tr>
+	<tr>
+		<td>rabbitmq-on-demand-adapter</td>
+		<td>279.0.0</td>
+	</tr>
+	<tr>
+		<td>routing</td>
+		<td>0.283.0</td>
+	</tr>
+	<tr>
+		<td>service-metrics</td>
+		<td>2.0.33</td>
+	</tr>
+</table>
+
+<sup>*</sup> For more information, see the <a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.12.8">v3.12.8</a>, <a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.11.25">v3.11.25</a>, and <a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.10.25">v3.10.25</a> GitHub documentation.
+
 ## <a id="2-1-12"></a> v2.1.12
 
 **Release date:** September 25, 2023
