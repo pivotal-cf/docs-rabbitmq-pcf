@@ -459,35 +459,42 @@ For developer instructions, see <a href="use.html#tls">Enable Transport Layer Se
 <%# (and <a href="modify-apps-tls.html">Modifying Apps for TLS</a>.) %>
 
 
-### <a id="service-plan"></a> Configure the Service Plan
+### <a id="service-plans"></a> Configure the Service Plans
 
 To enable the on-demand service, you must configure at least one on-demand plan.
 
-* You can configure up to five on-demand plans: **On Demand Instance: Plan 1 -- On Demand Instance:
-Plan 5**.
 * You can configure all on-demand plans to have 1, 3, 5, or 7 RabbitMQ nodes.
 * If the on-demand service is not enabled, the on-demand broker is deployed alongside the
 <%= vars.product_short %> installation, but it is not available in the Marketplace.
 
 <p class="note">
-  <span class="note__title">Note</span> You must fully configure <strong>On Demand Instance: Plan 1</strong> even
+  <span class="note__title">Note</span> You must fully configure at least one service plan even
   if you deactivate access to this plan. See <strong>CF Service Access</strong> in the table below.
 </p>
 
 To configure an on-demand service plan:
 
-1. Choose the on-demand service instance you want to configure.
-You must complete the required fields for **On Demand Instance: Plan 1** even if you deactivate this
-plan.
+1. In the <%= vars.product_short %> tile, select On-Demand Plans.
+    ![Screenshot of the On-Demand Instance Plans configuration tab.](images/on-demand-plans-config.png)
 
-    ![Screenshot of the Plan 1 Configuration tab.
-      The fields are described in the table in the next step.](images/plan-1-configuration.png)
+2. Choose the on-demand service plan you want to configure or click the **Add** button to add an on-demand plan. If no plans are present, click the **Add** buton to add on-demand plan. You must complete the required fields for at least one on-demand plan even if you deactivate this plan.
 
-2. Configure the fields as follows:
+    ![Screenshot of the configuration for a plan.
+      The fields are described in the table in the next step.](images/plan-config.png)
+
+3. Configure the fields for each plan as follows:
     <table>
       <tr><th>Field</th><th>Instructions</th></tr>
-      <tr><td><strong>Enable This Plan</strong></td>
-          <td>For Plans 2 - 5, activate the plan by selecting <strong>Plan Enable</strong>.</td></tr>
+      <tr><td><strong>Plan Name</strong></td>
+          <td>Accept the default or enter a name. This is the name that appears in the Marketplace.</td></tr>
+      <tr><td><strong>Plan Description</strong></td>
+          <td>Accept the default or enter a description. This description appears in the Marketplace.</td></tr>
+      <tr><td><strong>Plan ID</strong></td>
+          <td>An ID that you configure when recovering deleted plans. Leave this field blank unless it is already configured or you are recovering a deleted plan.</td></tr>
+      <tr><td><strong>RabbitMQ Version</strong></td>
+          <td>Select RabbitMQ version <code>3.11</code> or <code>3.12</code>.</td></tr>
+      <tr><td><strong>Erlang Major Version</strong></td>
+          <td>Choose the Erlang major version <code>25</code> or <code>26</code>.</td></tr>
       <tr><td><strong>CF Service Access</strong></td>
       <td>Activate or deactivate access to this plan, or leave access unchanged.<br><br>
           If you enable Plan 1, the default setting for Plans 2 - 5 is
@@ -503,12 +510,6 @@ plan.
           <li><strong>Leave Service Access Unchanged</strong>---Keeps any existing access settings, and only displays the service plan in the Marketplace to members of orgs that have access to the plan. You can change the access settings later using the cf CLI. For instructions, see <a href="./control-access.html">Controlling Access to Service Plans by Org</a>.
           </li>
         </ul></td></tr>
-      <tr><td><strong>Plan Name</strong></td>
-          <td>Accept the default or enter a name. This is the name that appears in the Marketplace.</td></tr>
-      <tr><td><strong>RabbitMQ Version</strong></td>
-          <td><strong>Available in <%= vars.product_short %> v2.0.7 and later.</strong> Select RabbitMQ version <code>3.9</code> or <code>3.10</code>.</td></tr>
-      <tr><td><strong>Plan Description</strong></td>
-          <td>Accept the default or enter a description. This description appears in the Marketplace.</td></tr>
       <tr>
         <td><strong>Paid Plan</strong></td>
         <td>Select this checkbox to indicate that this service plan is paid.
@@ -553,10 +554,8 @@ plan.
         <td>This field is available after you complete the Assign AZs and Networks page.
           For more information, see <a href="#azs-networks">Assign AZs and Networks</a> above.
           <ul>
-            <li>For a single-node plan, select one or more AZs.</li>
-            <li>For a plan containing multiple nodes, select only one AZ.
-              VMware recommends this for multi-node plans to minimize risks due
-              to network latency and partitions.
+            <li>Select one or more AZs.</li>
+            <li>For a plan containing multiple nodes, VMware recommends selecting multiple AZs to increase resiliency unless there is high network latency between the AZs. If there is high network latency between AZs, select only one AZ. VMware recommends this for multi-node plans to minimize risks due to network latency and partitions.
               See <a href="./ondemand.html#latency">Network Latency</a> and
               <a href="./ondemand.html#tradeoff">Consistency or Availability Tradeoff</a> for details.
               <br>
@@ -584,7 +583,7 @@ plan.
       For more information, see <a href="./expert-override-config.html">Expert mode: Overriding RabbitMQ Server configuration</a>.</td></tr>
       <tr>
         <td><strong>List of VM Extensions</strong></td>
-        <td>Click <strong>Add</strong> to enter names of VM extensions to apply to service instances
+        <td>A comma-separated list of names of VM extensions to apply to service instances
         created under this plan.
           These are applied in addition to any global VM extensions that are configured under the
           <a href="#global">Global Settings section</a>.
@@ -596,13 +595,44 @@ plan.
           <a href="https://github.com/pivotal-cf/om/blob/main/docs/create-vm-extension/README.md">
             om create-vm-extension</a> in GitHub.<br><br>
           You can use this to deactivate IaaS-specific behavior.
-          For example, you can use a VM extension to deactivate vMotion in a vSphere infrastructure.<br><br>
-          To remove a VM extension, click the trash can icon.
+          For example, you can use a VM extension to deactivate vMotion in a vSphere infrastructure.
         </td>
       </tr>
     </table>
 
-3. Click **Save**.
+4. Click **Save**.
+
+
+#### <a id="remove-plan"></a> Remove an On-Demand Service Plan
+
+<p class="note caution">
+  <span class="note__title">Caution</span> Do not remove an on-demand service plan with service instances deployed. Doing so causes **Apply Changes** to fail. For how to recover a deleted plan, see Recover a deleted <%= vars.product_short %> On-Demand Plan in the VMware Tanzu Support knowledge base.
+</p>
+
+To remove an on-demand service plan from your tile:
+
+  1. Ensure there are no deployed service instances of the plan by running:
+    ```
+    cf services
+    ```
+
+    For example:
+
+    <pre class="terminal">
+      $ cf services
+      Getting services in org my-org / space my-space as user@example.com...
+      OK
+      name          service     plan              bound apps    last operation
+      my-instance   p.rabbitmq  on-demand-plan                  create succeeded
+    </pre>
+
+  2. In the <%= vars.product_short %>, select **On-Demand Plan Settings**.
+
+  3. Delete the plan by clicking the trash can icon next to the plan name.
+
+  4. Click **Save**.
+
+  5. Navigate to the **Errands** page on the <%= vars.product_short %> tile, and set the **Register On-Demand Broker** errand to **on**. This updates the plans available in the Marketplace.
 
 
 #### <a id="determineaz"></a> Determine Which AZs a Service Instance Uses
