@@ -459,7 +459,7 @@ For developer instructions, see <a href="use.html#tls">Enable Transport Layer Se
 <%# (and <a href="modify-apps-tls.html">Modifying Apps for TLS</a>.) %>
 
 
-### <a id="service-plans"></a> Configure the Service Plans
+### <a id="service-plans"></a> Configure the service plans
 
 To enable the on-demand service, you must configure at least one on-demand plan.
 
@@ -474,10 +474,10 @@ To enable the on-demand service, you must configure at least one on-demand plan.
 
 To configure an on-demand service plan:
 
-1. In the <%= vars.product_short %> tile, select On-Demand Plans.
+1. In the <%= vars.product_short %> tile, select **On-Demand Instance Plans**.
     ![Screenshot of the On-Demand Instance Plans configuration tab.](images/on-demand-plans-config.png)
 
-2. Choose the on-demand service plan you want to configure or click the **Add** button to add an on-demand plan. If no plans are present, click the **Add** buton to add on-demand plan. You must complete the required fields for at least one on-demand plan even if you deactivate this plan.
+2. Choose the on-demand service plan you want to configure or click **Add** to add an on-demand plan. If no plans are present, click **Add** to add an on-demand plan. You must complete the required fields for at least one on-demand plan even if you deactivate this plan.
 
     ![Screenshot of the configuration for a plan.
       The fields are described in the table in the next step.](images/plan-config.png)
@@ -501,11 +501,11 @@ To configure an on-demand service plan:
           <strong>Enable Service Access</strong>.
           If you change this default setting, the smoke tests fail.
           Therefore, if you activate Plan 1 and want to change this default, before doing so, set the <strong>On-Demand Instance Smoke Tests</strong> errand to <strong>Off</strong>.
-          For more information, see <a href="#errands">Errands</a> below.<br>
+          For more information, see the following <a href="#errands">Errands</a> section.<br>
         <br><ul>
-          <li><strong>Enable Service Access</strong>---Gives access to all orgs, and displays the service plan to all developers in the Marketplace.
+          <li><strong>Enable Service Access</strong>---Gives access to all orgs and displays the service plan to all developers in the Marketplace.
           </li>
-          <li><strong>Disable Service Access</strong>---Deactivates access to all orgs, and hides the service plan to all developers in the Marketplace. This setting cannot be selected at a later time in the UI.
+          <li><strong>Disable Service Access</strong>---Deactivates access to all orgs and hides the service plan from all developers in the Marketplace. This setting cannot be selected at a later time in the UI.
           </li>
           <li><strong>Leave Service Access Unchanged</strong>---Keeps any existing access settings, and only displays the service plan in the Marketplace to members of orgs that have access to the plan. You can change the access settings later using the cf CLI. For instructions, see <a href="./control-access.html">Controlling Access to Service Plans by Org</a>.
           </li>
