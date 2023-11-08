@@ -467,10 +467,10 @@ To enable the on-demand service, you must configure at least one on-demand plan.
 * If the on-demand service is not enabled, the on-demand broker is deployed alongside the
 <%= vars.product_short %> installation, but it is not available in the Marketplace.
 
-<p class="note">
-  <span class="note__title">Note</span> You must fully configure at least one service plan even
-  if you deactivate access to this plan. See <strong>CF Service Access</strong> in the table below.
-</p>
+    <p class="note">
+      <span class="note__title">Note</span> You must fully configure at least one service plan even
+      if you deactivate access to this plan. See <strong>CF Service Access</strong> in the table below.
+    </p>
 
 To configure an on-demand service plan:
 
@@ -555,7 +555,7 @@ To configure an on-demand service plan:
           For more information, see <a href="#azs-networks">Assign AZs and Networks</a> above.
           <ul>
             <li>Select one or more AZs.</li>
-            <li>For a plan containing multiple nodes, VMware recommends selecting multiple AZs to increase resiliency unless there is high network latency between the AZs. If there is high network latency between AZs, select only one AZ. VMware recommends this for multi-node plans to minimize risks due to network latency and partitions.
+            <li>For a plan containing multiple nodes, VMware recommends selecting multiple AZs to increase resiliency unless there is high network latency between the AZs. If there is high network latency between AZs, select only one AZ. VMware recommends this for multinode plans to minimize risks due to network latency and partitions.
               See <a href="./ondemand.html#latency">Network Latency</a> and
               <a href="./ondemand.html#tradeoff">Consistency or Availability Tradeoff</a> for details.
               <br>
@@ -603,15 +603,15 @@ To configure an on-demand service plan:
 4. Click **Save**.
 
 
-#### <a id="remove-plan"></a> Remove an On-Demand Service Plan
+#### <a id="remove-plan"></a> Remove an on-demand service plan
 
-<p class="note caution">
-  <span class="note__title">Caution</span> Do not remove an on-demand service plan with service instances deployed. Doing so causes **Apply Changes** to fail. For how to recover a deleted plan, see Recover a deleted <%= vars.product_short %> On-Demand Plan in the VMware Tanzu Support knowledge base.
-</p>
+
+>**Caution** Do not remove an on-demand service plan with service instances deployed. Doing so causes **Apply Changes** to fail. For how to recover a deleted plan, see Recover a deleted <%= vars.product_short %> On-Demand Plan in the VMware Tanzu Support knowledge base.
 
 To remove an on-demand service plan from your tile:
 
   1. Ensure there are no deployed service instances of the plan by running:
+  
     ```
     cf services
     ```
@@ -630,9 +630,9 @@ To remove an on-demand service plan from your tile:
 
   3. Delete the plan by clicking the trash can icon next to the plan name.
 
-  4. Click **Save**.
+  3. Click **Save**.
 
-  5. Navigate to the **Errands** page on the <%= vars.product_short %> tile, and set the **Register On-Demand Broker** errand to **on**. This updates the plans available in the Marketplace.
+  4. Navigate to the **Errands** page on the <%= vars.product_short %> tile, and set the **Register On-Demand Broker** errand to **on**. This updates the plans available in the Marketplace.
 
 
 #### <a id="determineaz"></a> Determine Which AZs a Service Instance Uses
