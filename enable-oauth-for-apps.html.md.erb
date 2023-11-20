@@ -19,9 +19,11 @@ For an example of a Spring app that uses the OAuth client flow, see
 
 To connect apps to RabbitMQ using OAuth, you must:
 
-1. [Create UAA Groups for a Space](#create-uaa-groups)
-1. [Assign an Identity to the App](#assign-identity)
-1. [Grant Authorities to the App](#grant-authorities)
+- [ Overview](#-overview)
+- [ Prerequisites](#-prerequisites)
+- [ Create UAA Groups for a Space](#-create-uaa-groups-for-a-space)
+- [ Assign an Identity to the App](#-assign-an-identity-to-the-app)
+- [ Grant Authorities to the App](#-grant-authorities-to-the-app)
 
 
 ## <a id='prerequisites'></a> Prerequisites
@@ -30,7 +32,7 @@ Before you enable OAuth for apps, you must:
 
 * Install the Single Sign-On tile.
 For more information,
-[Installing Single Sign-On for VMware Tanzu](https://docs.pivotal.io/p-identity/installation.html).
+[Installing Single Sign-On for VMware Tanzu](https://docs.vmware.com/en/Single-Sign-On-for-VMware-Tanzu-Application-Service/1.14/sso/GUID-installation.html).
 
 * Enable the UAA/System plan for any orgs that will contain apps needing to access RabbitMQ service
 instances. You can do this using the Single Sign-On tile dashboard or by running the following
@@ -43,7 +45,7 @@ cf CLI command:
 
 * Install the UAA CLI.
 For more information, see
-[Install UAAC](https://docs.pivotal.io/p-identity/configure-internal-us.html#install-uaac).
+[Install UAAC](https://docs.vmware.com/en/Single-Sign-On-for-VMware-Tanzu-Application-Service/1.14/sso/GUID-configure-internal-us.html#install-uaac).
 
 
 ## <a id='create-uaa-groups'></a> Create UAA Groups for a Space
