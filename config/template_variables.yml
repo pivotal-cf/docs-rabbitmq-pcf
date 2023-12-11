@@ -29,6 +29,7 @@ template_variables:
 
   # Current _TAS_ major version -- used by a partial
   current_major_version: "4.0"
+  dot_major_tas_version: "4.0"
 
   # Tanzu variables
 
