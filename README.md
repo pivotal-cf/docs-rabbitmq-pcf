@@ -4,16 +4,20 @@ This repo contains the VMware RabbitMQ for Tanzu Application Service documentati
 
 In this README:
 
-- [Branches in this Content Repo](#branches-in-this-content-repo)
-- [Releasing a New Minor Version](#releasing-a-new-minor-version)
-- [Partials](#partials)
-- [Contributing to Documentation](#contributing-to-documentation)
-- [Publishing Docs](#publishing-docs)
-- [Troubleshooting Markdown](#troubleshooting-markdown)
-- [Style Guide](#style-guide)
+- [VMware RabbitMQ for Tanzu Application Service docs](#vmware-rabbitmq-for-tanzu-application-service-docs)
+  - [Branches](#branches)
+  - [Releasing a new minor version](#releasing-a-new-minor-version)
+  - [Partials](#partials)
+  - [Contributing to documentation](#contributing-to-documentation)
+  - [Publishing docs](#publishing-docs)
+    - [Prepare Markdown files](#prepare-markdown-files)
+    - [In Docsdash](#in-docsdash)
+    - [Promoting to pre-prod and prod](#promoting-to-pre-prod-and-prod)
+  - [Troubleshooting Markdown](#troubleshooting-markdown)
+  - [Style guide](#style-guide)
 
 
-## Branches in this Content Repo
+## Branches
 
 The main branch is the tree-trunk, so ALWAYS make changes you want carried forward in this branch. This includes:
 
@@ -23,11 +27,11 @@ The main branch is the tree-trunk, so ALWAYS make changes you want carried forwa
 
 Then, if necessary, immediately cherry-pick/copy any changes that you want to push immediately to production into the appropriate branches listed below:
 
-| Branch Name | Use for… |
-|-------------| ---------|
-| main      | "edge" branch for v2.x, staged here: https://docs-staging.vmware.com/en/draft/VMware-RabbitMQ-for-Tanzu-Application-Service/2.3/tanzu-rmq/GUID-index.html |
-| 2.2        | v2.2 (https://docs.vmware.com/en/VMware-RabbitMQ-for-Tanzu-Application-Service/2.2/tanzu-rmq/GUID-index.html)   |
-| 2.1        | v2.1 (https://docs.vmware.com/en/VMware-RabbitMQ-for-Tanzu-Application-Service/2.1/tanzu-rmq/GUID-index.html)   |
+| Branch Name | Staging | Prod  |
+|-------------| ---------|------|
+| main      | [Stage](https://docs-staging.vmware.com/en/draft/VMware-RabbitMQ-for-Tanzu-Application-Service/2.3/tanzu-rmq/GUID-index.html) | N/A |
+| 2.2  | [v2.2](https://docs-staging.vmware.com/en/VMware-RabbitMQ-for-Tanzu-Application-Service/2.2/tanzu-rmq/GUID-index.html)      | [v2.2](https://docs.vmware.com/en/VMware-RabbitMQ-for-Tanzu-Application-Service/2.2/tanzu-rmq/GUID-index.html)   |
+| 2.1  | [v2.1](https://docs-staging.vmware.com/en/VMware-RabbitMQ-for-Tanzu-Application-Service/2.1/tanzu-rmq/GUID-index.html)      | [v2.1](https://docs.vmware.com/en/VMware-RabbitMQ-for-Tanzu-Application-Service/2.1/tanzu-rmq/GUID-index.html)   |
 | 2.0        | NOT IN USE (PDF is here: https://docs.vmware.com/en/VMware-RabbitMQ-for-Tanzu-Application-Service/2.0/rabbitmq-for-tas-2-0.pdf)  |
 | 1.21       | NOT IN USE (PDF is here: https://docs.vmware.com/en/VMware-RabbitMQ-for-Tanzu-Application-Service/1.21/rabbitmq-for-tas-1-21.pdf) |
 | 1.20       | NOT IN USE (PDF is here: https://docs.vmware.com/en/VMware-RabbitMQ-for-Tanzu-Application-Service/1.20/rabbitmq-for-tas-1-20.pdf) |
@@ -47,7 +51,7 @@ Then, if necessary, immediately cherry-pick/copy any changes that you want to pu
 | 1.6-live   | NOT IN USE (PDF is here: https://docs.pivotal.io/archives/rabbitmq-pcf-1.6.pdf)|
 | 1.5-live   | NOT IN USE (PDF is here: https://docs.pivotal.io/archives/rabbitmq-pcf-1.5.pdf)|
 
-## Releasing a New Minor Version
+## Releasing a new minor version
 
 Because **main** is the latest and greatest documentation, the process would be to cut a **x.x** branch
 for the version that **main** was targeting during that time.
@@ -58,7 +62,7 @@ After this point, **main** will then be the target for the next version of this 
 
 Cross-product partials for these docs are single sourced from the [Docs Partials](https://github.com/pivotal-cf/docs-partials) repository.
 
-## Contributing to Documentation
+## Contributing to documentation
 
 If there is some documentation to add for an unreleased patch version of these docs, then create a branch off of the **live** branch
 you intend to modify and create a pull request against that branch.
@@ -76,14 +80,14 @@ pull request using a fork, see
 [Creating a PR](https://docs-wiki.sc2-04-pcf1-apps.oc.vmware.com/wiki/external/create-pr.html)
 in the documentation team wiki.
 
-## Publishing Docs
+## Publishing docs
 
 - [docworks](https://docworks.vmware.com/) is the main tool for managing docs used by writers.
 - [docsdash](https://docsdash.vmware.com/) is a deployment UI which manages the promotion from
 staging to pre-prod to production. The process below describes how to upload our docs to staging,
 replacing the publication with the same version.
 
-### Prepare Markdown Files
+### Prepare Markdown files
 
 - Markdown files live in this repo.
 - Images should live in an `images` directory at the same level and linked with a relative link.
@@ -97,7 +101,7 @@ replacing the publication with the same version.
 
    There should be an entry with a blue link which says `Documentation` and points to staging.
 
-### Promoting to Pre-Prod and Prod
+### Promoting to pre-prod and prod
 
 **Prerequisite** Needs additional privileges - reach out to a manager on the docs team [#tanzu-docs](https://vmware.slack.com/archives/C055V2M0H) or ask a writer to do this step for you.
 
@@ -138,7 +142,7 @@ replacing the publication with the same version.
 | Symptom:| VMware publishing system doesn't accept code tags after the three back ticks.|
 | Solution: | Make sure you're not using `shell` or `bash` or `console` or `yaml` after back ticks.|
 
-## Style Guide
+## Style guide
 
 Use this section to specify spelling of special words for VMware RabbitMQ for Tanzu Application Service:
 
