@@ -29,6 +29,7 @@ template_variables:
   current_major_version: "2.13"
   v_major_version: "v2.13"
   dot_major_version: "2.13"
+  dot_major_tas_version: "2.13"
 
   # Tanzu variables
 
