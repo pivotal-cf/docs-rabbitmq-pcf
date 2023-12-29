@@ -28,7 +28,7 @@ Therefore, your role permissions might not permit you to follow every procedure 
 guide.
 
 For more information about roles in <%= vars.ops_manager %>, see
-<a href="https://docs.pivotal.io/ops-manager/opsguide/config-rbac.html#about">
+<a href="https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/opsguide-config-rbac.html#about">
   Understand Roles in <%= vars.ops_manager %></a>.
 
 
@@ -259,7 +259,7 @@ Follow the steps below to configure global settings:
           Click <strong>Yes</strong> to enable the feature for sharing instances.<br>
           Sharing a service instance between spaces enables apps in different spaces to share
           databases and messaging queues. For more information, see
-          <a href="https://docs.pivotal.io/application-service/devguide/services/sharing-instances.html">
+          <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/services-sharing-instances.html">
           Sharing Service Instances</a>.
         </td>
       </tr>
@@ -272,7 +272,7 @@ Follow the steps below to configure global settings:
           <p class="note">
             <span class="note__title">Note</span> For this feature to work you must also enable it in
             <%= vars.app_runtime_abbr %>.
-            For instructions, see <a href="https://docs.pivotal.io/application-service/operating/secure-si-creds.html#pas-config">Step 1: Configure the <%= vars.app_runtime_abbr %> Tile</a>.
+            For instructions, see <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/secure-si-creds.html#pas-config">Step 1: Configure the <%= vars.app_runtime_abbr %> Tile</a>.
             After deploying the tile, notify developers that they must unbind and rebind existing
             service instances to secure their credentials with CredHub.
           </p>
@@ -328,7 +328,7 @@ Follow the steps below to configure global settings:
           <br><br>
           You can manage custom VM Extensions in <%= vars.ops_manager %> or through the OM CLI.
           For more information, see
-          <a href="https://docs.pivotal.io/ops-manager/install/custom-vm-extensions.html#create-vm-extension">
+          <a href="https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/install-custom-vm-extensions.html#create-vm-extension">
             Create or Update a VM Extension</a> or
           <a href="https://github.com/pivotal-cf/om/blob/main/docs/create-vm-extension/README.md">
             om create-vm-extension</a> in GitHub.
@@ -448,7 +448,7 @@ before configuring the tile and applying changes.
 
 1. Click <strong>Review Pending Changes</strong>. For more information about this
 <%= vars.ops_manager %> page, see
-<a href="https://docs.pivotal.io/ops-manager/install/review-pending-changes.html">Reviewing Pending Product Changes</a>.
+<a href="https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/install-review-pending-changes.html">Reviewing Pending Product Changes</a>.
 
 1. In the <%= vars.ops_manager %> Installation Dashboard, ensure the
 <strong>Upgrade All Service Instances</strong> errand is set to <strong>On</strong>,
@@ -590,7 +590,7 @@ To configure an on-demand service plan:
           <br><br>
           You can manage custom VM Extensions in <%= vars.ops_manager %> or through the OM CLI.
           For more information, see
-          <a href="https://docs.pivotal.io/ops-manager/install/custom-vm-extensions.html#create-vm-extension">
+          <a href="https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/install-custom-vm-extensions.html#create-vm-extension">
             Create or Update a VM Extension</a> or
           <a href="https://github.com/pivotal-cf/om/blob/main/docs/create-vm-extension/README.md">
             om create-vm-extension</a> in GitHub.<br><br>
@@ -732,7 +732,7 @@ For information about all preconfigured settings, see
 ### <a id="stemcell"></a> Verify the Stemcell
 
 To verify that you have the correct stemcell, follow the procedure in
-[Importing and Managing Stemcells](https://docs.pivotal.io/ops-manager/opsguide/managing-stemcells.html).
+[Importing and Managing Stemcells](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/opsguide-managing-stemcells.html).
 
 
 ### <a id="apply-changes"></a> Apply Changes from Your Configuration
@@ -743,7 +743,7 @@ Your installation is not complete until you apply your configuration changes. To
 
 1. Click **Review Pending Changes**.
 For more information about this <%= vars.ops_manager %> page,
-see [Reviewing Pending Product Changes](https://docs.pivotal.io/ops-manager/install/review-pending-changes.html).
+see [Reviewing Pending Product Changes](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/install-review-pending-changes.html).
 
 1. Click **Apply Changes** to complete the installation of <%= vars.product_short %>.
 
@@ -780,12 +780,12 @@ You can change these defaults by clicking **Errands** in the <%= vars.product_sh
 **Settings** tab as well as the defaults for [pre-delete](#pre-delete-errands) errands.
 
 For more information, see
-[Errand Run Rules](https://docs.pivotal.io/ops-manager/install/managing_errands.html#rules).
+[Errand Run Rules](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/install-managing_errands.html#rules).
 
 <%= vars.product_short %> errands are co-located with their brokers to decrease errand run time and
 VM footprint.
 In earlier releases, a new VM was deployed for each errand.
-For more information about errands, see [Errands](http://docs.pivotal.io/tiledev/tile-errands.html).
+For more information about errands, see [Errands](https://docs.vmware.com/en/Tile-Developer-Guide/2.10/tile-dev-guide/tile-errands.html).
 
 ### <a id='post-deploy-errands'></a> Post-Deploy Errands
 
