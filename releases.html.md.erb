@@ -11,6 +11,104 @@ This topic describes the changes in this minor release of <%= vars.product_full 
 
 <%= partial vars.path_to_partials + '/upgrade-planner' %>
 
+## <a id="2-3-1"></a> v2.3.1
+
+**Release Date**: January 11, 2024
+
+### Resolved Issues
+
+This release fixes the following issues:
+
+- Service Gateway attempts to use HTTP to connect to the Routing HTTPS endpoint.
+
+### Known Issues
+
+This release has the following known issues:
+
+<%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
+
+### Compatibility
+
+The following components are compatible with this release:
+
+<table class="nice"> <th>Component</th> <th>Version</th>
+  <tr>
+		<td><%= vars.app_runtime_full %></td>
+		<td>3.0.x, 4.0.x, 5.0.x</td>
+	</tr>
+	<tr>
+		<td>Erlang</td>
+		<td>26.2.1, 25.3.2.8</td>
+	</tr>
+	<tr>
+		<td>HAProxy</td>
+		<td>2.6.16</td>
+	</tr>
+	<tr>
+		<td>OSS RabbitMQ*</td>
+		<td>3.12.12, 3.11.28</td>
+	</tr>
+	<tr>
+		<td>Stemcell</td>
+		<td>1.x</td>
+	</tr>
+	<tr>
+		<td>bpm</td>
+		<td>1.2.12</td>
+	</tr>
+	<tr>
+		<td>cf-cli</td>
+		<td>1.59.0</td>
+	</tr>
+	<tr>
+		<td>cf-rabbitmq</td>
+		<td>576.0.0</td>
+	</tr>
+	<tr>
+		<td>cf-rabbitmq-multitenant-broker</td>
+		<td>180.0.0</td>
+	</tr>
+	<tr>
+		<td>cf-rabbitmq-smoke-tests</td>
+		<td>206.0.0</td>
+	</tr>
+	<tr>
+		<td>cf-service-gateway</td>
+		<td>138.0.0</td>
+	</tr>
+	<tr>
+		<td>count-cores-indicator</td>
+		<td>2.0.0</td>
+	</tr>
+	<tr>
+		<td>loggregator-agent</td>
+		<td>7.7.3</td>
+	</tr>
+	<tr>
+		<td>on-demand-service-broker</td>
+		<td>0.45.2</td>
+	</tr>
+	<tr>
+		<td>rabbitmq-metrics</td>
+		<td>137.0.0</td>
+	</tr>
+	<tr>
+		<td>rabbitmq-on-demand-adapter</td>
+		<td>294.0.0</td>
+	</tr>
+	<tr>
+		<td>routing</td>
+		<td>0.285.0</td>
+	</tr>
+	<tr>
+		<td>service-metrics</td>
+		<td>2.0.34</td>
+	</tr>
+</table>
+
+<sup>*</sup> For more information, see the <a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.12.10">v3.12.12</a> and <a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.11.26">v3.11.28</a> GitHub documentation.
+
+
 ## <a id="2-3-0"></a> v2.3.0
 
 **Release Date**: December 18, 2023
