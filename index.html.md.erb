@@ -26,16 +26,16 @@ This table summarizes the main differences between the two:
   <col style="width:28%">
   <col style="width:29%">
    <th></th>
-   <th>VMs it Runs On</th>
-   <th>How VMs are Created</th>
-   <th>Metrics Name Prefix</th>
+   <th>VMs it runs on</th>
+   <th>How VMs are created</th>
+   <th>Metrics name prefix</th>
    </tr><tr>
-   <th>On-Demand Service</th>
+   <th>On-demand service</th>
    <td>Dedicated VM that serves a single service instance. For more information, see <a href="./ondemand.html">Unlocking the Power of On-Demand <%= vars.product_short %></a>.</td>
    <td>The BOSH Director creates each VM on-demand when an app developer creates a service instance.</td>
    <td><code>p.rabbitmq</code> (with a dot)</td>
    </tr><tr>
-   <th>Pre-Provisioned Service</th>
+   <th>Pre-provisioned service</th>
    <td>Multi-tenant VMs shared by apps across your deployment</td>
    <td>The BOSH Director creates all VMs when operator deploys or updates service</td>
    <td><code>p-rabbitmq</code> (with a dash)</td>
@@ -48,7 +48,7 @@ This table summarizes the main differences between the two:
   separate VM for each service instance.
 </p>
 
-### <a id="dedicated"></a> Overview of On-Demand Instances
+### <a id="dedicated"></a> Overview of on-demand instances
 
 In <%= vars.product_short %> versions before v1.8.0, the <%= vars.product_short %> service instances
 correspond to a unique RabbitMQ virtual host on the multi-tenant RabbitMQ cluster.
@@ -68,7 +68,7 @@ Emerging as the de facto standard for cloud messaging, RabbitMQ is used for effi
 between servers, apps, and devices, and creates lasting value by enabling rapid development of modern
 decentralized app and data architectures that can scale with your business needs.
 
-## <a id='snapshot'></a> Product Snapshot
+## <a id='snapshot'></a> Product snapshot
 
 The following table provides version and version-support information about <%= vars.product_short %>.
 
@@ -77,15 +77,15 @@ The following table provides version and version-support information about <%= v
     <th>Details</th>
     <tr>
         <td>Version</td>
-        <td>2.3.0</td>
+        <td>2.3.1</td>
     </tr>
     <tr>
         <td>Release date</td>
-        <td>December 18, 2023</td>
+        <td>January 11, 2024</td>
     </tr>
     <tr>
         <td>Software component version</td>
-        <td>RabbitMQ OSS v3.12.10 and v3.11.26</td>
+        <td>RabbitMQ OSS v3.12.12 and v3.11.28</td>
     </tr>
     <tr>
         <td>Compatible <%= vars.ops_manager %> versions</td>
@@ -145,13 +145,13 @@ For more information, see [Unlocking the Power of On-Demand <%= vars.product_ful
 - Syslog forwarding on by default
 - Errands are run on co-located VMs to decrease deployment times
 
-## <a id='known-issues'></a>Release Notes and Known Issues
+## <a id='known-issues'></a>Release notes and known issues
 
 See the [release notes](releases.html.md.erb) for your release version for important information and known
 issues.
 To see release notes for another version, select the version from the dropdown at the top of the page.
 
-## <a id="other-services"></a> <%= vars.product_short %> and Other On-Demand Services
+## <a id="other-services"></a> <%= vars.product_short %> and other on-demand services
 
 <%# The below partial is in https://github.com/pivotal-cf/docs-partials %>
 
