@@ -36,10 +36,13 @@ To configure OAuth for an on-demand offering:
 
 To configure UAA groups:
 
-1. [Get Admin User Credentials for UAA](#uaa-admin-user)
-1. [Install and Set up UAAC](#install-uaac)
-1. [Create UAA Groups](#create-rmq-uaa-group)
-1. [Configure Users for the RabbitMQ UAA Groups](#configure-users)
+- [ Overview](#-overview)
+- [ Configure UAA Groups for RabbitMQ](#-configure-uaa-groups-for-rabbitmq)
+  - [ Get Admin User Credentials for UAA](#-get-admin-user-credentials-for-uaa)
+  - [ Install and Set up UAAC](#-install-and-set-up-uaac)
+  - [ Create a UAA Group](#-create-a-uaa-group)
+  - [ Configure Users for the RabbitMQ UAA Groups](#-configure-users-for-the-rabbitmq-uaa-groups)
+- [ Configure OAuth in \<%= vars.ops\_manager %\>](#-configure-oauth-in--varsops_manager-)
 
 
 ### <a id='uaa-admin-user'></a> Get Admin User Credentials for UAA
@@ -47,16 +50,16 @@ To configure UAA groups:
 To fetch the UAA Admin Client secret from the <%= vars.ops_manager %> UI:
 
 1. Click on the <%= vars.app_runtime_full %> tile.
-1. Click the **Credentials** tab.
-    ![Screenshot of the <%= vars.app_runtime_full %> tile UI in <%= vars.ops_manager %>.
-    The location of the Credentials tab is shown with a red circle.
-    The Credentials tab is the third tab from the left, after 'Settings' and 'Status'.](images/oauth-create-uaa-group-1.png)
-1. Locate the Admin Client Credentials in the UAA job.
-    ![Screenshot of the <%= vars.app_runtime_full %> tile UI in <%= vars.ops_manager %>.
-    There is a list of credential types and, next to it, a list of corresponding links.
-    The location of the link for Admin Client Credentials is shown with a red circle.](images/oauth-create-uaa-group-2.png)
-1. Click **Link to Credential** next to **Admin Client Credentials**.
-1. Record the text in the identity field (`UAA-ADMIN-CLIENT-IDENTITY` in the next step) and password
+2. Click the **Credentials** tab.
+
+    ![The <%= vars.app_runtime_full %> tile UI in <%= vars.ops_manager %>. Credentials tab is circled.](images/oauth-create-uaa-group-1.png)
+
+3. Locate the Admin Client Credentials in the UAA job.
+    
+    ![The <%= vars.app_runtime_full %> tile UI in <%= vars.ops_manager %>. A list of credential types with links. The Admin Client Credentials link is circled.](images/oauth-create-uaa-group-2.png)
+
+4. Click **Link to Credential** next to **Admin Client Credentials**.
+5. Record the text in the identity field (`UAA-ADMIN-CLIENT-IDENTITY` in the next step) and password
 field (`UAA-ADMIN-CLIENT-SECRET` in the next step).
 
 
