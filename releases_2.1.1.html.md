@@ -16,7 +16,9 @@ This release has the following known issues:
 
 The following components are compatible with this release:
 
-<table class="nice"> <th>Component</th> <th>Version</th> 	<tr>
+<table class="table"> 
+<thead><tr><th>Component</th> <th>Version</th></tr></thead>
+	<tr>
 		<td><%= vars.app_runtime_full %></td>
 		<td>2.11.x, 2.12.x, 2.13.x</td>
 	</tr>
