@@ -67,9 +67,9 @@ To configure the metrics polling interval:
 
 1. Configure the fields on the **Metrics** pane as follows:
 
-   <table class="nice">
-       <th>Field</th>
-       <th>Description</th>
+   <table class="table">
+       <thead><tr><th>Field</th>
+       <th>Description</th></tr></thead>
         <tr>
             <td><strong>Metrics polling interval</strong></td>
             <td>
@@ -219,7 +219,7 @@ means the service is not responding and you must investigate the issue.
 #### <a id="broker-heartbeat"></a> Service Broker Heartbeat
 
 <table>
-   <tr><th colspan="2" style="text-align: center;"><br>_p_rabbitmq_service_broker_heartbeat<br><br></th></tr>
+   <thead><tr><th colspan="2" style="text-align: center;"><br>_p_rabbitmq_service_broker_heartbeat<br><br></th></tr></thead>
    <tr>
       <th width="25%">Description</th>
       <td>
@@ -269,7 +269,7 @@ means the service is not responding and you must investigate the issue.
 </p>
 
 <table>
-   <tr><th colspan="2" style="text-align: center;"><br> _p_rabbitmq_haproxy_heartbeat<br><br></th></tr>
+   <thead><tr><th colspan="2" style="text-align: center;"><br> _p_rabbitmq_haproxy_heartbeat<br><br></th></tr></thead>
    <tr>
       <th width="25%">Description</th>
       <td>
@@ -336,7 +336,7 @@ metrics. For more information, see [Component Heartbeats](#heartbeats) earlier i
 #### <a id="file-descriptors"></a> RabbitMQ Server File Descriptors
 
 <table>
-   <tr><th colspan="2" style="text-align: center;"><br> rabbitmq_process_open_fds<br><br></th></tr>
+   <thead><tr><th colspan="2" style="text-align: center;"><br> rabbitmq_process_open_fds<br><br></th></tr></thead>
    <tr>
       <th width="25%">Description</th>
       <td>
@@ -375,7 +375,7 @@ metrics. For more information, see [Component Heartbeats](#heartbeats) earlier i
 #### <a id="erlang-processes"></a> Erlang Processes
 
 <table>
-   <tr><th colspan="2" style="text-align: center;"><br> erlang_vm_process_count<br><br></th></tr>
+   <thead><tr><th colspan="2" style="text-align: center;"><br> erlang_vm_process_count<br><br></th></tr></thead>
    <tr>
       <th width="25%">Description</th>
       <td>
@@ -424,7 +424,7 @@ the <%= vars.product_short %> service.
 #### <a id="ram"></a> RAM
 
 <table>
-   <tr><th colspan="2" style="text-align: center;"><br> system_mem_percent <br><br></th></tr>
+   <thead><tr><th colspan="2" style="text-align: center;"><br> system_mem_percent <br><br></th></tr></thead>
    <tr>
       <th width="25%">Description</th>
       <td>
@@ -463,7 +463,7 @@ the <%= vars.product_short %> service.
 #### <a id="cpu"></a> CPU
 
 <table>
-   <tr><th colspan="2" style="text-align: center;"><br> system_cpu_user<br><br></th></tr>
+   <thead><tr><th colspan="2" style="text-align: center;"><br> system_cpu_user<br><br></th></tr></thead>
    <tr>
       <th width="25%">Description</th>
       <td>CPU being consumed by user processes on the <code>p.rabbitmq</code> VM.<br><br>
@@ -499,7 +499,7 @@ the <%= vars.product_short %> service.
 #### <a id="ephemeral-disk"></a> Ephemeral Disk
 
 <table>
-   <tr><th colspan="2" style="text-align: center;"><br> system_disk_ephemeral_percent<br><br></th></tr>
+   <thead><tr><th colspan="2" style="text-align: center;"><br> system_disk_ephemeral_percent<br><br></th></tr></thead>
    <tr>
       <th width="25%">Description</th>
       <td>
@@ -538,7 +538,7 @@ the <%= vars.product_short %> service.
 #### <a id="persistent-disk"></a> Persistent Disk
 
 <table>
-   <tr><th colspan="2" style="text-align: center;"><br> system_disk_persistent_percent<br><br></th></tr>
+   <thead><tr><th colspan="2" style="text-align: center;"><br> system_disk_persistent_percent<br><br></th></tr></thead>
    <tr>
       <th width="25%">Description</th>
       <td>
@@ -596,9 +596,9 @@ To specify the destination for <%= vars.product_short %> log entries:
 The fields shown are described in the table in the next step.](images/syslog-config.png)
 1. Configure the fields on the **Syslog** pane as follows:
 
-   <table class="nice">
-       <th>Field</th>
-       <th>Description</th>
+   <table class="table">
+       <thead><tr><th>Field</th>
+       <th>Description</th></tr></thead>
        <tr>
            <td><strong>Syslog Address</strong></td>
            <td>Enter the IP or DNS address of the syslog server</td>
@@ -714,11 +714,11 @@ repository in GitHub.
 <%= vars.product_short %> HAProxy components emit the following metrics.
 
 <table>
-    <tr>
+    <thead><tr>
         <th>Name Space</th>
         <th>Unit</th>
         <th>Description</th>
-    </tr>
+    </tr></thead>
     <tr>
         <td><code>_p_rabbitmq_haproxy_heartbeat</code></td>
         <td>Boolean</td>
@@ -751,11 +751,11 @@ repository in GitHub.
 The <%= vars.product_short %> on-demand broker emits the following metrics.
 
 <table>
-    <tr>
+    <thead><tr>
         <th>Name Space</th>
         <th>Unit</th>
         <th>Description</th>
-    </tr>
+    </tr></thead>
     <tr>
         <td><code>_on_demand_broker_p_rabbitmq_quota_remaining</code></td>
         <td>Count</td>

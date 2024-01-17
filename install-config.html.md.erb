@@ -96,10 +96,10 @@ Follow the steps below to configure the AZs and networks:
 
 1. Configure the fields on the **Assign AZs and Networks** as follows:
     <table>
-      <tr>
+      <thead><tr>
         <th>Field</th>
         <th>Instructions</th>
-      </tr>
+      </tr></thead>
       <tr>
         <td>
           <strong>Place singleton jobs in</strong>
@@ -180,10 +180,10 @@ Follow the steps below to configure global settings:
   The fields are described in the table in the next step.](images/global-settings.png)
 1. Configure the settings:
     <table>
-      <tr>
+      <thead><tr>
         <th>Field</th>
         <th>Instructions</th>
-      </tr>
+      </tr></thead>
       <tr>
         <td>
           <strong>Dedicated Instance Service Quota</strong>
@@ -380,10 +380,10 @@ before configuring the tile and applying changes.
 
 1. Configure the settings:
     <table>
-      <tr>
+      <thead><tr>
         <th>Field</th>
         <th>Instructions</th>
-      </tr>
+      </tr></thead>
       <tr>
         <td><strong>TLS Options</strong></td>
         <td>
@@ -486,7 +486,7 @@ plan.
 
 2. Configure the fields as follows:
     <table>
-      <tr><th>Field</th><th>Instructions</th></tr>
+      <thead><tr><th>Field</th><th>Instructions</th></tr></thead>
       <tr><td><strong>Enable This Plan</strong></td>
           <td>For Plans 2 - 5, activate the plan by selecting <strong>Plan Enable</strong>.</td></tr>
       <tr><td><strong>CF Service Access</strong></td>
@@ -663,12 +663,12 @@ Use the following table as a guide when selecting the size of the persistent dis
 The following table shows an example of possible RAM values, absolute minimal value below which
 RabbitMQ declines to start, and the disk size suggested for an average use case.
 
-<table border="1" class="nice">
-  <tr>
+<table border="1" class="table">
+  <thead><tr>
     <th>RAM</th>
     <th>Free disk alarm threshold (1.5 x RAM)</th>
     <th>Suggested disk size (2 x RAM)</th>
-  <tr>
+  </tr></thead>
   <tr>
     <td>10&nbsp;GB</td>
     <td>15&nbsp;GB</td>
@@ -761,9 +761,9 @@ For more information about errands, see [Errands](https://docs.vmware.com/en/VMw
 
 ### <a id='post-deploy-errands'></a> Post-Deploy Errands
 
-<table class="nice">
-  <th>Errand</th>
-  <th>Description</th>
+<table class="table">
+  <thead><tr><th>Errand</th>
+  <th>Description</th></tr></thead>
   <tr>
     <td><strong>Pre-Provisioned Broker Registrar</strong></td>
     <td>Makes the pre-provisioned <%= vars.product_short %> service plans available in the Marketplace</td>
@@ -802,9 +802,9 @@ For more information about errands, see [Errands](https://docs.vmware.com/en/VMw
 
 ### <a id='pre-delete-errands'></a> Pre-Delete Errands
 
-<table class="nice">
-  <th>Errand</th>
-  <th>Description</th>
+<table class="table">
+  <thead><tr><th>Errand</th>
+  <th>Description</th></tr></thead>
   <tr>
     <td><strong>Deregister and Purge Instances</strong></td>
     <td>Removes the pre-provisioned <%= vars.product_short %> service from the Marketplace and deletes all associated service instances and bindings. For more information, see <a href="./turn-pre-provisioned-off.html">Turning Off the Pre-Provisioned Service</a>.</td>
@@ -926,11 +926,11 @@ activated or deactivated by default.
 
 The following plugins are activated by default, you cannot deactivate them:
 
-<table class="nice">
+<table class="table">
 <col width="40%">
 <col width="60%">
-  <th>Plugin</th>
-  <th>For more information, see…</th>
+  <thead><tr><th>Plugin</th>
+  <th>For more information, see…</th></tr></thead>
   <tr>
     <td><code>rabbitmq_management</code></td>
     <td><a href="https://www.rabbitmq.com/management.html">Management Plugin</a> in the RabbitMQ documentation.</td>
@@ -970,11 +970,11 @@ The following plugins are activated by default, you cannot deactivate them:
 
 The following plugins are deactivated by default:
 
-<table class="nice">
+<table class="table">
 <col width="40%">
 <col width="60%">
-  <th>Plugin</th>
-  <th>For more information, see…</th>
+  <thead><tr><th>Plugin</th>
+  <th>For more information, see…</th></tr></thead>
   <tr>
     <td><code>rabbitmq_amqp1_0</code></td>
     <td><a href="https://github.com/rabbitmq/rabbitmq-server/blob/master/deps/rabbitmq_amqp1_0/README.md"> AMQP 1.0 Plugin</a> in GitHub.</td>
