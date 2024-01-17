@@ -20,17 +20,17 @@ with a single command.
 
 This table summarizes the main differences between the two:
 
-<table id='rabbit-odb-vs-pre' border="1" class="nice"><tr>
+<table id='rabbit-odb-vs-pre' border="1" class="table"><thead><tr>
   <col style="width:15%">
   <col style="width:28%">
   <col style="width:28%">
   <col style="width:29%">
-   <th></th>
-   <th>VMs it Runs On</th>
-   <th>How VMs are Created</th>
-   <th>Metrics Name Prefix</th>
-   </tr><tr>
-   <th>On-Demand Service</th>
+   <th>VMs it runs on</th>
+   <th>How VMs are created</th>
+   <th>Metrics name prefix</th>
+   </tr></thead>
+   <tr>
+   <th>On-demand service</th>
    <td>Dedicated VM that serves a single service instance. For more information, see <a href="./ondemand.html">Unlocking the Power of On-Demand <%= vars.product_short %></a>.</td>
    <td>The BOSH Director creates each VM on-demand when an app developer creates a service instance.</td>
    <td><code>p.rabbitmq</code> (with a dot)</td>
@@ -72,9 +72,9 @@ decentralized app and data architectures that can scale with your business needs
 
 The following table provides version and version-support information about <%= vars.product_short %>.
 
-<table class="nice">
-    <th>Element</th>
-    <th>Details</th>
+<table class="table">
+    <thead><tr><th>Element</th>
+    <th>Details</th></tr></thead>
     <tr>
         <td>Version</td>
         <td>2.2.9</td>

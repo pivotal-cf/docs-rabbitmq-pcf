@@ -67,7 +67,7 @@ Follow the steps below to configure the AZs and networks:
 2. Configure the fields on the **Assign AZs and Networks** as follows.
     **All fields are required**, though some do not apply to the pre-provisioned service.
    <table>
-     <tr><th>Required Fields</th><th>Instructions</th></tr>
+     <thead><tr><th>Required Fields</th><th>Instructions</th></tr></thead>
      <tr><td><strong>Place singleton jobs in</strong></td>
          <td>Select a region.
              This selection only affects the on-demand service.</td></tr>
@@ -466,9 +466,9 @@ labeled 'Do you want to configure Syslog forwarding?', 'Address',
 'Queue Size', 'Forward Debug Logs', and 'Custom rsyslog Configuration'.](images/syslog-config.png)
 
 1. Configure the fields on the **Syslog** pane as follows:
-    <table class="nice">
-        <th>Field</th>
-        <th>Description</th>
+    <table class="table">
+        <thead><tr><th>Field</th>
+        <th>Description</th></tr></thead>
         <tr>
             <td><strong>Syslog Address</strong></td>
             <td>Enter the IP or DNS address of the syslog server</td>
@@ -536,9 +536,9 @@ On-Demand service offerings', which has one required field labeled 'Metrics poll
 with a value of 30, and a save button.](images/metrics-configuration.png)
 1. Click **Metrics**.
 1. Configure the fields on the Metrics pane as follows:
-    <table class="nice">
-        <th>Field</th>
-        <th>Description</th>
+    <table class="table">
+        <thead><tr><th>Field</th>
+        <th>Description</th></tr></thead>
         <tr>
             <td><strong>Metrics polling interval</strong></td>
             <td>The default setting is 30 seconds for all deployed components.
@@ -621,9 +621,9 @@ For more information about errand run rules, see
 
 ### <a id='post-deploy-errands'></a>Post-Deploy Errands
 
-<table class="nice">
-  <th>Errand</th>
-  <th>Description</th>
+<table class="table">
+  <thead><tr><th>Errand</th>
+  <th>Description</th></tr></thead>
   <tr>
     <td><strong>Pre-Provisioned Broker Registrar</strong></td>
     <td>Makes the pre-provisioned <%= vars.product_short %> service plans available in the Marketplace</td>
@@ -671,9 +671,9 @@ For more information about errand run rules, see
 Pre-delete errands run after an operator chooses to delete a product in the <%= vars.ops_manager %>
 Installation Dashboard, but before <%= vars.ops_manager %> finishes deleting the product.
 
-<table class="nice">
-  <th>Errand</th>
-  <th>Description</th>
+<table class="table">
+  <thead><tr><th>Errand</th>
+  <th>Description</th></tr></thead>
   <tr>
     <td><strong>Deregister and Purge Instances</strong></td>
     <td>Removes the pre-provisioned <%= vars.product_short %> service from the Marketplace and
