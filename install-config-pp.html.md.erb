@@ -8,7 +8,7 @@ This topic for operators gives you instructions about how to install, configure,
 
 The RabbitMQ open source product provides additional documentation.
 For more information about getting started with RabbitMQ and ensuring production readiness,
-see the Production Checklist in the [RabbitMQ documentation](https://www.rabbitmq.com/production-checklist.html).
+see the Production Checklist in the [RabbitMQ documentation](https://www.rabbitmq.com/docs/production-checklist).
 
 <p class="note important">
   <span class="note__title">Important</span> <%= vars.note_pre_provisioned %>
@@ -138,7 +138,7 @@ Next to the label is a red asterisk to indicate that selecting plugins is requir
 A checkbox field called 'rabbitmq_management' is enabled.") %>
 
 For more information about RabbitMQ plugins, see the
-[RabbitMQ documentation](https://www.rabbitmq.com/plugins.html).
+[RabbitMQ documentation](https://www.rabbitmq.com/docs/plugins).
 
 ### <a id="erlang"></a> (Optional) Provide an Erlang Cookie
 
@@ -225,7 +225,7 @@ SSL settings are applied equally across all VMs in the cluster.
 If you provide a certificate, SSL is simultaneously provided for AMQPS, STOMP, and MQTT.
 No other plugins are automatically configured for use with SSL.
 For more information about SSL support in RabbitMQ, see the
-[RabbitMQ documentation](https://www.rabbitmq.com/ssl.html).
+[RabbitMQ documentation](https://www.rabbitmq.com/docs/ssl).
 
 After providing a certificate, apps connected to the cluster over non-SSL AMQP, MQTT, and
 STOMP continue to function without SSL unless developers specify otherwise.
@@ -258,7 +258,7 @@ To configure TLS support:
 1. In the **Pre-Provisioned RabbitMQ** tab, select the TLS versions to support.
 TLS v1.3 and TLS v1.2 are enabled by default.
 For more information about TLS versions, see the
-[RabbitMQ documentation](https://www.rabbitmq.com/ssl.html#tls-versions-why-limit).
+[RabbitMQ documentation](https://www.rabbitmq.com/docs/ssl#tls-versions-why-limit).
 
     <%= image_tag("images/config_tls.png", :width => "225",
 :alt => "Screenshot of a multi-select checkbox field labeled 'RabbitMQ TLS Versions'.
@@ -348,7 +348,7 @@ the event of a network partition.
    choose the desired behavior **pause_minority** or **autoheal**.
 
   For more information about these options and RabbitMQ clusters and network partitions,
-  see the [RabbitMQ documentation](https://www.rabbitmq.com/partitions.html).
+  see the [RabbitMQ documentation](https://www.rabbitmq.com/docs/partitions).
 
   For production purposes, VMware recommends that customers have at least three RabbitMQ server
   nodes and two HAProxies spread across low-latency AZs.
@@ -392,7 +392,7 @@ The RabbitMQ tile provides four options for this value:
 
 
 For more information about disk alarms, see the
-[RabbitMQ documentation](https://www.rabbitmq.com/disk-alarms.html).
+[RabbitMQ documentation](https://www.rabbitmq.com/docs/disk-alarms).
 
 #### <a name='too-low'></a> Dangers of Setting This Value Too Low
 
@@ -765,7 +765,7 @@ Ensure the following ports are enabled for those VMs:
 To enable Prometheus to collect metrics from pre-provisioned RabbitMQ nodes, you must also
 permit incoming traffic on port <code>15692</code>.
 For information about the RabbitMQ Prometheus plugin,
-see the [RabbitMQ documentation](https://www.rabbitmq.com/prometheus.html).
+see the [RabbitMQ documentation](https://www.rabbitmq.com/docs/prometheus).
 
 The following is a template for configuring your <%= vars.app_runtime_abbr %> firewall rules:
 

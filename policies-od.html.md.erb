@@ -172,7 +172,7 @@ To set up an HA policy:
 All queues named `ha-dlx.*` are mirrored with one replica, with automatic synchronization, and with
 a dead-letter exchange.
 To combine multiple features you must create a policy that combines both. For more information, see
-the [RabbitMQ documentation](https://www.rabbitmq.com/parameters.html#combining-policy-definitions).
+the [RabbitMQ documentation](https://www.rabbitmq.com/docs/parameters#combining-policy-definitions).
 
 To create a policy that combines `ha` and `dlx`:
 
@@ -214,7 +214,7 @@ To create a policy for temporary queues:
 When the queue is full, the broker rejects further publishing attempts.
 If the publisher uses the protocol extension Publisher Confirm, it gets a `nack`.
 For more information about Publisher Confirm, see the
-[RabbitMQ documentation](https://www.rabbitmq.com/confirms.html).
+[RabbitMQ documentation](https://www.rabbitmq.com/docs/confirms).
 
 
 ### <a id="conc-q-policy"></a> Set up a Policy for a Concrete Queue
