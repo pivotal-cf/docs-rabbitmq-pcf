@@ -15,7 +15,7 @@ In <%= vars.product_short %>, the RabbitMQ broker is always deployed as a cluste
 
 All data/state required for the operation of a RabbitMQ broker is replicated across all nodes. An exception to this are message queues, which by default reside on one node, though they are visible and reachable from all nodes.  This means that the RabbitMQ cluster may be available and serving requests, while an individual queue residing on a single node is offline.
 
-Replicating message queues across nodes is an expensive operation and should only be done to the extent needed by the application. To understand more about replicating queues across nodes in a cluster, see the [documentation](http://www.rabbitmq.com/ha.html) on high availability.
+Replicating message queues across nodes is an expensive operation and should only be done to the extent needed by the application. To understand more about replicating queues across nodes in a cluster, see the [documentation](https://www.rabbitmq.com/docs/ha) on high availability.
 
 
 ## <a id="auto-partition"></a>Automatic Network Partition Behaviors in RabbitMQ Clusters
