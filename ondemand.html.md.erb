@@ -23,7 +23,7 @@ With the on-demand cluster plan, platform operators can offer their app develope
 
 * **On-Demand single node**---For app developer teams requiring greater isolation than provided by the pre-provisioned approach.
   App development teams can have full access to their own message broker to adapt the runtime parameters to their requirements.
-  For more information about these parameters, see [Parameters and Policies](https://www.rabbitmq.com/parameters.html) in the RabbitMQ documentation.
+  For more information about these parameters, see [Parameters and Policies](https://www.rabbitmq.com/docs/parameters) in the RabbitMQ documentation.
 
 * **On-Demand cluster**---For an increased level of message resilience and cluster availability,
   as well as the benefits of workload isolation mentioned above.
@@ -172,7 +172,7 @@ For more information, see [Consistency or Availability Tradeoff](#tradeoff).
 
 Other options can be used for availability requirements, such as the use of federation between exchanges or queues.
 
-For a detailed description of distributed RabbitMQ brokers, see the [RabbitMQ documentation](http://www.rabbitmq.com/distributed.html).
+For a detailed description of distributed RabbitMQ brokers, see the [RabbitMQ documentation](https://www.rabbitmq.com/docs/distributed).
 
 #### Number of Nodes
 
@@ -204,7 +204,7 @@ The cluster plan lets operators decide how they want the RabbitMQ cluster to rea
 VMware recommends keeping the default cluster partition option of `pause_minority` because this satisfies most use cases.
 Choosing the `pause_minority` partition-handling strategy favors message consistency over availability.
 For more information about the options for handling partitions,
-see the [RabbitMQ documentation](https://www.rabbitmq.com/partitions.html).
+see the [RabbitMQ documentation](https://www.rabbitmq.com/docs/partitions).
 For a detailed description of the options available in <%= vars.product_short %>, see [Clustering and Network Partitions](./partitions.html).
 
 Here is an example of how `pause_minority` works.
@@ -230,7 +230,7 @@ but does not distribute load across nodes because each of the participating node
 
 App developers must decide if they want to use queue mirroring and determine the policy they want to apply to their queues.
 These choices have significant impact on the availability of their queues.
-For more information, see the [RabbitMQ documentation](https://www.rabbitmq.com/ha.html).
+For more information, see the [RabbitMQ documentation](https://www.rabbitmq.com/docs/ha).
 
 Unlike the pre-provisioned plan, the cluster plan does not ship with a default load balancer.
 Therefore, developers must configure their app to use the array of hosts provided in `VCAP_SERVICES`.
@@ -332,19 +332,19 @@ The following are preconfigured for both the single node and the cluster plans:
   For example, if you select an instance type with 10&nbsp;GB of RAM, the disk free space limit is set to 15&nbsp;GB.
   A cluster-wide alarm is triggered if the amount of free disk space drops below this, and all publishers are blocked.
   Instances must be configured to have persistent disks that are at least twice the size of instance RAM.
-  For more information, see the [RabbitMQ documentation](https://www.rabbitmq.com/disk-alarms.html).
+  For more information, see the [RabbitMQ documentation](https://www.rabbitmq.com/docs/disk-alarms).
 
 * **Memory threshold for triggering flow control**---Threshold at which flow control is triggered is set to 40% of the instance RAM.
   This means that when the alarm is triggered, all connections publishing messages are blocked cluster-wide until the alarm is cleared.
   <br><br>
   For example, if you select an instance type with 10&nbsp;GB of RAM, when more than 4&nbsp;GB of memory is used, all publishing connections are blocked.
-  For more information, see [Memory Alarms](https://www.rabbitmq.com/memory.html) in the RabbitMQ documentation.
+  For more information, see [Memory Alarms](https://www.rabbitmq.com/docs/memory) in the RabbitMQ documentation.
 
 * **Memory paging threshold**---This is the level at which RabbitMQ tries to free up memory by instructing queues to page their contents out to disk. This is done to try to avoid reaching the high watermark and blocking publishers.
   This threshold is set to 50% of the configured high watermark, which is 20% of configured memory.<br><br>
   For example, if you select an instance type with 10&nbsp;GB of RAM, when more than 2&nbsp;GB of memory is used,
   all queues start writing all queue contents to disk.
-  For more information, see the [RabbitMQ documentation](https://www.rabbitmq.com/memory.html).
+  For more information, see the [RabbitMQ documentation](https://www.rabbitmq.com/docs/memory).
 
 
 #### <a id="monitor-clusters"></a> Monitoring On-Demand RabbitMQ Clusters
@@ -411,7 +411,7 @@ that you should be aware of:
 * The instance you are migrating to might use a different version of RabbitMQ than
 your old instance.
 For more information, see the [<%= vars.product_full %> Release Notes](./releases.html) and the
-[RabbitMQ Changelog](https://www.rabbitmq.com/changelog.html).
+[RabbitMQ Changelog](https://www.rabbitmq.com/release-information).
 
 * Critical tier-1 plugins are enabled for on-demand. However, on-demand does not
 yet have the same plugins enabled as pre-provisioned.

@@ -6,7 +6,7 @@ owner: London Services
 
 There are a number of things that you must configure when deploying the <%= vars.product_full %> tile into production.
 
-1. Only deploy with an odd number of nodes when using a [partition healing](https://www.rabbitmq.com/partitions.html) strategy of 'pause minority'
+1. Only deploy with an odd number of nodes when using a [partition healing](https://www.rabbitmq.com/docs/partitions) strategy of 'pause minority'
 2. Ensure that you have a least two HAProxy nodes deployed so that applications can fail over during rolling updates
 3. Ensure that the persistent disk of the RabbitMQ server nodes is at least twice as large as the instance memory
 4. Configure syslog forwarding and investigate logs with `** ERROR **` from RabbitMQ
