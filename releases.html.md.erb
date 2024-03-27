@@ -11,6 +11,106 @@ This topic describes the changes in this minor release of <%= vars.product_full 
 
 <%= partial vars.path_to_partials + '/upgrade-planner' %>
 
+## <a id="2-3-3"></a> v2.3.3
+
+**Release Date**: March 28, 2024
+
+### Resolved Issues
+
+This release fixes the following issues:
+- Smoke tests now primarily log to file, preventing failure from output too large for bosh.
+- Default VM size for brokers increased to 2 CPUs to allow smoke tests to run in parallel.
+
+### Known Issues
+
+This release has the following known issues:
+
+<%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
+- On-demand service broker deploys by default with a "micro" instance. Micro instances cannot run parallel processes.
+
+### Compatibility
+
+The following components are compatible with this release:
+
+<table class="nice">
+ <th>Component</th>
+ <th>Version</th>
+ 	<tr>
+		<td><%= vars.app_runtime_full %></td>
+		<td>4.0.x, 5.0.x, 6.0.x</td>
+	</tr>
+	<tr>
+		<td>Erlang</td>
+		<td>25.3.2.9 and 26.2.2</td>
+	</tr>
+	<tr>
+		<td>HAProxy</td>
+		<td>2.6.16</td>
+	</tr>
+	<tr>
+		<td>OSS RabbitMQ*</td>
+		<td>3.11.28 and 3.12.13</td>
+	</tr>
+	<tr>
+		<td>Stemcell</td>
+		<td>1.x</td>
+	</tr>
+	<tr>
+		<td>bpm</td>
+		<td>1.2.17</td>
+	</tr>
+	<tr>
+		<td>cf-cli</td>
+		<td>1.63.0</td>
+	</tr>
+	<tr>
+		<td>cf-rabbitmq</td>
+		<td>588.0.0</td>
+	</tr>
+	<tr>
+		<td>cf-rabbitmq-multitenant-broker</td>
+		<td>188.0.0</td>
+	</tr>
+	<tr>
+		<td>cf-rabbitmq-smoke-tests</td>
+		<td>226.0.0</td>
+	</tr>
+	<tr>
+		<td>cf-service-gateway</td>
+		<td>145.0.0</td>
+	</tr>
+	<tr>
+		<td>count-cores-indicator</td>
+		<td>2.0.0</td>
+	</tr>
+	<tr>
+		<td>loggregator-agent</td>
+		<td>8.0.2</td>
+	</tr>
+	<tr>
+		<td>on-demand-service-broker</td>
+		<td>0.45.3</td>
+	</tr>
+	<tr>
+		<td>rabbitmq-metrics</td>
+		<td>145.0.0</td>
+	</tr>
+	<tr>
+		<td>rabbitmq-on-demand-adapter</td>
+		<td>307.0.0</td>
+	</tr>
+	<tr>
+		<td>routing</td>
+		<td>0.293.0</td>
+	</tr>
+	<tr>
+		<td>service-metrics</td>
+		<td>2.0.36</td>
+	</tr>
+</table>
+
+<sup>*</sup> For more information, see the <a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.11.28">v3.11.28</a> and <a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.12.13">v3.12.13</a> GitHub documentation.
+
 ## <a id="2-3-2"></a> v2.3.2
 
 **Release date**: February 14, 2024
