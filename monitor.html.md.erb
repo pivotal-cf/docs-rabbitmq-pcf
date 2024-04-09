@@ -146,7 +146,7 @@ If Prometheus is deployed with the Healthwatch v2 tile, then the above configura
 </p>
 
 
-#### <a id="per-object"></a> Scrape Per-Object Metrics
+#### <a id="per-object"></a> Scrape Per-object Metrics
 
 To collect metrics on a per-object scope, such as per-queue, do one of the following:
 
@@ -173,7 +173,7 @@ To collect metrics on a per-object scope, such as per-queue, do one of the follo
   this on a production cluster.
 </p>
 
-#### <a id="filter-per-object"></a> Filter the Per-Object Metrics
+#### <a id="filter-per-object"></a> Filter the Per-object Metrics
 
 As of <%= vars.product_short %> v2.0.7, you can collect only the per-object metrics for
 certain scopes of metrics.
@@ -592,8 +592,9 @@ To specify the destination for <%= vars.product_short %> log entries:
 1. From the <%= vars.ops_manager %> Installation Dashboard, click the <%= vars.product_short %> tile.
 1. In the <%= vars.product_short %> tile, click the **Settings** tab.
 1. Click **Syslog**.
-![Screenshot of RabbitMQ tile settings with header called 'Syslog'.
-The fields shown are described in the table in the next step.](images/syslog-config.png)
+
+   ![RabbitMQ tile settings with header called 'Syslog'. Fields are described in the table in the next step.](images/syslog-config.png)
+
 1. Configure the fields on the **Syslog** pane as follows:
 
    <table class="table">
@@ -709,7 +710,7 @@ For the full list of metrics emitted, see the
 [rabbitmq-server](https://github.com/rabbitmq/rabbitmq-server/blob/master/deps/rabbitmq_prometheus/metrics.md)
 repository in GitHub.
 
-### <a id="haproxy-metrics"></a>HAProxy Metrics (Pre-Provisioned Only)
+### <a id="haproxy-metrics"></a>HAProxy Metrics (Pre-provisioned Only)
 
 <%= vars.product_short %> HAProxy components emit the following metrics.
 

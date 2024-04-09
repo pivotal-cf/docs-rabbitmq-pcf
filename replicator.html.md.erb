@@ -47,7 +47,7 @@ To offer RabbitMQ as a cloud messaging service in the Marketplace, create one or
 install them in <%= vars.ops_manager %>, and either allow the broker registrar errand to run, or
 [register the service manually using CF](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/2.13/tas-for-vms/managing-service-brokers.html#register-broker).
 
-### <a id="dedicated"></a> Providing a Pre-Provisioned Dedicated Cluster
+### <a id="dedicated"></a> Providing a Pre-provisioned Dedicated Cluster
 
 To reserve a RabbitMQ cluster for use by a specific team,
 deactivate the **Broker Registrar** errand in <%= vars.ops_manager %>.
@@ -57,7 +57,7 @@ For more information, see [Errands](./install-config.html#errands).
 After you deploy the tile, manually expose the service broker to your desired orgs and spaces.
 For instructions, see [Register a Broker](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/2.13/tas-for-vms/managing-service-brokers.html#register-broker).
 
-### <a id="on-demand"></a> Using Replicas While Offering the On-Demand <%= vars.product_short %> Service
+### <a id="on-demand"></a> Using Replicas while Offering the On-Demand <%= vars.product_short %> Service
 
 The On-Demand service is not offered in replica tiles, since the purpose of the replicator is
 to create additional pre-provisioned clusters. If you wish to offer on-demand service plans,
