@@ -59,19 +59,19 @@ It is **not** possible to upgrade to this setup from the default deployment acro
 This is because the AZ setup cannot be changed after the tile has been deployed for the first time.
 This is to protect against data loss when moving jobs between AZs.
 
-### <a id="upgrade-from-multi-az"></a>Upgrading to the Recommended Deployment from a Multi AZ Deployment
+### <a id="upgrade-from-multi-az"></a>Upgrading to the Recommended Deployment from a Multiple AZ Deployment
 
 If you have deployed the tile across two AZs, but with a single HAProxy instance,
 you can migrate to this setup by deploying an additional HAProxy instance through <%= vars.ops_manager %>.
 New or re-bound apps to the <%= vars.product_short %> service instance see the IPs of both HAProxies immediately.
-Existing bound apps will continue to work, but only using the previously deployed HAProxy IP Address. They can be re-bound as required at your discretion.
+Existing bound apps continue to work, but only by using the previously deployed HAProxy IP Address. They can be re-bound as required at your discretion.
 
 ### <a id="recommended-consider"></a>Considerations for the Recommended Deployment
 
-* Requires IaaS configuration for AZs ahead of deploying the <%= vars.product_short %> tile
-* Application developers are handed the IPs of each deployed HAProxy in their environment variables
-* Queues must be configured to be high availability as they are placed on one node by default
-* Customers should decide on which partition behavior is best suited to their use case. For three or more nodes 'pause_minority' is preferred.
+* Requires IaaS configuration for AZs ahead of deploying the <%= vars.product_short %> tile.
+* Application developers are handed the IPs of each deployed HAProxy in their environment variables.
+* Queues must be configured to be high availability as they are placed on one node by default.
+* Customers should decide which partition behavior is best suited to their use. For three or more nodes, 'pause_minority' is preferred.
 
 ## <a id="advanced"></a>Advanced Deployment
 
