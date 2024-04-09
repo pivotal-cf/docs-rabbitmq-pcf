@@ -459,7 +459,7 @@ For developer instructions, see <a href="use.html#tls">Enable Transport Layer Se
 <%# (and <a href="modify-apps-tls.html">Modifying Apps for TLS</a>.) %>
 
 
-### <a id="service-plan"></a> Configure the Service Plan
+### <a id="service-plans"></a> Configure the Service Plans
 
 To enable the on-demand service, you must configure at least one on-demand plan.
 
@@ -757,7 +757,7 @@ VM footprint.
 In earlier releases, a new VM was deployed for each errand.
 For more information about errands, see [Errands](https://docs.vmware.com/en/Tile-Developer-Guide/2.10/tile-dev-guide/tile-errands.html).
 
-### <a id='post-deploy-errands'></a> Post-Deploy Errands
+### <a id='post-deploy-errands'></a> Post-deploy Errands
 
 <table class="table">
   <thead><tr><th>Errand</th>
@@ -798,7 +798,7 @@ For more information about errands, see [Errands](https://docs.vmware.com/en/Til
   </tr>
 </table>
 
-### <a id='pre-delete-errands'></a> Pre-Delete Errands
+### <a id='pre-delete-errands'></a> Pre-delete Errands
 
 <table class="table">
   <thead><tr><th>Errand</th>
@@ -913,25 +913,25 @@ You can enable any supported tag for the user by providing it as a comma-separat
 
 If no tags are specified, the default tags applied are <code>management,policymaker</code>.
 
-## <a id="server-plugins"></a> RabbitMQ Server Plugins
+## <a id="server-plugins"></a> RabbitMQ Server Plug-Ins
 
-<%= vars.product_short %> supports a subset of available RabbitMQ plugins.
-See the sections below for which plugins are supported, and whether they are
+<%= vars.product_short %> supports a subset of available RabbitMQ plug-ins.
+See the sections below for which plug-ins are supported, and whether they are
 activated or deactivated by default.
 
 
-### <a id="enabled-plugins"></a> Enabled RabbitMQ Server Plugins
+### <a id="enabled-plugins"></a> Enabled RabbitMQ Server Plug-Ins
 
-The following plugins are activated by default, you cannot deactivate them:
+The following plug-ins are activated by default, you cannot deactivate them:
 
 <table class="table">
 <col width="40%">
 <col width="60%">
-  <thead><tr><th>Plugin</th>
+  <thead><tr><th>Plug-In</th>
   <th>For more information, see…</th></tr></thead>
   <tr>
     <td><code>rabbitmq_management</code></td>
-    <td><a href="https://www.rabbitmq.com/docs/management">Management Plugin</a> in the RabbitMQ documentation.</td>
+    <td><a href="https://www.rabbitmq.com/docs/management">Management Plug-In</a> in the RabbitMQ documentation.</td>
   </tr>
   <tr>
     <td><code>rabbitmq_federation</code></td>
@@ -964,7 +964,7 @@ The following plugins are activated by default, you cannot deactivate them:
   <tr>
 </table>
 
-### <a id="optional-plugins"></a> (Optional) Enable Extra RabbitMQ Server Plugins
+### <a id="optional-plugins"></a> (Optional) Enable Extra RabbitMQ Server Plug-Ins
 
 The following plugins are deactivated by default:
 
@@ -1015,27 +1015,27 @@ The following plugins are deactivated by default:
   </tr>
   <tr>
     <td><code>rabbitmq_tracing</code></td>
-    <td> <a href="https://github.com/rabbitmq/rabbitmq-server/blob/master/deps/rabbitmq_tracing/README.md"> Tracing Plugin</a> in GitHub.</td>
+    <td> <a href="https://github.com/rabbitmq/rabbitmq-server/blob/master/deps/rabbitmq_tracing/README.md"> Tracing Plug-in</a> in GitHub.</td>
   </tr>
   <tr>
     <td><code>rabbitmq_trust_store</code></td>
-    <td> <a href="https://github.com/rabbitmq/rabbitmq-server/blob/master/deps/rabbitmq_trust_store/README.md"> Trust Store Plugin</a> in GitHub.</td>
+    <td> <a href="https://github.com/rabbitmq/rabbitmq-server/blob/master/deps/rabbitmq_trust_store/README.md"> Trust Store Plug-In</a> in GitHub.</td>
   </tr>
   <tr>
     <td><code>rabbitmq_web_mqtt</code></td>
-    <td> <a href="https://www.rabbitmq.com/docs/web-mqtt"> Web MQTT Plugin</a> in the RabbitMQ documentation.</td>
+    <td> <a href="https://www.rabbitmq.com/docs/web-mqtt"> Web MQTT Plug-in</a> in the RabbitMQ documentation.</td>
   </tr>
   <tr>
     <td><code>rabbitmq_web_mqtt_examples</code></td>
-    <td> <a href="https://github.com/rabbitmq/rabbitmq-server/blob/master/deps/rabbitmq_web_mqtt_examples/README.md"> Web MQTT Examples Plugin</a> in GitHub.</td>
+    <td> <a href="https://github.com/rabbitmq/rabbitmq-server/blob/master/deps/rabbitmq_web_mqtt_examples/README.md"> Web MQTT Examples Plug-In</a> in GitHub.</td>
   </tr>
   <tr>
     <td><code>rabbitmq_web_stomp</code></td>
-    <td> <a href="https://www.rabbitmq.com/docs/web-stomp"> Web STOMP Plugin</a> in the RabbitMQ documentation.</td>
+    <td> <a href="https://www.rabbitmq.com/docs/web-stomp"> Web STOMP Plug-in</a> in the RabbitMQ documentation.</td>
   </tr>
   <tr>
     <td><code>rabbitmq_web_stomp_examples</code></td>
-    <td> <a href="https://github.com/rabbitmq/rabbitmq-server/blob/master/deps/rabbitmq_web_stomp_examples/README.md"> Web STOMP Examples Plugin</a> in GitHub.</td>
+    <td> <a href="https://github.com/rabbitmq/rabbitmq-server/blob/master/deps/rabbitmq_web_stomp_examples/README.md"> Web STOMP Examples Plug-In</a> in GitHub.</td>
   </tr>
 </table>
 
