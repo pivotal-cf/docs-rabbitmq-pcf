@@ -21,7 +21,7 @@ with a single command.
 This table summarizes the main differences between the two:
 
 <table id='rabbit-odb-vs-pre' border="1" class="table">
-<thead><tr>
+  <thead><tr>
    <th>VMs It Runs On</th>
    <th>How VMs Are Created</th>
    <th>Metrics Name Prefix</th>
@@ -33,9 +33,9 @@ This table summarizes the main differences between the two:
    <td>The BOSH Director creates each VM on-demand when an app developer creates a service instance.</td>
    <td><code>p.rabbitmq</code> (with a dot)</td>
    </tr><tr>
-   <th>Pre-Provisioned Service</th>
-   <td>Multi-tenant VMs shared by apps across your deployment</td>
-   <td>The BOSH Director creates all VMs when operator deploys or updates service</td>
+   <th>Pre-provisioned Service</th>
+   <td>Multi-tenant VMs shared by apps across your deployment.</td>
+   <td>The BOSH Director creates all VMs when operator deploys or updates service.</td>
    <td><code>p-rabbitmq</code> (with a dash)</td>
    </tr>
 </table>
@@ -123,7 +123,7 @@ The following table provides version and version-support information about <%= v
 
 For more information, see [Unlocking the Power of On-Demand <%= vars.product_full %>](./ondemand.html).
 
-### <a id='pre-provisioned'></a> Pre-Provisioned
+### <a id='pre-provisioned'></a> Pre-provisioned
 
 * Provision an instance of the RabbitMQ service, which corresponds to a unique RabbitMQ virtual host
 * Bind apps to an instance of the plan, providing unique credentials for each binding
