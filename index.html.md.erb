@@ -17,10 +17,10 @@ with a single command.
 This table summarizes the main differences between the two:
 
 <table id='rabbit-odb-vs-pre' border="1" class="table">
-<thead><tr>
-   <th>VMs it runs on</th>
-   <th>How VMs are created</th>
-   <th>Metrics name prefix</th>
+  <thead><tr>
+   <th>VMs It Runs On</th>
+   <th>How VMs Are Created</th>
+   <th>Metrics Name Prefix</th>
    <th> </th>
    </tr></thead>
    <tr>
@@ -29,9 +29,9 @@ This table summarizes the main differences between the two:
    <td>The BOSH Director creates each VM on-demand when an app developer creates a service instance.</td>
    <td><code>p.rabbitmq</code> (with a dot)</td>
    </tr><tr>
-   <th>Pre-Provisioned Service</th>
-   <td>Multi-tenant VMs shared by apps across your deployment</td>
-   <td>The BOSH Director creates all VMs when operator deploys or updates service</td>
+   <th>Pre-provisioned Service</th>
+   <td>Multi-tenant VMs shared by apps across your deployment.</td>
+   <td>The BOSH Director creates all VMs when operator deploys or updates service.</td>
    <td><code>p-rabbitmq</code> (with a dash)</td>
    </tr>
 </table>
