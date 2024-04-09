@@ -168,7 +168,7 @@ RabbitMQ clustering is not primarily a solution for increased availability.
 Instead, it is designed for consistency and partition tolerance, as described in the [CAP theorem](https://en.wikipedia.org/wiki/CAP_theorem).
 RabbitMQ clustering provides increased message consistency through queue mirroring.
 This means that messages accessed in one queue are exactly the same as in another queue.
-For more information, see [Consistency or Availability Tradeoff](#tradeoff).
+For more information, see [Consistency or Availability Trade-Off](#tradeoff).
 
 Other options can be used for availability requirements, such as the use of federation between exchanges or queues.
 
@@ -195,9 +195,9 @@ within a region should provide high enough network performance to prevent impact
 However, deploying across AWS regions is likely to lead to cluster instability.
 For more information, see the [AWS documentation](http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/RegionsAndAZs.html).
 
-### <a id="tradeoff"></a> Consistency or Availability Tradeoff
+### <a id="tradeoff"></a> Consistency or Availability Trade-Off
 
-In a distributed messaging system, a tradeoff must be made between availability or consistency when a network partition event occurs
+In a distributed messaging system, a trade-off must be made between availability or consistency when a network partition event occurs
 and one or more nodes are not able to communicate with each other.
 The cluster plan lets operators decide how they want the RabbitMQ cluster to react in the event of a network partition.
 
@@ -295,7 +295,7 @@ This section explains these options.
 #### Cluster Plan Only
 
 * Set number of nodes to 3, 5, or 7
-* Determine network partition behavior. See [Consistency or Availability Tradeoff](#tradeoff) above.
+* Determine network partition behavior. See [Consistency or Availability Trade-Off](#tradeoff) above.
 
 <p class="note"><span class="note__title">Note</span> A load balancer, such as HAProxy, is not deployed with on-demand cluster plans.</p>
 
@@ -355,7 +355,7 @@ The following are preconfigured for both the single node and the cluster plans:
   which has the service instance ID.
   It is important to monitor these metrics as recommended in [Monitoring and KPIs for On-Demand <%= vars.product_full %>](./monitor.html#kpi).
 
-## <a id="migrating-from-mt"></a> About Migrating a Pre-Provisioned Instance to an On-Demand Instance
+## <a id="migrating-from-mt"></a> About Migrating a Pre-provisioned Instance to an On-Demand Instance
 
 VMware recommends the on-demand service for production workloads due to its workload isolation.
 
@@ -397,7 +397,7 @@ If you do not want to lose messages, do one of the following:
   * Use shovel or federation plugins to consume messages from the old instance.
 
 
-### <a id="differences"></a>Differences between Pre-Provisioned and On-Demand Services Instances
+### <a id="differences"></a>Differences between Pre-provisioned and On-Demand Services Instances
 
 There are some differences between pre-provisioned and on-demand services instances
 that you should be aware of:
