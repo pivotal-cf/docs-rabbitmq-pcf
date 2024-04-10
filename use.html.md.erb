@@ -59,9 +59,9 @@ For an app to use a service, an instance of the service must exist in its space.
 On-Demand services are created asynchronously, not immediately.
 The `watch` command shows you when your service instance is ready to bind and use.
 
-You can enable TLS and additional plugins using the `cf create-service` command.
+You can enable TLS and additional plug-ins using the `cf create-service` command.
 For instructions on how to modify the `cf create-service` command,
-see [Enable TLS for Your Service Instance](#tls) or [Enable Optional Plugins](#optional-plugins) below.
+see [Enable TLS for Your Service Instance](#tls) or [Enable Optional Plug-ins](#optional-plugins) below.
 
 To create an instance of the on-demand <%= vars.product_short %> service:
 
@@ -269,22 +269,22 @@ the `cf push` command.
 </p>
 
 
-## <a id="optional-plugins"></a> Activate Optional Plugins
+## <a id="optional-plugins"></a> Activate Optional Plug-ins
 
-For a list of RabbitMQ plugins that are activated or deactivated by default in
+For a list of RabbitMQ plug-ins that are activated or deactivated by default in
 on-demand <%= vars.product_short %> instances, see
-[RabbitMQ Server Plugins](./install-config.html#server-plugins).
+[RabbitMQ Server Plug-ins](./install-config.html#server-plugins).
 
 <p class="note">
-  <span class="note__title">Note</span> If a plugin is deactivated by default,
-  the operator must activated the plugin for the platform before you can enable it on your service instances.
-  For more information, see <a href="./install-config.html#optional-plugins">Enable Extra RabbitMQ Server Plugins</a>.
+  <span class="note__title">Note</span> If a plug-in is deactivated by default,
+  the operator must activate the plug-in for the platform before you can enable it on your service instances.
+  For more information, see <a href="./install-config.html#optional-plugins">Enable Extra RabbitMQ Server Plug-ins</a>.
 </p>
 
-You can activate plugins when you create a service instance or by updating an existing
-service instance. When activating more than one plugin, specify all the plugin names in the same command.
+You can activate plug-ins when you create a service instance or by updating an existing
+service instance. When activating more than one plug-in, specify all the plug-in names in the same command.
 
-To activate plugins, run one of these commands, specifying the plugins
+To activate plug-ins, run one of these commands, specifying the plug-ins
 as a configuration parameter in JSON:
 
 * When creating a service instance, run:
@@ -293,14 +293,14 @@ as a configuration parameter in JSON:
     cf create-service SERVICE PLAN SERVICE-INSTANCE-NAME -c PARAMETER-AS-JSON
     ```
 
-    Where the `PARAMETER-AS-JSON` key is the plugin and the value is `true`.
+    Where the `PARAMETER-AS-JSON` key is the plug-in and the value is `true`.
 
     For example:
 
     <pre class="terminal">
     $ cf create-service p.rabbitmq single-node myservice -c '{ "plugins": { "rabbitmq_event_exchange": true } }'
     </pre>
-    For example, when enabling more than one plugin:
+    For example, when enabling more than one plug-in:
     <pre class="terminal">
     $ cf create-service p.rabbitmq single-node myservice -c '{ "plugins": { "rabbitmq_event_exchange": true, "rabbitmq_mqtt": true } }'
     </pre>
@@ -311,26 +311,26 @@ as a configuration parameter in JSON:
     cf update-service SERVICE-INSTANCE-NAME -c PARAMETER-AS-JSON
     ```
 
-    Where the `PARAMETER-AS-JSON` key is the plugin and the value is `true`.
+    Where the `PARAMETER-AS-JSON` key is the plug-in and the value is `true`.
 
     For example:
 
     <pre class="terminal">
     $ cf update-service myservice -c '{ "plugins": { "rabbitmq_event_exchange": true } }'
     </pre>
-    For example, when enabling more than one plugin:
+    For example, when enabling more than one plug-in:
     <pre class="terminal">
     $ cf update-service myservice -c '{ "plugins": { "rabbitmq_amqp1_0": true, "rabbitmq_event_exchange": true } }'
     </pre>
 
 
-## <a id="deactivate-plugins"></a> Deactivate Optional Plugins
+## <a id="deactivate-plugins"></a> Deactivate Optional Plug-ins
 
 <p class="note">
-  <span class="note__title">Note</span> When creating a service instance, optional plugins are deactivated by default.
+  <span class="note__title">Note</span> When creating a service instance, optional plug-ins are deactivated by default.
 </p>
 
-To deactivate plugins for an existing service instance:
+To deactivate plug-ins for an existing service instance:
 
 1. Run:
 
@@ -338,14 +338,14 @@ To deactivate plugins for an existing service instance:
     cf update-service SERVICE-INSTANCE-NAME -c PARAMETER-AS-JSON
     ```
 
-    Where the `PARAMETER-AS-JSON` key is the plugin and the value is `false`.
+    Where the `PARAMETER-AS-JSON` key is the plug-in and the value is `false`.
 
     For example:
 
     <pre class="terminal">
     $ cf update-service myservice -c '{ "plugins": { "rabbitmq_event_exchange": false}}'
     </pre>
-    For example, when deactivating more than one plugin:
+    For example, when deactivating more than one plug-in:
     <pre class="terminal">
     $ cf update-service myservice -c '{ "plugins": { "rabbitmq_amqp1_0": false, "rabbitmq_event_exchange": false } }'
     </pre>
@@ -657,7 +657,7 @@ to share your service instances across Cloud Foundry orgs and spaces.
 :locals => {:service_name => vars.product_short} %>
 
 <p class="note">
-  <span class="note__title">Note</span> The Log Cache CLI plugin will not show metrics from on-demand
+  <span class="note__title">Note</span> The Log Cache CLI plug-in does not show metrics from on-demand
   service instances if the <strong>Prom Scraper Compatibility with Log Cache</strong> property
   in <strong>Global settings for on-demand plans</strong> is deactivated.
 </p>

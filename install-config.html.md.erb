@@ -210,11 +210,11 @@ Follow the steps below to configure global settings:
       </tr>
       <tr>
         <td>
-          <strong>RabbitMQ plugins that can be enabled by App Developers</strong>
+          <strong>RabbitMQ plug-ins that can be enabled by App Developers</strong>
         </td>
         <td>
           For more information, see
-          <a href="#optional-plugins">Enable Extra Optional RabbitMQ Server Plugins</a> below.
+          <a href="#optional-plugins">Enable Extra Optional RabbitMQ Server Plug-ins</a> below.
         </td>
       </tr>
       <tr>
@@ -968,52 +968,52 @@ The following plug-ins are activated by default, you cannot deactivate them:
 
 ### <a id="optional-plugins"></a> (Optional) Enable Extra RabbitMQ Server Plug-Ins
 
-The following plugins are deactivated by default:
+The following plug-ins are deactivated by default:
 
 <table class="table">
 <col width="40%">
 <col width="60%">
-  <thead><tr><th>Plugin</th>
+  <thead><tr><th>Plug-in</th>
   <th>For more information, see…</th></tr></thead>
   <tr>
     <td><code>rabbitmq_amqp1_0</code></td>
-    <td><a href="https://github.com/rabbitmq/rabbitmq-server/blob/master/deps/rabbitmq_amqp1_0/README.md"> AMQP 1.0 Plugin</a> in GitHub.</td>
+    <td><a href="https://github.com/rabbitmq/rabbitmq-server/blob/master/deps/rabbitmq_amqp1_0/README.md"> AMQP 1.0 Plug-in</a> in GitHub.</td>
   </tr>
   <tr>
     <td><code>rabbitmq_auth_backend_cache</code></td>
-    <td> <a href="https://github.com/rabbitmq/rabbitmq-server/blob/master/deps/rabbitmq_auth_backend_cache/README.md"> Auth Backend Cache Plugin</a> in GitHub.</td>
+    <td> <a href="https://github.com/rabbitmq/rabbitmq-server/blob/master/deps/rabbitmq_auth_backend_cache/README.md"> Auth Backend Cache Plug-in</a> in GitHub.</td>
   </tr>
   <tr>
     <td><code>rabbitmq_auth_backend_http</code></td>
-    <td> <a href="https://github.com/rabbitmq/rabbitmq-server/blob/master/deps/rabbitmq_auth_backend_http/README.md"> Auth Backend HTTP Plugin</a> in GitHub.</td>
+    <td> <a href="https://github.com/rabbitmq/rabbitmq-server/blob/master/deps/rabbitmq_auth_backend_http/README.md"> Auth Backend HTTP Plug-in</a> in GitHub.</td>
   </tr>
   <tr>
     <td><code>rabbitmq_auth_backend_ldap</code></td>
-    <td> <a href="https://www.rabbitmq.com/docs/ldap"> LDAP Plugin</a> in the RabbitMQ documentation.</td>
+    <td> <a href="https://www.rabbitmq.com/docs/ldap"> LDAP Plug-in</a> in the RabbitMQ documentation.</td>
   </tr>
   <tr>
     <td><code>rabbitmq_auth_mechanism_ssl</code></td>
-    <td> <a href="https://github.com/rabbitmq/rabbitmq-server/blob/master/deps/rabbitmq_auth_mechanism_ssl/README.md"> Auth Mechanism SSL Plugin</a> in GitHub.</td>
+    <td> <a href="https://github.com/rabbitmq/rabbitmq-server/blob/master/deps/rabbitmq_auth_mechanism_ssl/README.md"> Auth Mechanism SSL Plug-in</a> in GitHub.</td>
   </tr>
   <tr>
     <td><code>rabbitmq_event_exchange</code></td>
-    <td> <a href="https://www.rabbitmq.com/docs/event-exchange"> Event Exchange Plugin</a> in the RabbitMQ documentation.</td>
+    <td> <a href="https://www.rabbitmq.com/docs/event-exchange"> Event Exchange Plug-in</a> in the RabbitMQ documentation.</td>
   </tr>
   <tr>
     <td><code>rabbitmq_jms_topic_exchange</code></td>
-    <td> <a href="https://github.com/rabbitmq/rabbitmq-server/blob/master/deps/rabbitmq_jms_topic_exchange/README.md"> JMS Topic Exchange Plugin</a> in the RabbitMQ documentation.</td>
+    <td> <a href="https://github.com/rabbitmq/rabbitmq-server/blob/master/deps/rabbitmq_jms_topic_exchange/README.md"> JMS Topic Exchange Plug-in</a> in the RabbitMQ documentation.</td>
   </tr>
   <tr>
     <td><code>rabbitmq_mqtt</code></td>
-    <td> <a href="https://www.rabbitmq.com/docs/mqtt"> MQTT Plugin</a> in the RabbitMQ documentation.</td>
+    <td> <a href="https://www.rabbitmq.com/docs/mqtt"> MQTT Plug-in</a> in the RabbitMQ documentation.</td>
   </tr>
   <tr>
     <td><code>rabbitmq_stomp</code></td>
-    <td> <a href="https://www.rabbitmq.com/docs/stomp"> STOMP Plugin</a> in the RabbitMQ documentation.</td>
+    <td> <a href="https://www.rabbitmq.com/docs/stomp"> STOMP Plug-in</a> in the RabbitMQ documentation.</td>
   </tr>
   <tr>
     <td><code>rabbitmq_stream</code></td>
-    <td> <a href="https://www.rabbitmq.com/docs/stream"> Stream Plugin</a> in the RabbitMQ documentation.</td>
+    <td> <a href="https://www.rabbitmq.com/docs/stream"> Stream Plug-in</a> in the RabbitMQ documentation.</td>
   </tr>
   <tr>
     <td><code>rabbitmq_tracing</code></td>
@@ -1041,19 +1041,15 @@ The following plugins are deactivated by default:
   </tr>
 </table>
 
-To activate plugins:
+To activate plug-ins:
 
 1. Navigate to **<%= vars.ops_manager %> Installation Dashboard** > **RabbitMQ** > **Settings** >
 **Global Settings for On-Demand Plans**.
 
-1. Select the plugins you want to activate under **RabbitMQ plugins that can be enabled by App
+1. Select the plug-ins you want to activate under **RabbitMQ plug-ins that can be enabled by App
 Developers**.
 
-    ![Screenshot with the header 'Global Settings for On-Demand Plans'.
-     Underneath is the required field 'Dedicated Instance Service Quota (min: 0)', a 'Dedicated Instance
-     VM Options' checkbox, and optional checkboxes for 'RabbitMQ plugins that App Developers can
-     enable'.
-     These checkboxes are labeled 'rabbitmq_event_exchange' and 'rabbitmq_mqtt'.](images/on-demand-plugins-operator.png)
+    ![Global Settings for On-Demand Plans.](images/on-demand-plugins-operator.png)
 
-  After plugins are activated for the platform, developers can activate them for each service instance.
-  For more information, see [Enable Optional Plugins](./use.html#optional-plugins).
+  After plug-ins are activated for the platform, developers can activate them for each service instance.
+  For more information, see [Enable Optional Plug-ins](./use.html#optional-plugins).

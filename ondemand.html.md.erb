@@ -54,11 +54,11 @@ on how to meet your use case requirements with the on-demand service.
     <td>Configuration</td><td>Enabled in base-64 encoded text box</td><td>Plan to address</td>
   </tr>
   <tr>
-    <td>Plugins</td>
-    <td>Tier-1 plugins enabled using checkboxes in UI.</td>
-    <td>A selection of tier-1 plugins are enabled by default on all instances.
-    Other tier-1 plugins can be optionally enabled by an app developer.
-    See <a href="./install-config.html#server-plugins">RabbitMQ Server Plugins</a>.</td>
+    <td>Plug-ins</td>
+    <td>Tier-1 plug-ins enabled using checkboxes in UI.</td>
+    <td>A selection of tier-1 plug-ins are enabled by default on all instances.
+    Other tier-1 plug-ins can be optionally enabled by an app developer.
+    See <a href="./install-config.html#server-plugins">RabbitMQ Server Plug-ins</a>.</td>
   </tr>
   <tr>
     <td>RabbitMQ admin credentials to access RabbitMQ Management UI</td>
@@ -132,14 +132,14 @@ It gives app developer teams fast access to the power of the leading open source
 to meet all but the most demanding high availability app messaging requirements.
 
 This plan can suit high-performance workloads requiring messaging resilience and asynchronous messaging replication.
-RabbitMQ copies messages to disk for resilience and allows asynchronous messaging replication through the RabbitMQ Federation plugin.
+RabbitMQ copies messages to disk for resilience and allows asynchronous messaging replication through the RabbitMQ Federation plug-in.
 
 This plan offers:
 
 * Fast access to an isolated instance of RabbitMQ scoped for the app developer teams
 * Org and space admin access to the RabbitMQ Management UI so app developer teams can have full control over the node
 * Updates and upgrades initiated and controlled by the operator to keep the instance up-to-date with the latest security patches and issue fixes
-* Message resilience provided through RabbitMQ exchange, queue Federation, and Shovel plugins.
+* Message resilience provided through RabbitMQ exchange, queue Federation, and Shovel plug-ins.
 
 ## <a id="cluster"></a> On-Demand Cluster Plan
 
@@ -148,7 +148,7 @@ It gives app developer teams fast access to the power of the leading Open Source
 to meet all but the most demanding high availability app messaging requirements.
 
 This plan can suit high performance workloads requiring messaging resilience (copied to disk)
-and asynchronous messaging replication through the RabbitMQ Federation plugin.
+and asynchronous messaging replication through the RabbitMQ Federation plug-in.
 With this plan, however, you also scale out <%= vars.product_short %> to multiple nodes.
 
 This plan offers:
@@ -156,7 +156,7 @@ This plan offers:
 * Fast access to an isolated, clustered instance of RabbitMQ scoped to the app developer team orgs and spaces
 * Admin access to the RabbitMQ Management UI to give app developer teams full control over the cluster
 * Updates and upgrades initiated and controlled by the operator to keep the instance up-to-date with the latest security patches and issue fixes.
-* Message resilience provided by mirroring queues across RabbitMQ nodes, and the option to use the Federation and Shovel plugins.
+* Message resilience provided by mirroring queues across RabbitMQ nodes, and the option to use the Federation and Shovel plug-ins.
 
 ### <a id="principles"></a> General Principles of the Cluster Plan
 
@@ -394,7 +394,7 @@ apply them to the on-demand instance:
 If you do not want to lose messages, do one of the following:
   * Switch your producers to the new instance but keep the consumers bound to the
   old instance until the queues are empty.
-  * Use shovel or federation plugins to consume messages from the old instance.
+  * Use shovel or federation plug-ins to consume messages from the old instance.
 
 
 ### <a id="differences"></a>Differences between Pre-provisioned and On-Demand Services Instances
@@ -413,9 +413,9 @@ your old instance.
 For more information, see the [<%= vars.product_full %> Release Notes](./releases.html) and the
 [RabbitMQ Changelog](https://www.rabbitmq.com/release-information).
 
-* Critical tier-1 plugins are enabled for on-demand. However, on-demand does not
-yet have the same plugins enabled as pre-provisioned.
-If you are missing a plugin, contact your VMware representative.
+* Critical tier-1 plug-ins are enabled for on-demand. However, on-demand does not
+yet have the same plug-ins enabled as pre-provisioned.
+If you are missing a plug-in, contact your VMware representative.
 
 * You might have configured your on-demand instance differently.
 For example, you might have changed:

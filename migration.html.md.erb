@@ -118,13 +118,13 @@ You can apply them using the API by following the steps below.
 
 To safely migrate messages from one service instance to another, you must do one of the following:
 
-* [Migrate Messages Using the RabbitMQ Shovel Plugin](#messages-shovel)
+* [Migrate Messages Using the RabbitMQ Shovel Plug-in](#messages-shovel)
 * [Migrate Messages By Using Consumers to Drain the Old Service Instance](#messages-consumers)
 
-Use of the shovel plugin requires less waiting time and manual steps, however, it does not preserve the
+Use of the shovel plug-in requires less waiting time and manual steps, however, it does not preserve the
 ordering of messages.
 
-### <a id="messages-shovel"></a> Migrate Messages Using the RabbitMQ Shovel Plugin
+### <a id="messages-shovel"></a> Migrate Messages Using the RabbitMQ Shovel Plug-in
 
 You can safely migrate messages to the new instance by using a shovel to move messages between queues on the two instances.
 For more information, see [the RabbitMQ documentation](https://www.rabbitmq.com/docs/shovel).
@@ -149,7 +149,7 @@ For instructions about how to do so with or without OAuth enabled, see
 
 ### <a id="messages-consumers"></a> Migrate Messages by Using Consumers to Drain the Old Service Instance
 
-You can safely migrate messages to the new instance without the use of the shovel plugin.
+You can safely migrate messages to the new instance without the use of the shovel plug-in.
 This method is better for ensuring that messages are ordered consistently.
 However, it requires more manual steps and waiting for queues to be drained.
 
