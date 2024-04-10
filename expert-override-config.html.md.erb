@@ -51,8 +51,9 @@ Any service instances created under this plan will have this override configurat
     * **To provide configuration in the newer sysctl-style format:**
         1. Paste the configuration into the **Expert Mode: Override Server Config** field.
         You can make this configuration a multiline string if you require multiple configuration items.
-        <%= image_tag("images/override-config-od.png",
-        :alt => "Screenshot of the 'Expert Mode: Override Server Config' field. The field contains a multiline string; the lines are 'management.rates_mode = detailed', 'management.ssl.ciphers.1 = ECDHE-ECDSA-AES256-GCM-SHA384' and 'management.ssl.ciphers.2 = ECDHE-RSA-AES256-GCM-SHA384'") %>
+        
+          <%= image_tag("images/override-config-od.png", :alt => "The 'Expert Mode: Override Server Config' field. The field contains a multiline string; the lines are 'management.rates_mode = detailed', 'management.ssl.ciphers.1 = ECDHE-ECDSA-AES256-GCM-SHA384' and 'management.ssl.ciphers.2 = ECDHE-RSA-AES256-GCM-SHA384'") %>
+
         1. Click **Save**.
     * **To provide configuration in the older Erlang-style format:**
         1. Encode the configuration as a base64 string.
@@ -90,7 +91,7 @@ Any service instances created under this plan will have this override configurat
     server takes the `none` value.
 
 
-### <a id='applying-pp'></a> Override Configuration for Pre-Provisioned
+### <a id='applying-pp'></a> Override Configuration for Pre-provisioned
 
 In pre-provisioned, to set configuration on all service instances:
 
