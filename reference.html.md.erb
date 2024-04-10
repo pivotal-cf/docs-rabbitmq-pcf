@@ -76,16 +76,16 @@ respectively.
 In all cases, URIs are provided, along with the individual components.
 
 
-## <a id='plugins-protocols'></a>Changing Enabled Plugins and Protocols
+## <a id='plugins-protocols'></a>Changing Enabled Plug-ins and Protocols
 
 <p class="note">
-  <span class="note__title">Note</span> Removing or adding plugins or protocols might cause apps bound with
+  <span class="note__title">Note</span> Removing or adding plug-ins or protocols might cause apps bound with
   <%= vars.product_short %> to break.
 </p>
 
-If you adjust the plugins and protocols enabled for RabbitMQ, you might need to force the
+If you adjust the plug-ins and protocols enabled for RabbitMQ, you might need to force the
 `VCAP_SERVICES` environment variables of all apps to be regenerated.
-Adding and removing the following plugins require bound apps to be restaged:
+Adding and removing the following plug-ins require bound apps to be restaged:
 
 * rabbitmq_management
 * rabbitmq_stomp
