@@ -126,18 +126,18 @@ This grants you full admin access to the RabbitMQ Management UI.
 </p>
 
 
-### <a id='plugin'></a>Plugins
+### <a id='plugin'></a>Plug-ins
 
-Choose which plugins you want to enable in this section of the **Pre-Provisioned RabbitMQ** tab.
+Choose which plug-ins you want to enable in this section of the **Pre-Provisioned RabbitMQ** tab.
 
-You must leave the **rabbitmq_management** plugin enabled for this product to work. VMware also strongly recommends
-enabling the **rabbitmq_prometheus** plugin in addition.
+You must leave the **rabbitmq_management** plug-in enabled for this product to work. VMware also strongly recommends
+enabling the **rabbitmq_prometheus** plug-in in addition.
 
-<%= image_tag("images/config-plugins.png", :alt => "Screenshot of multi-select checkbox fields labeled 'RabbitMQ plugins'.
-Next to the label is a red asterisk to indicate that selecting plugins is required.
+<%= image_tag("images/config-plugins.png", :alt => "Screenshot of multi-select checkbox fields labeled 'RabbitMQ plug-ins'.
+Next to the label is a red asterisk to indicate that selecting plug-ins is required.
 A checkbox field called 'rabbitmq_management' is enabled.") %>
 
-For more information about RabbitMQ plugins, see the
+For more information about RabbitMQ plug-ins, see the
 [RabbitMQ documentation](https://www.rabbitmq.com/docs/plugins).
 
 ### <a id="erlang"></a> (Optional) Provide an Erlang Cookie
@@ -196,7 +196,7 @@ the RabbitMQ nodes.
 
 1. Enter a comma-separated list of ports that are proxied to RabbitMQ nodes. You must include port
 <code>15672</code> for the Management UI to listen on.
-If you enable other protocol plugins or have a custom configuration that changes the ports that
+If you enable other protocol plug-ins or have a custom configuration that changes the ports that
 RabbitMQ listens on, you can extend this list.
 The list defaults to:
   * 15672 - Management
@@ -223,7 +223,7 @@ You can provide more than one CA certificate.
 
 SSL settings are applied equally across all VMs in the cluster.
 If you provide a certificate, SSL is simultaneously provided for AMQPS, STOMP, and MQTT.
-No other plugins are automatically configured for use with SSL.
+No other plug-ins are automatically configured for use with SSL.
 For more information about SSL support in RabbitMQ, see the
 [RabbitMQ documentation](https://www.rabbitmq.com/docs/ssl).
 
@@ -764,7 +764,7 @@ Ensure the following ports are enabled for those VMs:
 
 To enable Prometheus to collect metrics from pre-provisioned RabbitMQ nodes, you must also
 permit incoming traffic on port <code>15692</code>.
-For information about the RabbitMQ Prometheus plugin,
+For information about the RabbitMQ Prometheus plug-in,
 see the [RabbitMQ documentation](https://www.rabbitmq.com/docs/prometheus).
 
 The following is a template for configuring your <%= vars.app_runtime_abbr %> firewall rules:
