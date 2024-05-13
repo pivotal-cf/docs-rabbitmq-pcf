@@ -29,7 +29,8 @@ Then, if necessary, immediately cherry-pick/copy any changes that you want to pu
 
 | Branch Name | Staging | Prod  |
 |-------------| ---------|------|
-| main      | [Stage](https://docs-staging.vmware.com/en/draft/VMware-RabbitMQ-for-Tanzu-Application-Service/2.4/tanzu-rmq/GUID-index.html) | N/A |
+| main      | NOT USED | N/A |
+| 2.4  | [v2.4](https://docs-staging.vmware.com/en/VMware-RabbitMQ-for-Tanzu-Application-Service/2.3/tanzu-rmq/GUID-index.html)      | N/A   |
 | 2.3  | [v2.3](https://docs-staging.vmware.com/en/VMware-RabbitMQ-for-Tanzu-Application-Service/2.3/tanzu-rmq/GUID-index.html)      | [v2.3](https://docs.vmware.com/en/VMware-RabbitMQ-for-Tanzu-Application-Service/2.3/tanzu-rmq/GUID-index.html)   |
 | 2.2  | [v2.2](https://docs-staging.vmware.com/en/VMware-RabbitMQ-for-Tanzu-Application-Service/2.2/tanzu-rmq/GUID-index.html)      | [v2.2](https://docs.vmware.com/en/VMware-RabbitMQ-for-Tanzu-Application-Service/2.2/tanzu-rmq/GUID-index.html)   |
 | 2.1  | [v2.1](https://docs-staging.vmware.com/en/VMware-RabbitMQ-for-Tanzu-Application-Service/2.1/tanzu-rmq/GUID-index.html)      | [v2.1](https://docs.vmware.com/en/VMware-RabbitMQ-for-Tanzu-Application-Service/2.1/tanzu-rmq/GUID-index.html)   |
