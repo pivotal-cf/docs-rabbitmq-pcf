@@ -1,0 +1,261 @@
+---
+breadcrumb: VMware RabbitMQ for Tanzu Application Service Documentation
+title: Warm Standby Replication
+owner: London Services
+---
+
+This topic tells you how to configure and use Warm Standby Replication when you are using <%= vars.product_full %>.
+
+<%= vars.product_short %> supports Warm Standby Replication, a strategy which replicates or copies data (continuous schema definitions and messages) from an upstream (primary) RabbitMQ instance to a downstream (standby) instance. In the event of a failure on the upstream (primary) instance, an administrator can quickly start the recovery process, which means putting the downstream (standby) instance into service as the new upstream (primary) instance with minimal downtime or data loss. This information describes configuring Warm Standby Replication when using <%= vars.product_short %>.
+
+## <a id="getting-familiar-with-terminology"></a>Getting familiar with the Terminology
+* **Upstream Instance**: The primary active instance is most often called the “upstream” instance. For the remainder of this documentation, it is referred to as the upstream (primary) instance.
+* **Downstream Instance**: The standby remote instance is most often called the “downstream” instance. For the remainder of this documentation, it is referred to as the downstream (standby) instance.
+* **Schema**: Nodes and instances store information that can be referred to as schema, metadata or topology. Users, vhosts, queues, exchanges, bindings, runtime parameters are all included in this category. This metadata is called definitions in RabbitMQ.
+* **Sync Request**: A sync request carries a payload that allows the upstream (primary) side to compute the difference between the schemas on the upstream (primary) and downstream (standby) instances.
+* **Sync Response**: A sync response carries the difference plus all the definitions that are only present on the upstream (primary) side or conflict. The downstream (standby) side uses this information to apply the definitions. Any entities only present on the downstream are deleted, which ensures that downstreams follow their upstream's schema as closely as possible.
+* **Sync Operation**: A sync operation is a request/response sequence that involves a sync request sent by the downstream (standby) instance and a sync response that is sent back by the upstream (primary) instance.
+* **Schema Replication**: The automated process of continually replicating schema definitions from an upstream (primary) instance to one or more downstream (standby) instances.
+* **Message Replication**: The automated process of continually replicating published messages from an upstream (primary) instance to one or more downstream (standby) instances.
+* **Loose Coupling**: The upstream and its followers (downstreams) are loosely connected. If one end of the schema replication connection fails, the delta between instances' schema will grow but neither will be affected in any other way. (This applies to the message replication connection as well.) If an upstream is under too much load to serve a definition request, or the sync plugin is unintentionally disabled, the downstream won't receive responses for sync requests for a period of time. If a downstream fails to apply definitions, the upstream is not affected and neither are its downstream peers. Therefore, availability of both sides are independent of each other. When multiple downstreams are syncing from a shared upstream, they do not interfere or coordinate with each other. Both sides have to do a little bit more work. On the upstream side, this load is shared between all instance nodes. On the downstream side, the load should be minimal in practice, assuming that sync operations are applied successfully, so the delta does not accumulate.
+* **Downstream Promotion**: Promoting the downstream (standby) instance to the Upstream (primary) instance.
+
+## <a id="why-use-wsr"></a>Why use Warm Standby Replication
+With the Warm Standby Replication feature, you get:
+
+* A disaster recovery strategy that continually replicates or copies schema definitions and automatically replicates enqueued messages from the upstream (primary) instance to the downstream (standby) instance. If a disaster occurs on the upstream (primary) instance, an administrator can quickly start the recovery process with minimal downtime or data loss.
+* A way of transferring schema definitions in a compressed binary format which reduces bandwidth usage.
+* Instance co-dependencies are avoided because all communication between the sides is completely asynchronous. For example, a downstream (standby) instance can run a different version of RabbitMQ.
+* Links to other instances are easy to configure, which is important for disaster recovery (for example, if you are setting up more than one downstream (standby) instance).
+
+## <a id="what-is-replicated"></a>What is Replicated/What is not?
+
+### Replicated
+* Schema definitions such as vhosts, queues, users, exchanges, bindings, runtime parameters, and so on.
+* Messages that are published to quorum queues, classic queues, and streams.
+
+### Not Replicated
+Schema synchronization does not synchronize Kubernetes objects.
+
+## <a id="how-warm-standby-replication-works"></a>How Warm Standby Replication Works
+The Warm Standby Replication process uses the following plugins:
+
+### Continuous Schema Replication (SchemaReplication) Plugin
+The Continuous Schema Replication plugin connects the upstream (primary) instance to the downstream (standby) instance via a schema replication link. The downstream (standby) instances connect to their upstream (primary) instance and initiate sync operations. These operations synchronize the schema definition on the downstream side with the same schema definition of that which is on the upstream side.
+A node running in the downstream mode (a follower) can be converted to an upstream (leader) on the fly. This will make the node disconnect from its original source, therefore stopping all syncing. The node will then continue operating as a member of an independent instance, no longer associated with its original upstream. Such conversion is called a downstream promotion and should be completed in case of a disaster recovery event.
+
+### Standby Message Replication Plugin
+To ensure improved data safety and reduce the risk of data loss, it is not enough to automate the replication of RabbitMQ entities (schema objects). The Warm Standby Replication feature implements a hybrid replication model. In addition to schema definitions, it also manages the automated and continuous replication of enqueued messages from the upstream (primary) intance. During the setup process, a replication policy is configured at the vhost level in the upstream (primary) intance indicating the downstream queues that should be matched and targeted for message replication. Messages and relevant metrics from the upstream queues are then pushed to the downstream queues via a streaming log which the downstream(s) subscribe to. Currently, quorum queues, classic queues, and stream queues are supported for message replication.
+
+<p class="note important">
+<span class="note__title">Important</span>
+**For quorum and classic queues, it is important to know that RabbitMQ intances replicate messages in the queues to the downstream (standby) intance, but these messages are not published into the queues in the downstream (standby) instance until that downstream (standby) instance is promoted to the upstream (primary) instance.** Every 60 seconds (by default), the timestamp of the oldest message in each queue is sent to the downstream (standby) instance, the promotion process uses the timestamp as a cutoff point for message recovery. So based on the timestamp of the oldest message, all messages from the "oldest" to the "current" timestamp are recovered when the promotion process happens. With this process, the probability of duplicate messages in a busy RabbitMQ instance scenario is high because of the timestamp refresh interval and stale messages pushing the timestamp further into the past. However, it also brings the guarantee of not losing or missing any messages during the recovery process.
+Streams work differently, messages are replicated directly to streams on the downstream (standby) instance. However, you cannot publish new messages to streams on the downstream (standby) instance until the downstream (standby) instance is promoted to the upstream (primary) instance.
+</p>
+
+## <a id="requirements-warm-standby-replication"></a>Requirements for Warm Standby Replication
+* The upstream and downstream RabbitMQ instances must both support Warm Standby Replication, either via the tile or using one of the other Tanzu RabbitMQ distributions. Note, if the upstream (primary) instance and the downstream (standby) instance are on different TAS foundations, then [Service Gatewa](service-gateway-access.html) must be used to allow the downstream RabbitMQ instance to connect to the upstream RabbitMQ instance.
+
+
+## <a id="setup-configure-warm-standby-replication"></a>Setting up and Configuring Warm Standby Replication
+Before continuing, ensure that all [Requirements for Warm Standby Replication](#requirements-warm-standby-replication) are in place.
+
+<p class="note">
+<span class="note__title">Note</span>
+There can be multiple downstream (standby) instances linked to one upstream  (primary) instance. This setup describes one upstream instance and one downstream instance.
+</p>
+
+>**Important**
+> Before you begin, it is useful to know that Warm Standby Replication uses stream queues to log/copy changes. As a result, the number of messages can grow to be very large but because RabbitMQ streams can store large amounts of data efficiently, there is minimal memory used.
+
+### <a id="configure-upstream"></a>Setting up the Upstream RabbitMQ Instance
+
+1. Configure an upstream plan in the appropriate upstream TAS foundation by selecting the Warm Standby Replication Mode to Upstream in the relevant on-demand plan configuration.
+
+2. **Optional** Configure the Warm Standby Relication Disk Use Limit and Warm Standby Replication Retention Time Limit.
+
+3. Create an upstream (primary) RabbitMQ instance:
+```shell
+cf create-service p.rabbitmq <UPSTREAM_PLAN> <INSTANCE_NAME>
+```
+where `<UPSTREAM_PLAN>` is the upstream on-demand plan, and `<INSTANCE_NAME>` is an instance name of your choosing.
+
+4. Determine the service GUID for the upstream RabbitMQ instance and retrieve the Replication Credentials for the upstream RabbitMQ Instance from the upstream [Runtime CredHub](). The username is `rabbitmq-replication-user` and the password will be stored in the CredHub secret `/p-bosh/service-instance_<SERVICE_GUID>/rabbitmq-server-replication-password`, where `<SERVICE_GUID>` is the service instance GUID for the upstream RabbitMQ instance. Also note the AMQP and Stream endpoints for the upstream RabbitMQ instance. If using Service Gateway, these will be allocated from the TCP router. Record this information in a JSON file with the following format
+```json
+{
+    "replication_credentials": {
+        "amqp_endpoints": [<AMQP_ENDPOINT>],
+        "stream_endpoints": [<STREAM_ENDPOINT>],
+        "username": "rabbitmq-replication-user",
+        "password": <REPLICATION_PASSWORD>
+    }
+}
+```
+where `<AMQP_ENDPOINT>` and `<STREAM_ENDPOINT>` are the AMQP and Stream endpoints for the upstream RabbitMQ instance, and `<REPLICATION_PASSWORD>` is the replication password retreived from the upstream Runtime CredHub.
+
+5. Configure a replication policy `{"remote-dc-replicate": true}` which matches queues which should be replicated by the Warm Standby Replication. If all queues should be replicated, the policy should match `^.*`. In order to avoid policy clashes, this policy should be merged with any other policies which will be applied in the upstream RabbitMQ instance.
+
+
+### <a id="configure-downstream"></a>Configuring Warm Standby Replication on the Downstream (Secondary) Instance
+
+To configure the Warm Standby Replication for the downstream RabbitMQ instance, complete the following steps: <br />
+
+1. Configure a downstream plan in the appropriate upstream TAS foundation by selecting the Warm Standby Replication Mode to Dpstream in the relevant on-demand plan configuration.
+
+2. **Optional** Configure the Warm Standby Relication Disk Use Limit and Warm Standby Replication Retention Time Limit.
+
+3. Create a downstream (standby) RabbitMQ instance, providing the replication credentials for the upstream instance via the additional json recorded previously:
+```shell
+cf create-service p.rabbitmq <DOWNSTREAM_PLAN> <INSTANCE_NAME> -c <ADDITIONAL_JSON>
+```
+where `<DOWNSTREAM_PLAN>` is the donwstream on-demand plan, `<INSTANCE_NAME>` is an instance name of your choosing, and `<ADDITIONAL_JSON>` is the previously recorded replication credentials in JSON format.
+
+4. Once configured, the downstream RabbitMQ instance will replicate all state from the upstream RabbitMQ instance. This means that users created locally in the downstream instance will be overwritten by the upstream. In order to access the downstream RabbitMQ instance, use the replication credentials, or other credentials valid for the upstream RabbitMQ instance.
+
+
+## <a id="verify-wsr-is-configured-correct"></a>Verifying Warm Standby Replication is Configured Correctly
+
+You can complete the following steps to verify that Warm Standby Replication is configured correctly.
+
+1. Access the RabbitMQ Management UI to visualise the schema sync and warm standby replication information. A link to the RabbitMQ management interface can be found in the service instance details, and the replication user recorded when configuring warm standby replication can be used to access the downstream RabbitMQ instance.
+
+2. Select the **Admin** tab, you can then access the **Schema Replication**, **Standby Replication**, and **Standby Promotion** tabs in the **Admin** section. The following figure displays the **Schema Replication** tab.
+
+    ![VMware RabbitMQ Management UI for Warm Standby Replication](Management_UI_wsr.png)
+
+4. If you published messages to streams covered by replication policies (refer to [Configuring Warm Standby Replication on the Upstream (Primary) Instance](#configure-upstream), step 5), you can list the number of messages replicated for each stream.
+
+## <a id="promote-downstream-disaster-recover"></a>Promoting the Downstream (Standby) Instance for Disaster Recovery
+
+<p class="note">
+<span class="note__title">Note</span>
+Promotion and reconfiguration happen at runtime, and do not involve RabbitMQ isntance restarts or redeployment.
+</p>
+
+A downstream (standby) instance with synchronised schema and messages is only useful if it can be turned into a new upstream (primary) instance in case of a disaster event. This process is known as “downstream promotion”.<br />
+
+In the case of a disaster event, the recovery process involves several steps:
+* The downstream (standby) instance is promoted to an upstream (primary) instance by the service operator. When this happens, all upstream links are closed and for every virtual host, unacknowledged messages are re-published to their original destination queues. This just applies to messages belonging to classic and quorum queues, streams are already stored in the target stream on the downstream (standby) instance.
+* Applications are redeployed or reconfigured to connect to the newly promoted upstream (primary) instance.
+* Other downstream (standby) instances must be reconfigured to follow the new promoted instance.
+
+When “downstream promotion” happens, a promoted downstream (standby) instance is detached from its original upstream (primary) instance. It then operates as an independent instance which can be used as an upstream (primary) instance. It does not sync from its original upstream but can be configured to collect messages for offsite replication to another datacenter.
+
+**Notes:**
+* The downstream promotion process takes time. The amount of time it takes is
+ proportional to the retention period used. This operation is only CPU and disk I/O intensive when queues are used. It is not for streams because streams are just restarted, messages are already stored in the target streams.
+ * Every downstream node is responsible for recovering the virtual hosts it "owns", which helps distribute the load between instance members. A list of virtual hosts available for downstream promotion, that is, have local data to recover, can be found in the management UI.
+
+To promote a downstream (standby) instance, that is, start the disaster recovery process, perform an authenticated HTTP `PUT` command to the donwstream management API at `/tanzu/osr/downstream/promote`:
+```shell
+curl -X PUT --user "rabbitmq-replication-user:<REPLICATION_PASSWORD>" "<DOWNSTREAM_MANAGEMENT_URL>/tanzu/osr/downstream/promote"
+```
+where `<REPLICATION_PASSWORD>` is the password of the replication user and `<DOWNSTREAM_MANAGEMENT_URL>` is the URL of the downstream management UI, which can be found in the service instance information for the downstream service instance.
+
+During promotion of the downstream instance, Warm Standby Replication does not support the recovery of messages that are routed to target queues by the AMQP 0.9.1 [BCC](https://www.rabbitmq.com/sender-selected.html) header.
+
+After the recovery process completes, the instance can be used as usual.
+
+## <a id='post-promotion-standby-replication'>Post Promotion</a>
+
+Complete the following steps if you need to after promoting the downstream (standby) instance to be the upstream (primary) instance for disaster recovery.
+
+* After the downstream (standby) instance is promoted, if you need to restart the promoted instance, the promoted downstream (standby) instance (which is now the upstream (primary) instance) will return to running in the downstream mode because it is still a downstream instance in its definition file.
+* What happens to the original upstream (primary) instance that experienced a disaster event? It can be temporarily configured as a downstream instance, then promoted back as the upstream (primary) instance, or it may not be used at all.
+* After promotion, the replicated data on the old downstream (which is effectively the new promoted upstream) can be erased from disk. To explain this point in more detail, an example is: a instance in Dublin is the upstream (primary) instance, a instance in London is the downstream (standby) instance. The instance in London gets promoted to be the upstream (primary) instance. After promotion, you can now remove previous downstream-related data from the instance in London (as it is now promoted and running as the upstream (primary) instance) by running the following command:
+
+    ```shell
+    rabbitmqctl delete_all_data_on_standby_replication_cluster
+    ```
+
+To reverse the process, failing back to the original upstream instance, perform the following steps.
+
+1. Temporarily configure the original upstream instance into downstream mode by running the following commands
+    ```shell
+    rabbitmqctl set_schema_replication_mode downstream
+    rabbitmqctl set_standby_replication_mode downstream
+    rabbitmqctl set_schema_sync_upstream_endpoints '{"endpoints": [<PROMOTED_AMQP_ENDPOINT>], "username": "rabbitmq-replication-user", "password": <REPLICATION_PASSWORD>}'
+    rabbitmqctl set_standby_replication_upstream_endpoints '{"endpoints": [<PROMOTED_STREAM_ENDPOINT>], "username": "rabbitmq-replication-user", "password": <REPLICATION_PASSWORD>}'
+    ```
+    where `<PROMOTED_AMQP_ENDPOINT>` and `<PROMOTED_STREAM_ENDPOINT>` are the AMQP and Stream endpoints of the promoted instance.
+
+2. Once the instance is replicating messages from the now promoted previously downstream instance, perform the promotion process on the original upstream instance.
+
+3. The original upstream instance is now once again an upstream. The downstream instance may now be restarted and will return to downstream operations.
+
+## <a id='diagnostics-standby-replication' href='#diagnostics-standby-replication'>Running Diagnostics</a>
+
+The number of replicated messages for classic queues, quorum queues, and streams can be viewed in the Standby Replication section of the admin panel in the upstream RabbitMQ Management UI.
+
+## <a id='additional-commands-standby-replication'>Other Useful Replication Commands</a>
+
+* To start, stop, or restart the replication in both the Schema Replication (SchemaReplication) and Standby Replication (StandbyReplication) plugins at the same time, run the following commands as required:
+    ``` shell
+    rabbitmqctl enable_warm_standby
+    rabbitmqctl disable_warm_standby
+    rabbitmqctl restart_warm_standby
+    ```
+
+* If the instance size changes, the virtual hosts "owned" by every node might change. To delete the data for the virtual hosts that nodes no longer own, run the following command:
+    ``` shell
+    rabbitmqctl delete_orphaned_data_on_standby_replication_downstream_cluster
+    ```
+* To delete the internal streams on the upstream (primary) instance, run the following command:
+    ``` shell
+    rabbitmqctl delete_internal_streams_on_standby_replication_upstream_cluster
+    ```
+* To inspect the size of the data replicated, run the following command:
+    ``` shell
+    rabbitmqctl display_disk_space_used_by_standby_replication_data
+    ```
+* To disconnect the downstream to stop message replication, run the following command:
+    ```shell
+    rabbitmqctl disconnect_standby_replication_downstream
+    ```
+* To (re)connect the downstream, to start/resume message replication, run:
+    ```shell
+    rabbitmqctl connect_standby_replication_downstream
+    ```
+* After promotion, replicated data on the old downstream (standby) instance (which is now effectively the newly promoted upstream (primary) instance) can be erased from disk with:
+
+    ```shell
+    rabbitmqctl delete_all_data_on_standby_replication_cluster
+    ```
+
+    If the previous command is run on an active downstream (standby) instance, it deletes all transferred data until the time of deletion, it might also stop the replication process. To ensure it continues, the downstream must be disconnected and connected again using the commands listed above.
+
+## <a id='troubleshoot-wsr'>Troubleshooting Warm Standby Replication</a>
+Learn how to isolate and resolve problems with Warm Standby Replication using the following information.
+
+### <a id='troubleshoot-2'>Messages are collected in the Upstream (Primary) Instance but are not delivered to the Downstream (Standby) Instance</a>
+
+Messages and message acknowledgements are continually stored in the upstream (primary) instance. The downstream (standby) instance connects to the upstream (primary) instance. The downstream (standby) instance reads from the internal stream on the upstream (primary) instance where the  messages are stored, and then stores these messages in an internal stream in the downstream (standby) instance. Messages transferred to the downstream (standby) instance for streams are visible in RabbitMQ Management UI automatically (before promotion). You can also see them by running the `rabbitmqctl list_queues` command.
+
+To inspect the information about the stored messages in the downstream (standby) instance, run the following command:
+
+```shell
+rabbitmq-diagnostics inspect_standby_downstream_metrics
+# Inspecting standby downstream metrics related to recovery...
+# queue	timestamp	vhost
+# ha.qq	1668785252768	/
+```
+
+If the previous command returns the name of a queue called `example`, it means that the downstream (standby) instance has messages for queue `example` ready to be re-published, in the event of [Promoting the Downstream (Standby) Instance for Disaster Recovery](#promote-downstream-disaster-recover).
+
+If the queue you are searching for is not displayed in the list, verify the following items in the upstream (primary) instance:
+
+- Does the [effective policy](https://rabbitmq.com/parameters.html#policy-priorities) for the queue have the definition `remote-dc-replicate: true`?
+- Is the queue type `Quorum` or `Classic`?
+- Can the replicator user for Warm Standby Replication authenticate? Run the following command to verify:
+
+  ```shell
+  rabbitmqctl authenticate_user rabbitmq-replication-user <REPLICATION_PASSWORD>
+  ```
+  where `<REPLICATION_PASSWORD>` was the password determined [Configuring Warm Standby Replication on the Upstream (Primary) Instance](#configure-upstream), step 4.
+
+If previous checks are correct, next, check the downstream (standby) instance RabbitMQ logs for any
+related errors.
+
+### <a id='troubleshoot-3'>Verify that the Downstream (Standby) Instance has received the Replicated Messages before Promotion</a>
+
+The number of replicated messages for classic queues, quorum queues, and streams can be viewed in the Standby Replication section of the admin panel in the downtream RabbitMQ Management UI.
