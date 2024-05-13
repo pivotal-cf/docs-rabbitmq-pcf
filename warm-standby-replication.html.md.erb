@@ -146,7 +146,11 @@ When “downstream promotion” happens, a promoted downstream (standby) instanc
  proportional to the retention period used. This operation is only CPU and disk I/O intensive when queues are used. It is not for streams because streams are just restarted, messages are already stored in the target streams.
  * Every downstream node is responsible for recovering the virtual hosts it "owns", which helps distribute the load between instance members. A list of virtual hosts available for downstream promotion, that is, have local data to recover, can be found in the management UI.
 
-To promote a downstream (standby) instance, that is, start the disaster recovery process, API ENDPOINT
+To promote a downstream (standby) instance, that is, start the disaster recovery process, perform an authenticated HTTP `PUT` command to the donwstream management API at `/tanzu/osr/downstream/promote`:
+```shell
+curl -X PUT --user "rabbitmq-replication-user:<REPLICATION_PASSWORD>" "<DOWNSTREAM_MANAGEMENT_URL>/tanzu/osr/downstream/promote"
+```
+where `<REPLICATION_PASSWORD>` is the password of the replication user and `<DOWNSTREAM_MANAGEMENT_URL>` is the URL of the downstream management UI, which can be found in the service instance information for the downstream service instance.
 
 During promotion of the downstream instance, Warm Standby Replication does not support the recovery of messages that are routed to target queues by the AMQP 0.9.1 [BCC](https://www.rabbitmq.com/sender-selected.html) header.
 
