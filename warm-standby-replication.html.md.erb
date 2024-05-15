@@ -108,7 +108,7 @@ To configure the Warm Standby Replication for the downstream RabbitMQ instance, 
 ```shell
 cf create-service p.rabbitmq <DOWNSTREAM_PLAN> <INSTANCE_NAME> -c <ADDITIONAL_JSON>
 ```
-where `<DOWNSTREAM_PLAN>` is the donwstream on-demand plan, `<INSTANCE_NAME>` is an instance name of your choosing, and `<ADDITIONAL_JSON>` is the previously recorded replication credentials in JSON format.
+where `<DOWNSTREAM_PLAN>` is the downstream on-demand plan, `<INSTANCE_NAME>` is an instance name of your choosing, and `<ADDITIONAL_JSON>` is the previously recorded replication credentials in JSON format.
 
 4. Once configured, the downstream RabbitMQ instance will replicate all state from the upstream RabbitMQ instance. This means that users created locally in the downstream instance will be overwritten by the upstream. In order to access the downstream RabbitMQ instance, use the replication credentials, or other credentials valid for the upstream RabbitMQ instance.
 
@@ -146,7 +146,7 @@ When “downstream promotion” happens, a promoted downstream (standby) instanc
  proportional to the retention period used. This operation is only CPU and disk I/O intensive when queues are used. It is not for streams because streams are just restarted, messages are already stored in the target streams.
  * Every downstream node is responsible for recovering the virtual hosts it "owns", which helps distribute the load between instance members. A list of virtual hosts available for downstream promotion, that is, have local data to recover, can be found in the management UI.
 
-To promote a downstream (standby) instance, that is, start the disaster recovery process, perform an authenticated HTTP `POST` command to the donwstream management API at `/tanzu/osr/downstream/promote`:
+To promote a downstream (standby) instance, that is, start the disaster recovery process, perform an authenticated HTTP `POST` command to the downstream management API at `/tanzu/osr/downstream/promote`:
 ```shell
 curl -X POST --user "rabbitmq-replication-user:<REPLICATION_PASSWORD>" "<DOWNSTREAM_MANAGEMENT_URL>/tanzu/osr/downstream/promote"
 ```
