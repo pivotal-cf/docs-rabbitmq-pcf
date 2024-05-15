@@ -573,6 +573,15 @@ To configure an on-demand service plan:
       <td>This is where RabbitMQ pages messages to disk.
       Service instance deployments fail if this value is less than twice the volume of RAM of the selected RabbitMQ VM Type.
       For more information, see <a href="#resources">About RabbitMQ VM Types and Persistent Disk Size</a> below.</td></tr>
+      <tr><td><strong>Warm Standby Replication Mode</strong></td>
+      <td>
+      (Optional) Configure Warm Standby Replication, see <a href="./warm-standby-replication.html">Warm Standby Replication</a>.</td></tr>
+      <tr><td><strong>Warm Standby Relication Disk Use Limit</strong></td>
+      <td>
+      (Optional) Configure the Disk Use Limit in bytes for Warm Standby Replication, see <a href="./warm-standby-replication.html">Warm Standby Replication</a>.</td></tr>
+      <tr><td><strong>Warm Standby Replication Retention Time Limit</strong></td>
+      <td>
+      (Optional) Configure the Retention Time Limit for Warm Standby Replication, see <a href="./warm-standby-replication.html">Warm Standby Replication</a>.</td></tr>
       <tr><td><strong>Expert Mode: Override Server Config</strong></td>
       <td>
       (Optional, experts only) Provide server config to set on service instances that use this plan.
