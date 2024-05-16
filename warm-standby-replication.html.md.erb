@@ -93,7 +93,7 @@ There can be multiple downstream (standby) instances linked to one upstream  (pr
     - `<UPSTREAM_PLAN>` is the upstream on-demand plan.
     - `<INSTANCE_NAME>` is an instance name of your choosing.
 
-4. Determine the service GUID for the upstream RabbitMQ instance and retrieve the Replication Credentials for the upstream RabbitMQ Instance from the upstream [Runtime CredHub](). The username is `rabbitmq-replication-user` and the password is stored in the CredHub secret `/p-bosh/service-instance_<SERVICE_GUID>/rabbitmq-server-replication-password`, where `<SERVICE_GUID>` is the service instance GUID for the upstream RabbitMQ instance. Also note the AMQP and Stream endpoints for the upstream RabbitMQ instance. If using Service Gateway, these are allocated from the TCP router. Record this information in a JSON file with the following format:
+4. Determine the service GUID for the upstream RabbitMQ instance and retrieve the Replication Credentials for the upstream RabbitMQ Instance from the upstream [Runtime CredHub](). The username is `rabbitmq-replication-user` and the password is stored in the CredHub secret `/p-bosh/service-instance_<SERVICE_GUID>/rabbitmq_replication_password`, where `<SERVICE_GUID>` is the service instance GUID for the upstream RabbitMQ instance. Also note the AMQP and Stream endpoints for the upstream RabbitMQ instance. If using Service Gateway, these are allocated from the TCP router. Record this information in a JSON file with the following format:
 
     ```json
     {
