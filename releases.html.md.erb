@@ -1,32 +1,36 @@
 ---
-title: VMware RabbitMQ for Tanzu Application Service Release Notes
+title: Tanzu RabbitMQ for Tanzu Platform for Cloud Foundry Release Notes
 owner: London Services
 ---
 
 This topic describes the changes in this minor release of <%= vars.product_full %>.
 
 <p class="note">
-  <span class="note__title">Note</span> VMware Tanzu RabbitMQ for VMs is now named VMware RabbitMQ for Tanzu Application Service.
+  <span class="note__title">Note</span> VMware Tanzu RabbitMQ for VMs is now named VMware Tanzu RabbitMQ for Tanzu Platform for Cloud Foundry.
 </p>
 
 <%= partial vars.path_to_partials + '/upgrade-planner' %>
 
-## <a id="2-3-3"></a> v2.3.3
+<p class="note">
+  <span class="note__title">Note</span> <%= vars.product_short %> contains RabbitMQ 3.13. Before Upgrading to <%= vars.product_short> v2.4, all service instances must be running RabbitMQ 3.12 or newer.
+</p>
 
-**Release Date**: March 28, 2024
+## <a id="2-4-0"></a> v2.4.0
 
-### Resolved Issues
+**Release Date**: May 20, 2024
 
-This release fixes the following issues:
-- Smoke tests now primarily log to file, preventing failure from output too large for bosh.
-- Default VM size for brokers increased to 2 CPUs to allow smoke tests to run in parallel.
+### Features
+
+New features and changes in this release:
+
+- Warm Standby Replication is now supported.
+- Audit Logger is now supported.
 
 ### Known Issues
 
 This release has the following known issues:
 
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
-- On-demand service broker deploys by default with a "micro" instance. Micro instances cannot run parallel processes.
 
 ### Compatibility
 
@@ -41,15 +45,15 @@ The following components are compatible with this release:
 	</tr>
 	<tr>
 		<td>Erlang</td>
-		<td>25.3.2.9 and 26.2.2</td>
+		<td>26.2.5</td>
 	</tr>
 	<tr>
 		<td>HAProxy</td>
-		<td>2.6.16</td>
+		<td>2.6.17</td>
 	</tr>
 	<tr>
 		<td>OSS RabbitMQ*</td>
-		<td>3.11.28 and 3.12.13</td>
+		<td>3.13.3</td>
 	</tr>
 	<tr>
 		<td>Stemcell</td>
@@ -64,20 +68,20 @@ The following components are compatible with this release:
 		<td>1.63.0</td>
 	</tr>
 	<tr>
-		<td>cf-rabbitmq</td>
-		<td>588.0.0</td>
+		<td>tanzu-rabbitmq</td>
+		<td>608.0.0</td>
 	</tr>
 	<tr>
 		<td>cf-rabbitmq-multitenant-broker</td>
-		<td>188.0.0</td>
+		<td>196.0.0</td>
 	</tr>
 	<tr>
 		<td>cf-rabbitmq-smoke-tests</td>
-		<td>226.0.0</td>
+		<td>233.0.0</td>
 	</tr>
 	<tr>
 		<td>cf-service-gateway</td>
-		<td>145.0.0</td>
+		<td>151.0.0</td>
 	</tr>
 	<tr>
 		<td>count-cores-indicator</td>
@@ -85,340 +89,31 @@ The following components are compatible with this release:
 	</tr>
 	<tr>
 		<td>loggregator-agent</td>
-		<td>8.0.2</td>
+		<td>8.1.1</td>
 	</tr>
 	<tr>
 		<td>on-demand-service-broker</td>
-		<td>0.45.3</td>
+		<td>0.46.0</td>
 	</tr>
 	<tr>
 		<td>rabbitmq-metrics</td>
-		<td>145.0.0</td>
+		<td>151.0.0</td>
 	</tr>
 	<tr>
 		<td>rabbitmq-on-demand-adapter</td>
-		<td>307.0.0</td>
+		<td>323.0.0</td>
 	</tr>
 	<tr>
 		<td>routing</td>
-		<td>0.293.0</td>
+		<td>0.297.0</td>
 	</tr>
 	<tr>
 		<td>service-metrics</td>
-		<td>2.0.36</td>
+		<td>2.0.37</td>
 	</tr>
 </table>
 
-<sup>*</sup> For more information, see the <a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.11.28">v3.11.28</a> and <a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.12.13">v3.12.13</a> GitHub documentation.
-
-## <a id="2-3-2"></a> v2.3.2
-
-**Release Date**: February 14, 2024
-
-### Known Issues
-
-This release has the following issues:
-
-<%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
-- On-demand service broker deploys by default with a "micro" instance. Micro instances cannot run parallel processes.
-
-### Resolved Issues
-
-This release fixes the following issues:
-
-- Smoke tests now run in parallel. This solves smoke tests failing to complete before timeout.
-- Plan names containing certain characters failed to be validated.
-
-### Compatibility
-
-The following components are compatible with this release:
-
-<table class="table">
-  <thead><tr><th>Component</th> <th>Version</th></tr></thead>
- 	<tr>
-    <td><%= vars.app_runtime_full %></td>
-    <td>4.0.x, 5.0.x, 6.0.x</td>
-  </tr>
-  <tr>
-    <td>Erlang</td>
-    <td>26.2.2, 25.3.2.9</td>
-  </tr>
-  <tr>
-    <td>HAProxy</td>
-    <td>2.6.16</td>
-  </tr>
-  <tr>
-    <td>OSS RabbitMQ*</td>
-    <td>3.12.12, 3.11.28</td>
-  </tr>
-  <tr>
-    <td>Stemcell</td>
-    <td>1.x</td>
-  </tr>
-  <tr>
-    <td>bpm</td>
-    <td>1.2.16</td>
-  </tr>
-  <tr>
-    <td>cf-cli</td>
-    <td>1.59.0</td>
-  </tr>
-  <tr>
-    <td>cf-rabbitmq</td>
-    <td>582.0.0</td>
-  </tr>
-  <tr>
-    <td>cf-rabbitmq-multitenant-broker</td>
-    <td>185.0.0</td>
-  </tr>
-  <tr>
-    <td>cf-rabbitmq-smoke-tests</td>
-    <td>222.0.0</td>
-  </tr>
-  <tr>
-    <td>cf-service-gateway</td>
-    <td>144.0.0</td>
-  </tr>
-  <tr>
-    <td>count-cores-indicator</td>
-    <td>2.0.0</td>
-  </tr>
-  <tr>
-    <td>loggregator-agent</td>
-    <td>8.0.1</td>
-  </tr>
-  <tr>
-    <td>on-demand-service-broker</td>
-    <td>0.45.3</td>
-  </tr>
-  <tr>
-    <td>rabbitmq-metrics</td>
-    <td>143.0.0</td>
-  </tr>
-  <tr>
-    <td>rabbitmq-on-demand-adapter</td>
-    <td>301.0.0</td>
-  </tr>
-  <tr>
-    <td>routing</td>
-    <td>0.291.0</td>
-  </tr>
-  <tr>
-    <td>service-metrics</td>
-    <td>2.0.35</td>
-  </tr>
-</table>'
-
-<sup>*</sup> For more information, see the <a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.12.12">v3.12.12</a> and <a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.11.28">v3.11.28</a> GitHub documentation.
-
-## <a id="2-3-1"></a> v2.3.1
-
-**Release Date**: January 11, 2024
-
-### Resolved Issues
-
-This release fixes the following issues:
-
-- Service Gateway attempts to use HTTP to connect to the Routing HTTPS endpoint.
-
-### Known Issues
-
-This release has the following known issues:
-
-- Plan names containing certain special characters may fail to meet validation
-- Smoke tests may fail to complete before timing out
-<%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
-
-### Compatibility
-
-The following components are compatible with this release:
-
-<table class="table">
-  <thead><tr><th>Component</th> <th>Version</th></tr></thead>
-  <tr>
-		<td><%= vars.app_runtime_full %></td>
-		<td>3.0.x, 4.0.x, 5.0.x</td>
-	</tr>
-	<tr>
-		<td>Erlang</td>
-		<td>26.2.1, 25.3.2.8</td>
-	</tr>
-	<tr>
-		<td>HAProxy</td>
-		<td>2.6.16</td>
-	</tr>
-	<tr>
-		<td>OSS RabbitMQ*</td>
-		<td>3.12.12, 3.11.28</td>
-	</tr>
-	<tr>
-		<td>Stemcell</td>
-		<td>1.x</td>
-	</tr>
-	<tr>
-		<td>bpm</td>
-		<td>1.2.12</td>
-	</tr>
-	<tr>
-		<td>cf-cli</td>
-		<td>1.59.0</td>
-	</tr>
-	<tr>
-		<td>cf-rabbitmq</td>
-		<td>576.0.0</td>
-	</tr>
-	<tr>
-		<td>cf-rabbitmq-multitenant-broker</td>
-		<td>180.0.0</td>
-	</tr>
-	<tr>
-		<td>cf-rabbitmq-smoke-tests</td>
-		<td>206.0.0</td>
-	</tr>
-	<tr>
-		<td>cf-service-gateway</td>
-		<td>138.0.0</td>
-	</tr>
-	<tr>
-		<td>count-cores-indicator</td>
-		<td>2.0.0</td>
-	</tr>
-	<tr>
-		<td>loggregator-agent</td>
-		<td>7.7.3</td>
-	</tr>
-	<tr>
-		<td>on-demand-service-broker</td>
-		<td>0.45.2</td>
-	</tr>
-	<tr>
-		<td>rabbitmq-metrics</td>
-		<td>137.0.0</td>
-	</tr>
-	<tr>
-		<td>rabbitmq-on-demand-adapter</td>
-		<td>294.0.0</td>
-	</tr>
-	<tr>
-		<td>routing</td>
-		<td>0.285.0</td>
-	</tr>
-	<tr>
-		<td>service-metrics</td>
-		<td>2.0.34</td>
-	</tr>
-</table>
-
-<sup>*</sup> For more information, see the <a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.12.10">v3.12.12</a> and <a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.11.26">v3.11.28</a> GitHub documentation.
-
-
-## <a id="2-3-0"></a> v2.3.0
-
-**Release Date**: December 18, 2023
-
-### Features
-
-New features and changes in this release:
-
-- It is now possible to create an arbitrary number of plans using the plan collection.
-
-### Known Issues
-
-This release has the following issues:
-
-- Plan names containing certain special characters may fail to meet validation
-- Smoke tests may fail to complete before timing out
-- Service Gateway attempts to use HTTP to connect to the Routing HTTPS endpoint.
-<%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
-
-### Resolved Issues
-
-This release fixes the following issues:
-
-- Brokers connect to Nats using TLS.
-- Service Gateway connects to Routing using TLS.
-
-### Compatibility
-
-The following components are compatible with this release:
-
-<table class="table">
-<thead><tr><th>Component</th> <th>Version</th></tr></thead>
- 	<tr>
-    <td><%= vars.app_runtime_full %></td>
-    <td>3.0.x, 4.0.x, 5.0.x</td>
-  </tr>
-  <tr>
-    <td>Erlang</td>
-    <td>26.1.2, 25.3.2.7</td>
-  </tr>
-  <tr>
-    <td>HAProxy</td>
-    <td>2.6.15</td>
-  </tr>
-  <tr>
-    <td>OSS RabbitMQ*</td>
-    <td>3.12.10, 3.11.26</td>
-  </tr>
-  <tr>
-    <td>Stemcell</td>
-    <td>1.x</td>
-  </tr>
-  <tr>
-    <td>bpm</td>
-    <td>1.2.11</td>
-  </tr>
-  <tr>
-    <td>cf-cli</td>
-    <td>1.53.0</td>
-  </tr>
-  <tr>
-    <td>cf-rabbitmq</td>
-    <td>569.0.0</td>
-  </tr>
-  <tr>
-    <td>cf-rabbitmq-multitenant-broker</td>
-    <td>175.0.0</td>
-  </tr>
-  <tr>
-    <td>cf-rabbitmq-smoke-tests</td>
-    <td>202.0.0</td>
-  </tr>
-  <tr>
-    <td>cf-service-gateway</td>
-    <td>133.0.0</td>
-  </tr>
-  <tr>
-    <td>count-cores-indicator</td>
-    <td>2.0.0</td>
-  </tr>
-  <tr>
-    <td>loggregator-agent</td>
-    <td>7.7.2</td>
-  </tr>
-  <tr>
-    <td>on-demand-service-broker</td>
-    <td>0.45.1</td>
-  </tr>
-  <tr>
-    <td>rabbitmq-metrics</td>
-    <td>133.0.0</td>
-  </tr>
-  <tr>
-    <td>rabbitmq-on-demand-adapter</td>
-    <td>286.0.0</td>
-  </tr>
-  <tr>
-    <td>routing</td>
-    <td>0.284.0</td>
-  </tr>
-  <tr>
-    <td>service-metrics</td>
-    <td>2.0.33</td>
-  </tr>
-</table>'
-
-<sup>*</sup> For more information, see the <a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.12.10">v3.12.10</a> and <a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.11.26">v3.11.26</a> GitHub documentation.
+<sup>*</sup> For more information, see the <a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.13.3">v3.13.3</a> GitHub documentation.
 
 ## <a id="view"></a> View Release Notes for another Version
 
