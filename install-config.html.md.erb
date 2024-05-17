@@ -538,6 +538,42 @@ To configure an on-demand service plan:
           </p>
         </td>
       </tr>
+      <tr>
+        <td><strong>Enable Audit Logger process</strong></td>
+        <td>
+        Select this checkbox to enable the audit logger feature. Audit Logger is a side-car process that runs on each
+        RabbitMQ server node, and captures audit events emitted by [Event Exchange plugin](https://www.rabbitmq.com/docs/event-exchange).
+        Captured events are logged to a file inside the service instance VM.
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Audit Logger output format</strong></td>
+        <td>
+        Select the output format of Audit Logger process. Human readable is only recommended for testing. JSON format is
+        recommended, as this format can be consumed by the loggregator subsystem.
+        <ul>
+          <li><strong>JSON format</strong>---Structured logging in JSON format.
+          </li>
+          <li><strong>Human readable</strong>---Multi-line format easy to read for humans.
+          </li>
+        </ul>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Audit Logger reconnect time (seconds)</strong></td>
+        <td>
+        Amount of time, in seconds, that Audit Logger will wait between reconnection attempts. The default is 5 seconds. When the Audit Logger process
+        loses connection with RabbitMQ the first time, it will immediately try to restore the connection. If this attempt is
+        unsuccessful, it will wait for the number of seconds in this field, before attempting again to reconnect. There's no
+        limit of reconnection attempts.
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Audit Logger consumption delay (seconds)</strong></td>
+        <td>
+        Amount of time, in seconds, that Audit Logger will wait before starting to consume events. The default is 2 seconds.
+        </td>
+      </tr>
       <tr><td><strong>Plan Features</strong></td>
           <td>Accept the default or enter a description. This description appears in Apps Manager.</td></tr>
       <tr><td><strong>Plan Quota</strong></td>
