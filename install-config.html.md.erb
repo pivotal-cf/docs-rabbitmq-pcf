@@ -539,10 +539,10 @@ To configure an on-demand service plan:
         </td>
       </tr>
       <tr>
-        <td><strong>Enable Audit Logger process</strong></td>
+        <td><strong>Enable Audit Logger Process</strong></td>
         <td>
         Select this checkbox to enable the audit logger feature. Audit Logger is a side-car process that runs on each
-        RabbitMQ server node, and captures audit events emitted by [Event Exchange plugin](https://www.rabbitmq.com/docs/event-exchange).
+        RabbitMQ server node and captures audit events emitted by [Event Exchange plug-in](https://www.rabbitmq.com/docs/event-exchange).
         Captured events are logged to a file inside the service instance VM.
         </td>
       </tr>
@@ -562,16 +562,16 @@ To configure an on-demand service plan:
       <tr>
         <td><strong>Audit Logger reconnect time (seconds)</strong></td>
         <td>
-        Amount of time, in seconds, that Audit Logger will wait between reconnection attempts. The default is 5 seconds. When the Audit Logger process
-        loses connection with RabbitMQ the first time, it will immediately try to restore the connection. If this attempt is
-        unsuccessful, it will wait for the number of seconds in this field, before attempting again to reconnect. There's no
+        Amount of time, in seconds, that Audit Logger waits between reconnection attempts. The default is 5 seconds. When the Audit Logger process
+        loses connection with RabbitMQ the first time, it immediately tries to restore the connection. If this attempt is
+        unsuccessful, it waits for the number of seconds in this field before attempting again to reconnect. There is no
         limit of reconnection attempts.
         </td>
       </tr>
       <tr>
         <td><strong>Audit Logger consumption delay (seconds)</strong></td>
         <td>
-        Amount of time, in seconds, that Audit Logger will wait before starting to consume events. The default is 2 seconds.
+        Amount of time, in seconds, that Audit Logger waits before starting to consume events. The default is 2 seconds.
         </td>
       </tr>
       <tr><td><strong>Plan Features</strong></td>
@@ -581,7 +581,7 @@ To configure an on-demand service plan:
       <tr><td><strong>Number of Nodes</strong></td>
           <td>Enter 1, 3, 5 or 7. This setting only affects new service instances.
               Previously deployed service instances are <strong>not</strong> updated.</td></tr>
-      <tr><td><strong>Network Partition Behaviour</strong></td>
+      <tr><td><strong>Network Partition Behavior</strong></td>
           <td>Select <code>pause_minority</code> or <code>autoheal</code>.
             VMware recommends using pause minority.
             For more information, see <a href="./ondemand.html#tradeoff">Consistency or Availability Tradeoff</a>.</td>
