@@ -7,7 +7,7 @@ template_variables:
   title_image: images/icon-p-green.jpg
   hero_text: "Detailed documentation to help you install, understand, and succeed with VMware's enterprise-grade software."
 
-  tile_name: VMware RabbitMQ for Tanzu Application Service
+  tile_name: VMware Tanzu RabbitMQ for Tanzu Application Service
   product_url: https://network.tanzu.vmware.com/products/pivotal-cf
   product_link: <div class="header-item"><a href="https://network.tanzu.vmware.com/products/pivotal-cf">Back to Product Page</a></div>
 
@@ -35,9 +35,9 @@ template_variables:
 
   # Tanzu variables
 
-  product_full: VMware RabbitMQ for Tanzu Application Service
-  product_short: RabbitMQ for Tanzu Application Service
-  product_abbr: RabbitMQ for Tanzu Application Service
+  product_full: VMware Tanzu RabbitMQ for Tanzu Application Service
+  product_short: Tanzu RabbitMQ for Tanzu Application Service
+  product_abbr: Tanzu RabbitMQ for Tanzu Application Service
 
   app_runtime_full: VMware Tanzu Application Service for VMs
   app_runtime_abbr: TAS for VMs
@@ -79,8 +79,8 @@ template_variables:
 
   # Other variables
 
-  service_name: RabbitMQ for Tanzu Application Service
-  service_name_article: the RabbitMQ for Tanzu Application Service
-  service_name_article_full: the VMware RabbitMQ for Tanzu Application Service service
+  service_name: Tanzu RabbitMQ for Tanzu Application Service
+  service_name_article: the Tanzu RabbitMQ for Tanzu Application Service
+  service_name_article_full: the VMware Tanzu RabbitMQ for Tanzu Application Service service
 
   note_pre_provisioned: Previous deprecation warnings for the pre-provisioned service are no longer in effect. VMware continues to support the pre-provisioned service.
