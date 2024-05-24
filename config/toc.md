@@ -13,6 +13,7 @@
             *   [Preparing for TLS](../prepare-tls.html)
             *   [Installing the On‑Demand Service](../install-config.html)
             *   [Enabling Service‑Gateway Access](../enable-service-gateway.html)
+            *   [Warm Standby Replication](../warm-standby-replication.html)
             *   [Enabling OAuth for RabbitMQ](../enable-oauth-for-rabbitmq.html)
             *   [Enabling OAuth for Apps](../enable-oauth-for-apps.html)
             *   [Securing Internode Traffic with TLS](../secure-inter-node.html)
