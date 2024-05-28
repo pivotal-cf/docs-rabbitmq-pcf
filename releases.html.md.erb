@@ -11,6 +11,104 @@ This topic describes the changes in this minor release of <%= vars.product_full 
 
 <%= partial vars.path_to_partials + '/upgrade-planner' %>
 
+## <a id="2-3-4"></a> v2.3.4
+
+**Release Date**: May 29, 2024
+
+### Resolved Issues
+
+This release fixes the following issues:
+- Smoke tests now create application security groups for all spaces when running in parallel.
+
+### Known Issues
+
+This release has the following known issues:
+
+<%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
+
+### Compatibility
+
+The following components are compatible with this release:
+
+<table class="nice">
+ <th>Component</th>
+ <th>Version</th>
+ 	<tr>
+		<td><%= vars.app_runtime_full %></td>
+		<td>4.0.x, 5.0.x, 6.0.x</td>
+	</tr>
+	<tr>
+		<td>Erlang</td>
+		<td>25.3.2.12 and 26.2.5</td>
+	</tr>
+	<tr>
+		<td>HAProxy</td>
+		<td>2.6.17</td>
+	</tr>
+	<tr>
+		<td>OSS RabbitMQ*</td>
+		<td>3.11.28 and 3.12.14</td>
+	</tr>
+	<tr>
+		<td>Stemcell</td>
+		<td>1.x</td>
+	</tr>
+	<tr>
+		<td>bpm</td>
+		<td>1.2.17</td>
+	</tr>
+	<tr>
+		<td>cf-cli</td>
+		<td>1.63.0</td>
+	</tr>
+	<tr>
+		<td>cf-rabbitmq</td>
+		<td>597.0.0</td>
+	</tr>
+	<tr>
+		<td>cf-rabbitmq-multitenant-broker</td>
+		<td>197.0.0</td>
+	</tr>
+	<tr>
+		<td>cf-rabbitmq-smoke-tests</td>
+		<td>236.0.0</td>
+	</tr>
+	<tr>
+		<td>cf-service-gateway</td>
+		<td>152.0.0</td>
+	</tr>
+	<tr>
+		<td>count-cores-indicator</td>
+		<td>2.0.0</td>
+	</tr>
+	<tr>
+		<td>loggregator-agent</td>
+		<td>8.1.1</td>
+	</tr>
+	<tr>
+		<td>on-demand-service-broker</td>
+		<td>0.46.0</td>
+	</tr>
+	<tr>
+		<td>rabbitmq-metrics</td>
+		<td>152.0.0</td>
+	</tr>
+	<tr>
+		<td>rabbitmq-on-demand-adapter</td>
+		<td>325.0.0</td>
+	</tr>
+	<tr>
+		<td>routing</td>
+		<td>0.297.0</td>
+	</tr>
+	<tr>
+		<td>service-metrics</td>
+		<td>2.0.37</td>
+	</tr>
+</table>
+
+<sup>*</sup> For more information, see the <a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.11.28">v3.11.28</a> and <a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.12.14">v3.12.14</a> GitHub documentation.
+
 ## <a id="2-3-3"></a> v2.3.3
 
 **Release Date**: March 28, 2024
@@ -27,6 +125,7 @@ This release has the following known issues:
 
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
 - On-demand service broker deploys by default with a "micro" instance. Micro instances cannot run parallel processes.
+- Smoke tests fail to create application security groups for all spaces when running in parallel.
 
 ### Compatibility
 
@@ -121,6 +220,7 @@ This release has the following issues:
 
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
 - On-demand service broker deploys by default with a "micro" instance. Micro instances cannot run parallel processes.
+- Smoke tests fail to create application security groups for all spaces when running in parallel.
 
 ### Resolved Issues
 
@@ -227,6 +327,7 @@ This release has the following known issues:
 
 - Plan names containing certain special characters may fail to meet validation
 - Smoke tests may fail to complete before timing out
+- Smoke tests fail to create application security groups for all spaces when running in parallel.
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
 
 ### Compatibility
@@ -329,6 +430,7 @@ This release has the following issues:
 - Plan names containing certain special characters may fail to meet validation
 - Smoke tests may fail to complete before timing out
 - Service Gateway attempts to use HTTP to connect to the Routing HTTPS endpoint.
+- Smoke tests fail to create application security groups for all spaces when running in parallel.
 <%= partial vars.path_to_partials + "/rabbitmq/erlang-ki" %>
 
 ### Resolved Issues
