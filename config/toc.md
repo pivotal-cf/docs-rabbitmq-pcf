@@ -1,6 +1,6 @@
 # TOC
 
-*   [VMware RabbitMQ for Tanzu Application Service](../index.html)
+*   [VMware Tanzu RabbitMQ for Tanzu Application Service](../index.html)
 *   [Release Notes](../releases.html)
 *   [Unlocking the Power of On‑Demand Services](../ondemand.html)
 *   [Architecture](../architecture.html)
